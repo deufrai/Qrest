@@ -1,0 +1,11 @@
+v0.1-beta
+=========
+    Main window now gets resized to smallest useable size on app startup
+    The labels describing the notes for results are now showing a picture of the note, instead of the name
+            
+
+v0.1-alpha
+==========
+    First release
+    
+    

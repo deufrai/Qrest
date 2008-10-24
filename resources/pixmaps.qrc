@@ -1,0 +1,14 @@
+<RCC>
+  <qresource prefix="notes" >
+    <file>pix/quarter.svg</file>
+    <file>pix/whole.svg</file>
+    <file>pix/eighth.svg</file>
+    <file>pix/half.svg</file>
+    <file>pix/sixteenth.svg</file>
+    <file>pix/thirtysecond.svg</file>
+  </qresource>
+  <qresource prefix="lights" >
+    <file>pix/green_hint.png</file>
+    <file>pix/red_hint.png</file>
+  </qresource>
+</RCC>
