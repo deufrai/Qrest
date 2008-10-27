@@ -1,3 +1,9 @@
+v0.2-beta
+=========
+	When using taptempo feature, there now is an indicator switch from red to green wether you tap regularly
+or not
+	Note labels are now provided as PNG images inside a Qt Resource, so they display properly in all platforms.
+
 v0.1-beta
 =========
     Main window now gets resized to smallest useable size on app startup
