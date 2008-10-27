@@ -1,8 +1,7 @@
 TEMPLATE = app
 TARGET = zest
 QT += core \
-    gui \
-    svg
+    gui
 HEADERS += src/constants.h \
     src/process/delayCalculator.h \
     src/process/tapTempoCalculator.h \
