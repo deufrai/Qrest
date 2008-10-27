@@ -1,0 +1,3 @@
+<area shape="rect" href="$classProcessor.html" title="Interface of all objects in charge of data processing." alt="" coords="5,30,85,54">
+<area shape="rect" href="$classDelayCalculator.html" title="Processor that calculates delay values according to app data stored tempo value." alt="" coords="148,6,260,30">
+<area shape="rect" href="$classTapTempoCalculator.html" title="Calculate tempo from an average of several collected time intervals beetween quarter..." alt="" coords="135,54,273,78">

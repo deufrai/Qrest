@@ -1,0 +1,21 @@
+<area shape="rect" href="$classZestMainWindow.html#4ba05f3f395c93663ddbbac526900127" title="pass tempo input field content value to app data" alt="" coords="243,186,485,210">
+<area shape="rect" href="$classDocument.html#510acd548b6fe251bd497114b24c3f6b" title="Set the tempo." alt="" coords="560,162,704,186">
+<area shape="rect" href="$classDocument.html#43720a4b3d3697f1013706544aa61a95" title="Set tempoFromTap flag." alt="" coords="535,210,729,234">
+<area shape="rect" href="$classObservable.html#0db6e5f6eb0df188c6357c20e8ca870d" title="Notify all observers to update." alt="" coords="780,138,967,162">
+<area shape="rect" href="$classDocument.html#d1bccc8d46cf4a179778974d2a2a15e4" title="Ask for the delay calculation." alt="" coords="789,186,957,210">
+<area shape="rect" href="$classDelayCalculator.html#12e87d8a42afb1b3d995ed89e33fc744" title="init and get the only instance." alt="" coords="1017,102,1204,126">
+<area shape="rect" href="$classDelayCalculator.html#c633fbd0b324e3b579b59f3b64603cda" title="Get tempo from app data store and calculate delays." alt="" coords="1028,270,1193,294">
+<area shape="rect" href="$classDelayCalculator.html#f1070d59a9f40fbae39d448416cce8f9" title="DelayCalculator::DelayCalculator" alt="" coords="1324,6,1535,30">
+<area shape="rect" href="$classDelayCalculator.html#2bb0b4166291421de24b7488777dbc74" title="DelayCalculator::getDelayPeriodFromTempoAndMutliplier" alt="" coords="1253,54,1605,78">
+<area shape="rect" href="$classDocument.html#e901b8ccaaeb3d709dd805a96f93f3b9" title="Get the delay object for a eighth note." alt="" coords="1341,102,1517,126">
+<area shape="rect" href="$classDocument.html#62efe5bd3a18c7e5ebabca145af1d093" title="Get the delay object for a half note." alt="" coords="1348,150,1511,174">
+<area shape="rect" href="$classDocument.html#5afd415e8585b0fe2c56d1c020753034" title="get the singleton instance." alt="" coords="1352,198,1507,222">
+<area shape="rect" href="$classDocument.html#5d02b822e328eaa9200b5395537fdcc8" title="Get multiplier." alt="" coords="1351,246,1508,270">
+<area shape="rect" href="$classDocument.html#763d132b45c9da4f80a385680ca9ff99" title="Get the delay object for a quarter note." alt="" coords="1339,294,1520,318">
+<area shape="rect" href="$classDocument.html#47416dc6af7b3967c38f742c9f67f6d8" title="Get the delay object for a sixteenth note." alt="" coords="1331,342,1528,366">
+<area shape="rect" href="$classDocument.html#1ad24b4f1d6de4f02419b1a8d334b638" title="Get the tempo." alt="" coords="1357,390,1501,414">
+<area shape="rect" href="$classDocument.html#f513af534c80fd775b2ea457a62944e9" title="Get the delay object for a thirtysecond note." alt="" coords="1321,438,1537,462">
+<area shape="rect" href="$classDocument.html#45bbe8c1432d298749775c5bd346c648" title="Get the delay object for a whole note." alt="" coords="1341,486,1517,510">
+<area shape="rect" href="$classDelay.html#de240f8868116caac5aee9e719a1bf2c" title="Set the period." alt="" coords="1371,534,1488,558">
+<area shape="rect" href="$classDocument.html#cdbcbe550084e8c20f4f67eb229ad66a" title="Document::Document" alt="" coords="1655,198,1801,222">
+<area shape="rect" href="$classDocument.html#a315c0174e62aa69daa7363f0762a16a" title="Init vector of Delays." alt="" coords="1852,198,1996,222">

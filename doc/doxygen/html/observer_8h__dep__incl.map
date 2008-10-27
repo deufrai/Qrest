@@ -1,0 +1,10 @@
+<area shape="rect" href="$observable_8h.html" title="src/dp/observable.h" alt="" coords="340,81,476,105">
+<area shape="rect" href="$zestmainwindow_8h.html" title="src/gui/widgets/zestmainwindow.h" alt="" coords="696,231,912,255">
+<area shape="rect" href="$observer_8cpp.html" title="src/dp/observer.cpp" alt="" coords="747,81,883,105">
+<area shape="rect" href="$observable_8cpp.html" title="src/dp/observable.cpp" alt="" coords="160,156,309,180">
+<area shape="rect" href="$document_8h.html" title="src/model/document.h" alt="" coords="333,156,483,180">
+<area shape="rect" href="$main_8cpp.html" title="src/main.cpp" alt="" coords="253,305,349,329">
+<area shape="rect" href="$document_8cpp.html" title="src/model/document.cpp" alt="" coords="24,231,187,255">
+<area shape="rect" href="$delayCalculator_8cpp.html" title="src/process/delayCalculator.cpp" alt="" coords="211,231,416,255">
+<area shape="rect" href="$tapTempoCalculator_8cpp.html" title="src/process/tapTempoCalculator.cpp" alt="" coords="440,231,672,255">
+<area shape="rect" href="$zestmainwindow_8cpp.html" title="src/gui/widgets/zestmainwindow.cpp" alt="" coords="688,305,920,329">

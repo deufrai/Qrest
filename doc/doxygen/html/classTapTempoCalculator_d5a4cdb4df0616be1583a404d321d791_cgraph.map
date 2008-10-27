@@ -1,0 +1,24 @@
+<area shape="rect" href="$classTapTempoCalculator.html#ffadff9c303456c509f71cdaba8c4de4" title="get the average delta from all deltas in list" alt="" coords="249,5,492,29">
+<area shape="rect" href="$classDocument.html#5afd415e8585b0fe2c56d1c020753034" title="get the singleton instance." alt="" coords="1115,8,1269,32">
+<area shape="rect" href="$classTimeStamper.html#4b462ff483250fe5377335e17528eefe" title="get the current timestamp" alt="" coords="289,104,452,128">
+<area shape="rect" href="$classTapTempoCalculator.html#da5fb3a0712c5108e533a81711e037d0" title="are deltas within a narrow range ?" alt="" coords="256,152,485,176">
+<area shape="rect" href="$classDocument.html#9ab80a0d575bf28255086958b1cb4e5c" title="Set steadiness flag." alt="" coords="297,200,444,224">
+<area shape="rect" href="$classDocument.html#510acd548b6fe251bd497114b24c3f6b" title="Set the tempo." alt="" coords="299,248,443,272">
+<area shape="rect" href="$classDocument.html#43720a4b3d3697f1013706544aa61a95" title="Set tempoFromTap flag." alt="" coords="273,296,468,320">
+<area shape="rect" href="$classDocument.html#cdbcbe550084e8c20f4f67eb229ad66a" title="Document::Document" alt="" coords="1417,8,1564,32">
+<area shape="rect" href="$classDocument.html#a315c0174e62aa69daa7363f0762a16a" title="Init vector of Delays." alt="" coords="1615,8,1759,32">
+<area shape="rect" href="$classObservable.html#0db6e5f6eb0df188c6357c20e8ca870d" title="Notify all observers to update." alt="" coords="543,296,729,320">
+<area shape="rect" href="$classDocument.html#d1bccc8d46cf4a179778974d2a2a15e4" title="Ask for the delay calculation." alt="" coords="552,248,720,272">
+<area shape="rect" href="$classDelayCalculator.html#12e87d8a42afb1b3d995ed89e33fc744" title="init and get the only instance." alt="" coords="780,416,967,440">
+<area shape="rect" href="$classDelayCalculator.html#c633fbd0b324e3b579b59f3b64603cda" title="Get tempo from app data store and calculate delays." alt="" coords="791,248,956,272">
+<area shape="rect" href="$classDelayCalculator.html#f1070d59a9f40fbae39d448416cce8f9" title="DelayCalculator::DelayCalculator" alt="" coords="1087,536,1297,560">
+<area shape="rect" href="$classDelayCalculator.html#2bb0b4166291421de24b7488777dbc74" title="DelayCalculator::getDelayPeriodFromTempoAndMutliplier" alt="" coords="1016,152,1368,176">
+<area shape="rect" href="$classDocument.html#e901b8ccaaeb3d709dd805a96f93f3b9" title="Get the delay object for a eighth note." alt="" coords="1104,200,1280,224">
+<area shape="rect" href="$classDocument.html#62efe5bd3a18c7e5ebabca145af1d093" title="Get the delay object for a half note." alt="" coords="1111,248,1273,272">
+<area shape="rect" href="$classDocument.html#5d02b822e328eaa9200b5395537fdcc8" title="Get multiplier." alt="" coords="1113,296,1271,320">
+<area shape="rect" href="$classDocument.html#763d132b45c9da4f80a385680ca9ff99" title="Get the delay object for a quarter note." alt="" coords="1101,344,1283,368">
+<area shape="rect" href="$classDocument.html#47416dc6af7b3967c38f742c9f67f6d8" title="Get the delay object for a sixteenth note." alt="" coords="1093,392,1291,416">
+<area shape="rect" href="$classDocument.html#1ad24b4f1d6de4f02419b1a8d334b638" title="Get the tempo." alt="" coords="1120,440,1264,464">
+<area shape="rect" href="$classDocument.html#f513af534c80fd775b2ea457a62944e9" title="Get the delay object for a thirtysecond note." alt="" coords="1084,488,1300,512">
+<area shape="rect" href="$classDocument.html#45bbe8c1432d298749775c5bd346c648" title="Get the delay object for a whole note." alt="" coords="1104,56,1280,80">
+<area shape="rect" href="$classDelay.html#de240f8868116caac5aee9e719a1bf2c" title="Set the period." alt="" coords="1133,104,1251,128">
