@@ -6,7 +6,7 @@
     <x>0</x>
     <y>0</y>
     <width>322</width>
-    <height>475</height>
+    <height>499</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -30,7 +30,7 @@
      <x>0</x>
      <y>26</y>
      <width>322</width>
-     <height>426</height>
+     <height>450</height>
     </rect>
    </property>
    <layout class="QGridLayout" name="gridLayout_4" >
@@ -184,7 +184,7 @@
             <string/>
            </property>
            <property name="pixmap" >
-            <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/whole.svg</pixmap>
+            <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/whole.png</pixmap>
            </property>
            <property name="alignment" >
             <set>Qt::AlignCenter</set>
@@ -244,7 +244,7 @@
             <string/>
            </property>
            <property name="pixmap" >
-            <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/half.svg</pixmap>
+            <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/half.png</pixmap>
            </property>
            <property name="alignment" >
             <set>Qt::AlignCenter</set>
@@ -298,7 +298,7 @@
             <string/>
            </property>
            <property name="pixmap" >
-            <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/quarter.svg</pixmap>
+            <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/quarter.png</pixmap>
            </property>
            <property name="alignment" >
             <set>Qt::AlignCenter</set>
@@ -352,7 +352,7 @@
             <string/>
            </property>
            <property name="pixmap" >
-            <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/eighth.svg</pixmap>
+            <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/eighth.png</pixmap>
            </property>
            <property name="alignment" >
             <set>Qt::AlignCenter</set>
@@ -406,7 +406,7 @@
             <string/>
            </property>
            <property name="pixmap" >
-            <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/sixteenth.svg</pixmap>
+            <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/sixteenth.png</pixmap>
            </property>
            <property name="alignment" >
             <set>Qt::AlignCenter</set>
@@ -460,7 +460,7 @@
             <string/>
            </property>
            <property name="pixmap" >
-            <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/thirtysecond.svg</pixmap>
+            <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/thirtysecond.png</pixmap>
            </property>
            <property name="alignment" >
             <set>Qt::AlignCenter</set>
@@ -521,7 +521,7 @@
    <property name="geometry" >
     <rect>
      <x>0</x>
-     <y>452</y>
+     <y>476</y>
      <width>322</width>
      <height>23</height>
     </rect>
