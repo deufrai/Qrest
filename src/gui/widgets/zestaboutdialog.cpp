@@ -40,7 +40,7 @@ ZestAboutDialog::ZestAboutDialog(const char* versionString, QWidget *parent)
 			.append("Author : <a href=\"mailto:fcornu@wardsback.org?subject=Zest\">fcornu@wardsback.org</a>")
 		.append("</p>")
 		.append("<p>")
-			.append("Website : <a href=\"http://zest.sourceforge.net\">http://zest.sourceforge.net</a>")
+			.append("Website : <a href=\"http://zest.wardsback.org\">http://zest.wardsback.org</a>")
 		.append("</p>")
 	.append("</center>");
 
