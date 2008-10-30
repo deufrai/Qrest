@@ -53,7 +53,7 @@ ZestMainWindow::ZestMainWindow(QWidget *parent)
 	setFocusToTempoInput();
 
 	// say hello
-	statusTempMessage("I'm ready, sir");
+	statusTempMessage(tr("I'm ready, sir"));
 
     // register as an event filter for tempo input field
     ui.tempoEdit->installEventFilter(this);
@@ -149,12 +149,12 @@ void ZestMainWindow::updateView(void) {
 
 		if ( _document->isSteady() ) {
 
-			statusPermMessage("You're steady");
+			statusPermMessage(tr("You're steady"));
 			ui.steadyHint->setPixmap(greenHint);
 
 		} else {
 
-			statusPermMessage("Keep tapping...");
+			statusPermMessage(tr("Keep tapping..."));
 			ui.steadyHint->setPixmap(redHint);
 		}
 

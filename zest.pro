@@ -28,3 +28,4 @@ SOURCES += src/constants.cpp \
 FORMS += src/gui/forms/zestmainwindow.ui \
     src/gui/forms/zestaboutdialog.ui
 RESOURCES += resources/pixmaps.qrc
+TRANSLATIONS = i18n/zest_fr.ts

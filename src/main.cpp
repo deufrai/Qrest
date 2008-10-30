@@ -36,6 +36,11 @@
 int main(int argc, char *argv[]) {
 
     QApplication a(argc, argv);
+    QString locale = QLocale::system().name().section('_', 0, 0);
+    
+    QTranslator translator;
+    translator.load(QString("i18n/zest_") + locale);
+    a.installTranslator(&translator);
 
     // create app data
     Document::getInstance();
