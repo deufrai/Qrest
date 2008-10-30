@@ -23,7 +23,7 @@
  *
  *	Real website is comming soon. For now, here's just the code documentation.
  *
- *	You can have a look at the code here : http://sourceforge.net/projects/zest
+ *	You can have a look at the code here : http://zest.wardsback.org
  *
  *	Have fun
  */
