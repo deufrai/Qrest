@@ -37,10 +37,10 @@ ZestAboutDialog::ZestAboutDialog(const char* versionString, QWidget *parent)
 			.append(versionString)
 		.append("</p>")
 		.append("<p>")
-			.append("Author : <a href=\"mailto:fcornu@wardsback.org?subject=Zest\">fcornu@wardsback.org</a>")
+			.append(tr("Author")).append(" : <a href=\"mailto:fcornu@wardsback.org?subject=Zest\">fcornu@wardsback.org</a>")
 		.append("</p>")
 		.append("<p>")
-			.append("Website : <a href=\"http://zest.wardsback.org\">http://zest.wardsback.org</a>")
+			.append(tr("Website")).append(" : <a href=\"http://zest.wardsback.org\">http://zest.wardsback.org</a>")
 		.append("</p>")
 	.append("</center>");
 

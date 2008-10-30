@@ -4,30 +4,33 @@
 <context>
     <name>ZestAboutDialog</name>
     <message>
-        <location filename="" line="7471221"/>
         <source>About Zest</source>
-        <translation type="unfinished">A propos de Zest</translation>
+        <translation>A propos de Zest</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>OK</source>
-        <translation type="unfinished">OK</translation>
+        <translation>OK</translation>
+    </message>
+    <message>
+        <source>Author</source>
+        <translation>Auteur</translation>
+    </message>
+    <message>
+        <source>Website</source>
+        <translation>Site Web</translation>
     </message>
 </context>
 <context>
     <name>ZestMainWindow</name>
     <message>
-        <location filename="" line="7471221"/>
         <source>I&apos;m ready, sir</source>
-        <translation type="unfinished">A vos ordres, chef</translation>
+        <translation>A vos ordres, chef</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>You&apos;re steady</source>
         <translation>Vous êtes stable</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>Keep tapping...</source>
         <translation>Continuez à cliquer...</translation>
     </message>
@@ -35,114 +38,92 @@
 <context>
     <name>ZestMainWindowClass</name>
     <message>
-        <location filename="" line="7471221"/>
         <source>ZEST</source>
-        <translation type="unfinished">ZEST</translation>
+        <translation>ZEST</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>Tempo Input</source>
-        <translation type="unfinished">Entrée Tempo</translation>
+        <translation>Tempo</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>Temp&amp;o  : </source>
-        <translation type="unfinished">Temp&amp;o  : </translation>
+        <translation>Temp&amp;o  : </translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>Enter tempo in BPM and hit &apos;enter&apos; or use mouse wheel</source>
-        <translation type="unfinished"></translation>
+        <translation>Saisissez le tempo en BPM et validez avec &apos;Entrée&apos; ou utilisez la molette de la souris</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>Click me along tempo until you&apos;re told that you&apos;re tapping steadily</source>
-        <translation type="unfinished"></translation>
+        <translation>Cliquez en suivant les temps jusqu&apos;à ce que l&apos;indicateur de stabilité passe au vert</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>T&amp;AP</source>
-        <translation type="unfinished"></translation>
+        <translation>T&amp;AP</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>Alteration</source>
-        <translation type="unfinished"></translation>
+        <translation>Alteration</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>&amp;Plain</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Normale</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>&amp;Dotted</source>
-        <translation type="unfinished">&amp;Pointée</translation>
+        <translation>&amp;Pointée</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>&amp;Triplet</source>
-        <translation type="unfinished">&amp;Triolet</translation>
+        <translation>&amp;Triolet</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>Delays and LFOs</source>
-        <translation type="unfinished"></translation>
+        <translation>Delais et LFOs</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>ms</source>
-        <translation type="unfinished"></translation>
+        <translation>ms</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>Hz</source>
-        <translation type="unfinished"></translation>
+        <translation>Hz</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>&amp;Help</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Aide</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>&amp;File</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Fichier</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>About &amp;Qt...</source>
-        <translation type="unfinished"></translation>
+        <translation>A propos de &amp;Qt...</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>About Qt</source>
-        <translation type="unfinished"></translation>
+        <translation>A propos de Qt</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>&amp;Quit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Quitter</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>Quit Zest</source>
-        <translation type="unfinished"></translation>
+        <translation>Quitter Zest</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>Ctrl+Q</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>About &amp;Zest...</source>
-        <translation type="unfinished"></translation>
+        <translation>A propos de &amp;Zest...</translation>
     </message>
     <message>
-        <location filename="" line="7471221"/>
         <source>About Zest</source>
-        <translation type="unfinished"></translation>
+        <translation>A propos de Zest</translation>
     </message>
 </context>
 </TS>
