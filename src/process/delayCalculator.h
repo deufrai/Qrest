@@ -69,7 +69,7 @@ private:
 
 	// FUNCTIONS
 
-	const double getDelayPeriodFromTempoAndMutliplier(
+	double getDelayPeriodFromTempoAndMutliplier(
 			const double tempo,
 			const double mutliplier);
 };

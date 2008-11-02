@@ -161,7 +161,7 @@ void DelayCalculator::process(void) {
 // PRIVATE FUNCTIONS
 //
 ////////////////////////////////////////////////////////////////////////////////
-const double DelayCalculator::getDelayPeriodFromTempoAndMutliplier(
+double DelayCalculator::getDelayPeriodFromTempoAndMutliplier(
 		const double tempo,
 		const double multiplier) {
 

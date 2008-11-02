@@ -68,14 +68,14 @@ public:
      *
      * \return the tempo
      */
-    inline const double getTempo(void) const { return _tempo; }
+    inline double getTempo(void) const { return _tempo; }
 
     /**
      * Get tempoFromTap flag
      *
      * \return tempoFromTap flag
      */
-    inline const bool isTempoFromTap(void) const { return _tempoFromTap; }
+    inline bool isTempoFromTap(void) const { return _tempoFromTap; }
 
     /**
      * Set tempoFromTap flag
@@ -91,7 +91,7 @@ public:
      *
      * \return the multiplier
      */
-    inline const double getMultiplier(void) const {
+    inline double getMultiplier(void) const {
 
     	return _multiplier;
     }
@@ -113,7 +113,7 @@ public:
      *
      * \return steadiness flag
      */
-    inline const bool isSteady(void) const { return _steady; }
+    inline bool isSteady(void) const { return _steady; }
 
     /**
      * Set steadiness flag

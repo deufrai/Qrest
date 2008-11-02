@@ -54,13 +54,13 @@ public:
      * Get the period.
      * \return the period
      */
-    inline const double getPeriod() const { return _period; }
+    inline double getPeriod() const { return _period; }
 
     /**
      * Get the frenquency.
      * \return the frenquency
      */
-    inline const double getFrenquency() const { return _frequency; }
+    inline double getFrenquency() const { return _frequency; }
 
 private:
 
