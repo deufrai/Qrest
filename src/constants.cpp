@@ -19,7 +19,7 @@
 
 #include "constants.h"
 
-const char* Constants::VERSION_STRING = "v0.3 beta";
+const char* Constants::VERSION_STRING = "v0.3";
 
 Constants::Constants() {
 
