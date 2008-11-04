@@ -72,7 +72,7 @@
        <item row="0" column="2" >
         <widget class="QPushButton" name="tapButton" >
          <property name="toolTip" >
-          <string>Click me along tempo until you're told that you're tapping steadily</string>
+          <string>Click in sync with beats until steadiness indicator goes green</string>
          </property>
          <property name="text" >
           <string>T&amp;AP</string>

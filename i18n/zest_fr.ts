@@ -65,11 +65,6 @@
         <translation>Saisissez le tempo en BPM et validez avec &apos;Entrée&apos; ou utilisez la molette de la souris</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/zestmainwindow.ui" line="75"/>
-        <source>Click me along tempo until you&apos;re told that you&apos;re tapping steadily</source>
-        <translation>Cliquez en synchro avec les temps jusqu&apos;à ce que l&apos;indicateur de stabilité passe au vert</translation>
-    </message>
-    <message>
         <location filename="../src/gui/forms/zestmainwindow.ui" line="78"/>
         <source>T&amp;AP</source>
         <translation>T&amp;AP</translation>
@@ -143,6 +138,11 @@
         <location filename="../src/gui/forms/zestmainwindow.ui" line="546"/>
         <source>About Zest</source>
         <translation>A propos de Zest</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/forms/zestmainwindow.ui" line="75"/>
+        <source>Click in sync with beats until steadiness indicator goes green</source>
+        <translation>Cliquez en synchro avec les temps jusqu&apos;à ce que l&apos;indicateur de stabilité passe au vert</translation>
     </message>
 </context>
 </TS>
