@@ -67,7 +67,7 @@
     <message>
         <location filename="../src/gui/forms/zestmainwindow.ui" line="75"/>
         <source>Click me along tempo until you&apos;re told that you&apos;re tapping steadily</source>
-        <translation>Cliquez en suivant les temps jusqu&apos;à ce que l&apos;indicateur de stabilité passe au vert</translation>
+        <translation>Cliquez en synchro avec les temps jusqu&apos;à ce que l&apos;indicateur de stabilité passe au vert</translation>
     </message>
     <message>
         <location filename="../src/gui/forms/zestmainwindow.ui" line="78"/>
