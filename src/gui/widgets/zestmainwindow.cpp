@@ -1,5 +1,4 @@
-﻿/*
- *  zest
+﻿/*  zest
  *
  *  Copyright (C) 2008 - Frédéric CORNU
  *
