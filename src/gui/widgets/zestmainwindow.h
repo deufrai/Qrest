@@ -21,7 +21,7 @@
 #define ZESTMAINWINDOW_H
 
 #include <QtGui/QMainWindow>
-#include "../../../ui_zestmainwindow.h"
+#include "../forms/ui_zestmainwindow.h"
 #include "../../dp/observer.h"
 #include "../../model/document.h"
 
