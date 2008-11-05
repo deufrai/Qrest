@@ -1,6 +1,6 @@
-ï»¿/*  zest
+/*  zest
  *
- *  Copyright (C) 2008 - FrÃ©dÃ©ric CORNU
+ *  Copyright (C) 2008 - Frédéric CORNU
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
