@@ -1,4 +1,4 @@
-/*
+﻿/*
  *  zest
  *
  *  Copyright (C) 2008 - Frédéric CORNU
@@ -89,9 +89,7 @@ void ZestMainWindow::updateView(void) {
 	static QPixmap 		redHint(":/lights/pix/red_hint.png");
 	static QPixmap 		greenHint(":/lights/pix/green_hint.png");
 
-	/*
-	 * constants used as stylesheets for steadyHint label
-	 */
+
 	// update tempo input field with validated value
 	ui.tempoEdit->setText(QString::number(_document->getTempo()));
 
