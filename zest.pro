@@ -29,3 +29,7 @@ FORMS += src/gui/forms/zestmainwindow.ui \
     src/gui/forms/zestaboutdialog.ui
 RESOURCES += resources/pixmaps.qrc
 TRANSLATIONS = i18n/zest_fr.ts
+UI_DIR = src/gui/forms
+MOC_DIR = tmp
+OBJECTS_DIR = tmp
+RCC_DIR = tmp
