@@ -47,10 +47,9 @@ int main(int argc, char *argv[]) {
 
     ZestMainWindow mainWindow;
 
-    mainWindow.show();
-
-    // TODO find a way tha works on both linux and win
     mainWindow.resize(mainWindow.minimumSize());
+
+    mainWindow.show();
 
     int nResult = a.exec();
 
