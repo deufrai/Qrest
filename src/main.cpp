@@ -47,10 +47,9 @@ int main(int argc, char *argv[]) {
 
     ZestMainWindow mainWindow;
 
-    mainWindow.show();
+    mainWindow.resize(mainWindow.minimumSizeHint());
 
-    //TODO find a way to resize window before showing it, that works on Win32
-    mainWindow.resize(mainWindow.minimumSize());
+    mainWindow.show();
 
     int nResult = a.exec();
 
