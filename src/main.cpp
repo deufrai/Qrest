@@ -35,23 +35,25 @@
 
 int main(int argc, char *argv[]) {
 
-    QApplication a(argc, argv);
+    QApplication application(argc, argv);
+
+    // get the current locale description from system
     QString locale = QLocale::system().name().section('_', 0, 0);
     
+    // create and install a translator according to found locale
     QTranslator translator;
     translator.load(QString("i18n/zest_") + locale);
-    a.installTranslator(&translator);
+    application.installTranslator(&translator);
 
     // create app data
     Document::getInstance();
 
+    // create and show main window
     ZestMainWindow mainWindow;
-
     mainWindow.resize(mainWindow.minimumSizeHint());
-
     mainWindow.show();
 
-    int nResult = a.exec();
+    int nResult = application.exec();
 
     // release APP data
     Document::destroy();
