@@ -42,7 +42,10 @@ int main(int argc, char *argv[]) {
     
     // create and install a translator according to found locale
     QTranslator translator;
-    translator.load(QString("i18n/zest_") + locale);
+    QString filePath;
+    filePath.append("i18n").append(QDir::separator()).append("zest_").append(locale);
+    qDebug() << "translation file path :" << filePath;
+    translator.load(filePath);
     application.installTranslator(&translator);
 
     // create app data
