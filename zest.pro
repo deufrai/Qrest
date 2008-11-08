@@ -2,7 +2,8 @@ TEMPLATE = app
 TARGET = zest
 QT += core \
     gui
-HEADERS += src/constants.h \
+HEADERS += src/gui/widgets/zesthelpviewer.h \
+    src/constants.h \
     src/process/delayCalculator.h \
     src/process/tapTempoCalculator.h \
     src/time/timeStamper.h \
@@ -13,7 +14,8 @@ HEADERS += src/constants.h \
     src/model/document.h \
     src/gui/widgets/zestmainwindow.h \
     src/gui/widgets/zestaboutdialog.h
-SOURCES += src/constants.cpp \
+SOURCES += src/gui/widgets/zesthelpviewer.cpp \
+    src/constants.cpp \
     src/process/delayCalculator.cpp \
     src/process/tapTempoCalculator.cpp \
     src/time/timeStamper.cpp \
@@ -25,7 +27,8 @@ SOURCES += src/constants.cpp \
     src/main.cpp \
     src/gui/widgets/zestmainwindow.cpp \
     src/gui/widgets/zestaboutdialog.cpp
-FORMS += src/gui/forms/zestmainwindow.ui \
+FORMS += src/gui/forms/zesthelpviewer.ui \
+    src/gui/forms/zestmainwindow.ui \
     src/gui/forms/zestaboutdialog.ui
 RESOURCES += resources/pixmaps.qrc
 TRANSLATIONS = i18n/zest_fr.ts
