@@ -25,19 +25,27 @@
     </message>
 </context>
 <context>
+    <name>ZestHelpViewerClass</name>
+    <message>
+        <location filename="../src/gui/forms/zesthelpviewer.ui" line="13"/>
+        <source>Zest - Online Help</source>
+        <translation>Zest - Aide en ligne</translation>
+    </message>
+</context>
+<context>
     <name>ZestMainWindow</name>
     <message>
-        <location filename="../src/gui/widgets/zestmainwindow.cpp" line="55"/>
+        <location filename="../src/gui/widgets/zestmainwindow.cpp" line="56"/>
         <source>I&apos;m ready, sir</source>
         <translation>A vos ordres, chef</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/zestmainwindow.cpp" line="149"/>
+        <location filename="../src/gui/widgets/zestmainwindow.cpp" line="150"/>
         <source>You&apos;re steady</source>
         <translation>Vous êtes stable</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/zestmainwindow.cpp" line="154"/>
+        <location filename="../src/gui/widgets/zestmainwindow.cpp" line="155"/>
         <source>Keep tapping...</source>
         <translation>Continuez à cliquer...</translation>
     </message>
@@ -105,32 +113,32 @@
         <translation>&amp;Aide</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/zestmainwindow.ui" line="513"/>
+        <location filename="../src/gui/forms/zestmainwindow.ui" line="514"/>
         <source>&amp;File</source>
         <translation>&amp;Fichier</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/zestmainwindow.ui" line="532"/>
+        <location filename="../src/gui/forms/zestmainwindow.ui" line="533"/>
         <source>&amp;Quit</source>
         <translation>&amp;Quitter</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/zestmainwindow.ui" line="535"/>
+        <location filename="../src/gui/forms/zestmainwindow.ui" line="536"/>
         <source>Quit Zest</source>
         <translation>Quitter Zest</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/zestmainwindow.ui" line="538"/>
+        <location filename="../src/gui/forms/zestmainwindow.ui" line="539"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/zestmainwindow.ui" line="543"/>
+        <location filename="../src/gui/forms/zestmainwindow.ui" line="544"/>
         <source>About &amp;Zest...</source>
         <translation>A propos de &amp;Zest...</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/zestmainwindow.ui" line="546"/>
+        <location filename="../src/gui/forms/zestmainwindow.ui" line="547"/>
         <source>About Zest</source>
         <translation>A propos de Zest</translation>
     </message>
@@ -143,6 +151,16 @@
         <location filename="../src/gui/forms/zestmainwindow.ui" line="101"/>
         <source>Variants</source>
         <translation>Variantes</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/forms/zestmainwindow.ui" line="552"/>
+        <source>&amp;Help...</source>
+        <translation>&amp;Aide...</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/forms/zestmainwindow.ui" line="555"/>
+        <source>Help</source>
+        <translation>Aide</translation>
     </message>
 </context>
 </TS>
