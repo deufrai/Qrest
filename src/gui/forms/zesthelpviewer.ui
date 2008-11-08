@@ -1,0 +1,37 @@
+<ui version="4.0" >
+ <class>ZestHelpViewerClass</class>
+ <widget class="QMainWindow" name="ZestHelpViewerClass" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>656</width>
+    <height>456</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Zest - Online Help</string>
+  </property>
+  <widget class="QWidget" name="centralwidget" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>656</width>
+     <height>456</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout" >
+    <item row="0" column="0" >
+     <widget class="QTextBrowser" name="helpBrowser" >
+      <property name="openExternalLinks" >
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources/>
+ <connections/>
+</ui>
