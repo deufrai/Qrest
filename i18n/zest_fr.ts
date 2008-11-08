@@ -27,17 +27,17 @@
 <context>
     <name>ZestMainWindow</name>
     <message>
-        <location filename="../src/gui/widgets/zestmainwindow.cpp" line="56"/>
+        <location filename="../src/gui/widgets/zestmainwindow.cpp" line="55"/>
         <source>I&apos;m ready, sir</source>
         <translation>A vos ordres, chef</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/zestmainwindow.cpp" line="152"/>
+        <location filename="../src/gui/widgets/zestmainwindow.cpp" line="149"/>
         <source>You&apos;re steady</source>
         <translation>Vous êtes stable</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/zestmainwindow.cpp" line="157"/>
+        <location filename="../src/gui/widgets/zestmainwindow.cpp" line="154"/>
         <source>Keep tapping...</source>
         <translation>Continuez à cliquer...</translation>
     </message>
@@ -68,11 +68,6 @@
         <location filename="../src/gui/forms/zestmainwindow.ui" line="78"/>
         <source>T&amp;AP</source>
         <translation>T&amp;AP</translation>
-    </message>
-    <message>
-        <location filename="../src/gui/forms/zestmainwindow.ui" line="101"/>
-        <source>Alteration</source>
-        <translation>Alteration</translation>
     </message>
     <message>
         <location filename="../src/gui/forms/zestmainwindow.ui" line="107"/>
@@ -143,6 +138,11 @@
         <location filename="../src/gui/forms/zestmainwindow.ui" line="75"/>
         <source>Click in sync with beats until steadiness indicator goes green</source>
         <translation>Cliquez en synchro avec les temps jusqu&apos;à ce que l&apos;indicateur de stabilité passe au vert</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/forms/zestmainwindow.ui" line="101"/>
+        <source>Variants</source>
+        <translation>Variantes</translation>
     </message>
 </context>
 </TS>
