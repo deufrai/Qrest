@@ -256,6 +256,7 @@ bool ZestMainWindow::eventFilter(QObject* target, QEvent* event) {
 
 		// do the math !!
 		processTempoInput();
+                setFocusToTempoInput();
 
 		return true;
 
