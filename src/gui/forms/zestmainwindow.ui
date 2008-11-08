@@ -506,6 +506,7 @@
     <property name="title" >
      <string>&amp;Help</string>
     </property>
+    <addaction name="actionHelp" />
     <addaction name="actionAbout" />
    </widget>
    <widget class="QMenu" name="menuFile" >
@@ -544,6 +545,14 @@
    </property>
    <property name="statusTip" >
     <string>About Zest</string>
+   </property>
+  </action>
+  <action name="actionHelp" >
+   <property name="text" >
+    <string>&amp;Help...</string>
+   </property>
+   <property name="statusTip" >
+    <string>Help</string>
    </property>
   </action>
  </widget>
