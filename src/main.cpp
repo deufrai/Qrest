@@ -1,7 +1,7 @@
 /*
  *  zest
  *
- *  Copyright (C) 2008 - Frédéric CORNU
+ *  Copyright (C) 2008 - FrÃ©dÃ©ric CORNU
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -40,19 +40,19 @@ int main(int argc, char *argv[]) {
 
     // get the current locale description from system
     QString locale = QLocale::system().name().section('_', 0, 0);
-    
+
     // create and install a translator according to found locale
     QTranslator translator;
     QString filePath;
-    
+
     filePath.append(Constants::I18N_FOLDER_LOCATION)
         .append(QDir::separator())
         .append("zest_").append(locale);
 
     qDebug() << "translation file path :" << filePath;
-    
+
     bool bTransLoaded = translator.load(filePath);
-    
+
     if ( bTransLoaded  ) {
 
         qDebug() << "Translation file loaded successfully";
@@ -61,8 +61,8 @@ int main(int argc, char *argv[]) {
     } else {
 
         qDebug() << "Failed to load translation file";
-    }	
-    
+    }
+
 
     // create app data
     Document::getInstance();
