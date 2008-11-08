@@ -1,6 +1,6 @@
 /*  zest
  *
- *  Copyright (C) 2008 - Frédéric CORNU
+ *  Copyright (C) 2008 - Frï¿½dï¿½ric CORNU
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -24,6 +24,7 @@
 #include "../../process/tapTempoCalculator.h"
 #include "zestaboutdialog.h"
 #include "../../constants.h"
+#include "zesthelpviewer.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -229,6 +230,16 @@ void ZestMainWindow::on_actionAbout_triggered() {
 	dlg.adjustSize();
 
 	dlg.exec();
+}
+
+
+
+
+void ZestMainWindow::on_actionHelp_triggered() {
+
+	ZestHelpViewer* pViewer = new ZestHelpViewer(this);
+
+	pViewer->show();
 }
 
 

@@ -87,6 +87,11 @@ private slots:
 	 */
 	void on_actionAbout_triggered();
 
+	/**
+	 * Slot that gets called upon "Help" action triggering
+	 */
+	void on_actionHelp_triggered();
+
 private:
 	// EVENT HANDLERS
 
