@@ -32,6 +32,7 @@
 #include <QtGui>
 #include <QApplication>
 #include "gui/widgets/zestmainwindow.h"
+#include "constants.h"
 
 int main(int argc, char *argv[]) {
 
@@ -44,7 +45,10 @@ int main(int argc, char *argv[]) {
     QTranslator translator;
     QString filePath;
     
-    filePath.append("i18n").append(QDir::separator()).append("zest_").append(locale);
+    filePath.append(Constants::I18N_FOLDER_LOCATION)
+        .append(QDir::separator())
+        .append("zest_").append(locale);
+
     qDebug() << "translation file path :" << filePath;
     
     bool bTransLoaded = translator.load(filePath);

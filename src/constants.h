@@ -43,7 +43,15 @@ public:
 	/**
 	 * String describing version
 	 */
-	static const char* VERSION_STRING ;
+	static const char* VERSION_STRING;
+
+	/**
+	 * String describing path to i18n folder.
+	 *
+	 * It may be expressed as a relative path from where bianry is,
+	 * or absolutely.
+	 */
+	static const char* I18N_FOLDER_LOCATION;
 };
 
 #endif /* CONSTANTS_H_ */
