@@ -52,6 +52,11 @@ public:
 	 * or absolutely.
 	 */
 	static const char* I18N_FOLDER_LOCATION;
+
+	/**
+	 * String describing path to online help.
+	 */
+	static const char* ONLINE_HELP_LOCATION;
 };
 
 #endif /* CONSTANTS_H_ */
