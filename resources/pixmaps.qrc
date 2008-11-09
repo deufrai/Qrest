@@ -1,14 +1,19 @@
 <RCC>
-    <qresource prefix="/lights" >
-        <file>pix/green_hint.png</file>
-        <file>pix/red_hint.png</file>
-    </qresource>
-    <qresource prefix="/notes" >
-        <file>pix/eighth.png</file>
-        <file>pix/half.png</file>
-        <file>pix/quarter.png</file>
-        <file>pix/sixteenth.png</file>
-        <file>pix/thirtysecond.png</file>
-        <file>pix/whole.png</file>
-    </qresource>
+  <qresource prefix="/lights" >
+    <file>pix/green_hint.png</file>
+    <file>pix/red_hint.png</file>
+  </qresource>
+  <qresource prefix="icons" >
+    <file>pix/help.png</file>
+    <file>pix/information.png</file>
+    <file>pix/quit.png</file>
+  </qresource>
+  <qresource prefix="/notes" >
+    <file>pix/eighth.png</file>
+    <file>pix/half.png</file>
+    <file>pix/quarter.png</file>
+    <file>pix/sixteenth.png</file>
+    <file>pix/thirtysecond.png</file>
+    <file>pix/whole.png</file>
+  </qresource>
 </RCC>

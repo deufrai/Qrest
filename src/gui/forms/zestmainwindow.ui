@@ -529,6 +529,10 @@
    </property>
   </widget>
   <action name="actionQuit" >
+   <property name="icon" >
+    <iconset resource="../../../resources/pixmaps.qrc" >
+     <normaloff>:/icons/pix/quit.png</normaloff>:/icons/pix/quit.png</iconset>
+   </property>
    <property name="text" >
     <string>&amp;Quit</string>
    </property>
@@ -540,6 +544,10 @@
    </property>
   </action>
   <action name="actionAbout" >
+   <property name="icon" >
+    <iconset resource="../../../resources/pixmaps.qrc" >
+     <normaloff>:/icons/pix/information.png</normaloff>:/icons/pix/information.png</iconset>
+   </property>
    <property name="text" >
     <string>About &amp;Zest...</string>
    </property>
@@ -548,6 +556,10 @@
    </property>
   </action>
   <action name="actionHelp" >
+   <property name="icon" >
+    <iconset resource="../../../resources/pixmaps.qrc" >
+     <normaloff>:/icons/pix/help.png</normaloff>:/icons/pix/help.png</iconset>
+   </property>
    <property name="text" >
     <string>&amp;Help...</string>
    </property>
