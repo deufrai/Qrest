@@ -565,7 +565,7 @@
      <normaloff>:/icons/pix/help.png</normaloff>:/icons/pix/help.png</iconset>
    </property>
    <property name="text" >
-    <string>&amp;Help...</string>
+    <string>Online &amp;Help</string>
    </property>
    <property name="statusTip" >
     <string>Help</string>

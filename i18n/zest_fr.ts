@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="fr_FR">
+<defaultcodec></defaultcodec>
 <context>
     <name>ZestAboutDialog</name>
     <message>
@@ -34,17 +35,17 @@
 <context>
     <name>ZestMainWindow</name>
     <message>
-        <location filename="../src/gui/widgets/zestmainwindow.cpp" line="56"/>
+        <location filename="../src/gui/widgets/zestmainwindow.cpp" line="57"/>
         <source>I&apos;m ready, sir</source>
         <translation>A vos ordres, chef</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/zestmainwindow.cpp" line="151"/>
+        <location filename="../src/gui/widgets/zestmainwindow.cpp" line="152"/>
         <source>You&apos;re steady</source>
         <translation>Vous êtes stable</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/zestmainwindow.cpp" line="156"/>
+        <location filename="../src/gui/widgets/zestmainwindow.cpp" line="157"/>
         <source>Keep tapping...</source>
         <translation>Continuez à cliquer...</translation>
     </message>
@@ -147,11 +148,6 @@
         <translation>Variantes</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/zestmainwindow.ui" line="568"/>
-        <source>&amp;Help...</source>
-        <translation>&amp;Aide...</translation>
-    </message>
-    <message>
         <location filename="../src/gui/forms/zestmainwindow.ui" line="571"/>
         <source>Help</source>
         <translation>Aide</translation>
@@ -160,6 +156,11 @@
         <location filename="../src/gui/forms/zestmainwindow.ui" line="25"/>
         <source>Zest</source>
         <translation>Zest</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/forms/zestmainwindow.ui" line="568"/>
+        <source>Online &amp;Help</source>
+        <translation>&amp;Aide en ligne</translation>
     </message>
 </context>
 </TS>

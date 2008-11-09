@@ -36,3 +36,4 @@ UI_DIR = src/gui/forms
 MOC_DIR = tmp
 OBJECTS_DIR = tmp
 RCC_DIR = tmp
+system(lrelease-qt4 zest.pro)

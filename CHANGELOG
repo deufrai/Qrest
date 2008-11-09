@@ -1,3 +1,9 @@
+v0.3
+====
+    Application is now locale aware.
+    It detects system locale on startup and load translation file (if translation exists).
+    For now the following translations are available : en, fr.
+
 v0.2-beta
 =========
 	When using taptempo feature, there now is an indicator switch from red to green wether you tap regularly
