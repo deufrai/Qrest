@@ -12,6 +12,10 @@
   <property name="windowTitle" >
    <string>Zest - Online Help</string>
   </property>
+  <property name="windowIcon" >
+   <iconset resource="../../../resources/pixmaps.qrc" >
+    <normaloff>:/icons/pix/zesticon.png</normaloff>:/icons/pix/zesticon.png</iconset>
+  </property>
   <widget class="QWidget" name="centralwidget" >
    <property name="geometry" >
     <rect>
@@ -32,6 +36,8 @@
    </layout>
   </widget>
  </widget>
- <resources/>
+ <resources>
+  <include location="../../../resources/pixmaps.qrc" />
+ </resources>
  <connections/>
 </ui>

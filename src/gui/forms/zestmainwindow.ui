@@ -22,7 +22,7 @@
    </font>
   </property>
   <property name="windowTitle" >
-   <string>ZEST</string>
+   <string>Zest</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../resources/pixmaps.qrc" >
