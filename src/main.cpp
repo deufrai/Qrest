@@ -49,7 +49,7 @@ int main(int argc, char *argv[]) {
         .append(QDir::separator())
         .append("zest_").append(locale);
 
-    qDebug() << "translation file path :" << filePath;
+    qDebug() << "Translation file path :" << filePath;
 
     bool bTransLoaded = translator.load(filePath);
 
