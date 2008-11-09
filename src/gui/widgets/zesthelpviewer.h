@@ -63,7 +63,7 @@ private:
     /**
      * return online html index file path according to system locale
      *
-     * \param system's current locale
+     * \param locale system's current locale
      *
      * \return path to index.html file in correct folder
      */
