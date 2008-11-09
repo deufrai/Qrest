@@ -8,8 +8,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>181</width>
-    <height>179</height>
+    <width>291</width>
+    <height>214</height>
    </rect>
   </property>
   <property name="windowTitle" >
@@ -17,6 +17,19 @@
   </property>
   <layout class="QGridLayout" name="gridLayout_2" >
    <item row="0" column="0" >
+    <widget class="QLabel" name="imgLabel" >
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="pixmap" >
+      <pixmap resource="../../../resources/pixmaps.qrc" >:/icons/pix/zesticon.png</pixmap>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" >
     <widget class="QLabel" name="aboutLabel" >
      <property name="frameShape" >
       <enum>QFrame::NoFrame</enum>
@@ -32,7 +45,7 @@
      </property>
     </widget>
    </item>
-   <item row="1" column="0" >
+   <item row="2" column="0" >
     <layout class="QGridLayout" name="gridLayout" >
      <item row="0" column="0" >
       <spacer name="horizontalSpacer" >
@@ -59,7 +72,9 @@
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11" />
- <resources/>
+ <resources>
+  <include location="../../../resources/pixmaps.qrc" />
+ </resources>
  <connections>
   <connection>
    <sender>pushButton</sender>
