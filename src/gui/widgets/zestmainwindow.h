@@ -105,6 +105,13 @@ private:
 	 */
 	virtual bool eventFilter(QObject *target, QEvent *event);
 
+	/**
+	 * Handles close event on this window.
+	 *
+	 * Destroys help window.
+	 */
+	virtual void closeEvent(QCloseEvent* event);
+
 	// FUNCTIONS
 
 	/**

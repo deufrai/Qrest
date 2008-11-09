@@ -64,6 +64,7 @@ ZestMainWindow::ZestMainWindow(QWidget *parent)
 
 ZestMainWindow::~ZestMainWindow() {
 
+
 }
 
 
@@ -237,9 +238,16 @@ void ZestMainWindow::on_actionAbout_triggered() {
 
 void ZestMainWindow::on_actionHelp_triggered() {
 
-	ZestHelpViewer* pViewer = new ZestHelpViewer(this);
+	ZestHelpViewer* pViewer = ZestHelpViewer::getInstance();
 
-	pViewer->show();
+	if ( pViewer->isHidden() ) {
+
+		pViewer->show();
+	}
+
+	pViewer->activateWindow();
+	pViewer->raise();
+
 }
 
 
@@ -278,6 +286,13 @@ bool ZestMainWindow::eventFilter(QObject* target, QEvent* event) {
 }
 
 
+
+
+void ZestMainWindow::closeEvent(QCloseEvent* event) {
+
+	ZestHelpViewer::destroy();
+	event->accept();
+}
 
 
 ////////////////////////////////////////////////////////////////////////////////

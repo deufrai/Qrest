@@ -25,19 +25,37 @@
 
 /**
  * Provides facility to browser HTML online help.
+ *
+ * Implemented as a singleton.
  */
 class ZestHelpViewer : public QMainWindow
 {
     Q_OBJECT
 
-public:
 
 	//INIT
-    ZestHelpViewer(QWidget *parent = 0);
+public:
     ~ZestHelpViewer();
+private:
+    ZestHelpViewer(QWidget *parent = 0);
+
+    /** the unique instance */
+    static ZestHelpViewer* instance;
+
+public:
+	/**
+	 * Get the unique instance.
+	 *
+	 * \return the unique instance.
+	 */
+	static ZestHelpViewer* getInstance();
+
+	/**
+	 * Destroy help window
+	 */
+	static void destroy();
 
 private:
-
 	// MEMBERS
     Ui::ZestHelpViewerClass ui;
 
@@ -45,9 +63,11 @@ private:
     /**
      * return online html index file path according to system locale
      *
+     * \param system's current locale
+     *
      * \return path to index.html file in correct folder
      */
-    QString getHelpPathFromLocale() const;
+    QString getHelpPathFromLocale(const QString& locale) const;
 };
 
 #endif // ZESTHELPVIEWER_H

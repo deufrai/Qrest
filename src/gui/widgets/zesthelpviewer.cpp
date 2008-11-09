@@ -23,12 +23,30 @@
 #include <QDir>
 #include <QDebug>
 
+ZestHelpViewer* ZestHelpViewer::instance = NULL;
+
 ZestHelpViewer::ZestHelpViewer(QWidget *parent)
     : QMainWindow(parent)
 {
 	ui.setupUi(this);
 
-	QString helpPath = getHelpPathFromLocale();
+	/*
+	 *  we try to get online help translated according to user's locale.
+	 *  if it doesn't exist, we fallback to english
+	 */
+    QString locale = QLocale::system().name().section('_', 0, 0);
+	QString helpPath = getHelpPathFromLocale(locale);
+
+	if ( ! QFile::exists(helpPath) ) {
+
+		qDebug() << "Online help has not yet been translated for locale"
+				 << locale
+				 << "- defaulting to english";
+
+		helpPath = getHelpPathFromLocale("en");
+	}
+
+
 
 	ui.helpBrowser->setSource(QUrl(helpPath));
 }
@@ -41,15 +59,9 @@ ZestHelpViewer::~ZestHelpViewer()
 
 }
 
-QString ZestHelpViewer::getHelpPathFromLocale() const {
-
-	/*
-	 *  we try to get online help translated according to user's locale.
-	 *  if it doesn't exist, we fallback to english
-	 */
+QString ZestHelpViewer::getHelpPathFromLocale(const QString& locale) const {
 
 	QString helpPath;
-    QString locale = QLocale::system().name().section('_', 0, 0);
 
 	helpPath.append(Constants::ONLINE_HELP_LOCATION)
 	    .append(QDir::separator())
@@ -57,21 +69,25 @@ QString ZestHelpViewer::getHelpPathFromLocale() const {
 	    .append(QDir::separator())
 	    .append("index.html");
 
-	if ( ! QFile::exists(helpPath) ) {
-
-		qDebug() << "Zest Userguide has not been yet translated to the locale :"
-				 << locale
-				 << "- defaulting to english";
-
-		helpPath = "";
-
-		helpPath.append(Constants::ONLINE_HELP_LOCATION)
-		    .append(QDir::separator())
-		    .append("en")
-		    .append(QDir::separator())
-		    .append("index.html");
-	}
-
 	return helpPath;
 
+}
+
+ZestHelpViewer* ZestHelpViewer::getInstance() {
+
+	if ( NULL == instance ) {
+
+		instance = new ZestHelpViewer();
+	}
+
+	return instance;
+}
+
+void ZestHelpViewer::destroy() {
+
+	if ( instance ) {
+
+		delete instance;
+		instance = NULL;
+	}
 }
