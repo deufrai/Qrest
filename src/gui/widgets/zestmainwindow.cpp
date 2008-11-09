@@ -17,6 +17,7 @@
  */
 
 #include <QtDebug>
+#include <QTimer>
 #include <QMessageBox>
 #include <QApplication>
 #include <QWheelEvent>
@@ -240,16 +241,23 @@ void ZestMainWindow::on_actionHelp_triggered() {
 
 	ZestHelpViewer* pViewer = ZestHelpViewer::getInstance();
 
-	if ( pViewer->isHidden() ) {
+	pViewer->showNormal();
 
-		pViewer->show();
-	}
+	// we wait for the window to be visible before activating and rasing it
+	QTimer::singleShot(25,this, SLOT(raiseHelp()));
+
+
+}
+
+void ZestMainWindow::raiseHelp() {
+
+	ZestHelpViewer* pViewer = ZestHelpViewer::getInstance();
 
 	pViewer->activateWindow();
 	pViewer->raise();
 
-}
 
+}
 
 
 

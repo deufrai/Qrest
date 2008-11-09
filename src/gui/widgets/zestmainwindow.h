@@ -88,9 +88,16 @@ private slots:
 	void on_actionAbout_triggered();
 
 	/**
-	 * Slot that gets called upon "Help" action triggering
+	 * Slot that gets called upon "Help" action triggering.
+	 *
+	 * Shows help viewer
 	 */
 	void on_actionHelp_triggered();
+
+	/**
+	 * Makes sure help viewer is on front.
+	 */
+	void raiseHelp();
 
 private:
 	// EVENT HANDLERS
