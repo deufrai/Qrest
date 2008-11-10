@@ -30,7 +30,7 @@ ZestAboutDialog::ZestAboutDialog(const char* versionString, QWidget *parent)
 
 	aboutString.append("<center>")
 		.append("<h2>")
-			.append("Zest Easy Studio Toolkit")
+			.append("Qrest Really Easy Studio Toolkit")
 		.append("</h2>")
 		.append("<p>")
 			.append("Version : ")
@@ -40,7 +40,7 @@ ZestAboutDialog::ZestAboutDialog(const char* versionString, QWidget *parent)
 			.append(tr("Author")).append(" : <a href=\"mailto:fcornu@wardsback.org?subject=Zest\">fcornu@wardsback.org</a>")
 		.append("</p>")
 		.append("<p>")
-			.append(tr("Website")).append(" : <a href=\"http://zest.wardsback.org\">http://zest.wardsback.org</a>")
+			.append(tr("Website")).append(" : <a href=\"http://www.qrest.org/\">http://www.qrest.org</a>")
 		.append("</p>")
 	.append("</center>");
 

@@ -10,7 +10,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>Zest - Online Help</string>
+   <string>Qrest - Online Help</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../resources/pixmaps.qrc" >

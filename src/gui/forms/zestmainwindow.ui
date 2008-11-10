@@ -22,7 +22,7 @@
    </font>
   </property>
   <property name="windowTitle" >
-   <string>Zest</string>
+   <string>Qrest</string>
   </property>
   <property name="windowIcon" >
    <iconset resource="../../../resources/pixmaps.qrc" >
@@ -541,7 +541,7 @@
     <string>&amp;Quit</string>
    </property>
    <property name="statusTip" >
-    <string>Quit Zest</string>
+    <string>Quit Qrest</string>
    </property>
    <property name="shortcut" >
     <string>Ctrl+Q</string>
@@ -553,10 +553,10 @@
      <normaloff>:/icons/pix/information.png</normaloff>:/icons/pix/information.png</iconset>
    </property>
    <property name="text" >
-    <string>About &amp;Zest...</string>
+    <string>About &amp;Qrest...</string>
    </property>
    <property name="statusTip" >
-    <string>About Zest</string>
+    <string>About Qrest</string>
    </property>
   </action>
   <action name="actionHelp" >

@@ -13,7 +13,7 @@
    </rect>
   </property>
   <property name="windowTitle" >
-   <string>About Zest</string>
+   <string>About Qrest</string>
   </property>
   <layout class="QGridLayout" name="gridLayout_2" >
    <item row="0" column="0" >
