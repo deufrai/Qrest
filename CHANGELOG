@@ -1,3 +1,8 @@
+v0.4 (in progress)
+====
+    Application now provides an online help, translated into "en" and "fr"
+    All app windows and Win32 executable have an icon now
+
 v0.3
 ====
     Application is now locale aware.
