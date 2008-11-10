@@ -37,4 +37,3 @@ MOC_DIR = tmp
 OBJECTS_DIR = tmp
 RCC_DIR = tmp
 RC_FILE = resources/winicon.rc
-system(lrelease-qt4 zest.pro)
