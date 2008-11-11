@@ -47,7 +47,7 @@ int main(int argc, char *argv[]) {
 
     filePath.append(Constants::I18N_FOLDER_LOCATION)
         .append(QDir::separator())
-        .append("zest_").append(locale);
+        .append("qrest_").append(locale);
 
     qDebug() << "Translation file path :" << filePath;
 

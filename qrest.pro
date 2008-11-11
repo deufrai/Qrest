@@ -31,7 +31,7 @@ FORMS += src/gui/forms/qrestmainwindow.ui \
     src/gui/forms/qresthelpviewer.ui \
     src/gui/forms/qrestaboutdialog.ui
 RESOURCES += resources/pixmaps.qrc
-TRANSLATIONS = i18n/zest_fr.ts
+TRANSLATIONS = i18n/qrest_fr.ts
 UI_DIR = src/gui/forms
 MOC_DIR = tmp
 OBJECTS_DIR = tmp

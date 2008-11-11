@@ -4,10 +4,10 @@
     <file>pix/red_hint.png</file>
   </qresource>
   <qresource prefix="icons" >
+    <file>pix/qresticon.png</file>
     <file>pix/help.png</file>
     <file>pix/information.png</file>
     <file>pix/quit.png</file>
-    <file>pix/zesticon.png</file>
   </qresource>
   <qresource prefix="/notes" >
     <file>pix/eighth.png</file>
