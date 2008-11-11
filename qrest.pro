@@ -1,5 +1,5 @@
 TEMPLATE = app
-TARGET = zest
+TARGET = qrest
 QT += core \
     gui
 HEADERS += src/gui/widgets/zesthelpviewer.h \
