@@ -21,7 +21,7 @@
 #include <QMessageBox>
 #include <QApplication>
 #include <QWheelEvent>
-#include "zestmainwindow.h"
+#include "qrestmainwindow.h"
 #include "../../process/tapTempoCalculator.h"
 #include "qrestaboutdialog.h"
 #include "../../constants.h"
@@ -34,7 +34,7 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-ZestMainWindow::ZestMainWindow(QWidget *parent)
+QrestMainWindow::QrestMainWindow(QWidget *parent)
 : QMainWindow(parent), _document(Document::getInstance()) {
 
 	// register as an observer for app data
@@ -63,7 +63,7 @@ ZestMainWindow::ZestMainWindow(QWidget *parent)
 
 
 
-ZestMainWindow::~ZestMainWindow() {
+QrestMainWindow::~QrestMainWindow() {
 
 
 }
@@ -76,7 +76,7 @@ ZestMainWindow::~ZestMainWindow() {
 // OBSERVER IMPLEMENTATION
 //
 ////////////////////////////////////////////////////////////////////////////////
-void ZestMainWindow::updateView(void) {
+void QrestMainWindow::updateView(void) {
 
 	/*
 	 * we display delay frequencies as plain float number
@@ -173,7 +173,7 @@ void ZestMainWindow::updateView(void) {
 // SLOTS
 //
 ////////////////////////////////////////////////////////////////////////////////
-void ZestMainWindow::on_tempoEdit_returnPressed() {
+void QrestMainWindow::on_tempoEdit_returnPressed() {
 
 	processTempoInput();
 
@@ -184,7 +184,7 @@ void ZestMainWindow::on_tempoEdit_returnPressed() {
 
 
 
-void ZestMainWindow::on_tapButton_pressed() {
+void QrestMainWindow::on_tapButton_pressed() {
 
 	TapTempoCalculator::getInstance()->process();
 }
@@ -192,7 +192,7 @@ void ZestMainWindow::on_tapButton_pressed() {
 
 
 
-void ZestMainWindow::on_plainRadio_clicked() {
+void QrestMainWindow::on_plainRadio_clicked() {
 
 	Document::getInstance()->setMultiplier(Document::MULTIPLIER_PLAIN);
 }
@@ -200,7 +200,7 @@ void ZestMainWindow::on_plainRadio_clicked() {
 
 
 
-void ZestMainWindow::on_dottedRadio_clicked() {
+void QrestMainWindow::on_dottedRadio_clicked() {
 
 	Document::getInstance()->setMultiplier(Document::MULTIPLIER_DOTTED);
 }
@@ -208,7 +208,7 @@ void ZestMainWindow::on_dottedRadio_clicked() {
 
 
 
-void ZestMainWindow::on_tripletRadio_clicked() {
+void QrestMainWindow::on_tripletRadio_clicked() {
 
 	Document::getInstance()->setMultiplier(Document::MULTIPLIER_TRIPLET);
 }
@@ -217,7 +217,7 @@ void ZestMainWindow::on_tripletRadio_clicked() {
 
 
 
-void ZestMainWindow::on_actionQuit_triggered() {
+void QrestMainWindow::on_actionQuit_triggered() {
 
 	this->close();
 }
@@ -225,7 +225,7 @@ void ZestMainWindow::on_actionQuit_triggered() {
 
 
 
-void ZestMainWindow::on_actionAbout_triggered() {
+void QrestMainWindow::on_actionAbout_triggered() {
 
 	QrestAboutDialog dlg(Constants::VERSION_STRING, this);
 
@@ -237,7 +237,7 @@ void ZestMainWindow::on_actionAbout_triggered() {
 
 
 
-void ZestMainWindow::on_actionHelp_triggered() {
+void QrestMainWindow::on_actionHelp_triggered() {
 
 	QrestHelpViewer* pViewer = QrestHelpViewer::getInstance();
 
@@ -249,7 +249,7 @@ void ZestMainWindow::on_actionHelp_triggered() {
 
 }
 
-void ZestMainWindow::raiseHelp() {
+void QrestMainWindow::raiseHelp() {
 
 	QrestHelpViewer* pViewer = QrestHelpViewer::getInstance();
 
@@ -266,7 +266,7 @@ void ZestMainWindow::raiseHelp() {
 // EVENT HANDLERS
 //
 ////////////////////////////////////////////////////////////////////////////////
-bool ZestMainWindow::eventFilter(QObject* target, QEvent* event) {
+bool QrestMainWindow::eventFilter(QObject* target, QEvent* event) {
 
 	// handling of mousewheel events onto temo input field
 	if ( target == ui.tempoEdit && event->type() == QEvent::Wheel ) {
@@ -296,7 +296,7 @@ bool ZestMainWindow::eventFilter(QObject* target, QEvent* event) {
 
 
 
-void ZestMainWindow::closeEvent(QCloseEvent* event) {
+void QrestMainWindow::closeEvent(QCloseEvent* event) {
 
 	QrestHelpViewer::destroy();
 	event->accept();
@@ -308,7 +308,7 @@ void ZestMainWindow::closeEvent(QCloseEvent* event) {
 // PRIVATE FUNCTIONS
 //
 ////////////////////////////////////////////////////////////////////////////////
-void ZestMainWindow::setFocusToTempoInput(void) const {
+void QrestMainWindow::setFocusToTempoInput(void) const {
 
 	ui.tempoEdit->setFocus();
 	ui.tempoEdit->selectAll();
@@ -317,7 +317,7 @@ void ZestMainWindow::setFocusToTempoInput(void) const {
 
 
 
-void ZestMainWindow::processTempoInput(void) const {
+void QrestMainWindow::processTempoInput(void) const {
 
 	// tempo has been entered numerically
 	_document->setTempoFromTap(false);
@@ -329,7 +329,7 @@ void ZestMainWindow::processTempoInput(void) const {
 
 
 
-void ZestMainWindow::statusPermMessage(const QString& message) const {
+void QrestMainWindow::statusPermMessage(const QString& message) const {
 
 	ui.statusbar->showMessage(message);
 }
@@ -337,7 +337,7 @@ void ZestMainWindow::statusPermMessage(const QString& message) const {
 
 
 
-void ZestMainWindow::statusTempMessage(const QString& message) const {
+void QrestMainWindow::statusTempMessage(const QString& message) const {
 
 	// temp messages are shown for 1.5 seconds
 	static const int STATUSBAR_TEMP_TIMEOUT = 1500;

@@ -1,5 +1,5 @@
 /*
- *  zest
+ *  qrest
  *
  *  Copyright (C) 2008 - Frédéric CORNU
  *
@@ -17,19 +17,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ZESTMAINWINDOW_H
-#define ZESTMAINWINDOW_H
+#ifndef QRESTMAINWINDOW_H
+#define QRESTMAINWINDOW_H
 
 #include <QtGui/QMainWindow>
-#include "../forms/ui_zestmainwindow.h"
+#include "../forms/ui_qrestmainwindow.h"
 #include "../../dp/observer.h"
 #include "../../model/document.h"
 
 
 /**
- * Zest Easy Studio Toolkit main window
+ * Qrest Really Easy Studio Toolkit main window
  */
-class ZestMainWindow : public QMainWindow, Observer
+class QrestMainWindow : public QMainWindow, Observer
 {
     Q_OBJECT
 
@@ -37,8 +37,8 @@ public:
 
 	// INIT
 
-    ZestMainWindow(QWidget *parent = 0);
-    ~ZestMainWindow();
+    QrestMainWindow(QWidget *parent = 0);
+    ~QrestMainWindow();
 
     // INTERFACE
 
@@ -148,11 +148,11 @@ private:
 	// MEMBERS
 
 	/** The GUI subclass */
-    Ui::ZestMainWindowClass ui;
+    Ui::QrestMainWindowClass ui;
 
     /** Application data store */
     Document* _document;
 
 };
 
-#endif // ZESTMAINWINDOW_H
+#endif // QRESTMAINWINDOW_H

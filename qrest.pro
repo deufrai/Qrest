@@ -2,7 +2,8 @@ TEMPLATE = app
 TARGET = qrest
 QT += core \
     gui
-HEADERS += src/gui/widgets/qresthelpviewer.h \
+HEADERS += src/gui/widgets/qrestmainwindow.h \
+    src/gui/widgets/qresthelpviewer.h \
     src/gui/widgets/qrestaboutdialog.h \
     src/constants.h \
     src/process/delayCalculator.h \
@@ -12,9 +13,9 @@ HEADERS += src/gui/widgets/qresthelpviewer.h \
     src/dp/observable.h \
     src/dp/observer.h \
     src/model/delay.h \
-    src/model/document.h \
-    src/gui/widgets/zestmainwindow.h
-SOURCES += src/gui/widgets/qresthelpviewer.cpp \
+    src/model/document.h
+SOURCES += src/gui/widgets/qrestmainwindow.cpp \
+    src/gui/widgets/qresthelpviewer.cpp \
     src/gui/widgets/qrestaboutdialog.cpp \
     src/constants.cpp \
     src/process/delayCalculator.cpp \
@@ -25,11 +26,10 @@ SOURCES += src/gui/widgets/qresthelpviewer.cpp \
     src/dp/observer.cpp \
     src/model/delay.cpp \
     src/model/document.cpp \
-    src/main.cpp \
-    src/gui/widgets/zestmainwindow.cpp
-FORMS += src/gui/forms/qresthelpviewer.ui \
-    src/gui/forms/qrestaboutdialog.ui \
-    src/gui/forms/zestmainwindow.ui
+    src/main.cpp
+FORMS += src/gui/forms/qrestmainwindow.ui \
+    src/gui/forms/qresthelpviewer.ui \
+    src/gui/forms/qrestaboutdialog.ui
 RESOURCES += resources/pixmaps.qrc
 TRANSLATIONS = i18n/zest_fr.ts
 UI_DIR = src/gui/forms

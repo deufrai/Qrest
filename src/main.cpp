@@ -1,5 +1,5 @@
 /*
- *  zest
+ *  qest
  *
  *  Copyright (C) 2008 - Frédéric CORNU
  *
@@ -17,13 +17,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-/** \mainpage Zest Easy Studio Toolkit
+/** \mainpage Qrest Really Easy Studio Toolkit
  *
  *	\section intro Introduction
  *
- *	Real website is comming soon. For now, here's just the code documentation.
+ *	Qrest is still under heavy work.
  *
- *	You can have a look at the code here : http://zest.wardsback.org
+ *	Website : http://www.qrest.org
  *
  *	Have fun
  */
@@ -31,7 +31,7 @@
 #include "model/document.h"
 #include <QtGui>
 #include <QApplication>
-#include "gui/widgets/zestmainwindow.h"
+#include "gui/widgets/qrestmainwindow.h"
 #include "constants.h"
 
 int main(int argc, char *argv[]) {
@@ -68,7 +68,7 @@ int main(int argc, char *argv[]) {
     Document::getInstance();
 
     // create and show main window
-    ZestMainWindow mainWindow;
+    QrestMainWindow mainWindow;
     mainWindow.resize(mainWindow.minimumSizeHint());
     mainWindow.show();
 
