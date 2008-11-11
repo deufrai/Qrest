@@ -1,5 +1,5 @@
 /*
- *  zest
+ *  qrest
  *
  *  Copyright (C) 2008 - Frédéric CORNU
  *
