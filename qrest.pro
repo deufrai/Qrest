@@ -2,7 +2,8 @@ TEMPLATE = app
 TARGET = qrest
 QT += core \
     gui
-HEADERS += src/gui/widgets/zesthelpviewer.h \
+HEADERS += src/gui/widgets/qrestaboutdialog.h \
+    src/gui/widgets/zesthelpviewer.h \
     src/constants.h \
     src/process/delayCalculator.h \
     src/process/tapTempoCalculator.h \
@@ -12,9 +13,9 @@ HEADERS += src/gui/widgets/zesthelpviewer.h \
     src/dp/observer.h \
     src/model/delay.h \
     src/model/document.h \
-    src/gui/widgets/zestmainwindow.h \
-    src/gui/widgets/zestaboutdialog.h
-SOURCES += src/gui/widgets/zesthelpviewer.cpp \
+    src/gui/widgets/zestmainwindow.h
+SOURCES += src/gui/widgets/qrestaboutdialog.cpp \
+    src/gui/widgets/zesthelpviewer.cpp \
     src/constants.cpp \
     src/process/delayCalculator.cpp \
     src/process/tapTempoCalculator.cpp \
@@ -25,11 +26,10 @@ SOURCES += src/gui/widgets/zesthelpviewer.cpp \
     src/model/delay.cpp \
     src/model/document.cpp \
     src/main.cpp \
-    src/gui/widgets/zestmainwindow.cpp \
-    src/gui/widgets/zestaboutdialog.cpp
-FORMS += src/gui/forms/zesthelpviewer.ui \
-    src/gui/forms/zestmainwindow.ui \
-    src/gui/forms/zestaboutdialog.ui
+    src/gui/widgets/zestmainwindow.cpp
+FORMS += src/gui/forms/qrestaboutdialog.ui \
+    src/gui/forms/zesthelpviewer.ui \
+    src/gui/forms/zestmainwindow.ui
 RESOURCES += resources/pixmaps.qrc
 TRANSLATIONS = i18n/zest_fr.ts
 UI_DIR = src/gui/forms

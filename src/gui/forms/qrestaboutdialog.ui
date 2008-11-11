@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>ZestAboutDialog</class>
- <widget class="QDialog" name="ZestAboutDialog" >
+ <class>QrestAboutDialog</class>
+ <widget class="QDialog" name="QrestAboutDialog" >
   <property name="windowModality" >
    <enum>Qt::WindowModal</enum>
   </property>
@@ -79,7 +79,7 @@
   <connection>
    <sender>pushButton</sender>
    <signal>clicked()</signal>
-   <receiver>ZestAboutDialog</receiver>
+   <receiver>QrestAboutDialog</receiver>
    <slot>accept()</slot>
    <hints>
     <hint type="sourcelabel" >

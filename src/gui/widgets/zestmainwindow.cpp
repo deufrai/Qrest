@@ -23,7 +23,7 @@
 #include <QWheelEvent>
 #include "zestmainwindow.h"
 #include "../../process/tapTempoCalculator.h"
-#include "zestaboutdialog.h"
+#include "qrestaboutdialog.h"
 #include "../../constants.h"
 #include "zesthelpviewer.h"
 
@@ -227,7 +227,7 @@ void ZestMainWindow::on_actionQuit_triggered() {
 
 void ZestMainWindow::on_actionAbout_triggered() {
 
-	ZestAboutDialog dlg(Constants::VERSION_STRING, this);
+	QrestAboutDialog dlg(Constants::VERSION_STRING, this);
 
 	dlg.adjustSize();
 

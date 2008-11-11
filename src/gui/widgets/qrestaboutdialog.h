@@ -1,5 +1,5 @@
 /*
- *  zest
+ *  qrest
  *
  *  Copyright (C) 2008 - Frédéric CORNU
  *
@@ -17,27 +17,27 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ZESTABOUTDIALOG_H
-#define ZESTABOUTDIALOG_H
+#ifndef QRESTABOUTDIALOG_H
+#define QRESTABOUTDIALOG_H
 
 #include <QtGui/QDialog>
-#include "ui_zestaboutdialog.h"
+#include "ui_qrestaboutdialog.h"
 
 /**
  * The "About" Dialog
  */
 
-class ZestAboutDialog : public QDialog
+class QrestAboutDialog : public QDialog
 {
     Q_OBJECT
 
 public:
-    ZestAboutDialog(const char* versionString, QWidget *parent = 0);
-    ~ZestAboutDialog();
+    QrestAboutDialog(const char* versionString, QWidget *parent = 0);
+    ~QrestAboutDialog();
 
 private:
 	/** the GUI from */
-    Ui::ZestAboutDialog ui;
+    Ui::QrestAboutDialog ui;
 };
 
-#endif // ZESTABOUTDIALOG_H
+#endif // QRESTABOUTDIALOG_H

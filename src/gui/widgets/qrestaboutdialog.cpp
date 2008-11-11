@@ -1,5 +1,5 @@
 /*
- *  zest
+ *  qrest
  *
  *  Copyright (C) 2008 - Frédéric CORNU
  *
@@ -17,11 +17,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "zestaboutdialog.h"
+#include "qrestaboutdialog.h"
 #include <QLabel>
 #include "../../constants.h"
 
-ZestAboutDialog::ZestAboutDialog(const char* versionString, QWidget *parent)
+QrestAboutDialog::QrestAboutDialog(const char* versionString, QWidget *parent)
     : QDialog(parent)
 {
 	ui.setupUi(this);
@@ -48,7 +48,7 @@ ZestAboutDialog::ZestAboutDialog(const char* versionString, QWidget *parent)
 
 }
 
-ZestAboutDialog::~ZestAboutDialog()
+QrestAboutDialog::~QrestAboutDialog()
 {
 
 }
