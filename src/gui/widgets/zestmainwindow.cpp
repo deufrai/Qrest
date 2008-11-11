@@ -1,4 +1,4 @@
-/*  zest
+/*  qrest
  *
  *  Copyright (C) 2008 - Frédéric CORNU
  *
@@ -25,7 +25,7 @@
 #include "../../process/tapTempoCalculator.h"
 #include "qrestaboutdialog.h"
 #include "../../constants.h"
-#include "zesthelpviewer.h"
+#include "qresthelpviewer.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -239,7 +239,7 @@ void ZestMainWindow::on_actionAbout_triggered() {
 
 void ZestMainWindow::on_actionHelp_triggered() {
 
-	ZestHelpViewer* pViewer = ZestHelpViewer::getInstance();
+	QrestHelpViewer* pViewer = QrestHelpViewer::getInstance();
 
 	pViewer->showNormal();
 
@@ -251,7 +251,7 @@ void ZestMainWindow::on_actionHelp_triggered() {
 
 void ZestMainWindow::raiseHelp() {
 
-	ZestHelpViewer* pViewer = ZestHelpViewer::getInstance();
+	QrestHelpViewer* pViewer = QrestHelpViewer::getInstance();
 
 	pViewer->activateWindow();
 	pViewer->raise();
@@ -298,7 +298,7 @@ bool ZestMainWindow::eventFilter(QObject* target, QEvent* event) {
 
 void ZestMainWindow::closeEvent(QCloseEvent* event) {
 
-	ZestHelpViewer::destroy();
+	QrestHelpViewer::destroy();
 	event->accept();
 }
 

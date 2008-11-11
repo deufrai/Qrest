@@ -1,6 +1,6 @@
 <ui version="4.0" >
- <class>ZestHelpViewerClass</class>
- <widget class="QMainWindow" name="ZestHelpViewerClass" >
+ <class>QrestHelpViewerClass</class>
+ <widget class="QMainWindow" name="QrestHelpViewerClass" >
   <property name="geometry" >
    <rect>
     <x>0</x>

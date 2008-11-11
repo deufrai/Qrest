@@ -1,5 +1,5 @@
 /*
- *  zest
+ *  qrest
  *
  *  Copyright (C) 2008 - Frédéric CORNU
  *
@@ -17,30 +17,30 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef ZESTHELPVIEWER_H
-#define ZESTHELPVIEWER_H
+#ifndef QRESTHELPVIEWER_H
+#define QRESTHELPVIEWER_H
 
 #include <QtGui/QMainWindow>
-#include "ui_zesthelpviewer.h"
+#include "ui_qresthelpviewer.h"
 
 /**
  * Provides facility to browser HTML online help.
  *
  * Implemented as a singleton.
  */
-class ZestHelpViewer : public QMainWindow
+class QrestHelpViewer : public QMainWindow
 {
     Q_OBJECT
 
 
 	//INIT
 public:
-    ~ZestHelpViewer();
+    ~QrestHelpViewer();
 private:
-    ZestHelpViewer(QWidget *parent = 0);
+	QrestHelpViewer(QWidget *parent = 0);
 
     /** the unique instance */
-    static ZestHelpViewer* instance;
+    static QrestHelpViewer* instance;
 
 public:
 	/**
@@ -48,7 +48,7 @@ public:
 	 *
 	 * \return the unique instance.
 	 */
-	static ZestHelpViewer* getInstance();
+	static QrestHelpViewer* getInstance();
 
 	/**
 	 * Destroy help window
@@ -57,7 +57,7 @@ public:
 
 private:
 	// MEMBERS
-    Ui::ZestHelpViewerClass ui;
+    Ui::QrestHelpViewerClass ui;
 
     // FUNCTIONS
     /**
@@ -70,4 +70,4 @@ private:
     QString getHelpPathFromLocale(const QString& locale) const;
 };
 
-#endif // ZESTHELPVIEWER_H
+#endif // QRESTHELPVIEWER_H

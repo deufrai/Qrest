@@ -1,5 +1,5 @@
 /*
- *  zest
+ *  qrest
  *
  *  Copyright (C) 2008 - Frédéric CORNU
  *
@@ -17,15 +17,15 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "zesthelpviewer.h"
+#include "qresthelpviewer.h"
 #include "../../constants.h"
 #include <QLocale>
 #include <QDir>
 #include <QDebug>
 
-ZestHelpViewer* ZestHelpViewer::instance = NULL;
+QrestHelpViewer* QrestHelpViewer::instance = NULL;
 
-ZestHelpViewer::ZestHelpViewer(QWidget *parent)
+QrestHelpViewer::QrestHelpViewer(QWidget *parent)
     : QMainWindow(parent)
 {
 	ui.setupUi(this);
@@ -54,12 +54,12 @@ ZestHelpViewer::ZestHelpViewer(QWidget *parent)
 
 
 
-ZestHelpViewer::~ZestHelpViewer()
+QrestHelpViewer::~QrestHelpViewer()
 {
 
 }
 
-QString ZestHelpViewer::getHelpPathFromLocale(const QString& locale) const {
+QString QrestHelpViewer::getHelpPathFromLocale(const QString& locale) const {
 
 	QString helpPath;
 
@@ -73,17 +73,17 @@ QString ZestHelpViewer::getHelpPathFromLocale(const QString& locale) const {
 
 }
 
-ZestHelpViewer* ZestHelpViewer::getInstance() {
+QrestHelpViewer* QrestHelpViewer::getInstance() {
 
 	if ( NULL == instance ) {
 
-		instance = new ZestHelpViewer();
+		instance = new QrestHelpViewer();
 	}
 
 	return instance;
 }
 
-void ZestHelpViewer::destroy() {
+void QrestHelpViewer::destroy() {
 
 	if ( instance ) {
 

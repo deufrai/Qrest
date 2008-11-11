@@ -2,8 +2,8 @@ TEMPLATE = app
 TARGET = qrest
 QT += core \
     gui
-HEADERS += src/gui/widgets/qrestaboutdialog.h \
-    src/gui/widgets/zesthelpviewer.h \
+HEADERS += src/gui/widgets/qresthelpviewer.h \
+    src/gui/widgets/qrestaboutdialog.h \
     src/constants.h \
     src/process/delayCalculator.h \
     src/process/tapTempoCalculator.h \
@@ -14,8 +14,8 @@ HEADERS += src/gui/widgets/qrestaboutdialog.h \
     src/model/delay.h \
     src/model/document.h \
     src/gui/widgets/zestmainwindow.h
-SOURCES += src/gui/widgets/qrestaboutdialog.cpp \
-    src/gui/widgets/zesthelpviewer.cpp \
+SOURCES += src/gui/widgets/qresthelpviewer.cpp \
+    src/gui/widgets/qrestaboutdialog.cpp \
     src/constants.cpp \
     src/process/delayCalculator.cpp \
     src/process/tapTempoCalculator.cpp \
@@ -27,8 +27,8 @@ SOURCES += src/gui/widgets/qrestaboutdialog.cpp \
     src/model/document.cpp \
     src/main.cpp \
     src/gui/widgets/zestmainwindow.cpp
-FORMS += src/gui/forms/qrestaboutdialog.ui \
-    src/gui/forms/zesthelpviewer.ui \
+FORMS += src/gui/forms/qresthelpviewer.ui \
+    src/gui/forms/qrestaboutdialog.ui \
     src/gui/forms/zestmainwindow.ui
 RESOURCES += resources/pixmaps.qrc
 TRANSLATIONS = i18n/zest_fr.ts
