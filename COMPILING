@@ -1,6 +1,6 @@
-Zest must be compiled using a Qt 4.2 or higher compile chain.
+Qrest must be compiled using a Qt 4.2 or higher compile chain.
 
-1) get to folder containing 'zest.pro' file
+1) get to folder containing 'qrest.pro' file
 2) type 'qmake' (beware of using a 4.2 or higher qmake)
 3) type 'make'
 
