@@ -30,7 +30,7 @@ QrestAboutDialog::QrestAboutDialog(const char* versionString, QWidget *parent)
 
 	aboutString.append("<center>")
 		.append("<h2>")
-			.append("Qrest Really Easy Studio Toolkit")
+			.append("Qrest - Really Easy Studio Toolkit")
 		.append("</h2>")
 		.append("<p>")
 			.append("Version : ")
