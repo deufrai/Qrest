@@ -1,0 +1,43 @@
+<ui version="4.0" >
+ <class>QrestHelpViewerClass</class>
+ <widget class="QMainWindow" name="QrestHelpViewerClass" >
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>495</width>
+    <height>456</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>Qrest - Online Help</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="../../../resources/pixmaps.qrc" >
+    <normaloff>:/icons/pix/qresticon.png</normaloff>:/icons/pix/qresticon.png</iconset>
+  </property>
+  <widget class="QWidget" name="centralwidget" >
+   <property name="geometry" >
+    <rect>
+     <x>0</x>
+     <y>0</y>
+     <width>495</width>
+     <height>456</height>
+    </rect>
+   </property>
+   <layout class="QGridLayout" name="gridLayout" >
+    <item row="0" column="0" >
+     <widget class="QTextBrowser" name="helpBrowser" >
+      <property name="openExternalLinks" >
+       <bool>true</bool>
+      </property>
+     </widget>
+    </item>
+   </layout>
+  </widget>
+ </widget>
+ <resources>
+  <include location="../../../resources/pixmaps.qrc" />
+ </resources>
+ <connections/>
+</ui>
