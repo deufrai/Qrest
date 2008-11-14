@@ -46,6 +46,9 @@ QrestAboutDialog::QrestAboutDialog(const char* versionString, QWidget *parent)
 
 	ui.aboutLabel->setText(aboutString);
 
+	// we don't want the "what's this" button on this dialog
+	this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+
 }
 
 QrestAboutDialog::~QrestAboutDialog()
