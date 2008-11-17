@@ -1,11 +1,12 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="fr_FR">
+<!DOCTYPE TS><TS version="1.1" language="es_ES">
+<defaultcodec></defaultcodec>
 <context>
     <name>QrestAboutDialog</name>
     <message>
         <location filename="../src/gui/forms/qrestaboutdialog.ui" line="16"/>
         <source>About Qrest</source>
-        <translation>A propos de Qrest</translation>
+        <translation>A proposito de Qrest</translation>
     </message>
     <message>
         <location filename="../src/gui/forms/qrestaboutdialog.ui" line="70"/>
@@ -15,12 +16,12 @@
     <message>
         <location filename="../src/gui/widgets/qrestaboutdialog.cpp" line="40"/>
         <source>Author</source>
-        <translation>Auteur</translation>
+        <translation>Autor</translation>
     </message>
     <message>
         <location filename="../src/gui/widgets/qrestaboutdialog.cpp" line="43"/>
         <source>Website</source>
-        <translation>Site Web</translation>
+        <translation>Sitio Web</translation>
     </message>
 </context>
 <context>
@@ -28,7 +29,7 @@
     <message>
         <location filename="../src/gui/forms/qresthelpviewer.ui" line="13"/>
         <source>Qrest - Online Help</source>
-        <translation>Qrest - Aide en ligne</translation>
+        <translation>Qrest – Ayuda en línea</translation>
     </message>
 </context>
 <context>
@@ -36,17 +37,17 @@
     <message>
         <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="57"/>
         <source>I&apos;m ready, sir</source>
-        <translation>A vos ordres, chef</translation>
+        <translation>A sus ordenes, jefe</translation>
     </message>
     <message>
         <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="152"/>
         <source>You&apos;re steady</source>
-        <translation>Vous êtes stable</translation>
+        <translation>Está estable</translation>
     </message>
     <message>
         <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="157"/>
         <source>Keep tapping...</source>
-        <translation>Continuez à cliquer...</translation>
+        <translation>Sigue clicando…</translation>
     </message>
 </context>
 <context>
@@ -64,17 +65,17 @@
     <message>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="50"/>
         <source>Temp&amp;o  : </source>
-        <translation>Temp&amp;o  : </translation>
+        <translation>Temp&amp;o :</translation>
     </message>
     <message>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="72"/>
         <source>Enter tempo in BPM and hit &apos;enter&apos; or use mouse wheel</source>
-        <translation>Saisissez le tempo en BPM et validez avec &apos;Entrée&apos; ou utilisez la molette de la souris</translation>
+        <translation>Entre el tiempo en BPM y valide can “Entrar” o utilize la rueda del ratón</translation>
     </message>
     <message>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="79"/>
         <source>Click in sync with beats until steadiness indicator goes green</source>
-        <translation>Cliquez en synchro avec les temps jusqu&apos;à ce que l&apos;indicateur de stabilité passe au vert</translation>
+        <translation>Pulse en sincronización con los tiempos hasta que el indicador de estabilidad se vuelve verde</translation>
     </message>
     <message>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="82"/>
@@ -89,22 +90,22 @@
     <message>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="111"/>
         <source>&amp;Plain</source>
-        <translation>&amp;Normale</translation>
+        <translation>&amp;Normal</translation>
     </message>
     <message>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="121"/>
         <source>&amp;Dotted</source>
-        <translation>&amp;Pointée</translation>
+        <translation>&amp;Punteada</translation>
     </message>
     <message>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="128"/>
         <source>&amp;Triplet</source>
-        <translation>&amp;Triolet</translation>
+        <translation>&amp;Tresillo</translation>
     </message>
     <message>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="138"/>
         <source>Delays and LFOs</source>
-        <translation>Delais et LFOs</translation>
+        <translation>Plazos y LFOs</translation>
     </message>
     <message>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="146"/>
@@ -119,22 +120,22 @@
     <message>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="511"/>
         <source>&amp;Help</source>
-        <translation>Ai&amp;de</translation>
+        <translation>Ayu&amp;da</translation>
     </message>
     <message>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="518"/>
         <source>&amp;File</source>
-        <translation>&amp;Fichier</translation>
+        <translation>&amp;Fichero</translation>
     </message>
     <message>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="541"/>
         <source>&amp;Quit</source>
-        <translation>&amp;Quitter</translation>
+        <translation>&amp;Salir</translation>
     </message>
     <message>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="544"/>
         <source>Quit Qrest</source>
-        <translation>Quitter Qrest</translation>
+        <translation>Salir de Qrest</translation>
     </message>
     <message>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="547"/>
@@ -144,22 +145,22 @@
     <message>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="556"/>
         <source>About &amp;Qrest...</source>
-        <translation>A propos de &amp;Qrest...</translation>
+        <translation>A proposito de &amp;Qrest...</translation>
     </message>
     <message>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="559"/>
         <source>About Qrest</source>
-        <translation>A propos de Qrest</translation>
+        <translation>A proposito de Qrest</translation>
     </message>
     <message>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="568"/>
         <source>Online &amp;Help</source>
-        <translation>&amp;Aide en ligne</translation>
+        <translation>&amp;Ayuda en línea</translation>
     </message>
     <message>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="571"/>
         <source>Help</source>
-        <translation>Aide</translation>
+        <translation>Ayuda</translation>
     </message>
 </context>
 </TS>

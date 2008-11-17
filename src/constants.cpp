@@ -19,7 +19,7 @@
 
 #include "constants.h"
 
-const char* Constants::VERSION_STRING = "0.4";
+const char* Constants::VERSION_STRING = "0.4rc3";
 const char* Constants::I18N_FOLDER_LOCATION = "i18n";
 const char* Constants::ONLINE_HELP_LOCATION = "doc/html";
 
