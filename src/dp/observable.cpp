@@ -63,8 +63,8 @@ void Observable::removeObserver(Observer* observer) {
 
             _observers.erase(it);
             found = true;
-            ++it;
         }
+        it++;
     }
 }
 
