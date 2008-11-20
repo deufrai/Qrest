@@ -1,15 +1,17 @@
 TEMPLATE = app
 TARGET = qrest
 
-BINDEST = /usr/bin/
-DOCDEST = /usr/share/$$TARGET/doc
-LANGDEST = /usr/share/$$TARGET/i18n
-MANDEST = /usr/share/man/man1/
-
-DOCSRC = doc/html
-LANGSRC = i18n/*.qm
-BINSRC = ./qrest
-MANSRC = doc/manpages/man1/qrest.1.gz
+!win32 {
+    BINDEST = /usr/bin/
+    DOCDEST = /usr/share/$$TARGET/doc
+    LANGDEST = /usr/share/$$TARGET/i18n
+    MANDEST = /usr/share/man/man1/
+    
+    DOCSRC = doc/html
+    LANGSRC = i18n/*.qm
+    BINSRC = ./qrest
+    MANSRC = doc/manpages/man1/qrest.1.gz
+}
 
 QT += core \
     gui
@@ -52,17 +54,19 @@ RCC_DIR = tmp
 RC_FILE = resources/winicon.rc
 
 
-userguides.path = $$DOCDEST
-userguides.files = $$DOCSRC
-INSTALLS += userguides
-
-languages.path = $$LANGDEST
-languages.files = $$LANGSRC
-INSTALLS += languages
-
-target.path = /usr/bin
-INSTALLS += target
-
-manpages.path = $$MANDEST
-manpages.files = $$MANSRC
-INSTALLS += manpages
+!win32 {
+    userguides.path = $$DOCDEST
+    userguides.files = $$DOCSRC
+    INSTALLS += userguides
+    
+    languages.path = $$LANGDEST
+    languages.files = $$LANGSRC
+    INSTALLS += languages
+    
+    target.path = /usr/bin
+    INSTALLS += target
+    
+    manpages.path = $$MANDEST
+    manpages.files = $$MANSRC
+    INSTALLS += manpages
+}
