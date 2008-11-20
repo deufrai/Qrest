@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="fr_FR">
+<defaultcodec></defaultcodec>
 <context>
     <name>QrestAboutDialog</name>
     <message>
@@ -21,6 +22,11 @@
         <location filename="../src/gui/widgets/qrestaboutdialog.cpp" line="43"/>
         <source>Website</source>
         <translation>Site Web</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/widgets/qrestaboutdialog.cpp" line="46"/>
+        <source>License</source>
+        <translation>License</translation>
     </message>
 </context>
 <context>

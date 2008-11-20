@@ -42,7 +42,10 @@ QrestAboutDialog::QrestAboutDialog(const char* versionString, QWidget *parent)
 		.append("<p>")
 			.append(tr("Website")).append(" : <a href=\"http://www.qrest.org/\">http://www.qrest.org</a>")
 		.append("</p>")
-	.append("</center>");
+		.append("<p>")
+			.append(tr("License")).append(" : <a href=\"http://www.gnu.org/licenses/gpl-3.0.txt\">General Public License v3</a>")
+		.append("</p>")
+		.append("</center>");
 
 	ui.aboutLabel->setText(aboutString);
 
