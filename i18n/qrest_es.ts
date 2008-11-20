@@ -23,6 +23,11 @@
         <source>Website</source>
         <translation>Sitio Web</translation>
     </message>
+    <message>
+        <location filename="../src/gui/widgets/qrestaboutdialog.cpp" line="46"/>
+        <source>License</source>
+        <translation>Licencia</translation>
+    </message>
 </context>
 <context>
     <name>QrestHelpViewerClass</name>
