@@ -4,10 +4,11 @@ TARGET = qrest
 linux-* {
 
     BINDEST = /usr/bin/
-    DOCDEST = /usr/share/$$TARGET/doc
-    LANGDEST = /usr/share/$$TARGET/i18n
+    SHARE = /usr/share/$$TARGET
+    DOCDEST = $$SHARE/doc
+    LANGDEST = $$SHARE/i18n
     MANDEST = /usr/share/man/man1/
-    ICONDEST = /usr/share/$$TARGET/icons
+    ICONDEST = $$SHARE/icons
     
     DOCSRC = doc/html
     LANGSRC = i18n/*.qm
@@ -58,6 +59,7 @@ RC_FILE = resources/winicon.rc
 
 
 linux-* {
+
     userguides.path = $$DOCDEST
     userguides.files = $$DOCSRC
     INSTALLS += userguides
