@@ -4,5 +4,5 @@ Qrest must be compiled using a Qt 4.2 or higher compile chain.
 2) type 'qmake' (beware of using a 4.2 or higher qmake)
 3) type 'make'
 
-thanx for any comment or constructive criticism sent to fcornu@wardsback.org
+thanx for any comment or constructive criticism sent to fcornu@qrest.org
 
