@@ -58,6 +58,13 @@ private slots:
     void on_tempoEdit_returnPressed();
 
     /**
+     * Slot that gets called whenever tempo input field's content has changed
+     *
+     * \param text the new text
+     */
+    void on_tempoEdit_textEdited(const QString& text);
+
+    /**
      * Slot that gets called when 'tap' button is pressed
      */
     void on_tapButton_pressed();

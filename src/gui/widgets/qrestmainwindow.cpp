@@ -135,6 +135,27 @@ void QrestMainWindow::on_tempoEdit_returnPressed() {
 
 
 
+void QrestMainWindow::on_tempoEdit_textEdited(const QString& text) {
+
+	/*
+	 * If displayed value is different to last valid value
+	 * we tell user that resulting values must be recalculated
+	 */
+	if ( text.toDouble() != _document->getTempo() ) {
+
+		statusPermMessage(tr("Recalculation needed"));
+
+	} else {
+
+		statusPermMessage("");
+	}
+
+}
+
+
+
+
+
 void QrestMainWindow::on_tapButton_pressed() {
 
 	TapTempoCalculator::getInstance()->process();

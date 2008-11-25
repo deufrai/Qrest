@@ -45,14 +45,19 @@
         <translation>A vos ordres, chef</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="152"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="103"/>
         <source>You&apos;re steady</source>
         <translation>Vous êtes stable</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="157"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="108"/>
         <source>Keep tapping...</source>
         <translation>Continuez à cliquer...</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="148"/>
+        <source>Recalculation needed</source>
+        <translation>Recalcul nécessaire</translation>
     </message>
 </context>
 <context>
