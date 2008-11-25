@@ -21,7 +21,7 @@
 
 const char* Constants::VERSION_STRING = "0.5";
 
-#ifdef Q_OS_WIN32
+#ifdef _WIN32
 	const char* Constants::I18N_FOLDER_LOCATION = "i18n";
 	const char* Constants::ONLINE_HELP_LOCATION = "doc/html";
 #else
