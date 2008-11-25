@@ -1,16 +1,20 @@
 TEMPLATE = app
 TARGET = qrest
 
-!win32 {
+linux-* {
+
     BINDEST = /usr/bin/
-    DOCDEST = /usr/share/$$TARGET/doc
-    LANGDEST = /usr/share/$$TARGET/i18n
+    SHARE = /usr/share/$$TARGET
+    DOCDEST = $$SHARE/doc
+    LANGDEST = $$SHARE/i18n
     MANDEST = /usr/share/man/man1/
+    ICONDEST = $$SHARE/icons
     
     DOCSRC = doc/html
     LANGSRC = i18n/*.qm
     BINSRC = ./qrest
     MANSRC = doc/manpages/man1/qrest.1.gz
+    ICONSRC = resources/pix/qresticon.png
 }
 
 QT += core \
@@ -54,7 +58,8 @@ RCC_DIR = tmp
 RC_FILE = resources/winicon.rc
 
 
-!win32 {
+linux-* {
+
     userguides.path = $$DOCDEST
     userguides.files = $$DOCSRC
     INSTALLS += userguides
@@ -69,4 +74,8 @@ RC_FILE = resources/winicon.rc
     manpages.path = $$MANDEST
     manpages.files = $$MANSRC
     INSTALLS += manpages
+    
+    icons.path = $$ICONDEST
+    icons.files = $$ICONSRC
+    INSTALLS += icons
 }
