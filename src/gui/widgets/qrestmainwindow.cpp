@@ -79,13 +79,6 @@ QrestMainWindow::~QrestMainWindow() {
 void QrestMainWindow::updateView(void) {
 
 	/*
-	 * we display delay frequencies as plain float number
-	 * ( no scientific format ) with only a precision of 3
-	 */
-	static const int 	LFO_DISPLAY_PRECISION = 3;
-	static const char	LFO_DISPLAY_FORMAT = 'f';
-
-	/*
 	 * pixmaps used for steadiness hint
 	 */
 	static QPixmap 		redHint(":/lights/pix/red_hint.png");
@@ -96,53 +89,11 @@ void QrestMainWindow::updateView(void) {
 	ui.tempoEdit->setText(QString::number(_document->getTempo()));
 
 	// update delay display fields
-	ui.quarterPeriodEdit->setText(
-			QString::number(qRound(_document->getQuarterDelay()->getPeriod())));
+	updateDelayDisplays();
 
-	ui.quarterLfoEdit->setText(
-			QString::number(_document->getQuarterDelay()->getFrenquency(),
-			LFO_DISPLAY_FORMAT,
-			LFO_DISPLAY_PRECISION));
+	// update LFO display fiels
+	updateLfoDisplays();
 
-	ui.wholePeriodEdit->setText(
-			QString::number(qRound(_document->getWholeDelay()->getPeriod())));
-
-	ui.wholeLfoEdit->setText(
-			QString::number(_document->getWholeDelay()->getFrenquency(),
-			LFO_DISPLAY_FORMAT,
-			LFO_DISPLAY_PRECISION));
-
-	ui.halfPeriodEdit->setText(
-			QString::number(qRound(_document->getHalfDelay()->getPeriod())));
-
-	ui.halfLfoEdit->setText(
-			QString::number(_document->getHalfDelay()->getFrenquency(),
-			LFO_DISPLAY_FORMAT,
-			LFO_DISPLAY_PRECISION));
-
-	ui.eighthPeriodEdit->setText(
-			QString::number(qRound(_document->getEighthDelay()->getPeriod())));
-
-	ui.eighthLfoEdit->setText(
-			QString::number(_document->getEighthDelay()->getFrenquency(),
-			LFO_DISPLAY_FORMAT,
-			LFO_DISPLAY_PRECISION));
-
-	ui.sixteenthPeriodEdit->setText(
-			QString::number(qRound(_document->getSixTeenthDelay()->getPeriod())));
-
-	ui.sixteenthLfoEdit->setText(
-			QString::number(_document->getSixTeenthDelay()->getFrenquency(),
-			LFO_DISPLAY_FORMAT,
-			LFO_DISPLAY_PRECISION));
-
-	ui.thirtySecondPeriodEdit->setText(
-			QString::number(qRound(_document->getThirtySecondDelay()->getPeriod())));
-
-	ui.thirtySecondLfoEdit->setText(
-			QString::number(_document->getThirtySecondDelay()->getFrenquency(),
-			LFO_DISPLAY_FORMAT,
-			LFO_DISPLAY_PRECISION));
 
 	// give a light and statusbar message according to steadiness
 	if ( _document->isTempoFromTap() ) {
@@ -312,6 +263,76 @@ void QrestMainWindow::setFocusToTempoInput(void) const {
 
 	ui.tempoEdit->setFocus();
 	ui.tempoEdit->selectAll();
+}
+
+
+
+
+void QrestMainWindow::updateDelayDisplays(void) {
+
+	ui.quarterPeriodEdit->setText(
+			QString::number(qRound(_document->getQuarterDelay()->getPeriod())));
+
+	ui.wholePeriodEdit->setText(
+			QString::number(qRound(_document->getWholeDelay()->getPeriod())));
+
+	ui.halfPeriodEdit->setText(
+			QString::number(qRound(_document->getHalfDelay()->getPeriod())));
+
+	ui.eighthPeriodEdit->setText(
+			QString::number(qRound(_document->getEighthDelay()->getPeriod())));
+
+	ui.sixteenthPeriodEdit->setText(
+			QString::number(qRound(_document->getSixTeenthDelay()->getPeriod())));
+
+	ui.thirtySecondPeriodEdit->setText(
+			QString::number(qRound(_document->getThirtySecondDelay()->getPeriod())));
+
+}
+
+
+
+
+
+void QrestMainWindow::updateLfoDisplays(void) {
+
+	/*
+	 * we display delay frequencies as plain float number
+	 * ( no scientific format ) with only a precision of 3
+	 */
+	static const int 	LFO_DISPLAY_PRECISION = 3;
+	static const char	LFO_DISPLAY_FORMAT = 'f';
+
+	ui.quarterLfoEdit->setText(
+			QString::number(_document->getQuarterDelay()->getFrenquency(),
+					LFO_DISPLAY_FORMAT,
+					LFO_DISPLAY_PRECISION));
+
+	ui.wholeLfoEdit->setText(
+			QString::number(_document->getWholeDelay()->getFrenquency(),
+					LFO_DISPLAY_FORMAT,
+					LFO_DISPLAY_PRECISION));
+
+	ui.halfLfoEdit->setText(
+			QString::number(_document->getHalfDelay()->getFrenquency(),
+					LFO_DISPLAY_FORMAT,
+					LFO_DISPLAY_PRECISION));
+
+	ui.eighthLfoEdit->setText(
+			QString::number(_document->getEighthDelay()->getFrenquency(),
+					LFO_DISPLAY_FORMAT,
+					LFO_DISPLAY_PRECISION));
+
+	ui.sixteenthLfoEdit->setText(
+			QString::number(_document->getSixTeenthDelay()->getFrenquency(),
+					LFO_DISPLAY_FORMAT,
+					LFO_DISPLAY_PRECISION));
+
+	ui.thirtySecondLfoEdit->setText(
+			QString::number(_document->getThirtySecondDelay()->getFrenquency(),
+					LFO_DISPLAY_FORMAT,
+					LFO_DISPLAY_PRECISION));
+
 }
 
 

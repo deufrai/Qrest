@@ -145,6 +145,16 @@ private:
      */
     void statusTempMessage(const QString& message) const;
 
+    /**
+     * Refresh delay times display fields.
+     */
+    void updateDelayDisplays(void);
+
+    /**
+     * Refresh LFO display fields.
+     */
+    void updateLfoDisplays(void);
+
 	// MEMBERS
 
 	/** The GUI subclass */
