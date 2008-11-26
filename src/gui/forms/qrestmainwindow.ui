@@ -5,7 +5,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>322</width>
+    <width>321</width>
     <height>499</height>
    </rect>
   </property>
@@ -29,14 +29,6 @@
     <normaloff>:/icons/pix/qresticon.png</normaloff>:/icons/pix/qresticon.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget" >
-   <property name="geometry" >
-    <rect>
-     <x>0</x>
-     <y>26</y>
-     <width>322</width>
-     <height>450</height>
-    </rect>
-   </property>
    <layout class="QGridLayout" name="gridLayout_4" >
     <item row="0" column="0" >
      <widget class="QGroupBox" name="groupBox" >
@@ -58,7 +50,7 @@
         <widget class="QLineEdit" name="tempoEdit" >
          <property name="minimumSize" >
           <size>
-           <width>60</width>
+           <width>40</width>
            <height>28</height>
           </size>
          </property>
@@ -104,8 +96,8 @@
       <property name="title" >
        <string>Variants</string>
       </property>
-      <layout class="QGridLayout" >
-       <item row="0" column="0" >
+      <layout class="QHBoxLayout" name="horizontalLayout" >
+       <item>
         <widget class="QRadioButton" name="plainRadio" >
          <property name="text" >
           <string>&amp;Plain</string>
@@ -115,14 +107,14 @@
          </property>
         </widget>
        </item>
-       <item row="0" column="1" >
+       <item>
         <widget class="QRadioButton" name="dottedRadio" >
          <property name="text" >
           <string>&amp;Dotted</string>
          </property>
         </widget>
        </item>
-       <item row="0" column="2" >
+       <item>
         <widget class="QRadioButton" name="tripletRadio" >
          <property name="text" >
           <string>&amp;Triplet</string>
@@ -164,7 +156,7 @@
           <widget class="QLineEdit" name="wholePeriodEdit" >
            <property name="minimumSize" >
             <size>
-             <width>60</width>
+             <width>40</width>
              <height>28</height>
             </size>
            </property>
@@ -205,7 +197,7 @@
            </property>
            <property name="minimumSize" >
             <size>
-             <width>60</width>
+             <width>40</width>
              <height>28</height>
             </size>
            </property>
@@ -224,7 +216,7 @@
           <widget class="QLineEdit" name="halfPeriodEdit" >
            <property name="minimumSize" >
             <size>
-             <width>60</width>
+             <width>40</width>
              <height>28</height>
             </size>
            </property>
@@ -259,7 +251,7 @@
           <widget class="QLineEdit" name="halfLfoEdit" >
            <property name="minimumSize" >
             <size>
-             <width>60</width>
+             <width>40</width>
              <height>28</height>
             </size>
            </property>
@@ -278,7 +270,7 @@
           <widget class="QLineEdit" name="quarterPeriodEdit" >
            <property name="minimumSize" >
             <size>
-             <width>60</width>
+             <width>40</width>
              <height>28</height>
             </size>
            </property>
@@ -313,7 +305,7 @@
           <widget class="QLineEdit" name="quarterLfoEdit" >
            <property name="minimumSize" >
             <size>
-             <width>60</width>
+             <width>40</width>
              <height>28</height>
             </size>
            </property>
@@ -332,7 +324,7 @@
           <widget class="QLineEdit" name="eighthPeriodEdit" >
            <property name="minimumSize" >
             <size>
-             <width>60</width>
+             <width>40</width>
              <height>28</height>
             </size>
            </property>
@@ -367,7 +359,7 @@
           <widget class="QLineEdit" name="eighthLfoEdit" >
            <property name="minimumSize" >
             <size>
-             <width>60</width>
+             <width>40</width>
              <height>28</height>
             </size>
            </property>
@@ -386,7 +378,7 @@
           <widget class="QLineEdit" name="sixteenthPeriodEdit" >
            <property name="minimumSize" >
             <size>
-             <width>60</width>
+             <width>40</width>
              <height>28</height>
             </size>
            </property>
@@ -421,7 +413,7 @@
           <widget class="QLineEdit" name="sixteenthLfoEdit" >
            <property name="minimumSize" >
             <size>
-             <width>60</width>
+             <width>40</width>
              <height>28</height>
             </size>
            </property>
@@ -440,7 +432,7 @@
           <widget class="QLineEdit" name="thirtySecondPeriodEdit" >
            <property name="minimumSize" >
             <size>
-             <width>60</width>
+             <width>40</width>
              <height>28</height>
             </size>
            </property>
@@ -475,7 +467,7 @@
           <widget class="QLineEdit" name="thirtySecondLfoEdit" >
            <property name="minimumSize" >
             <size>
-             <width>60</width>
+             <width>40</width>
              <height>28</height>
             </size>
            </property>
@@ -502,8 +494,8 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>322</width>
-     <height>26</height>
+     <width>321</width>
+     <height>19</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuHelp" >
@@ -522,16 +514,7 @@
    <addaction name="menuFile" />
    <addaction name="menuHelp" />
   </widget>
-  <widget class="QStatusBar" name="statusbar" >
-   <property name="geometry" >
-    <rect>
-     <x>0</x>
-     <y>476</y>
-     <width>322</width>
-     <height>23</height>
-    </rect>
-   </property>
-  </widget>
+  <widget class="QStatusBar" name="statusbar" />
   <action name="actionQuit" >
    <property name="icon" >
     <iconset resource="../../../resources/pixmaps.qrc" >
@@ -592,6 +575,7 @@
   <tabstop>thirtySecondLfoEdit</tabstop>
  </tabstops>
  <resources>
+  <include location="../../../resources/pixmaps.qrc" />
   <include location="../../../resources/pixmaps.qrc" />
  </resources>
  <connections/>
