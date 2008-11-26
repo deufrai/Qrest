@@ -111,7 +111,7 @@ void QrestMainWindow::updateView(void) {
 
 	} else {
 
-		statusPermMessage("");
+		statusClear();
 		ui.steadyHint->setPixmap(NULL);
 	}
 }
@@ -147,7 +147,7 @@ void QrestMainWindow::on_tempoEdit_textEdited(const QString& text) {
 
 	} else {
 
-		statusPermMessage("");
+		statusClear();
 	}
 
 }
@@ -385,4 +385,12 @@ void QrestMainWindow::statusTempMessage(const QString& message) const {
 	static const int STATUSBAR_TEMP_TIMEOUT = 1500;
 
 	ui.statusbar->showMessage(message, STATUSBAR_TEMP_TIMEOUT);
+}
+
+
+
+
+void QrestMainWindow::statusClear(void) const {
+
+	ui.statusbar->clearMessage();
 }

@@ -153,6 +153,11 @@ private:
     void statusTempMessage(const QString& message) const;
 
     /**
+     * Clear status bar message zone
+     */
+    void statusClear(void) const;
+
+    /**
      * Refresh delay times display fields.
      */
     void updateDelayDisplays(void);
