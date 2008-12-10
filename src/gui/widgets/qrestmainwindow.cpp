@@ -83,6 +83,7 @@ void QrestMainWindow::updateView(void) {
 	 */
 	static QPixmap 		redHint(":/lights/pix/red_hint.png");
 	static QPixmap 		greenHint(":/lights/pix/green_hint.png");
+	static QPixmap		emptyPixmap;
 
 
 	// update tempo input field with validated value
@@ -112,7 +113,7 @@ void QrestMainWindow::updateView(void) {
 	} else {
 
 		statusClear();
-		ui.steadyHint->setPixmap(NULL);
+		ui.steadyHint->setPixmap(emptyPixmap);
 	}
 }
 
