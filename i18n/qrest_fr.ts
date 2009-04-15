@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="fr_FR">
-<defaultcodec></defaultcodec>
 <context>
     <name>QrestAboutDialog</name>
     <message>
@@ -45,12 +44,12 @@
         <translation>A vos ordres, chef</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="152"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="153"/>
         <source>You&apos;re steady</source>
         <translation>Vous êtes stable</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="157"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="158"/>
         <source>Keep tapping...</source>
         <translation>Continuez à cliquer...</translation>
     </message>
