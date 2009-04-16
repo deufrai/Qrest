@@ -1,6 +1,9 @@
 v0.5 (In progress)
 ====
     
+v0.4.1
+======
+	Fixed bug #6 : Segfault on Qt4.2.x systems on startup
 
 v0.4
 ====
