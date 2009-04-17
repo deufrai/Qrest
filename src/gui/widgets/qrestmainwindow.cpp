@@ -26,6 +26,7 @@
 #include "qrestaboutdialog.h"
 #include "../../constants.h"
 #include "qresthelpviewer.h"
+#include "../../settings/settings.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -58,14 +59,19 @@ QrestMainWindow::QrestMainWindow(QWidget *parent)
 
     // register as an event filter for tempo input field
     ui.tempoEdit->installEventFilter(this);
+
+    // move to last position stored in user's preferences.
+    move(Settings::getInstance()->getSettings().value(Settings::WINDOW_POSITION, QPoint(30,30)).toPoint());
 }
+
 
 
 
 
 QrestMainWindow::~QrestMainWindow() {
 
-
+	// store position into user's prefences.
+	Settings::getInstance()->getSettings().setValue(Settings::WINDOW_POSITION, this->pos());
 }
 
 

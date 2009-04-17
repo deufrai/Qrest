@@ -1,25 +1,22 @@
 TEMPLATE = app
 TARGET = qrest
-
-linux-* {
-
+linux-* { 
     BINDEST = /usr/bin/
     SHARE = /usr/share/$$TARGET
     DOCDEST = $$SHARE/doc
     LANGDEST = $$SHARE/i18n
     MANDEST = /usr/share/man/man1/
     ICONDEST = $$SHARE/icons
-    
     DOCSRC = doc/html
     LANGSRC = i18n/*.qm
     BINSRC = ./qrest
     MANSRC = doc/manpages/man1/qrest.1.gz
     ICONSRC = resources/pix/qresticon.png
 }
-
 QT += core \
     gui
-HEADERS += src/gui/widgets/qrestmainwindow.h \
+HEADERS += src/settings/settings.h \
+    src/gui/widgets/qrestmainwindow.h \
     src/gui/widgets/qresthelpviewer.h \
     src/gui/widgets/qrestaboutdialog.h \
     src/constants.h \
@@ -31,7 +28,8 @@ HEADERS += src/gui/widgets/qrestmainwindow.h \
     src/dp/observer.h \
     src/model/delay.h \
     src/model/document.h
-SOURCES += src/gui/widgets/qrestmainwindow.cpp \
+SOURCES += src/settings/settings.cpp \
+    src/gui/widgets/qrestmainwindow.cpp \
     src/gui/widgets/qresthelpviewer.cpp \
     src/gui/widgets/qrestaboutdialog.cpp \
     src/constants.cpp \
@@ -56,25 +54,18 @@ MOC_DIR = tmp
 OBJECTS_DIR = tmp
 RCC_DIR = tmp
 RC_FILE = resources/winicon.rc
-
-
-linux-* {
-
+linux-* { 
     userguides.path = $$DOCDEST
     userguides.files = $$DOCSRC
     INSTALLS += userguides
-    
     languages.path = $$LANGDEST
     languages.files = $$LANGSRC
     INSTALLS += languages
-    
     target.path = /usr/bin
     INSTALLS += target
-    
     manpages.path = $$MANDEST
     manpages.files = $$MANSRC
     INSTALLS += manpages
-    
     icons.path = $$ICONDEST
     icons.files = $$ICONSRC
     INSTALLS += icons
