@@ -72,6 +72,7 @@ QrestMainWindow::~QrestMainWindow() {
 
 	// store position into user's prefences.
 	Settings::getInstance()->getSettings().setValue(Settings::WINDOW_POSITION, this->pos());
+	Settings::getInstance()->getSettings().sync();
 }
 
 
