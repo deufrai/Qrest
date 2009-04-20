@@ -49,18 +49,23 @@ int main(int argc, char *argv[]) {
         .append(QDir::separator())
         .append("qrest_").append(locale);
 
-    qDebug() << "Translation file path :" << filePath;
+#ifndef QT_NO_DEBUG
+    qDebug() << "main.cpp : Translation file path :" << filePath;
+#endif
 
     bool bTransLoaded = translator.load(filePath);
 
     if ( bTransLoaded  ) {
 
-        qDebug() << "Translation file loaded successfully";
+#ifndef QT_NO_DEBUG
+        qDebug() << "main.cpp : Translation file loaded successfully";
+#endif
+
         application.installTranslator(&translator);
 
     } else {
 
-        qDebug() << "Failed to load translation file";
+        qWarning() << "main.cpp : Failed to load translation file";
     }
 
 

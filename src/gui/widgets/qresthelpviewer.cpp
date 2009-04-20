@@ -39,7 +39,7 @@ QrestHelpViewer::QrestHelpViewer(QWidget *parent)
 
 	if ( ! QFile::exists(helpPath) ) {
 
-		qDebug() << "Online help has not yet been translated for locale"
+		qWarning() << "QrestHelpViewer : Online help has not yet been translated for locale"
 				 << locale
 				 << "- defaulting to english";
 
