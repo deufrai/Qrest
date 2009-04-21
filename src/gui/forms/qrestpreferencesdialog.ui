@@ -31,12 +31,15 @@
          <rect>
           <x>20</x>
           <y>50</y>
-          <width>231</width>
+          <width>151</width>
           <height>19</height>
          </rect>
         </property>
+        <property name="toolTip" >
+         <string>Should Qrest's main window be opened at the screen location it had on last run ?</string>
+        </property>
         <property name="text" >
-         <string>Remember window &amp;Position</string>
+         <string>Remember window &amp;position</string>
         </property>
        </widget>
       </widget>
