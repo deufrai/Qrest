@@ -21,6 +21,7 @@
 
 Settings*	Settings::_instance = 0;
 const char* Settings::WINDOW_POSITION = "windowPosition";
+const char* Settings::REMEMBER_WINDOW_POSITION = "rememberWindowPosition";
 
 Settings::Settings()
 : _settings("wardsback", "qrest"){

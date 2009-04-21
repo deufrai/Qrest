@@ -15,7 +15,8 @@ linux-* {
 }
 QT += core \
     gui
-HEADERS += src/settings/settings.h \
+HEADERS += src/gui/widgets/qrestpreferencesdialog.h \
+    src/settings/settings.h \
     src/gui/widgets/qrestmainwindow.h \
     src/gui/widgets/qresthelpviewer.h \
     src/gui/widgets/qrestaboutdialog.h \
@@ -28,7 +29,8 @@ HEADERS += src/settings/settings.h \
     src/dp/observer.h \
     src/model/delay.h \
     src/model/document.h
-SOURCES += src/settings/settings.cpp \
+SOURCES += src/gui/widgets/qrestpreferencesdialog.cpp \
+    src/settings/settings.cpp \
     src/gui/widgets/qrestmainwindow.cpp \
     src/gui/widgets/qresthelpviewer.cpp \
     src/gui/widgets/qrestaboutdialog.cpp \
@@ -42,7 +44,8 @@ SOURCES += src/settings/settings.cpp \
     src/model/delay.cpp \
     src/model/document.cpp \
     src/main.cpp
-FORMS += src/gui/forms/qrestmainwindow.ui \
+FORMS += src/gui/forms/qrestpreferencesdialog.ui \
+    src/gui/forms/qrestmainwindow.ui \
     src/gui/forms/qresthelpviewer.ui \
     src/gui/forms/qrestaboutdialog.ui
 RESOURCES += resources/pixmaps.qrc

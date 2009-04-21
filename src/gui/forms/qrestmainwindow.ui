@@ -511,7 +511,14 @@
     </property>
     <addaction name="actionQuit" />
    </widget>
+   <widget class="QMenu" name="menuEdit" >
+    <property name="title" >
+     <string>&amp;Edit</string>
+    </property>
+    <addaction name="actionPreferences" />
+   </widget>
    <addaction name="menuFile" />
+   <addaction name="menuEdit" />
    <addaction name="menuHelp" />
   </widget>
   <widget class="QStatusBar" name="statusbar" />
@@ -552,6 +559,21 @@
    </property>
    <property name="statusTip" >
     <string>Help</string>
+   </property>
+  </action>
+  <action name="actionPreferences" >
+   <property name="icon" >
+    <iconset resource="../../../resources/pixmaps.qrc" >
+     <normaloff>:/icons/pix/preferences.png</normaloff>:/icons/pix/preferences.png</iconset>
+   </property>
+   <property name="text" >
+    <string>&amp;Preferences</string>
+   </property>
+   <property name="statusTip" >
+    <string>Open preferences dialog</string>
+   </property>
+   <property name="shortcut" >
+    <string>Ctrl+P</string>
    </property>
   </action>
  </widget>

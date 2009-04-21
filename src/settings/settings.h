@@ -48,7 +48,21 @@ private:
 
 	// QSettings KEYS
 public:
-	static const char* WINDOW_POSITION;
+	/** key used to store window position. */
+	static const char* 	WINDOW_POSITION;
+
+	/** key used to store 'remember window position' flag. */
+	static const char*	REMEMBER_WINDOW_POSITION;
+
+	// default values
+	/** key used to store default window x position. */
+	static const int	WINDOW_POSITON_DEFAULT_X = 30;
+
+	/** key used to store default window y position. */
+	static const int	WINDOW_POSITON_DEFAULT_Y = 30;
+
+	/** key used to store 'remember window position' flag default value. */
+	static const bool	REMEMBER_WINDOW_POSITION_DEFAULT = false;
 
 	// INTERFACE
 public:

@@ -27,6 +27,7 @@
 #include "../../constants.h"
 #include "qresthelpviewer.h"
 #include "../../settings/settings.h"
+#include "qrestpreferencesdialog.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -60,8 +61,15 @@ QrestMainWindow::QrestMainWindow(QWidget *parent)
     // register as an event filter for tempo input field
     ui.tempoEdit->installEventFilter(this);
 
-    // move to last position stored in user's preferences.
-    move(Settings::getInstance()->getSettings().value(Settings::WINDOW_POSITION, QPoint(30,30)).toPoint());
+    // move to last position stored in user's preferences if asked.
+    if ( Settings::getInstance()->getSettings().value(
+    		Settings::REMEMBER_WINDOW_POSITION,
+    		Settings::REMEMBER_WINDOW_POSITION_DEFAULT).toBool() ) {
+
+    	move(Settings::getInstance()->getSettings().value(Settings::WINDOW_POSITION,
+    					QPoint(Settings::WINDOW_POSITON_DEFAULT_X,
+    							Settings::WINDOW_POSITON_DEFAULT_Y)).toPoint());
+    }
 }
 
 
@@ -71,7 +79,10 @@ QrestMainWindow::QrestMainWindow(QWidget *parent)
 QrestMainWindow::~QrestMainWindow() {
 
 	// store position into user's prefences.
-	Settings::getInstance()->getSettings().setValue(Settings::WINDOW_POSITION, this->pos());
+	Settings::getInstance()->getSettings().setValue(
+			Settings::WINDOW_POSITION,
+			this->pos());
+
 	Settings::getInstance()->getSettings().sync();
 }
 
@@ -214,6 +225,17 @@ void QrestMainWindow::on_actionAbout_triggered() {
 	dlg.exec();
 }
 
+
+
+
+void QrestMainWindow::on_actionPreferences_triggered() {
+
+	QrestPreferencesDialog dlg(this);
+
+	dlg.resize(dlg.minimumSizeHint());
+
+	dlg.exec();
+}
 
 
 

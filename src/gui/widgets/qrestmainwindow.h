@@ -90,6 +90,11 @@ private slots:
 	void on_actionQuit_triggered();
 
 	/**
+	 * Slot that gets called upon "Preferences" action triggering
+	 */
+	void on_actionPreferences_triggered();
+
+	/**
 	 * Slot that gets called upon "About" action triggering
 	 */
 	void on_actionAbout_triggered();

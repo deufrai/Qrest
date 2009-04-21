@@ -4,6 +4,7 @@
     <file>pix/red_hint.png</file>
   </qresource>
   <qresource prefix="icons" >
+    <file>pix/preferences.png</file>
     <file>pix/qresticon.png</file>
     <file>pix/help.png</file>
     <file>pix/information.png</file>
