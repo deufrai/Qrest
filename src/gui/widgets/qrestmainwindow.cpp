@@ -251,6 +251,9 @@ void QrestMainWindow::on_actionHelp_triggered() {
 
 }
 
+
+
+
 void QrestMainWindow::raiseHelp() {
 
 	QrestHelpViewer* pViewer = QrestHelpViewer::getInstance();
