@@ -5,8 +5,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>321</width>
-    <height>499</height>
+    <width>575</width>
+    <height>301</height>
    </rect>
   </property>
   <property name="sizePolicy" >
@@ -29,463 +29,506 @@
     <normaloff>:/icons/pix/qresticon.png</normaloff>:/icons/pix/qresticon.png</iconset>
   </property>
   <widget class="QWidget" name="centralwidget" >
-   <layout class="QGridLayout" name="gridLayout_4" >
+   <layout class="QGridLayout" name="gridLayout_5" >
     <item row="0" column="0" >
-     <widget class="QGroupBox" name="groupBox" >
-      <property name="title" >
-       <string>Tempo Input</string>
-      </property>
-      <layout class="QGridLayout" name="gridLayout" >
-       <item row="0" column="0" >
-        <widget class="QLabel" name="tempoLabel" >
-         <property name="text" >
-          <string>Temp&amp;o  : </string>
-         </property>
-         <property name="buddy" >
-          <cstring>tempoEdit</cstring>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="1" >
-        <widget class="QLineEdit" name="tempoEdit" >
-         <property name="minimumSize" >
-          <size>
-           <width>40</width>
-           <height>28</height>
-          </size>
-         </property>
-         <property name="baseSize" >
-          <size>
-           <width>60</width>
-           <height>28</height>
-          </size>
-         </property>
-         <property name="toolTip" >
-          <string>Enter tempo in BPM and hit 'enter' or use mouse wheel</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="2" >
-        <widget class="QPushButton" name="tapButton" >
-         <property name="toolTip" >
-          <string>Click in sync with beats until steadiness indicator goes green</string>
-         </property>
-         <property name="text" >
-          <string>T&amp;AP</string>
-         </property>
-        </widget>
-       </item>
-       <item row="0" column="3" >
-        <widget class="QLabel" name="steadyHint" >
-         <property name="minimumSize" >
-          <size>
-           <width>24</width>
-           <height>0</height>
-          </size>
-         </property>
-         <property name="text" >
-          <string/>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="1" column="0" >
-     <widget class="QGroupBox" name="groupBox_3" >
-      <property name="title" >
-       <string>Variants</string>
-      </property>
-      <layout class="QHBoxLayout" name="horizontalLayout" >
-       <item>
-        <widget class="QRadioButton" name="plainRadio" >
-         <property name="text" >
-          <string>&amp;Plain</string>
-         </property>
-         <property name="checked" >
-          <bool>true</bool>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="dottedRadio" >
-         <property name="text" >
-          <string>&amp;Dotted</string>
-         </property>
-        </widget>
-       </item>
-       <item>
-        <widget class="QRadioButton" name="tripletRadio" >
-         <property name="text" >
-          <string>&amp;Triplet</string>
-         </property>
-        </widget>
-       </item>
-      </layout>
-     </widget>
-    </item>
-    <item row="2" column="0" >
-     <widget class="QGroupBox" name="groupBox_2" >
-      <property name="title" >
-       <string>Delays and LFOs</string>
-      </property>
-      <layout class="QGridLayout" name="gridLayout_3" >
-       <item row="0" column="0" >
-        <layout class="QGridLayout" name="gridLayout_2" >
+     <layout class="QVBoxLayout" name="verticalLayout" >
+      <item>
+       <layout class="QHBoxLayout" name="horizontalLayout_2" >
+        <item>
+         <widget class="QGroupBox" name="groupBox" >
+          <property name="title" >
+           <string>Tempo Input</string>
+          </property>
+          <layout class="QGridLayout" name="gridLayout" >
+           <item row="0" column="0" >
+            <widget class="QLabel" name="tempoLabel" >
+             <property name="text" >
+              <string>Temp&amp;o  : </string>
+             </property>
+             <property name="buddy" >
+              <cstring>tempoEdit</cstring>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="1" >
+            <widget class="QLineEdit" name="tempoEdit" >
+             <property name="minimumSize" >
+              <size>
+               <width>40</width>
+               <height>28</height>
+              </size>
+             </property>
+             <property name="baseSize" >
+              <size>
+               <width>60</width>
+               <height>28</height>
+              </size>
+             </property>
+             <property name="toolTip" >
+              <string>Enter tempo in BPM and hit 'enter' or use mouse wheel</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="2" >
+            <widget class="QPushButton" name="tapButton" >
+             <property name="toolTip" >
+              <string>Click in sync with beats until steadiness indicator goes green</string>
+             </property>
+             <property name="text" >
+              <string>T&amp;AP</string>
+             </property>
+            </widget>
+           </item>
+           <item row="0" column="3" >
+            <widget class="QLabel" name="steadyHint" >
+             <property name="minimumSize" >
+              <size>
+               <width>24</width>
+               <height>0</height>
+              </size>
+             </property>
+             <property name="text" >
+              <string/>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+        <item>
+         <widget class="QGroupBox" name="groupBox_3" >
+          <property name="title" >
+           <string>Variants</string>
+          </property>
+          <layout class="QHBoxLayout" name="horizontalLayout" >
+           <item>
+            <widget class="QRadioButton" name="plainRadio" >
+             <property name="text" >
+              <string>&amp;Plain</string>
+             </property>
+             <property name="checked" >
+              <bool>true</bool>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="dottedRadio" >
+             <property name="text" >
+              <string>&amp;Dotted</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QRadioButton" name="tripletRadio" >
+             <property name="text" >
+              <string>&amp;Triplet</string>
+             </property>
+            </widget>
+           </item>
+          </layout>
+         </widget>
+        </item>
+       </layout>
+      </item>
+      <item>
+       <widget class="QGroupBox" name="groupBox_2" >
+        <property name="title" >
+         <string>Delays and LFOs</string>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_4" >
          <item row="0" column="0" >
-          <widget class="QLabel" name="label_7" >
-           <property name="text" >
-            <string>ms</string>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="0" column="2" >
-          <widget class="QLabel" name="label_8" >
-           <property name="text" >
-            <string>Hz</string>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="0" >
-          <widget class="QLineEdit" name="wholePeriodEdit" >
-           <property name="minimumSize" >
-            <size>
-             <width>40</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="baseSize" >
-            <size>
-             <width>60</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="1" >
-          <widget class="QLabel" name="label_3" >
-           <property name="text" >
-            <string/>
-           </property>
-           <property name="pixmap" >
-            <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/whole.png</pixmap>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="1" column="2" >
-          <widget class="QLineEdit" name="wholeLfoEdit" >
-           <property name="sizePolicy" >
-            <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
-             <horstretch>0</horstretch>
-             <verstretch>0</verstretch>
-            </sizepolicy>
-           </property>
-           <property name="minimumSize" >
-            <size>
-             <width>40</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="baseSize" >
-            <size>
-             <width>60</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="0" >
-          <widget class="QLineEdit" name="halfPeriodEdit" >
-           <property name="minimumSize" >
-            <size>
-             <width>40</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="baseSize" >
-            <size>
-             <width>60</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="1" >
-          <widget class="QLabel" name="label" >
-           <property name="text" >
-            <string/>
-           </property>
-           <property name="pixmap" >
-            <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/half.png</pixmap>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="2" column="2" >
-          <widget class="QLineEdit" name="halfLfoEdit" >
-           <property name="minimumSize" >
-            <size>
-             <width>40</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="baseSize" >
-            <size>
-             <width>60</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="0" >
-          <widget class="QLineEdit" name="quarterPeriodEdit" >
-           <property name="minimumSize" >
-            <size>
-             <width>40</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="baseSize" >
-            <size>
-             <width>60</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="1" >
-          <widget class="QLabel" name="label_2" >
-           <property name="text" >
-            <string/>
-           </property>
-           <property name="pixmap" >
-            <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/quarter.png</pixmap>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="3" column="2" >
-          <widget class="QLineEdit" name="quarterLfoEdit" >
-           <property name="minimumSize" >
-            <size>
-             <width>40</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="baseSize" >
-            <size>
-             <width>60</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="0" >
-          <widget class="QLineEdit" name="eighthPeriodEdit" >
-           <property name="minimumSize" >
-            <size>
-             <width>40</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="baseSize" >
-            <size>
-             <width>60</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="1" >
-          <widget class="QLabel" name="label_6" >
-           <property name="text" >
-            <string/>
-           </property>
-           <property name="pixmap" >
-            <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/eighth.png</pixmap>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="4" column="2" >
-          <widget class="QLineEdit" name="eighthLfoEdit" >
-           <property name="minimumSize" >
-            <size>
-             <width>40</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="baseSize" >
-            <size>
-             <width>60</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="0" >
-          <widget class="QLineEdit" name="sixteenthPeriodEdit" >
-           <property name="minimumSize" >
-            <size>
-             <width>40</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="baseSize" >
-            <size>
-             <width>60</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="1" >
-          <widget class="QLabel" name="label_5" >
-           <property name="text" >
-            <string/>
-           </property>
-           <property name="pixmap" >
-            <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/sixteenth.png</pixmap>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="5" column="2" >
-          <widget class="QLineEdit" name="sixteenthLfoEdit" >
-           <property name="minimumSize" >
-            <size>
-             <width>40</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="baseSize" >
-            <size>
-             <width>60</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="0" >
-          <widget class="QLineEdit" name="thirtySecondPeriodEdit" >
-           <property name="minimumSize" >
-            <size>
-             <width>40</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="baseSize" >
-            <size>
-             <width>60</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
-           </property>
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="1" >
-          <widget class="QLabel" name="label_4" >
-           <property name="text" >
-            <string/>
-           </property>
-           <property name="pixmap" >
-            <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/thirtysecond.png</pixmap>
-           </property>
-           <property name="alignment" >
-            <set>Qt::AlignCenter</set>
-           </property>
-          </widget>
-         </item>
-         <item row="6" column="2" >
-          <widget class="QLineEdit" name="thirtySecondLfoEdit" >
-           <property name="minimumSize" >
-            <size>
-             <width>40</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="baseSize" >
-            <size>
-             <width>60</width>
-             <height>28</height>
-            </size>
-           </property>
-           <property name="readOnly" >
-            <bool>true</bool>
-           </property>
-          </widget>
+          <layout class="QHBoxLayout" name="horizontalLayout_3" >
+           <item>
+            <layout class="QGridLayout" name="gridLayout_2" >
+             <item row="0" column="0" >
+              <widget class="QLabel" name="label_7" >
+               <property name="text" >
+                <string>ms</string>
+               </property>
+               <property name="alignment" >
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2" >
+              <widget class="QLabel" name="label_8" >
+               <property name="text" >
+                <string>Hz</string>
+               </property>
+               <property name="alignment" >
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0" >
+              <widget class="QLineEdit" name="wholePeriodEdit" >
+               <property name="minimumSize" >
+                <size>
+                 <width>40</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="baseSize" >
+                <size>
+                 <width>60</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="alignment" >
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1" >
+              <widget class="QLabel" name="label_3" >
+               <property name="text" >
+                <string/>
+               </property>
+               <property name="pixmap" >
+                <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/whole.png</pixmap>
+               </property>
+               <property name="alignment" >
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2" >
+              <widget class="QLineEdit" name="wholeLfoEdit" >
+               <property name="sizePolicy" >
+                <sizepolicy vsizetype="Fixed" hsizetype="Expanding" >
+                 <horstretch>0</horstretch>
+                 <verstretch>0</verstretch>
+                </sizepolicy>
+               </property>
+               <property name="minimumSize" >
+                <size>
+                 <width>40</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="baseSize" >
+                <size>
+                 <width>60</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0" >
+              <widget class="QLineEdit" name="halfPeriodEdit" >
+               <property name="minimumSize" >
+                <size>
+                 <width>40</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="baseSize" >
+                <size>
+                 <width>60</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="alignment" >
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1" >
+              <widget class="QLabel" name="label" >
+               <property name="text" >
+                <string/>
+               </property>
+               <property name="pixmap" >
+                <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/half.png</pixmap>
+               </property>
+               <property name="alignment" >
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2" >
+              <widget class="QLineEdit" name="halfLfoEdit" >
+               <property name="minimumSize" >
+                <size>
+                 <width>40</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="baseSize" >
+                <size>
+                 <width>60</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0" >
+              <widget class="QLineEdit" name="quarterPeriodEdit" >
+               <property name="minimumSize" >
+                <size>
+                 <width>40</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="baseSize" >
+                <size>
+                 <width>60</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="alignment" >
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1" >
+              <widget class="QLabel" name="label_2" >
+               <property name="text" >
+                <string/>
+               </property>
+               <property name="pixmap" >
+                <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/quarter.png</pixmap>
+               </property>
+               <property name="alignment" >
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2" >
+              <widget class="QLineEdit" name="quarterLfoEdit" >
+               <property name="minimumSize" >
+                <size>
+                 <width>40</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="baseSize" >
+                <size>
+                 <width>60</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+           <item>
+            <widget class="Line" name="line" >
+             <property name="orientation" >
+              <enum>Qt::Vertical</enum>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <layout class="QGridLayout" name="gridLayout_3" >
+             <item row="0" column="0" >
+              <widget class="QLabel" name="label_10" >
+               <property name="text" >
+                <string>ms</string>
+               </property>
+               <property name="alignment" >
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="0" column="2" >
+              <widget class="QLabel" name="label_9" >
+               <property name="text" >
+                <string>Hz</string>
+               </property>
+               <property name="alignment" >
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="0" >
+              <widget class="QLineEdit" name="eighthPeriodEdit" >
+               <property name="minimumSize" >
+                <size>
+                 <width>40</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="baseSize" >
+                <size>
+                 <width>60</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="alignment" >
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="1" >
+              <widget class="QLabel" name="label_6" >
+               <property name="text" >
+                <string/>
+               </property>
+               <property name="pixmap" >
+                <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/eighth.png</pixmap>
+               </property>
+               <property name="alignment" >
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="1" column="2" >
+              <widget class="QLineEdit" name="eighthLfoEdit" >
+               <property name="minimumSize" >
+                <size>
+                 <width>40</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="baseSize" >
+                <size>
+                 <width>60</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="0" >
+              <widget class="QLineEdit" name="sixteenthPeriodEdit" >
+               <property name="minimumSize" >
+                <size>
+                 <width>40</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="baseSize" >
+                <size>
+                 <width>60</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="alignment" >
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="1" >
+              <widget class="QLabel" name="label_5" >
+               <property name="text" >
+                <string/>
+               </property>
+               <property name="pixmap" >
+                <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/sixteenth.png</pixmap>
+               </property>
+               <property name="alignment" >
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="2" column="2" >
+              <widget class="QLineEdit" name="sixteenthLfoEdit" >
+               <property name="minimumSize" >
+                <size>
+                 <width>40</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="baseSize" >
+                <size>
+                 <width>60</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="0" >
+              <widget class="QLineEdit" name="thirtySecondPeriodEdit" >
+               <property name="minimumSize" >
+                <size>
+                 <width>40</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="baseSize" >
+                <size>
+                 <width>60</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="alignment" >
+                <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+               </property>
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="1" >
+              <widget class="QLabel" name="label_4" >
+               <property name="text" >
+                <string/>
+               </property>
+               <property name="pixmap" >
+                <pixmap resource="../../../resources/pixmaps.qrc" >:/notes/pix/thirtysecond.png</pixmap>
+               </property>
+               <property name="alignment" >
+                <set>Qt::AlignCenter</set>
+               </property>
+              </widget>
+             </item>
+             <item row="3" column="2" >
+              <widget class="QLineEdit" name="thirtySecondLfoEdit" >
+               <property name="minimumSize" >
+                <size>
+                 <width>40</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="baseSize" >
+                <size>
+                 <width>60</width>
+                 <height>28</height>
+                </size>
+               </property>
+               <property name="readOnly" >
+                <bool>true</bool>
+               </property>
+              </widget>
+             </item>
+            </layout>
+           </item>
+          </layout>
          </item>
         </layout>
-       </item>
-      </layout>
-     </widget>
+       </widget>
+      </item>
+     </layout>
     </item>
    </layout>
   </widget>
@@ -494,7 +537,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>321</width>
+     <width>575</width>
      <height>19</height>
     </rect>
    </property>
@@ -597,6 +640,9 @@
   <tabstop>thirtySecondLfoEdit</tabstop>
  </tabstops>
  <resources>
+  <include location="../../../resources/pixmaps.qrc" />
+  <include location="../../../resources/pixmaps.qrc" />
+  <include location="../../../resources/pixmaps.qrc" />
   <include location="../../../resources/pixmaps.qrc" />
   <include location="../../../resources/pixmaps.qrc" />
  </resources>
