@@ -44,7 +44,6 @@ QrestMainWindow::QrestMainWindow(QWidget *parent)
 
 	// setting up GUI
 	ui.setupUi(this);
-	ui.statusbar->setSizeGripEnabled(false);
 
 	// update view
 	updateView();
