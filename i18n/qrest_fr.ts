@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <!DOCTYPE TS><TS version="1.1" language="fr_FR">
+<defaultcodec></defaultcodec>
 <context>
     <name>QrestAboutDialog</name>
     <message>
@@ -184,7 +185,7 @@
     <message>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="616"/>
         <source>Open preferences dialog</source>
-        <translation>Ouverture du dialogue des préférences</translation>
+        <translation>Ouvrir le dialogue des préférences</translation>
     </message>
     <message>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="619"/>
