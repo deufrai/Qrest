@@ -1,6 +1,7 @@
 v0.5 (In progress)
 ====
-	Fixed Ticket #7 : remember main window position.
+	* remember main window position.
+	Closes #7,#9
     
 v0.4.1
 ======
