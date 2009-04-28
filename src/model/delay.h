@@ -68,7 +68,7 @@ public:
      * Get the frenquency.
      * \return the frenquency
      */
-    inline double getFrenquency() const { return _frequency; }
+    inline double getFrequency() const { return _frequency; }
 
 private:
 

@@ -357,32 +357,32 @@ void QrestMainWindow::updateLfoDisplays(void) {
 	static const char	LFO_DISPLAY_FORMAT = 'f';
 
 	ui.quarterLfoEdit->setText(
-			QString::number(_document->getQuarterDelay()->getFrenquency(),
+			QString::number(_document->getQuarterDelay()->getFrequency(),
 					LFO_DISPLAY_FORMAT,
 					LFO_DISPLAY_PRECISION));
 
 	ui.wholeLfoEdit->setText(
-			QString::number(_document->getWholeDelay()->getFrenquency(),
+			QString::number(_document->getWholeDelay()->getFrequency(),
 					LFO_DISPLAY_FORMAT,
 					LFO_DISPLAY_PRECISION));
 
 	ui.halfLfoEdit->setText(
-			QString::number(_document->getHalfDelay()->getFrenquency(),
+			QString::number(_document->getHalfDelay()->getFrequency(),
 					LFO_DISPLAY_FORMAT,
 					LFO_DISPLAY_PRECISION));
 
 	ui.eighthLfoEdit->setText(
-			QString::number(_document->getEighthDelay()->getFrenquency(),
+			QString::number(_document->getEighthDelay()->getFrequency(),
 					LFO_DISPLAY_FORMAT,
 					LFO_DISPLAY_PRECISION));
 
 	ui.sixteenthLfoEdit->setText(
-			QString::number(_document->getSixTeenthDelay()->getFrenquency(),
+			QString::number(_document->getSixTeenthDelay()->getFrequency(),
 					LFO_DISPLAY_FORMAT,
 					LFO_DISPLAY_PRECISION));
 
 	ui.thirtySecondLfoEdit->setText(
-			QString::number(_document->getThirtySecondDelay()->getFrenquency(),
+			QString::number(_document->getThirtySecondDelay()->getFrequency(),
 					LFO_DISPLAY_FORMAT,
 					LFO_DISPLAY_PRECISION));
 
