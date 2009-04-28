@@ -2,6 +2,8 @@ TEMPLATE = app
 TARGET = qrest_unit_tests
 QT = core \
     testlib
+MOC_DIR = tmp
+OBJECTS_DIR = tmp
 HEADERS += tests/process/delayCalculatorTestCase.h \
     src/process/processor.h \
     src/process/delayCalculator.h \
