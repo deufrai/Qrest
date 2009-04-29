@@ -142,5 +142,3 @@ void DelayCalculatorTestCase::testTripletValues() {
 	QCOMPARE(pDocument->getThirtySecondDelay()->getFrequency(), EXPECTED_THIRTYSECOND_FREQUENCY);
 
 }
-
-QTEST_MAIN(DelayCalculatorTestCase)
