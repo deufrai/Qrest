@@ -10,7 +10,7 @@ HEADERS += tests/process/delayCalculatorTestCase.h \
     src/model/document.h \
     src/model/delay.h \
     src/dp/observable.h
-SOURCES += tests/main.cpp \
+SOURCES += tests/maintests.cpp \
     tests/process/delayCalculatorTestCase.cpp \
     src/process/processor.cpp \
     src/process/delayCalculator.cpp \
