@@ -19,6 +19,7 @@
 
 #include <QCoreApplication>
 #include "process/delayCalculatorTestCase.h"
+#include "process/tapTempoCalculatorTestCase.h"
 
 /*
  * Launching every testcase
@@ -29,6 +30,12 @@ int main(int argc, char** argv) {
 
 	QObject* pTest = new DelayCalculatorTestCase();
 	int status = QTest::qExec(pTest, argc, argv);
+
+	if ( 0 == status ) {
+
+		pTest = new TapTempoCalculatorTestCase();
+		status = QTest::qExec(pTest, argc, argv);
+	}
 
 	return status;
 }
