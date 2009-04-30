@@ -17,6 +17,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QtGlobal>
 #include <algorithm>
 #include "tapTempoCalculator.h"
 #include "../model/document.h"
@@ -97,7 +98,7 @@ void TapTempoCalculator::process() {
 	// set tempo according to average
 	double averageDelta = getAverageDelta();
 	pDocument->setTempo(
-			static_cast<int>(Constants::SECONDS_PER_MINUTE * Constants::MILLISEC_PER_SECOND / averageDelta));
+			qRound(Constants::SECONDS_PER_MINUTE * Constants::MILLISEC_PER_SECOND / averageDelta));
 
 	// store current stamp for next call
 	lastStamp = currentStamp;
