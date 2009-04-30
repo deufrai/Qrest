@@ -18,6 +18,7 @@
  */
 
 #include <QCoreApplication>
+#include <QList>
 #include "process/delayCalculatorTestCase.h"
 #include "process/tapTempoCalculatorTestCase.h"
 
@@ -28,14 +29,35 @@ int main(int argc, char** argv) {
 
 	QCoreApplication app(argc, argv);
 
-	QObject* pTest = new DelayCalculatorTestCase();
-	int status = QTest::qExec(pTest, argc, argv);
+	/*
+	 * List of all tests to be ran.
+	 */
+	QList<QObject*> tests;
 
-	if ( 0 == status ) {
+	/*
+	 * populate a list of all testscases we want to run.
+	 */
+	tests << new DelayCalculatorTestCase();
+	tests << new TapTempoCalculatorTestCase();
 
-		pTest = new TapTempoCalculatorTestCase();
-		status = QTest::qExec(pTest, argc, argv);
+	bool someTestsFailed = false;
+	int status = 0;
+
+	/*
+	 * Run all tests and remember if at leasst one of them failed.
+	 */
+	foreach (QObject* test, tests) {
+
+		status = QTest::qExec(test, argc, argv);
+
+		if ( ! someTestsFailed && 0 != status ) {
+
+			someTestsFailed = true;
+		}
 	}
 
-	return status;
+	/*
+	 * We return 0 if no failure occured, otherwise : 1.
+	 */
+	return someTestsFailed ? 1 : 0;
 }
