@@ -1,0 +1,22 @@
+Qrest must be compiled using a Qt 4.2 or higher compile chain.
+
+I) Compile Qrest application
+===============================
+
+    a) get to folder containing 'qrest.pro' file
+    b) type `qmake qrest.pro` (beware of using a 4.2 or higher qmake)
+    c) type `make`
+    
+    created executable : qrest
+
+II) Compile Qrest unit tests
+===============================
+
+    a) get to folder containing 'qrest.pro' file
+    b) type `qmake tests.pro` (beware of using a 4.2 or higher qmake)
+    c) type `make`
+
+    created executable (Will launch all unit tests and print report on standard output) : qrest_unit_tests
+
+thanx for any comment or constructive criticism sent to fcornu@wardsback.org
+

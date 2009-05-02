@@ -1,0 +1,100 @@
+<ui version="4.0" >
+ <class>QrestAboutDialog</class>
+ <widget class="QDialog" name="QrestAboutDialog" >
+  <property name="windowModality" >
+   <enum>Qt::WindowModal</enum>
+  </property>
+  <property name="geometry" >
+   <rect>
+    <x>0</x>
+    <y>0</y>
+    <width>291</width>
+    <height>214</height>
+   </rect>
+  </property>
+  <property name="windowTitle" >
+   <string>About Qrest</string>
+  </property>
+  <property name="windowIcon" >
+   <iconset resource="../../../resources/pixmaps.qrc" >
+    <normaloff>:/icons/pix/qresticon.png</normaloff>:/icons/pix/qresticon.png</iconset>
+  </property>
+  <layout class="QGridLayout" name="gridLayout_2" >
+   <item row="0" column="0" >
+    <widget class="QLabel" name="imgLabel" >
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="pixmap" >
+      <pixmap resource="../../../resources/pixmaps.qrc" >:/icons/pix/qresticon.png</pixmap>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+    </widget>
+   </item>
+   <item row="1" column="0" >
+    <widget class="QLabel" name="aboutLabel" >
+     <property name="frameShape" >
+      <enum>QFrame::NoFrame</enum>
+     </property>
+     <property name="text" >
+      <string/>
+     </property>
+     <property name="alignment" >
+      <set>Qt::AlignCenter</set>
+     </property>
+     <property name="openExternalLinks" >
+      <bool>true</bool>
+     </property>
+    </widget>
+   </item>
+   <item row="2" column="0" >
+    <layout class="QGridLayout" name="gridLayout" >
+     <item row="0" column="0" >
+      <spacer name="horizontalSpacer" >
+       <property name="orientation" >
+        <enum>Qt::Horizontal</enum>
+       </property>
+       <property name="sizeHint" stdset="0" >
+        <size>
+         <width>298</width>
+         <height>20</height>
+        </size>
+       </property>
+      </spacer>
+     </item>
+     <item row="0" column="1" >
+      <widget class="QPushButton" name="pushButton" >
+       <property name="text" >
+        <string>OK</string>
+       </property>
+      </widget>
+     </item>
+    </layout>
+   </item>
+  </layout>
+ </widget>
+ <layoutdefault spacing="6" margin="11" />
+ <resources>
+  <include location="../../../resources/pixmaps.qrc" />
+ </resources>
+ <connections>
+  <connection>
+   <sender>pushButton</sender>
+   <signal>clicked()</signal>
+   <receiver>QrestAboutDialog</receiver>
+   <slot>accept()</slot>
+   <hints>
+    <hint type="sourcelabel" >
+     <x>357</x>
+     <y>316</y>
+    </hint>
+    <hint type="destinationlabel" >
+     <x>200</x>
+     <y>299</y>
+    </hint>
+   </hints>
+  </connection>
+ </connections>
+</ui>
