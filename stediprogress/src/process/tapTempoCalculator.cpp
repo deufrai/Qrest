@@ -115,7 +115,8 @@ void TapTempoCalculator::initDeltas() {
 
 	for ( int i=0; i<DELTAS_COUNT; i++ ) {
 
-		_deltas.push_back(0);
+		// pushing ones to avoid division by zero on first tap
+		_deltas.push_back(1);
 	}
 }
 
