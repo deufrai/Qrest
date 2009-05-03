@@ -43,6 +43,7 @@ private slots:
 	 * actual tests.
 	 */
 	void testTapTempoAt60BPM();
+	void testSteadiness();
 };
 
 #endif /* TAPTEMPOCALCULATORTESTCASE_H_ */
