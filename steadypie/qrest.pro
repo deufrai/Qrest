@@ -15,7 +15,8 @@ linux-* {
 }
 QT += core \
     gui
-HEADERS += src/gui/widgets/qrestpreferencesdialog.h \
+HEADERS += src/gui/widgets/custom/progressPie.h \
+    src/gui/widgets/qrestpreferencesdialog.h \
     src/settings/settings.h \
     src/gui/widgets/qrestmainwindow.h \
     src/gui/widgets/qresthelpviewer.h \
@@ -29,7 +30,8 @@ HEADERS += src/gui/widgets/qrestpreferencesdialog.h \
     src/dp/observer.h \
     src/model/delay.h \
     src/model/document.h
-SOURCES += src/gui/widgets/qrestpreferencesdialog.cpp \
+SOURCES += src/gui/widgets/custom/progressPie.cpp \
+    src/gui/widgets/qrestpreferencesdialog.cpp \
     src/settings/settings.cpp \
     src/gui/widgets/qrestmainwindow.cpp \
     src/gui/widgets/qresthelpviewer.cpp \

@@ -29,6 +29,7 @@
 #include "../../settings/settings.h"
 #include "qrestpreferencesdialog.h"
 #include "../../model/document.h"
+#include "custom/progressPie.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -70,6 +71,10 @@ QrestMainWindow::QrestMainWindow(QWidget *parent)
     					QPoint(Settings::WINDOW_POSITON_DEFAULT_X,
     							Settings::WINDOW_POSITON_DEFAULT_Y)).toPoint());
     }
+
+	_pie = new ProgressPie();
+
+    ui.horizontalLayout_2->addWidget(_pie);
 }
 
 
@@ -127,6 +132,8 @@ void QrestMainWindow::updateView(void) {
 			statusPermMessage(tr("Keep tapping..."));
 			ui.steadyHint->setPixmap(redHint);
 		}
+
+		_pie->setValue(_document->getTempo());
 
 	} else {
 
