@@ -28,6 +28,7 @@
 #include "qresthelpviewer.h"
 #include "../../settings/settings.h"
 #include "qrestpreferencesdialog.h"
+#include "../../model/document.h"
 
 
 ////////////////////////////////////////////////////////////////////////////////

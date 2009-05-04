@@ -21,7 +21,8 @@
 #define OBSERVABLE_H_
 
 #include <vector>
-#include "observer.h"
+
+class Observer;
 
 using std::vector;
 

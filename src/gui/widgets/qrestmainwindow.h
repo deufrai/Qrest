@@ -23,7 +23,8 @@
 #include <QtGui/QMainWindow>
 #include "../forms/ui_qrestmainwindow.h"
 #include "../../dp/observer.h"
-#include "../../model/document.h"
+
+class Document;
 
 
 /**

@@ -21,8 +21,10 @@
 #define TAPTEMPOCALCULATOR_H_
 
 #include "processor.h"
-#include "../time/timeStamper.h"
 #include <list>
+
+class TimeStamper;
+
 using std::list;
 
 /**
@@ -118,7 +120,7 @@ private:
 	////////////////////////////////////////////////////////////////////////////
 private:
 	/** provides timestamps on demand */
-	TimeStamper _timeStamper;
+	TimeStamper* _pTimeStamper;
 
 	/** stores deltas between collected timestamps */
 	list<int> _deltas;

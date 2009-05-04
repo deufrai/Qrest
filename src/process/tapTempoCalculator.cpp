@@ -22,6 +22,7 @@
 #include "tapTempoCalculator.h"
 #include "../model/document.h"
 #include "../constants.h"
+#include "../time/timeStamper.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -38,7 +39,8 @@ TapTempoCalculator::~TapTempoCalculator() {
 
 
 
-TapTempoCalculator::TapTempoCalculator() {
+TapTempoCalculator::TapTempoCalculator()
+: _pTimeStamper(new TimeStamper()) {
 
 
 	/** init deltas collection with default data */
@@ -85,7 +87,7 @@ void TapTempoCalculator::process() {
 	Document* pDocument = Document::getInstance();
 
 	// get current timestamp
-	int currentStamp = _timeStamper.getStamp();
+	int currentStamp = _pTimeStamper->getStamp();
 
 	// store delta between current timestamp and last one
 	_deltas.push_back( currentStamp - lastStamp );
