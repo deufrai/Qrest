@@ -18,64 +18,80 @@
  */
 
 #include "progressPie.h"
+#include "../../../constants.h"
 #include <QDebug>
 #include <QMouseEvent>
 #include <QPaintEvent>
 #include <QPainter>
 
 ProgressPie::ProgressPie(QWidget* parent)
-: _threshold(0.9),
-_value(0.0) {
+: _threshold(0.0),
+  _value(0.0),
+  _pRedBrush(new QBrush(Qt::red)),
+  _pGreenBrush(new QBrush(Qt::darkGreen)) {
 
-
+	setFixedSize(QSize(28,28));
+	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 }
+
+
+
 
 ProgressPie::~ProgressPie() {
 
 }
 
 
-void ProgressPie::mousePressEvent(QMouseEvent* event) {
-
-	//TODO : Not yet implemented!!!
-	qDebug() << "mousePressEvent : Not yet implemented!!!";
-}
-
-
-
-void ProgressPie::mouseMoveEvent(QMouseEvent* event) {
-
-	//TODO : Not yet implemented!!!
-	qDebug() << "mouseMoveEvent : Not yet implemented!!!";
-}
-
-
-
 void ProgressPie::paintEvent(QPaintEvent* event) {
-
-	//TODO : Finish me
-	qDebug() << "paintEvent : start";
 
 	QPainter painter(this);
 
-	QBrush* pBrush;
-	if ( _value < 200 ) {
+	/*
+	 * paint in red if value is below threshold
+	 */
+	if ( _value < _threshold ) {
 
-		pBrush = new QBrush (Qt::red);
+		painter.setBrush(*_pRedBrush);
 
 	} else {
 
-		pBrush = new QBrush (Qt::darkGreen);
+		painter.setBrush(*_pGreenBrush);
 	}
 
-	painter.setBrush(*pBrush);
-	painter.setPen(Qt::NoPen);
 	painter.setRenderHint(QPainter::Antialiasing, true);
-	painter.drawPie(0,0,minimumSizeHint().width() -5,minimumSizeHint().height() -5,0, static_cast<int>(_value*16));
 
-	delete pBrush;
+	/*
+	 * Qt draws angles with 1/16 degree precision.
+	 */
+	static const int STEPS = 16;
 
-	qDebug() << "paintEvent : end";
+	/*
+	 * pie is drawn starting from top, so we set startAngle at -270°
+	 */
+	static const int TOP = -270*STEPS;
+
+	/**
+	 * how many degrees in a full circle ?
+	 */
+	static const int FULL_CIRCLE = 360;
+
+	/*
+	 * We don't want the widget to disappear
+	 */
+	if ( _value < Constants::STEADINESS_ALWAYS_SHOW_VALUE ) {
+
+		_value = Constants::STEADINESS_ALWAYS_SHOW_VALUE;
+	}
+
+	/*
+	 * draw pie
+	 */
+	painter.setPen(Qt::NoPen);
+
+	painter.drawPie(this->visibleRegion().boundingRect(),
+			TOP,
+			static_cast<int>(- FULL_CIRCLE * _value * STEPS ));
+
 }
 
 

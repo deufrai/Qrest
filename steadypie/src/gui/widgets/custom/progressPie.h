@@ -25,11 +25,10 @@
 class QPaintEvent;
 class QMouseEvent;
 
-class ProgressPie :public QWidget {
+class ProgressPie : public QWidget {
 
 	Q_OBJECT
-	Q_PROPERTY(double threshold READ threshold WRITE setThreshold)
-
+	
 public:
 
 	ProgressPie(QWidget* parent = 0);
@@ -44,23 +43,19 @@ public:
 
 		return _threshold;
 	}
-
-	QSize minimumSizeHint() const {
-
-		return QSize(24,24);
-	}
+	
 
 protected:
-    void mousePressEvent(QMouseEvent *event);
-    void mouseMoveEvent(QMouseEvent *event);
     void paintEvent(QPaintEvent *event);
 
 public slots:
 	void setValue(const double value);
 
 private:
-	double _threshold;
-	double _value;
+	double 	_threshold;
+	double 	_value;
+	QBrush*	_pRedBrush;
+	QBrush*	_pGreenBrush;
 };
 
 #endif /* PROGRESSPIE_H_ */

@@ -57,6 +57,17 @@ public:
 	 * String describing path to online help.
 	 */
 	static const char* ONLINE_HELP_LOCATION;
+
+	/**
+	 * targetted steadiness ration for taps to be considered steady
+	 */
+	static const double STEADINESS_TARGET_RATIO = 0.90;
+
+	/**
+	 * the minimum steadiness value to force in order to have the steadiness
+	 * indicator always shown.
+	 */
+	static const double STEADINESS_ALWAYS_SHOW_VALUE = 0.05;
 };
 
 #endif /* CONSTANTS_H_ */

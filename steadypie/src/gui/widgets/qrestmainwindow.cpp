@@ -47,6 +47,12 @@ QrestMainWindow::QrestMainWindow(QWidget *parent)
 	// setting up GUI
 	ui.setupUi(this);
 
+    // setup steadiness indocator
+	_pie = new ProgressPie();
+	_pie->setThreshold(Constants::STEADINESS_TARGET_RATIO);
+	_pie->setToolTip(tr("How steady your lasts TAPs were"));
+	ui.tempoInputHorizontalLayout->addWidget(_pie);
+
 	// update view
 	updateView();
 
@@ -71,10 +77,6 @@ QrestMainWindow::QrestMainWindow(QWidget *parent)
     					QPoint(Settings::WINDOW_POSITON_DEFAULT_X,
     							Settings::WINDOW_POSITON_DEFAULT_Y)).toPoint());
     }
-
-	_pie = new ProgressPie();
-
-    ui.horizontalLayout_2->addWidget(_pie);
 }
 
 
@@ -125,20 +127,18 @@ void QrestMainWindow::updateView(void) {
 		if ( _document->isSteady() ) {
 
 			statusPermMessage(tr("You're steady"));
-			ui.steadyHint->setPixmap(greenHint);
 
 		} else {
 
 			statusPermMessage(tr("Keep tapping..."));
-			ui.steadyHint->setPixmap(redHint);
 		}
 
-		_pie->setValue(_document->getTempo());
+		_pie->setValue(_document->getSteadiness());
 
 	} else {
 
+		_pie->setValue(1.0);
 		statusClear();
-		ui.steadyHint->setPixmap(emptyPixmap);
 	}
 }
 
