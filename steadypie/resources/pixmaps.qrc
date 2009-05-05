@@ -1,8 +1,4 @@
 <RCC>
-  <qresource prefix="/lights" >
-    <file>pix/green_hint.png</file>
-    <file>pix/red_hint.png</file>
-  </qresource>
   <qresource prefix="icons" >
     <file>pix/preferences.png</file>
     <file>pix/qresticon.png</file>
