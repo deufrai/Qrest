@@ -23,6 +23,7 @@
 #include <QMouseEvent>
 #include <QPaintEvent>
 #include <QPainter>
+#include <QLineEdit>
 
 ProgressPie::ProgressPie(QWidget* parent)
 : QWidget(parent),
@@ -31,7 +32,13 @@ ProgressPie::ProgressPie(QWidget* parent)
   _pRedBrush(new QBrush(Qt::red)),
   _pGreenBrush(new QBrush(Qt::darkGreen)) {
 
-	setFixedSize(QSize(25,25));
+	/*
+	 * we want this widget to be enclosed within a square that has the same
+	 * height as a default QLineEdit.
+	 */
+	QLineEdit usedForSizeHintHeight;
+	int size = usedForSizeHintHeight.sizeHint().height();
+	setFixedSize(size, size);
 	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 }
 
@@ -44,7 +51,7 @@ ProgressPie::~ProgressPie() {
 
 
 void ProgressPie::paintEvent(QPaintEvent* event) {
-	
+
 	QPainter painter(this);
 
 	/*
@@ -92,7 +99,7 @@ void ProgressPie::paintEvent(QPaintEvent* event) {
 	painter.drawPie(this->visibleRegion().boundingRect(),
 			TOP,
 			static_cast<int>(- FULL_CIRCLE * _value * STEPS ));
-	
+
 	event->accept();
 
 }
