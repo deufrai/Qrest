@@ -25,12 +25,13 @@
 #include <QPainter>
 
 ProgressPie::ProgressPie(QWidget* parent)
-: _threshold(0.0),
+: QWidget(parent),
+  _threshold(0.0),
   _value(0.0),
   _pRedBrush(new QBrush(Qt::red)),
   _pGreenBrush(new QBrush(Qt::darkGreen)) {
 
-	setFixedSize(QSize(28,28));
+	setFixedSize(QSize(25,25));
 	setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
 }
 
@@ -43,7 +44,7 @@ ProgressPie::~ProgressPie() {
 
 
 void ProgressPie::paintEvent(QPaintEvent* event) {
-
+	
 	QPainter painter(this);
 
 	/*
@@ -91,6 +92,8 @@ void ProgressPie::paintEvent(QPaintEvent* event) {
 	painter.drawPie(this->visibleRegion().boundingRect(),
 			TOP,
 			static_cast<int>(- FULL_CIRCLE * _value * STEPS ));
+	
+	event->accept();
 
 }
 
