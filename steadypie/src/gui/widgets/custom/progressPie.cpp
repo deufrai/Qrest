@@ -88,7 +88,7 @@ void ProgressPie::paintEvent(QPaintEvent* event) {
 	 */
 	static const int TOP = -270*STEPS;
 
-	/**
+	/*
 	 * how many degrees in a full circle ?
 	 */
 	static const int FULL_CIRCLE = 360;
