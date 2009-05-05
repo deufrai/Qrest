@@ -111,7 +111,7 @@ private:
 	 *
 	 * \return a boolean describing steadiness
 	 */
-	bool getSteadiness() const;
+	void getSteadiness() const;
 
 	////////////////////////////////////////////////////////////////////////////
 	//

@@ -181,6 +181,20 @@ public:
      */
     inline Delay* getThirtySecondDelay() const { return _delays[THIRTYSECOND]; }
 
+    /**
+     * Get steadiness value.
+     *
+     * \return the steadiness value
+     */
+    inline double getSteadiness() const { return _steadiness; }
+
+    /**
+     * Set steadiness value.
+     *
+     * \param steadiness the steadiness value.
+     */
+    inline void setSteadiness(const double steadiness) { _steadiness = steadiness; }
+
 private:
 
 	////////////////////////////////////////////////////////////////////////////
@@ -237,6 +251,9 @@ private:
 
     /** has tempo been tapped steadily ? */
     bool _steady;
+
+    /** stediness value : between 0 and 1, represents how steady taps are */
+    double _steadiness;
 
     /** does tempo value come from taptempo ? */
     bool _tempoFromTap;

@@ -25,6 +25,7 @@
 #include "../../dp/observer.h"
 
 class Document;
+class ProgressPie;
 
 
 /**
@@ -200,6 +201,8 @@ private:
 
     /** Application data store */
     Document* _document;
+
+    ProgressPie*	_pie;
 
 };
 

@@ -95,7 +95,7 @@ void TapTempoCalculator::process() {
 
 	// are deltas steady ?
 	pDocument->setTempoFromTap(true);
-	pDocument->setSteady(getSteadiness());
+	getSteadiness();
 
 	// set tempo according to average
 	double averageDelta = getAverageDelta();
@@ -140,13 +140,13 @@ double TapTempoCalculator::getAverageDelta() const {
 
 
 
-bool TapTempoCalculator::getSteadiness() const {
+void TapTempoCalculator::getSteadiness() const {
 
 	/*
 	 * we get the minimum delta, the maximum and return true if they're
 	 * enclosed withing a range expressed as a ratio. STEADY_RATIO
 	 */
-	static const double STEADY_RATIO = 0.90;
+	Document* pDocument = Document::getInstance();
 
 	list<int>::const_iterator begin = _deltas.begin();
 	list<int>::const_iterator end = _deltas.end();
@@ -154,5 +154,8 @@ bool TapTempoCalculator::getSteadiness() const {
 	list<int>::const_iterator min = min_element(begin, end);
 	list<int>::const_iterator max = max_element(begin, end);
 
-	return ( (static_cast<double>(*min) / *max) > STEADY_RATIO );
+	double steadiness = (static_cast<double>(*min) / *max);
+
+	pDocument->setSteadiness(steadiness);
+	pDocument->setSteady( steadiness > Constants::STEADINESS_TARGET_RATIO );
 }
