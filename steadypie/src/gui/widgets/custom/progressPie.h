@@ -25,36 +25,91 @@
 class QPaintEvent;
 class QMouseEvent;
 
+/**
+ * Custom widget : a pie representing a double value between 0 and 1, wich gets
+ * painted red when value is below a defined threshold and painted green
+ * when value is above threshold.
+ */
 class ProgressPie : public QWidget {
 
 	Q_OBJECT
-	
-public:
 
+public:
+    ////////////////////////////////////////////////////////////////////////////
+	//
+	// INIT
+	//
+	////////////////////////////////////////////////////////////////////////////
 	ProgressPie(QWidget* parent = 0);
 	virtual ~ProgressPie();
 
+    ////////////////////////////////////////////////////////////////////////////
+	//
+	// ACCESS
+	//
+	////////////////////////////////////////////////////////////////////////////
+	/**
+	 * set threshold value.
+	 *
+	 * \param threshold the threshold value to set
+	 */
 	inline void setThreshold(const double threshold) {
 
 		_threshold = threshold;
 	}
 
+	/**
+	 * get threshold value.
+	 *
+	 * \return the threshold value
+	 */
 	inline double threshold() const {
 
 		return _threshold;
 	}
-	
 
+    ////////////////////////////////////////////////////////////////////////////
+	//
+	// OVERRIDES
+	//
+	////////////////////////////////////////////////////////////////////////////
 protected:
+	/**
+	 * Overrides QWidget::paintEvent.
+	 *
+	 * \param event the recieved paint event.
+	 */
     void paintEvent(QPaintEvent *event);
 
+    ////////////////////////////////////////////////////////////////////////////
+	//
+	// SLOTS
+	//
+	////////////////////////////////////////////////////////////////////////////
 public slots:
+	/**
+	 * set value and repaint widget.
+	 *
+	 * \param value the value to set
+	 */
 	void setValue(const double value);
 
+    ////////////////////////////////////////////////////////////////////////////
+	//
+	// MEMBERS
+	//
+	////////////////////////////////////////////////////////////////////////////
 private:
+	/** the threshold. */
 	double 	_threshold;
+
+	/** the value. */
 	double 	_value;
+
+	/** red brush. */
 	QBrush*	_pRedBrush;
+
+	/** dark green brush. */
 	QBrush*	_pGreenBrush;
 };
 
