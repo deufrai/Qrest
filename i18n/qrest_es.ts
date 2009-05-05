@@ -39,23 +39,28 @@
 <context>
     <name>QrestMainWindow</name>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="59"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="66"/>
         <source>I&apos;m ready, sir</source>
         <translation>A sus ordenes, jefe</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="122"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="129"/>
         <source>You&apos;re steady</source>
         <translation>Está estable</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="127"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="133"/>
         <source>Keep tapping...</source>
         <translation>Sigue clicando…</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="165"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="172"/>
         <source>Recalculation needed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="53"/>
+        <source>Reliability of displayed tempo value</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -67,7 +72,7 @@
         <translation>Qrest</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="40"/>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="38"/>
         <source>Tempo Input</source>
         <translation>Tempo</translation>
     </message>
@@ -92,102 +97,102 @@
         <translation>T&amp;AP</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="101"/>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="90"/>
         <source>Variants</source>
         <translation>Variantes</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="107"/>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="96"/>
         <source>&amp;Plain</source>
         <translation>&amp;Normal</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="117"/>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="106"/>
         <source>&amp;Dotted</source>
         <translation>&amp;Punteada</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="124"/>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="113"/>
         <source>&amp;Triplet</source>
         <translation>&amp;Tresillo</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="136"/>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="125"/>
         <source>Delays and LFOs</source>
         <translation>Plazos y LFOs</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="345"/>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="334"/>
         <source>ms</source>
         <translation>ms</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="355"/>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="344"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="546"/>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="533"/>
         <source>&amp;Help</source>
         <translation>Ayu&amp;da</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="553"/>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="540"/>
         <source>&amp;File</source>
         <translation>&amp;Fichero</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="574"/>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="561"/>
         <source>&amp;Quit</source>
         <translation>&amp;Salir</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="577"/>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="564"/>
         <source>Quit Qrest</source>
         <translation>Salir de Qrest</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="580"/>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="567"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="589"/>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="576"/>
         <source>About &amp;Qrest...</source>
         <translation>A proposito de &amp;Qrest...</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="592"/>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="579"/>
         <source>About Qrest</source>
         <translation>A proposito de Qrest</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="601"/>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="588"/>
         <source>Online &amp;Help</source>
         <translation>&amp;Ayuda en línea</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="604"/>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="591"/>
         <source>Help</source>
         <translation>Ayuda</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="559"/>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="546"/>
         <source>&amp;Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="613"/>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="600"/>
         <source>&amp;Preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="616"/>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="603"/>
         <source>Open preferences dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="619"/>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="606"/>
         <source>Ctrl+P</source>
         <translation type="unfinished"></translation>
     </message>
@@ -195,32 +200,32 @@
 <context>
     <name>QrestPreferencesDialogClass</name>
     <message>
-        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="14"/>
+        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="13"/>
         <source>Qrest preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="28"/>
+        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="27"/>
         <source>User Interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="40"/>
+        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="39"/>
         <source>Should Qrest&apos;s main window be opened at the screen location it had on last run ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="43"/>
+        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="42"/>
         <source>Remember window &amp;position</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="72"/>
+        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="73"/>
         <source>OK</source>
         <translation type="unfinished">OK</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="85"/>
+        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="86"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
