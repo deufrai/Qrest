@@ -63,18 +63,7 @@ ProgressPie::~ProgressPie() {
 void ProgressPie::paintEvent(QPaintEvent* event) {
 
 	QPainter painter(this);
-
-	/*
-	 * paint in red if value is below threshold
-	 */
-	if ( _value < _threshold ) {
-
-		painter.setBrush(*_pRedBrush);
-
-	} else {
-
-		painter.setBrush(*_pGreenBrush);
-	}
+	painter.setPen(Qt::NoPen);
 
 	painter.setRenderHint(QPainter::Antialiasing, true);
 
@@ -102,10 +91,16 @@ void ProgressPie::paintEvent(QPaintEvent* event) {
 	}
 
 	/*
-	 * draw pie
+	 * draw red circle
 	 */
-	painter.setPen(Qt::NoPen);
+	painter.setBrush(*_pRedBrush);
+	painter.drawEllipse(this->visibleRegion().boundingRect());
 
+
+	/*
+	 * draw green pie
+	 */
+	painter.setBrush(*_pGreenBrush);
 	painter.drawPie(this->visibleRegion().boundingRect(),
 			TOP,
 			static_cast<int>(- FULL_CIRCLE * _value * STEPS ));
