@@ -12,7 +12,7 @@ I) Compile Qrest application
 II) Compile Qrest unit tests
 ===============================
 
-    a) get to folder containing 'qrest.pro' file
+    a) get to folder containing 'tests.pro' file
     b) type `qmake tests.pro` (beware of using a 4.2 or higher qmake)
     c) type `make`
 
