@@ -26,48 +26,43 @@
 class Constants {
 
 private:
-	Constants();
-	virtual ~Constants();
+    Constants();
+    virtual ~Constants();
 
 public:
-	/**
-	 * how many seconds in a minute ?
-	 */
-	static const double SECONDS_PER_MINUTE = 60.0;
+    /**
+     * how many seconds in a minute ?
+     */
+    static const double SECONDS_PER_MINUTE = 60.0;
 
-	/**
-	 * how many milliseconds in a second ?
-	 */
-	static const double MILLISEC_PER_SECOND = 1000.0;
+    /**
+     * how many milliseconds in a second ?
+     */
+    static const double MILLISEC_PER_SECOND = 1000.0;
 
-	/**
-	 * String describing version
-	 */
-	static const char* VERSION_STRING;
+    /**
+     * String describing version
+     */
+    static const char* VERSION_STRING;
 
-	/**
-	 * String describing path to i18n folder.
-	 *
-	 * It may be expressed as a relative path from where bianry is,
-	 * or absolutely.
-	 */
-	static const char* I18N_FOLDER_LOCATION;
+    /**
+     * String describing path to i18n folder.
+     *
+     * It may be expressed as a relative path from where bianry is,
+     * or absolutely.
+     */
+    static const char* I18N_FOLDER_LOCATION;
 
-	/**
-	 * String describing path to online help.
-	 */
-	static const char* ONLINE_HELP_LOCATION;
+    /**
+     * String describing path to online help.
+     */
+    static const char* ONLINE_HELP_LOCATION;
 
-	/**
-	 * targetted steadiness ration for taps to be considered steady
-	 */
-	static const double STEADINESS_TARGET_RATIO = 0.90;
+    /**
+     * targetted steadiness ration for taps to be considered steady
+     */
+    static const double STEADINESS_TARGET_RATIO = 0.90;
 
-	/**
-	 * the minimum steadiness value to force in order to have the steadiness
-	 * indicator always shown.
-	 */
-	static const double STEADINESS_ALWAYS_SHOW_VALUE = 0.05;
 };
 
 #endif /* CONSTANTS_H_ */

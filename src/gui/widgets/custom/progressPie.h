@@ -30,87 +30,87 @@ class QMouseEvent;
  * painted red when value is below a defined threshold and painted green
  * when value is above threshold.
  */
-class ProgressPie : public QWidget {
+class ProgressPie: public QWidget {
 
-	Q_OBJECT
+Q_OBJECT
 
 public:
     ////////////////////////////////////////////////////////////////////////////
-	//
-	// INIT
-	//
-	////////////////////////////////////////////////////////////////////////////
-	ProgressPie(QWidget* parent = 0);
-	virtual ~ProgressPie();
+    //
+    // INIT
+    //
+    ////////////////////////////////////////////////////////////////////////////
+    ProgressPie(QWidget* parent = 0);
+    virtual ~ProgressPie();
 
     ////////////////////////////////////////////////////////////////////////////
-	//
-	// ACCESS
-	//
-	////////////////////////////////////////////////////////////////////////////
-	/**
-	 * set threshold value.
-	 *
-	 * \param threshold the threshold value to set
-	 */
-	inline void setThreshold(const double threshold) {
+    //
+    // ACCESS
+    //
+    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * set threshold value.
+     *
+     * \param threshold the threshold value to set
+     */
+    inline void setThreshold(const double threshold) {
 
-		_threshold = threshold;
-	}
+        _threshold = threshold;
+    }
 
-	/**
-	 * get threshold value.
-	 *
-	 * \return the threshold value
-	 */
-	inline double threshold() const {
+    /**
+     * get threshold value.
+     *
+     * \return the threshold value
+     */
+    inline double threshold() const {
 
-		return _threshold;
-	}
+        return _threshold;
+    }
 
     ////////////////////////////////////////////////////////////////////////////
-	//
-	// OVERRIDES
-	//
-	////////////////////////////////////////////////////////////////////////////
+    //
+    // OVERRIDES
+    //
+    ////////////////////////////////////////////////////////////////////////////
 protected:
-	/**
-	 * Overrides QWidget::paintEvent.
-	 *
-	 * \param event the recieved paint event.
-	 */
+    /**
+     * Overrides QWidget::paintEvent.
+     *
+     * \param event the recieved paint event.
+     */
     void paintEvent(QPaintEvent *event);
 
     ////////////////////////////////////////////////////////////////////////////
-	//
-	// SLOTS
-	//
-	////////////////////////////////////////////////////////////////////////////
+    //
+    // SLOTS
+    //
+    ////////////////////////////////////////////////////////////////////////////
 public slots:
-	/**
-	 * set value and repaint widget.
-	 *
-	 * \param value the value to set
-	 */
-	void setValue(const double value);
+    /**
+     * set value and repaint widget.
+     *
+     * \param value the value to set
+     */
+    void setValue(const double value);
 
     ////////////////////////////////////////////////////////////////////////////
-	//
-	// MEMBERS
-	//
-	////////////////////////////////////////////////////////////////////////////
+    //
+    // MEMBERS
+    //
+    ////////////////////////////////////////////////////////////////////////////
 private:
-	/** the threshold. */
-	double 	_threshold;
+    /** the threshold. */
+    double _threshold;
 
-	/** the value. */
-	double 	_value;
+    /** the value. */
+    double _value;
 
-	/** red brush. */
-	QBrush*	_pRedBrush;
+    /** red brush. */
+    QBrush* _pRedBrush;
 
-	/** dark green brush. */
-	QBrush*	_pGreenBrush;
+    /** dark green brush. */
+    QBrush* _pGreenBrush;
 };
 
 #endif /* PROGRESSPIE_H_ */

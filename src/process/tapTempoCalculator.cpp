@@ -31,47 +31,35 @@
 ////////////////////////////////////////////////////////////////////////////////
 TapTempoCalculator* TapTempoCalculator::_instance = 0;
 
-
 TapTempoCalculator::~TapTempoCalculator() {
 
 }
 
+TapTempoCalculator::TapTempoCalculator() :
+    _pTimeStamper(new TimeStamper()) {
 
-
-
-TapTempoCalculator::TapTempoCalculator()
-: _pTimeStamper(new TimeStamper()) {
-
-
-	/** init deltas collection with default data */
-	initDeltas();
+    /** init deltas collection with default data */
+    initDeltas();
 }
-
-
-
 
 TapTempoCalculator* TapTempoCalculator::getInstance() {
 
-	if ( 0 == _instance ) {
+    if (0 == _instance) {
 
-		_instance = new TapTempoCalculator();
-	}
+        _instance = new TapTempoCalculator();
+    }
 
-	return _instance;
+    return _instance;
 }
-
-
 
 void TapTempoCalculator::destroy() {
 
-	if ( _instance ) {
+    if (_instance) {
 
-		delete _instance;
-		_instance = 0;
-	}
+        delete _instance;
+        _instance = 0;
+    }
 }
-
-
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -80,33 +68,31 @@ void TapTempoCalculator::destroy() {
 ////////////////////////////////////////////////////////////////////////////////
 void TapTempoCalculator::process() {
 
-	// the last timestamp will be 0 on first call of this function
-	static int lastStamp = 0;
+    // the last timestamp will be 0 on first call of this function
+    static int lastStamp = 0;
 
-	// get pointer to document
-	Document* pDocument = Document::getInstance();
+    // get pointer to document
+    Document* pDocument = Document::getInstance();
 
-	// get current timestamp
-	int currentStamp = _pTimeStamper->getStamp();
+    // get current timestamp
+    int currentStamp = _pTimeStamper->getStamp();
 
-	// store delta between current timestamp and last one
-	_deltas.push_back( currentStamp - lastStamp );
-	_deltas.pop_front();
+    // store delta between current timestamp and last one
+    _deltas.push_back(currentStamp - lastStamp);
+    _deltas.pop_front();
 
-	// are deltas steady ?
-	pDocument->setTempoFromTap(true);
-	getSteadiness();
+    // are deltas steady ?
+    pDocument->setTempoFromTap(true);
+    getSteadiness();
 
-	// set tempo according to average
-	double averageDelta = getAverageDelta();
-	pDocument->setTempo(
-			qRound(Constants::SECONDS_PER_MINUTE * Constants::MILLISEC_PER_SECOND / averageDelta));
+    // set tempo according to average
+    double averageDelta = getAverageDelta();
+    pDocument->setTempo(qRound(Constants::SECONDS_PER_MINUTE
+            * Constants::MILLISEC_PER_SECOND / averageDelta));
 
-	// store current stamp for next call
-	lastStamp = currentStamp;
+    // store current stamp for next call
+    lastStamp = currentStamp;
 }
-
-
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -115,47 +101,42 @@ void TapTempoCalculator::process() {
 ////////////////////////////////////////////////////////////////////////////////
 void TapTempoCalculator::initDeltas() {
 
-	for ( int i=0; i<DELTAS_COUNT; i++ ) {
+    for (int i = 0; i < DELTAS_COUNT; i++) {
 
-		_deltas.push_back(0);
-	}
+        _deltas.push_back(0);
+    }
 }
-
-
 
 double TapTempoCalculator::getAverageDelta() const {
 
-	list<int>::const_iterator it = _deltas.begin();
-	long sum = 0;
+    list<int>::const_iterator it = _deltas.begin();
+    long sum = 0;
 
-	while ( it != _deltas.end() ) {
+    while (it != _deltas.end()) {
 
-		sum += *it;
-		it++;
-	}
+        sum += *it;
+        it++;
+    }
 
-	return static_cast<double>(sum)/DELTAS_COUNT;
+    return static_cast<double> (sum) / DELTAS_COUNT;
 }
-
-
-
 
 void TapTempoCalculator::getSteadiness() const {
 
-	/*
-	 * we get the minimum delta, the maximum and return true if they're
-	 * enclosed withing a range expressed as a ratio. STEADY_RATIO
-	 */
-	Document* pDocument = Document::getInstance();
+    /*
+     * we get the minimum delta, the maximum and return true if they're
+     * enclosed withing a range expressed as a ratio. STEADY_RATIO
+     */
+    Document* pDocument = Document::getInstance();
 
-	list<int>::const_iterator begin = _deltas.begin();
-	list<int>::const_iterator end = _deltas.end();
+    list<int>::const_iterator begin = _deltas.begin();
+    list<int>::const_iterator end = _deltas.end();
 
-	list<int>::const_iterator min = min_element(begin, end);
-	list<int>::const_iterator max = max_element(begin, end);
+    list<int>::const_iterator min = min_element(begin, end);
+    list<int>::const_iterator max = max_element(begin, end);
 
-	double steadiness = (static_cast<double>(*min) / *max);
+    double steadiness = (static_cast<double> (*min) / *max);
 
-	pDocument->setSteadiness(steadiness);
-	pDocument->setSteady( steadiness > Constants::STEADINESS_TARGET_RATIO );
+    pDocument->setSteadiness(steadiness);
+    pDocument->setSteady(steadiness > Constants::STEADINESS_TARGET_RATIO);
 }

@@ -27,37 +27,38 @@
  */
 int main(int argc, char** argv) {
 
-	QCoreApplication app(argc, argv);
+    QCoreApplication app(argc, argv);
 
-	/*
-	 * List of all tests to be ran.
-	 */
-	QList<QObject*> tests;
+    /*
+     * List of all tests to be ran.
+     */
+    QList<QObject*> tests;
 
-	/*
-	 * populate a list of all testscases we want to run.
-	 */
-	tests << new DelayCalculatorTestCase();
-	tests << new TapTempoCalculatorTestCase();
+    /*
+     * populate a list of all testscases we want to run.
+     */
+    tests << new DelayCalculatorTestCase();
+    tests << new TapTempoCalculatorTestCase();
 
-	bool someTestsFailed = false;
-	int status = 0;
+    bool someTestsFailed = false;
+    int status = 0;
 
-	/*
-	 * Run all tests and remember if at leasst one of them failed.
-	 */
-	foreach (QObject* test, tests) {
+    /*
+     * Run all tests and remember if at leasst one of them failed.
+     */
+    foreach (QObject* test, tests)
+        {
 
-		status = QTest::qExec(test, argc, argv);
+            status = QTest::qExec(test, argc, argv);
 
-		if ( ! someTestsFailed && 0 != status ) {
+            if (!someTestsFailed && 0 != status) {
 
-			someTestsFailed = true;
-		}
-	}
+                someTestsFailed = true;
+            }
+        }
 
-	/*
-	 * We return 0 if no failure occured, otherwise : 1.
-	 */
-	return someTestsFailed ? 1 : 0;
+    /*
+     * We return 0 if no failure occured, otherwise : 1.
+     */
+    return someTestsFailed ? 1 : 0;
 }

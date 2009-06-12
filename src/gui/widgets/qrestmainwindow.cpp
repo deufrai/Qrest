@@ -31,70 +31,62 @@
 #include "../../model/document.h"
 #include "custom/progressPie.h"
 
-
 ////////////////////////////////////////////////////////////////////////////////
 //
 // INIT
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-QrestMainWindow::QrestMainWindow(QWidget *parent)
-: QMainWindow(parent), _document(Document::getInstance()) {
+QrestMainWindow::QrestMainWindow(QWidget *parent) :
+    QMainWindow(parent), _document(Document::getInstance()) {
 
-	// register as an observer for app data
-	_document->registerObserver(this);
+    // register as an observer for app data
+    _document->registerObserver(this);
 
-	// setting up GUI
-	ui.setupUi(this);
+    // setting up GUI
+    ui.setupUi(this);
 
     // setup steadiness indocator
-	_pie = new ProgressPie();
-	_pie->setThreshold(Constants::STEADINESS_TARGET_RATIO);
-	_pie->setToolTip(tr("Reliability of displayed tempo value"));
-	ui.tempoInputHorizontalLayout->addWidget(_pie);
+    _pie = new ProgressPie();
+    _pie->setThreshold(Constants::STEADINESS_TARGET_RATIO);
+    _pie->setToolTip(tr("Reliability of displayed tempo value"));
+    ui.tempoInputHorizontalLayout->addWidget(_pie);
 
-	// update view
-	updateView();
+    // update view
+    updateView();
 
-	// usefull to populate delay times with document updated values
-	processTempoInput();
+    // usefull to populate delay times with document updated values
+    processTempoInput();
 
-	// give focus to tempo input field
-	setFocusToTempoInput();
+    // give focus to tempo input field
+    setFocusToTempoInput();
 
-	// say hello
-	statusTempMessage(tr("I'm ready, sir"));
+    // say hello
+    statusTempMessage(tr("I'm ready, sir"));
 
     // register as an event filter for tempo input field
     ui.tempoEdit->installEventFilter(this);
 
     // move to last position stored in user's preferences if asked.
-    if ( Settings::getInstance()->getSettings().value(
-    		Settings::REMEMBER_WINDOW_POSITION,
-    		Settings::REMEMBER_WINDOW_POSITION_DEFAULT).toBool() ) {
+    if (Settings::getInstance()->getSettings().value(
+            Settings::REMEMBER_WINDOW_POSITION,
+            Settings::REMEMBER_WINDOW_POSITION_DEFAULT).toBool()) {
 
-    	move(Settings::getInstance()->getSettings().value(Settings::WINDOW_POSITION,
-    					QPoint(Settings::WINDOW_POSITON_DEFAULT_X,
-    							Settings::WINDOW_POSITON_DEFAULT_Y)).toPoint());
+        move(Settings::getInstance()->getSettings().value(
+                Settings::WINDOW_POSITION, QPoint(
+                        Settings::WINDOW_POSITON_DEFAULT_X,
+                        Settings::WINDOW_POSITON_DEFAULT_Y)).toPoint());
     }
 }
 
-
-
-
-
 QrestMainWindow::~QrestMainWindow() {
 
-	// store position into user's prefences.
-	Settings::getInstance()->getSettings().setValue(
-			Settings::WINDOW_POSITION,
-			this->pos());
+    // store position into user's prefences.
+    Settings::getInstance()->getSettings().setValue(Settings::WINDOW_POSITION,
+            this->pos());
 
-	Settings::getInstance()->getSettings().sync();
+    Settings::getInstance()->getSettings().sync();
 }
-
-
-
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -103,47 +95,50 @@ QrestMainWindow::~QrestMainWindow() {
 ////////////////////////////////////////////////////////////////////////////////
 void QrestMainWindow::updateView(void) {
 
-	/*
-	 * pixmaps used for steadiness hint
-	 */
-	static QPixmap 		redHint(":/lights/pix/red_hint.png");
-	static QPixmap 		greenHint(":/lights/pix/green_hint.png");
-	static QPixmap		emptyPixmap;
+    /*
+     * pixmaps used for steadiness hint
+     */
+    static QPixmap redHint(":/lights/pix/red_hint.png");
+    static QPixmap greenHint(":/lights/pix/green_hint.png");
+    static QPixmap emptyPixmap;
 
+    // update tempo input field with validated value
+    ui.tempoEdit->setText(QString::number(_document->getTempo()));
 
-	// update tempo input field with validated value
-	ui.tempoEdit->setText(QString::number(_document->getTempo()));
+    // update delay display fields
+    updateDelayDisplays();
 
-	// update delay display fields
-	updateDelayDisplays();
+    // update LFO display fiels
+    updateLfoDisplays();
 
-	// update LFO display fiels
-	updateLfoDisplays();
+    /*
+     * update steadiness widget and status bar.
+     */
+    if (_document->isTempoFromTap()) {
 
+        if (_document->isSteady()) {
 
-	// give a light and statusbar message according to steadiness
-	if ( _document->isTempoFromTap() ) {
+            statusPermMessage(tr("You're steady"));
 
-		if ( _document->isSteady() ) {
+        } else {
 
-			statusPermMessage(tr("You're steady"));
+            statusPermMessage(tr("Keep tapping..."));
+        }
 
-		} else {
+        _pie->setValue(_document->getSteadiness());
 
-			statusPermMessage(tr("Keep tapping..."));
-		}
+    } else {
 
-		_pie->setValue(_document->getSteadiness());
+        _pie->setValue(1.0);
+        statusClear();
+    }
 
-	} else {
-
-		_pie->setValue(1.0);
-		statusClear();
-	}
+    /*
+     * update steadiness widget's tooltip text
+     */
+    _pie->setToolTip(tr("displayed BPM value is %n% reliable", "",
+            (int) (_document->getSteadiness() * 100)));
 }
-
-
-
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -152,126 +147,91 @@ void QrestMainWindow::updateView(void) {
 ////////////////////////////////////////////////////////////////////////////////
 void QrestMainWindow::on_tempoEdit_returnPressed() {
 
-	processTempoInput();
+    processTempoInput();
 
-	// set focus to tempo input field
-	setFocusToTempoInput();
+    // set focus to tempo input field
+    setFocusToTempoInput();
 }
-
-
-
 
 void QrestMainWindow::on_tempoEdit_textEdited(const QString& text) {
 
-	/*
-	 * If displayed value is different to last valid value
-	 * we tell user that resulting values must be recalculated
-	 */
-	if ( text.toDouble() != _document->getTempo() ) {
+    /*
+     * If displayed value is different to last valid value
+     * we tell user that resulting values must be recalculated
+     */
+    if (text.toDouble() != _document->getTempo()) {
 
-		statusPermMessage(tr("Recalculation needed"));
+        statusPermMessage(tr("Recalculation needed"));
 
-	} else {
+    } else {
 
-		statusClear();
-	}
+        statusClear();
+    }
 
 }
-
-
-
-
 
 void QrestMainWindow::on_tapButton_pressed() {
 
-	TapTempoCalculator::getInstance()->process();
+    TapTempoCalculator::getInstance()->process();
 }
-
-
-
 
 void QrestMainWindow::on_plainRadio_clicked() {
 
-	Document::getInstance()->setMultiplier(Document::MULTIPLIER_PLAIN);
+    Document::getInstance()->setMultiplier(Document::MULTIPLIER_PLAIN);
 }
-
-
-
 
 void QrestMainWindow::on_dottedRadio_clicked() {
 
-	Document::getInstance()->setMultiplier(Document::MULTIPLIER_DOTTED);
+    Document::getInstance()->setMultiplier(Document::MULTIPLIER_DOTTED);
 }
-
-
-
 
 void QrestMainWindow::on_tripletRadio_clicked() {
 
-	Document::getInstance()->setMultiplier(Document::MULTIPLIER_TRIPLET);
+    Document::getInstance()->setMultiplier(Document::MULTIPLIER_TRIPLET);
 }
-
-
-
-
 
 void QrestMainWindow::on_actionQuit_triggered() {
 
-	this->close();
+    this->close();
 }
-
-
-
 
 void QrestMainWindow::on_actionAbout_triggered() {
 
-	QrestAboutDialog dlg(Constants::VERSION_STRING, this);
+    QrestAboutDialog dlg(Constants::VERSION_STRING, this);
 
-	dlg.adjustSize();
+    dlg.adjustSize();
 
-	dlg.exec();
+    dlg.exec();
 }
-
-
-
 
 void QrestMainWindow::on_actionPreferences_triggered() {
 
-	QrestPreferencesDialog dlg(this);
+    QrestPreferencesDialog dlg(this);
 
-	dlg.resize(dlg.minimumSizeHint());
+    dlg.resize(dlg.minimumSizeHint());
 
-	dlg.exec();
+    dlg.exec();
 }
-
-
 
 void QrestMainWindow::on_actionHelp_triggered() {
 
-	QrestHelpViewer* pViewer = QrestHelpViewer::getInstance();
+    QrestHelpViewer* pViewer = QrestHelpViewer::getInstance();
 
-	pViewer->showNormal();
+    pViewer->showNormal();
 
-	// we wait for the window to be visible before activating and rasing it
-	QTimer::singleShot(25,this, SLOT(raiseHelp()));
-
+    // we wait for the window to be visible before activating and rasing it
+    QTimer::singleShot(25, this, SLOT(raiseHelp()));
 
 }
-
-
-
 
 void QrestMainWindow::raiseHelp() {
 
-	QrestHelpViewer* pViewer = QrestHelpViewer::getInstance();
+    QrestHelpViewer* pViewer = QrestHelpViewer::getInstance();
 
-	pViewer->activateWindow();
-	pViewer->raise();
-
+    pViewer->activateWindow();
+    pViewer->raise();
 
 }
-
-
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -280,40 +240,36 @@ void QrestMainWindow::raiseHelp() {
 ////////////////////////////////////////////////////////////////////////////////
 bool QrestMainWindow::eventFilter(QObject* target, QEvent* event) {
 
-	// handling of mousewheel events onto temo input field
-	if ( target == ui.tempoEdit && event->type() == QEvent::Wheel ) {
+    // handling of mousewheel events onto temo input field
+    if (target == ui.tempoEdit && event->type() == QEvent::Wheel) {
 
-		QWheelEvent* wheelEvent = static_cast<QWheelEvent*>(event);
+        QWheelEvent* wheelEvent = static_cast<QWheelEvent*> (event);
 
-		// most mice work in steps of 15 degrees
-		int numDegrees = wheelEvent->delta() / 8;
-		int numSteps = numDegrees / 15;
+        // most mice work in steps of 15 degrees
+        int numDegrees = wheelEvent->delta() / 8;
+        int numSteps = numDegrees / 15;
 
-		double tempo = ui.tempoEdit->text().toDouble();
+        double tempo = ui.tempoEdit->text().toDouble();
 
-		ui.tempoEdit->setText(QString::number(tempo + numSteps));
+        ui.tempoEdit->setText(QString::number(tempo + numSteps));
 
-		// do the math !!
-		processTempoInput();
-                setFocusToTempoInput();
+        // do the math !!
+        processTempoInput();
+        setFocusToTempoInput();
 
-		return true;
+        return true;
 
-	} else {
+    } else {
 
-		return QMainWindow::eventFilter(target, event);
-	}
+        return QMainWindow::eventFilter(target, event);
+    }
 }
-
-
-
 
 void QrestMainWindow::closeEvent(QCloseEvent* event) {
 
-	QrestHelpViewer::destroy();
-	event->accept();
+    QrestHelpViewer::destroy();
+    event->accept();
 }
-
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -322,115 +278,90 @@ void QrestMainWindow::closeEvent(QCloseEvent* event) {
 ////////////////////////////////////////////////////////////////////////////////
 void QrestMainWindow::setFocusToTempoInput(void) const {
 
-	ui.tempoEdit->setFocus();
-	ui.tempoEdit->selectAll();
+    ui.tempoEdit->setFocus();
+    ui.tempoEdit->selectAll();
 }
-
-
-
 
 void QrestMainWindow::updateDelayDisplays(void) {
 
-	ui.quarterPeriodEdit->setText(
-			QString::number(qRound(_document->getQuarterDelay()->getPeriod())));
+    ui.quarterPeriodEdit->setText(QString::number(qRound(
+            _document->getQuarterDelay()->getPeriod())));
 
-	ui.wholePeriodEdit->setText(
-			QString::number(qRound(_document->getWholeDelay()->getPeriod())));
+    ui.wholePeriodEdit->setText(QString::number(qRound(
+            _document->getWholeDelay()->getPeriod())));
 
-	ui.halfPeriodEdit->setText(
-			QString::number(qRound(_document->getHalfDelay()->getPeriod())));
+    ui.halfPeriodEdit->setText(QString::number(qRound(
+            _document->getHalfDelay()->getPeriod())));
 
-	ui.eighthPeriodEdit->setText(
-			QString::number(qRound(_document->getEighthDelay()->getPeriod())));
+    ui.eighthPeriodEdit->setText(QString::number(qRound(
+            _document->getEighthDelay()->getPeriod())));
 
-	ui.sixteenthPeriodEdit->setText(
-			QString::number(qRound(_document->getSixTeenthDelay()->getPeriod())));
+    ui.sixteenthPeriodEdit->setText(QString::number(qRound(
+            _document->getSixTeenthDelay()->getPeriod())));
 
-	ui.thirtySecondPeriodEdit->setText(
-			QString::number(qRound(_document->getThirtySecondDelay()->getPeriod())));
+    ui.thirtySecondPeriodEdit->setText(QString::number(qRound(
+            _document->getThirtySecondDelay()->getPeriod())));
 
 }
-
-
-
-
 
 void QrestMainWindow::updateLfoDisplays(void) {
 
-	/*
-	 * we display delay frequencies as plain float number
-	 * ( no scientific format ) with only a precision of 3
-	 */
-	static const int 	LFO_DISPLAY_PRECISION = 3;
-	static const char	LFO_DISPLAY_FORMAT = 'f';
+    /*
+     * we display delay frequencies as plain float number
+     * ( no scientific format ) with only a precision of 3
+     */
+    static const int LFO_DISPLAY_PRECISION = 3;
+    static const char LFO_DISPLAY_FORMAT = 'f';
 
-	ui.quarterLfoEdit->setText(
-			QString::number(_document->getQuarterDelay()->getFrequency(),
-					LFO_DISPLAY_FORMAT,
-					LFO_DISPLAY_PRECISION));
+    ui.quarterLfoEdit->setText(QString::number(
+            _document->getQuarterDelay()->getFrequency(), LFO_DISPLAY_FORMAT,
+            LFO_DISPLAY_PRECISION));
 
-	ui.wholeLfoEdit->setText(
-			QString::number(_document->getWholeDelay()->getFrequency(),
-					LFO_DISPLAY_FORMAT,
-					LFO_DISPLAY_PRECISION));
+    ui.wholeLfoEdit->setText(QString::number(
+            _document->getWholeDelay()->getFrequency(), LFO_DISPLAY_FORMAT,
+            LFO_DISPLAY_PRECISION));
 
-	ui.halfLfoEdit->setText(
-			QString::number(_document->getHalfDelay()->getFrequency(),
-					LFO_DISPLAY_FORMAT,
-					LFO_DISPLAY_PRECISION));
+    ui.halfLfoEdit->setText(QString::number(
+            _document->getHalfDelay()->getFrequency(), LFO_DISPLAY_FORMAT,
+            LFO_DISPLAY_PRECISION));
 
-	ui.eighthLfoEdit->setText(
-			QString::number(_document->getEighthDelay()->getFrequency(),
-					LFO_DISPLAY_FORMAT,
-					LFO_DISPLAY_PRECISION));
+    ui.eighthLfoEdit->setText(QString::number(
+            _document->getEighthDelay()->getFrequency(), LFO_DISPLAY_FORMAT,
+            LFO_DISPLAY_PRECISION));
 
-	ui.sixteenthLfoEdit->setText(
-			QString::number(_document->getSixTeenthDelay()->getFrequency(),
-					LFO_DISPLAY_FORMAT,
-					LFO_DISPLAY_PRECISION));
+    ui.sixteenthLfoEdit->setText(QString::number(
+            _document->getSixTeenthDelay()->getFrequency(), LFO_DISPLAY_FORMAT,
+            LFO_DISPLAY_PRECISION));
 
-	ui.thirtySecondLfoEdit->setText(
-			QString::number(_document->getThirtySecondDelay()->getFrequency(),
-					LFO_DISPLAY_FORMAT,
-					LFO_DISPLAY_PRECISION));
+    ui.thirtySecondLfoEdit->setText(QString::number(
+            _document->getThirtySecondDelay()->getFrequency(),
+            LFO_DISPLAY_FORMAT, LFO_DISPLAY_PRECISION));
 
 }
-
-
-
 
 void QrestMainWindow::processTempoInput(void) const {
 
-	// tempo has been entered numerically
-	_document->setTempoFromTap(false);
+    // tempo has been entered numerically
+    _document->setTempoFromTap(false);
 
-	// get tempo input field content and pass it to document
-	_document->setTempo(ui.tempoEdit->text().toDouble());
+    // get tempo input field content and pass it to document
+    _document->setTempo(ui.tempoEdit->text().toDouble());
 }
-
-
-
 
 void QrestMainWindow::statusPermMessage(const QString& message) const {
 
-	ui.statusbar->showMessage(message);
+    ui.statusbar->showMessage(message);
 }
-
-
-
 
 void QrestMainWindow::statusTempMessage(const QString& message) const {
 
-	// temp messages are shown for 1.5 seconds
-	static const int STATUSBAR_TEMP_TIMEOUT = 1500;
+    // temp messages are shown for 1.5 seconds
+    static const int STATUSBAR_TEMP_TIMEOUT = 1500;
 
-	ui.statusbar->showMessage(message, STATUSBAR_TEMP_TIMEOUT);
+    ui.statusbar->showMessage(message, STATUSBAR_TEMP_TIMEOUT);
 }
-
-
-
 
 void QrestMainWindow::statusClear(void) const {
 
-	ui.statusbar->clearMessage();
+    ui.statusbar->clearMessage();
 }

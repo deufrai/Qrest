@@ -25,27 +25,31 @@
 /**
  * Unit tests against DelayCalculator.
  */
-class DelayCalculatorTestCase : public QObject {
-	Q_OBJECT
+class DelayCalculatorTestCase: public QObject {
+Q_OBJECT
 
 public:
-	DelayCalculatorTestCase(){};
-	virtual ~DelayCalculatorTestCase(){};
+    DelayCalculatorTestCase() {
+    }
+    ;
+    virtual ~DelayCalculatorTestCase() {
+    }
+    ;
 
 private slots:
 
-	/*
-	 * test fixture : set tempo value to 60 BPM.
-	 */
-	void initTestCase();
+    /*
+     * test fixture : set tempo value to 60 BPM.
+     */
+    void initTestCase();
 
-	// actual tests
-	void testPlainValues();
-	void testDottedValues();
-	void testTripletValues();
+    // actual tests
+    void testPlainValues();
+    void testDottedValues();
+    void testTripletValues();
 
 private:
-	static const int TEMPO = 60;
+    static const int TEMPO = 60;
 };
 
 #endif /* DELAYCALCULATORTESTCASE_H_ */

@@ -25,25 +25,25 @@
 /*
  * Unit tests against TapTempoCalculator.
  */
-class TapTempoCalculatorTestCase : public QObject {
+class TapTempoCalculatorTestCase: public QObject {
 
-	Q_OBJECT
+Q_OBJECT
 
 public:
-	TapTempoCalculatorTestCase();
-	virtual ~TapTempoCalculatorTestCase();
+    TapTempoCalculatorTestCase();
+    virtual ~TapTempoCalculatorTestCase();
 
 private slots:
-	/*
-	 * test fixture : simulates 4 taps at 60 BPM.
-	 */
-	void initTestCase();
+    /*
+     * test fixture : simulates 4 taps at 60 BPM.
+     */
+    void initTestCase();
 
-	/*
-	 * actual tests.
-	 */
-	void testTapTempoAt60BPM();
-	void testSteadiness();
+    /*
+     * actual tests.
+     */
+    void testTapTempoAt60BPM();
+    void testSteadiness();
 };
 
 #endif /* TAPTEMPOCALCULATORTESTCASE_H_ */

@@ -29,82 +29,84 @@
  */
 class Settings {
 
-	////////////////////////////////////////////////////////////////////////////
-	//
-	// INIT
-	//
-	////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // INIT
+    //
+    ////////////////////////////////////////////////////////////////////////////
 private:
-	Settings();
-	virtual ~Settings();
+    Settings();
+    virtual ~Settings();
 
-	////////////////////////////////////////////////////////////////////////////
-	//
-	// MEMBERS
-	//
-	////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // MEMBERS
+    //
+    ////////////////////////////////////////////////////////////////////////////
 private:
-	/**
-	 * user's preferences.
-	 */
-	QSettings _settings;
+    /**
+     * user's preferences.
+     */
+    QSettings _settings;
 
-	/**
-	 * The only instance.
-	 */
-	static Settings* _instance;
+    /**
+     * The only instance.
+     */
+    static Settings* _instance;
 
-	////////////////////////////////////////////////////////////////////////////
-	//
-	// QSettings KEYS
-	//
-	////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // QSettings KEYS
+    //
+    ////////////////////////////////////////////////////////////////////////////
 public:
-	/** key used to store window position. */
-	static const char* 	WINDOW_POSITION;
+    /** key used to store window position. */
+    static const char* WINDOW_POSITION;
 
-	/** key used to store 'remember window position' flag. */
-	static const char*	REMEMBER_WINDOW_POSITION;
+    /** key used to store 'remember window position' flag. */
+    static const char* REMEMBER_WINDOW_POSITION;
 
-	// default values
-	/** key used to store default window x position. */
-	static const int	WINDOW_POSITON_DEFAULT_X = 30;
+    // default values
+    /** key used to store default window x position. */
+    static const int WINDOW_POSITON_DEFAULT_X = 30;
 
-	/** key used to store default window y position. */
-	static const int	WINDOW_POSITON_DEFAULT_Y = 30;
+    /** key used to store default window y position. */
+    static const int WINDOW_POSITON_DEFAULT_Y = 30;
 
-	/** key used to store 'remember window position' flag default value. */
-	static const bool	REMEMBER_WINDOW_POSITION_DEFAULT = false;
+    /** key used to store 'remember window position' flag default value. */
+    static const bool REMEMBER_WINDOW_POSITION_DEFAULT = false;
 
-	////////////////////////////////////////////////////////////////////////////
-	//
-	// INTERFACE
-	//
-	////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // INTERFACE
+    //
+    ////////////////////////////////////////////////////////////////////////////
 public:
-	/**
-	 * Get the only instance.
-	 *
-	 * \return the only instance.
-	 */
-	static Settings* getInstance();
+    /**
+     * Get the only instance.
+     *
+     * \return the only instance.
+     */
+    static Settings* getInstance();
 
-	/**
-	 * Release memory.
-	 */
-	static void destroy();
+    /**
+     * Release memory.
+     */
+    static void destroy();
 
-	////////////////////////////////////////////////////////////////////////////
-	//
-	// ACCESS
-	//
-	////////////////////////////////////////////////////////////////////////////
-	/**
-	 * get a reference to QSettings object.
-	 *
-	 * \return a reference to QSettings object.
-	 */
-	inline QSettings& getSettings() { return _settings; }
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // ACCESS
+    //
+    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * get a reference to QSettings object.
+     *
+     * \return a reference to QSettings object.
+     */
+    inline QSettings& getSettings() {
+        return _settings;
+    }
 
 };
 

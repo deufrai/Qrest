@@ -26,7 +26,7 @@
 ////////////////////////////////////////////////////////////////////////////
 TimeStamper::TimeStamper() {
 
-	_timer.start();
+    _timer.start();
 }
 
 TimeStamper::~TimeStamper() {

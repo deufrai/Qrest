@@ -29,14 +29,8 @@
 Observable::Observable() {
 }
 
-
-
-
 Observable::~Observable() {
 }
-
-
-
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -49,18 +43,15 @@ void Observable::registerObserver(Observer* observer) {
     _observers.push_back(observer);
 }
 
-
-
-
 void Observable::removeObserver(Observer* observer) {
 
     vector<Observer*>::iterator it = _observers.begin();
 
     bool found = false;
 
-    while ( it != _observers.end() && ! found ) {
+    while (it != _observers.end() && !found) {
 
-        if ( *it == observer ) {
+        if (*it == observer) {
 
             _observers.erase(it);
             found = true;
@@ -69,15 +60,11 @@ void Observable::removeObserver(Observer* observer) {
     }
 }
 
-
-
-
 void Observable::notifyObservers() const {
-
 
     vector<Observer*>::const_iterator it = _observers.begin();
 
-    while ( it != _observers.end() ) {
+    while (it != _observers.end()) {
 
         (*it)->updateView();
         it++;

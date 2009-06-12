@@ -27,13 +27,13 @@
  *
  * simulates a human user clicking 4 times on the UI TAP button at 60 BPM.
  */
-class TapTempoTestThread : public QThread {
+class TapTempoTestThread: public QThread {
 
 public:
-	TapTempoTestThread();
-	virtual ~TapTempoTestThread();
+    TapTempoTestThread();
+    virtual ~TapTempoTestThread();
 
-	void run();
+    void run();
 };
 
 #endif /* TAPTEMPOTESTTHREAD_H_ */

@@ -30,42 +30,32 @@ QrestHelpViewer* QrestHelpViewer::instance = NULL;
 // INIT
 //
 ////////////////////////////////////////////////////////////////////////////
-QrestHelpViewer::QrestHelpViewer(QWidget *parent)
-    : QMainWindow(parent)
-{
-	ui.setupUi(this);
+QrestHelpViewer::QrestHelpViewer(QWidget *parent) :
+    QMainWindow(parent) {
+    ui.setupUi(this);
 
-	/*
-	 *  we try to get online help translated according to user's locale.
-	 *  if it doesn't exist, we fallback to english
-	 */
+    /*
+     *  we try to get online help translated according to user's locale.
+     *  if it doesn't exist, we fallback to english
+     */
     QString locale = QLocale::system().name().section('_', 0, 0);
-	QString helpPath = getHelpPathFromLocale(locale);
+    QString helpPath = getHelpPathFromLocale(locale);
 
-	if ( ! QFile::exists(helpPath) ) {
+    if (!QFile::exists(helpPath)) {
 
-		qWarning() << "QrestHelpViewer : Online help has not yet been translated for locale"
-				 << locale
-				 << "- defaulting to english";
+        qWarning()
+                << "QrestHelpViewer : Online help has not yet been translated for locale"
+                << locale << "- defaulting to english";
 
-		helpPath = getHelpPathFromLocale("en");
-	}
+        helpPath = getHelpPathFromLocale("en");
+    }
 
-
-
-	ui.helpBrowser->setSource(QUrl(helpPath));
+    ui.helpBrowser->setSource(QUrl(helpPath));
 }
 
-
-
-
-QrestHelpViewer::~QrestHelpViewer()
-{
+QrestHelpViewer::~QrestHelpViewer() {
 
 }
-
-
-
 
 ////////////////////////////////////////////////////////////////////////////
 //
@@ -74,20 +64,14 @@ QrestHelpViewer::~QrestHelpViewer()
 ////////////////////////////////////////////////////////////////////////////
 QString QrestHelpViewer::getHelpPathFromLocale(const QString& locale) const {
 
-	QString helpPath;
+    QString helpPath;
 
-	helpPath.append(Constants::ONLINE_HELP_LOCATION)
-	    .append(QDir::separator())
-	    .append(locale)
-	    .append(QDir::separator())
-	    .append("index.html");
+    helpPath.append(Constants::ONLINE_HELP_LOCATION) .append(QDir::separator()) .append(
+            locale) .append(QDir::separator()) .append("index.html");
 
-	return helpPath;
+    return helpPath;
 
 }
-
-
-
 
 ////////////////////////////////////////////////////////////////////////////
 //
@@ -96,19 +80,19 @@ QString QrestHelpViewer::getHelpPathFromLocale(const QString& locale) const {
 ////////////////////////////////////////////////////////////////////////////
 QrestHelpViewer* QrestHelpViewer::getInstance() {
 
-	if ( NULL == instance ) {
+    if (NULL == instance) {
 
-		instance = new QrestHelpViewer();
-	}
+        instance = new QrestHelpViewer();
+    }
 
-	return instance;
+    return instance;
 }
 
 void QrestHelpViewer::destroy() {
 
-	if ( instance ) {
+    if (instance) {
 
-		delete instance;
-		instance = NULL;
-	}
+        delete instance;
+        instance = NULL;
+    }
 }

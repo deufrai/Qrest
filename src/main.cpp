@@ -45,9 +45,8 @@ int main(int argc, char *argv[]) {
     QTranslator translator;
     QString filePath;
 
-    filePath.append(Constants::I18N_FOLDER_LOCATION)
-        .append(QDir::separator())
-        .append("qrest_").append(locale);
+    filePath.append(Constants::I18N_FOLDER_LOCATION) .append(QDir::separator()) .append(
+            "qrest_").append(locale);
 
 #ifndef QT_NO_DEBUG
     qDebug() << "main.cpp : Translation file path :" << filePath;
@@ -55,7 +54,7 @@ int main(int argc, char *argv[]) {
 
     bool bTransLoaded = translator.load(filePath);
 
-    if ( bTransLoaded  ) {
+    if (bTransLoaded) {
 
 #ifndef QT_NO_DEBUG
         qDebug() << "main.cpp : Translation file loaded successfully";
@@ -67,7 +66,6 @@ int main(int argc, char *argv[]) {
 
         qWarning() << "main.cpp : Failed to load translation file";
     }
-
 
     // create app data
     Document::getInstance();

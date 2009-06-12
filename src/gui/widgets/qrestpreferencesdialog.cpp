@@ -7,26 +7,22 @@
 // INIT
 //
 ////////////////////////////////////////////////////////////////////////////////
-QrestPreferencesDialog::QrestPreferencesDialog(QWidget *parent)
-    : QDialog(parent)
-{
-	ui.setupUi(this);
+QrestPreferencesDialog::QrestPreferencesDialog(QWidget *parent) :
+    QDialog(parent) {
+    ui.setupUi(this);
 
-	ui.chkRememberWindowPos->setChecked(
-			Settings::getInstance()->getSettings()
-			.value(Settings::REMEMBER_WINDOW_POSITION, Settings::REMEMBER_WINDOW_POSITION_DEFAULT).toBool());
+    ui.chkRememberWindowPos->setChecked(
+            Settings::getInstance()->getSettings() .value(
+                    Settings::REMEMBER_WINDOW_POSITION,
+                    Settings::REMEMBER_WINDOW_POSITION_DEFAULT).toBool());
 
-	// we don't want the "what's this" button on this dialog
-	this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+    // we don't want the "what's this" button on this dialog
+    this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 }
 
-QrestPreferencesDialog::~QrestPreferencesDialog()
-{
+QrestPreferencesDialog::~QrestPreferencesDialog() {
 
 }
-
-
-
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -35,11 +31,11 @@ QrestPreferencesDialog::~QrestPreferencesDialog()
 ////////////////////////////////////////////////////////////////////////////////
 void QrestPreferencesDialog::accept() {
 
-	Settings::getInstance()->getSettings()
-		.setValue(Settings::REMEMBER_WINDOW_POSITION,
-				ui.chkRememberWindowPos->isChecked());
+    Settings::getInstance()->getSettings() .setValue(
+            Settings::REMEMBER_WINDOW_POSITION,
+            ui.chkRememberWindowPos->isChecked());
 
-	Settings::getInstance()->getSettings().sync();
+    Settings::getInstance()->getSettings().sync();
 
-	QDialog::accept();
+    QDialog::accept();
 }

@@ -13,17 +13,17 @@
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestaboutdialog.cpp" line="45"/>
+        <location filename="../src/gui/widgets/qrestaboutdialog.cpp" line="38"/>
         <source>Author</source>
         <translation>Auteur</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestaboutdialog.cpp" line="48"/>
+        <location filename="../src/gui/widgets/qrestaboutdialog.cpp" line="40"/>
         <source>Website</source>
         <translation>Site Web</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestaboutdialog.cpp" line="51"/>
+        <location filename="../src/gui/widgets/qrestaboutdialog.cpp" line="42"/>
         <source>License</source>
         <translation>License</translation>
     </message>
@@ -39,29 +39,37 @@
 <context>
     <name>QrestMainWindow</name>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="66"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="65"/>
         <source>I&apos;m ready, sir</source>
         <translation>A vos ordres, chef</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="129"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="121"/>
         <source>You&apos;re steady</source>
         <translation>Vous êtes stable</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="133"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="125"/>
         <source>Keep tapping...</source>
         <translation>Continuez à cliquer...</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="172"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="164"/>
         <source>Recalculation needed</source>
         <translation>Recalcul nécessaire</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="53"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="52"/>
         <source>Reliability of displayed tempo value</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message numerus="yes">
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="140"/>
+        <source>displayed BPM value is %n% reliable</source>
+        <translation type="unfinished">
+            <numerusform></numerusform>
+            <numerusform></numerusform>
+        </translation>
     </message>
 </context>
 <context>
