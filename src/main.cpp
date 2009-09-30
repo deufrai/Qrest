@@ -43,16 +43,16 @@ int main(int argc, char *argv[]) {
 
     // create and install a translator according to found locale
     QTranslator translator;
-    QString filePath;
+    QString translationFilePath;
 
-    filePath.append(Constants::I18N_FOLDER_LOCATION) .append(QDir::separator()) .append(
+    translationFilePath.append(Constants::I18N_FOLDER_LOCATION) .append(QDir::separator()) .append(
             "qrest_").append(locale);
 
 #ifndef QT_NO_DEBUG
-    qDebug() << "main.cpp : Translation file path :" << filePath;
+    qDebug() << "main.cpp : Translation file path :" << translationFilePath;
 #endif
 
-    bool bTransLoaded = translator.load(filePath);
+    bool bTransLoaded = translator.load(translationFilePath);
 
     if (bTransLoaded) {
 
