@@ -29,7 +29,7 @@
 Document* Document::_instance = 0;
 
 Document::Document() :
-    _tempo(TEMPO_DEFAULT), _steady(true), _steadiness(0.0),
+    _tempo(TEMPO_DEFAULT), _steady(true), _steadiness(1.0),
             _tempoFromTap(false), _multiplier(MULTIPLIER_PLAIN) {
 
     // init vector of Delay objects

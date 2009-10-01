@@ -39,32 +39,27 @@
 <context>
     <name>QrestMainWindow</name>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="65"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="64"/>
         <source>I&apos;m ready, sir</source>
         <translation>Às ordens, chefe</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="121"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="120"/>
         <source>You&apos;re steady</source>
         <translation>Está estável</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="125"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="124"/>
         <source>Keep tapping...</source>
         <translation>Continua a clicar...</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="164"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="163"/>
         <source>Recalculation needed</source>
         <translation type="unfinished"></translation>
     </message>
-    <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="52"/>
-        <source>Reliability of displayed tempo value</source>
-        <translation type="unfinished"></translation>
-    </message>
     <message numerus="yes">
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="140"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="139"/>
         <source>displayed BPM value is %n% reliable</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -208,32 +203,32 @@
 <context>
     <name>QrestPreferencesDialogClass</name>
     <message>
-        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="13"/>
+        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="14"/>
         <source>Qrest preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="27"/>
+        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="32"/>
         <source>User Interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="39"/>
+        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="44"/>
         <source>Should Qrest&apos;s main window be opened at the screen location it had on last run ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="42"/>
+        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="47"/>
         <source>Remember window &amp;position</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="73"/>
+        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="78"/>
         <source>OK</source>
         <translation type="unfinished">OK</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="86"/>
+        <location filename="../src/gui/forms/qrestpreferencesdialog.ui" line="91"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
