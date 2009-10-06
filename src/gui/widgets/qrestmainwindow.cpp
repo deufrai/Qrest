@@ -247,13 +247,17 @@ void QrestMainWindow::on_actionHelp_triggered() {
 
     	QString warningMessage;
 
-    	warningMessage.append(tr("Online help file couldn't be found.\n\n"))
-    	.append(tr("Please consider reporting this as a bug on Qrest's website.\n"))
-    	.append("http://www.qrest.org");
+    	warningMessage
+    	.append("<b>")
+    	.append(tr("Online help file could not be found."))
+    	.append("</b><br />")
+    	.append(tr("Please consider reporting this as a bug on Qrest's website."))
+    	.append("<br />")
+    	.append("<center><a href=\"http://www.qrest.org\">http://www.qrest.org</a></center>");
 
-    	QMessageBox::warning(this,
-    			tr("Warning : No help file found"),
-    			warningMessage);
+    	QMessageBox mb(QMessageBox::Warning, "Warning : No help file found", warningMessage);
+
+    	mb.exec();
     }
 
 }
