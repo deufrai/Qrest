@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS><TS version="1.1" language="fr_FR">
-<defaultcodec></defaultcodec>
+<!DOCTYPE TS>
+<TS version="2.0" language="fr_FR">
 <context>
     <name>QrestAboutDialog</name>
     <message>
@@ -40,27 +40,37 @@
 <context>
     <name>QrestMainWindow</name>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="64"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="66"/>
         <source>I&apos;m ready, sir</source>
         <translation>A vos ordres, chef</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="120"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="122"/>
         <source>You&apos;re steady</source>
         <translation>Vous êtes stable</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="124"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="126"/>
         <source>Keep tapping...</source>
         <translation>Continuez à cliquer...</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="163"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="165"/>
         <source>Recalculation needed</source>
         <translation>Recalcul nécessaire</translation>
     </message>
+    <message>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="252"/>
+        <source>Online help file could not be found.</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="254"/>
+        <source>Please consider reporting this as a bug on Qrest&apos;s website.</source>
+        <translation type="unfinished"></translation>
+    </message>
     <message numerus="yes">
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="139"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="140"/>
         <source>displayed BPM value is %n% reliable</source>
         <translation>
             <numerusform>Le BPM affiché est fiable à %n%</numerusform>
@@ -126,11 +136,13 @@
         <translation>Delais et LFOs</translation>
     </message>
     <message>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="135"/>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="334"/>
         <source>ms</source>
         <translation>ms</translation>
     </message>
     <message>
+        <location filename="../src/gui/forms/qrestmainwindow.ui" line="145"/>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="344"/>
         <source>Hz</source>
         <translation>Hz</translation>
