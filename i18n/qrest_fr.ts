@@ -40,27 +40,37 @@
 <context>
     <name>QrestMainWindow</name>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="64"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="66"/>
         <source>I&apos;m ready, sir</source>
         <translation>A vos ordres, chef</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="120"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="122"/>
         <source>You&apos;re steady</source>
         <translation>Vous êtes stable</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="124"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="126"/>
         <source>Keep tapping...</source>
         <translation>Continuez à cliquer...</translation>
     </message>
     <message>
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="163"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="165"/>
         <source>Recalculation needed</source>
         <translation>Recalcul nécessaire</translation>
     </message>
+    <message>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="252"/>
+        <source>Online help file could not be found.</source>
+        <translation>Le fichier d&apos;aide n&apos;a pu être trouvé.</translation>
+    </message>
+    <message>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="254"/>
+        <source>Please consider reporting this as a bug on Qrest&apos;s website.</source>
+        <translation>Envisagez s&apos;il vous plaît de consigner ce bug sur le site web de Qrest.</translation>
+    </message>
     <message numerus="yes">
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="139"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="140"/>
         <source>displayed BPM value is %n% reliable</source>
         <translation>
             <numerusform>Le BPM affiché est fiable à %n%</numerusform>

@@ -71,19 +71,20 @@ private:
     ////////////////////////////////////////////////////////////////////////////
     Ui::QrestHelpViewerClass ui;
 
+public:
+
     ////////////////////////////////////////////////////////////////////////////
     //
     // INTERFACE
     //
     ////////////////////////////////////////////////////////////////////////////
-    /**
-     * return online html index file path according to system locale
-     *
-     * \param locale system's current locale
-     *
-     * \return path to index.html file in correct folder
-     */
-    QString getHelpPathFromLocale(const QString& locale) const;
+	/**
+	 * Set the path to the html file wich will be displayed.
+	 *
+	 * \param source path to displayed file.
+	 */
+    void setSource(const QString& source);
+
 };
 
 #endif // QRESTHELPVIEWER_H

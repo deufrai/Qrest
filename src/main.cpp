@@ -33,26 +33,21 @@
 #include <QApplication>
 #include "gui/widgets/qrestmainwindow.h"
 #include "constants.h"
+#include "helpers/localeHelper.h"
 
 int main(int argc, char *argv[]) {
 
     QApplication application(argc, argv);
 
-    // get the current locale description from system
-    QString locale = QLocale::system().name().section('_', 0, 0);
-
-    // create and install a translator according to found locale
+    // create and install a translator according to system locale
     QTranslator translator;
-    QString translationFilePath;
-
-    translationFilePath.append(Constants::I18N_FOLDER_LOCATION) .append(QDir::separator()) .append(
-            "qrest_").append(locale);
+    QString translationFilePath = LocaleHelper::getTranslationFilePath();
 
 #ifndef QT_NO_DEBUG
     qDebug() << "main.cpp : Translation file path :" << translationFilePath;
 #endif
 
-    bool bTransLoaded = translator.load(translationFilePath);
+    bool bTransLoaded = translator.load(LocaleHelper::getTranslationFilePath());
 
     if (bTransLoaded) {
 
