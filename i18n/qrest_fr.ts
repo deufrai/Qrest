@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="fr_FR">
+<!DOCTYPE TS><TS version="1.1" language="fr_FR">
+<defaultcodec></defaultcodec>
 <context>
     <name>QrestAboutDialog</name>
     <message>
@@ -62,12 +62,12 @@
     <message>
         <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="252"/>
         <source>Online help file could not be found.</source>
-        <translation type="unfinished"></translation>
+        <translation>Le fichier d&apos;aide n&apos;a pu être trouvé.</translation>
     </message>
     <message>
         <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="254"/>
         <source>Please consider reporting this as a bug on Qrest&apos;s website.</source>
-        <translation type="unfinished"></translation>
+        <translation>Envisagez s&apos;il vous plaît de consigner ce bug sur le site web de Qrest.</translation>
     </message>
     <message numerus="yes">
         <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="140"/>
@@ -136,13 +136,11 @@
         <translation>Delais et LFOs</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="135"/>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="334"/>
         <source>ms</source>
         <translation>ms</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="145"/>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="344"/>
         <source>Hz</source>
         <translation>Hz</translation>
