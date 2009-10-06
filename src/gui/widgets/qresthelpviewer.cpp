@@ -18,10 +18,7 @@
  */
 
 #include "qresthelpviewer.h"
-#include "../../constants.h"
-#include <QLocale>
-#include <QDir>
-#include <QDebug>
+#include <QUrl>
 
 QrestHelpViewer* QrestHelpViewer::instance = NULL;
 
@@ -34,42 +31,9 @@ QrestHelpViewer::QrestHelpViewer(QWidget *parent) :
     QMainWindow(parent) {
     ui.setupUi(this);
 
-    /*
-     *  we try to get online help translated according to user's locale.
-     *  if it doesn't exist, we fallback to english
-     */
-    QString locale = QLocale::system().name().section('_', 0, 0);
-    QString helpPath = getHelpPathFromLocale(locale);
-
-    if (!QFile::exists(helpPath)) {
-
-        qWarning()
-                << "QrestHelpViewer : Online help has not yet been translated for locale"
-                << locale << "- defaulting to english";
-
-        helpPath = getHelpPathFromLocale("en");
-    }
-
-    ui.helpBrowser->setSource(QUrl(helpPath));
 }
 
 QrestHelpViewer::~QrestHelpViewer() {
-
-}
-
-////////////////////////////////////////////////////////////////////////////
-//
-// INTERFACE
-//
-////////////////////////////////////////////////////////////////////////////
-QString QrestHelpViewer::getHelpPathFromLocale(const QString& locale) const {
-
-    QString helpPath;
-
-    helpPath.append(Constants::ONLINE_HELP_LOCATION) .append(QDir::separator()) .append(
-            locale) .append(QDir::separator()) .append("index.html");
-
-    return helpPath;
 
 }
 
@@ -95,4 +59,10 @@ void QrestHelpViewer::destroy() {
         delete instance;
         instance = NULL;
     }
+}
+
+
+void QrestHelpViewer::setSource(const QString& source) {
+
+    ui.helpBrowser->setSource(QUrl(source));
 }

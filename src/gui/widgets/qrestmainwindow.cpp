@@ -30,6 +30,8 @@
 #include "qrestpreferencesdialog.h"
 #include "../../model/document.h"
 #include "custom/progressPie.h"
+#include "../../helpers/localeHelper.h"
+#include <QFile>
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -216,10 +218,43 @@ void QrestMainWindow::on_actionHelp_triggered() {
 
     QrestHelpViewer* pViewer = QrestHelpViewer::getInstance();
 
-    pViewer->showNormal();
+    /*
+     *  we try to get online help translated according to user's locale.
+     *  if it doesn't exist, we fallback to english
+     */
+    QString helpPath = LocaleHelper::getHelpFilePath();
 
-    // we wait for the window to be visible before activating and rasing it
-    QTimer::singleShot(25, this, SLOT(raiseHelp()));
+    if (!QFile::exists(helpPath)) {
+
+    	qWarning()
+    	<< "Online help has not yet been translated for system locale"
+    	<< "defaulting to english";
+
+    	helpPath = LocaleHelper::getDefaultHelpFilePath();
+    }
+
+    if ( QFile::exists(helpPath) ) {
+
+    	pViewer->setSource(helpPath);
+    	pViewer->showNormal();
+
+    	// we wait for the window to be visible before activating and rasing it
+    	QTimer::singleShot(25, this, SLOT(raiseHelp()));
+
+    } else {
+
+    	qWarning() << "Default help file couln't be found...";
+
+    	QString warningMessage;
+
+    	warningMessage.append(tr("Online help file couldn't be found.\n\n"))
+    	.append(tr("Please consider reporting this as a bug on Qrest's website.\n"))
+    	.append("http://www.qrest.org");
+
+    	QMessageBox::warning(this,
+    			tr("Warning : No help file found"),
+    			warningMessage);
+    }
 
 }
 
