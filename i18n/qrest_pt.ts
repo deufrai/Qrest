@@ -1,6 +1,5 @@
 <?xml version="1.0" encoding="utf-8"?>
-<!DOCTYPE TS>
-<TS version="2.0" language="pt_PT">
+<!DOCTYPE TS><TS version="1.1" language="pt_PT">
 <context>
     <name>QrestAboutDialog</name>
     <message>
@@ -70,12 +69,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="140"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="141"/>
         <source>displayed BPM value is %n% reliable</source>
         <translation type="unfinished">
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="258"/>
+        <source>Warning : No help file found</source>
+        <translation type="unfinished"></translation>
     </message>
 </context>
 <context>
@@ -136,13 +140,11 @@
         <translation>Prazos e LFOs</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="135"/>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="334"/>
         <source>ms</source>
         <translation>ms</translation>
     </message>
     <message>
-        <location filename="../src/gui/forms/qrestmainwindow.ui" line="145"/>
         <location filename="../src/gui/forms/qrestmainwindow.ui" line="344"/>
         <source>Hz</source>
         <translation>Hz</translation>

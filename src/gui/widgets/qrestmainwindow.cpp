@@ -255,7 +255,7 @@ void QrestMainWindow::on_actionHelp_triggered() {
     	.append("<br />")
     	.append("<center><a href=\"http://www.qrest.org\">http://www.qrest.org</a></center>");
 
-    	QMessageBox mb(QMessageBox::Warning, "Warning : No help file found", warningMessage);
+    	QMessageBox mb(QMessageBox::Warning, tr("Warning : No help file found"), warningMessage);
 
     	mb.exec();
     }

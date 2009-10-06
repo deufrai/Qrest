@@ -70,12 +70,17 @@
         <translation>Envisagez s&apos;il vous plaît de consigner ce bug sur le site web de Qrest.</translation>
     </message>
     <message numerus="yes">
-        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="140"/>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="141"/>
         <source>displayed BPM value is %n% reliable</source>
         <translation>
             <numerusform>Le BPM affiché est fiable à %n%</numerusform>
             <numerusform>Le BPM affiché est fiable à %n%</numerusform>
         </translation>
+    </message>
+    <message>
+        <location filename="../src/gui/widgets/qrestmainwindow.cpp" line="258"/>
+        <source>Warning : No help file found</source>
+        <translation>Attetion : Fichier d&apos;aide non trouvé</translation>
     </message>
 </context>
 <context>
