@@ -227,8 +227,8 @@ void QrestMainWindow::on_actionHelp_triggered() {
     if (!QFile::exists(helpPath)) {
 
     	qWarning()
-    	<< "Online help has not yet been translated for system locale"
-    	<< "defaulting to english";
+    	<< "Online help has not yet been translated for current system locale."
+    	<< "Defaulting to english";
 
     	helpPath = LocaleHelper::getDefaultHelpFilePath();
     }

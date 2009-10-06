@@ -44,7 +44,7 @@ int main(int argc, char *argv[]) {
     QString translationFilePath = LocaleHelper::getTranslationFilePath();
 
 #ifndef QT_NO_DEBUG
-    qDebug() << "main.cpp : Translation file path :" << translationFilePath;
+    qDebug() << "Translation file path :" << translationFilePath;
 #endif
 
     bool bTransLoaded = translator.load(LocaleHelper::getTranslationFilePath());
@@ -52,14 +52,14 @@ int main(int argc, char *argv[]) {
     if (bTransLoaded) {
 
 #ifndef QT_NO_DEBUG
-        qDebug() << "main.cpp : Translation file loaded successfully";
+        qDebug() << "Translation file loaded successfully";
 #endif
 
         application.installTranslator(&translator);
 
     } else {
 
-        qWarning() << "main.cpp : Failed to load translation file";
+        qWarning() << "Failed to load translation file";
     }
 
     // create app data
