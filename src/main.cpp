@@ -67,6 +67,7 @@ int main(int argc, char *argv[]) {
 
     // create and show main window
     QrestMainWindow mainWindow;
+
     mainWindow.resize(mainWindow.minimumSizeHint());
     mainWindow.show();
 
