@@ -4,7 +4,7 @@
 # Project related configuration options
 #---------------------------------------------------------------------------
 DOXYFILE_ENCODING = UTF-8
-PROJECT_NAME = "Qrest Easy Studio Toolkit"
+PROJECT_NAME = "Qrest Really Easy Studio Toolkit"
 PROJECT_NUMBER = 0.5-alpha2
 OUTPUT_DIRECTORY = doc/doxygen
 CREATE_SUBDIRS = NO
