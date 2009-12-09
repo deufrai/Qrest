@@ -393,8 +393,8 @@ void QrestMainWindow::statusPermMessage(const QString& message) const {
 
 void QrestMainWindow::statusTempMessage(const QString& message) const {
 
-    // temp messages are shown for 1.5 seconds
-    static const int STATUSBAR_TEMP_TIMEOUT = 1500;
+    // temp messages are shown for 2 seconds
+    static const int STATUSBAR_TEMP_TIMEOUT = 2000;
 
     ui.statusbar->showMessage(message, STATUSBAR_TEMP_TIMEOUT);
 }
