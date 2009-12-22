@@ -48,25 +48,7 @@ public:
     // ACCESS
     //
     ////////////////////////////////////////////////////////////////////////////
-    /**
-     * set threshold value.
-     *
-     * \param threshold the threshold value to set
-     */
-    inline void setThreshold(const double threshold) {
 
-        _threshold = threshold;
-    }
-
-    /**
-     * get threshold value.
-     *
-     * \return the threshold value
-     */
-    inline double threshold() const {
-
-        return _threshold;
-    }
 
     ////////////////////////////////////////////////////////////////////////////
     //

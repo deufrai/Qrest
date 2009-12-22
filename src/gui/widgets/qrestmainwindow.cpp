@@ -50,7 +50,6 @@ QrestMainWindow::QrestMainWindow(QWidget *parent) :
 
     // setup steadiness indocator
     _pie = new ProgressPie();
-    _pie->setThreshold(Constants::STEADINESS_TARGET_RATIO);
     ui.tempoInputHorizontalLayout->addWidget(_pie);
 
     // update view
