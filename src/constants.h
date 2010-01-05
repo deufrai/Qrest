@@ -63,6 +63,11 @@ public:
      */
     static const double STEADINESS_TARGET_RATIO = 0.90;
 
+    /**
+     * progressPie widget default value
+     */
+    static const double PROGESSPIE_DEFAULT_VALUE = 0.0;
+
 };
 
 #endif /* CONSTANTS_H_ */
