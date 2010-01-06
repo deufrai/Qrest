@@ -50,7 +50,6 @@ QrestMainWindow::QrestMainWindow(QWidget *parent) :
 
     // setup steadiness indocator
     _pie = new ProgressPie();
-    _pie->setThreshold(Constants::STEADINESS_TARGET_RATIO);
     ui.tempoInputHorizontalLayout->addWidget(_pie);
 
     // update view
@@ -130,7 +129,7 @@ void QrestMainWindow::updateView(void) {
 
     } else {
 
-        _pie->setValue(1.0);
+        _pie->setValue(Constants::PROGRESSPIE_FULL);
         statusClear();
     }
 
@@ -227,8 +226,8 @@ void QrestMainWindow::on_actionHelp_triggered() {
     if (!QFile::exists(helpPath)) {
 
     	qWarning()
-    	<< "Online help has not yet been translated for system locale"
-    	<< "defaulting to english";
+    	<< "Online help has not yet been translated for current system locale."
+    	<< "Defaulting to english";
 
     	helpPath = LocaleHelper::getDefaultHelpFilePath();
     }
@@ -283,9 +282,15 @@ bool QrestMainWindow::eventFilter(QObject* target, QEvent* event) {
 
         QWheelEvent* wheelEvent = static_cast<QWheelEvent*> (event);
 
-        // most mice work in steps of 15 degrees
-        int numDegrees = wheelEvent->delta() / 8;
-        int numSteps = numDegrees / 15;
+        /*
+         * most mice work in steps of 15 degrees
+         * and Qt's wheel rotation is express in 8th of a degree
+         */
+        static const int WHEEL_PRECISION = 8;
+        static const int STEP_SIZE = 15;
+
+        int numDegrees = wheelEvent->delta() / WHEEL_PRECISION;
+        int numSteps = numDegrees / STEP_SIZE;
 
         double tempo = ui.tempoEdit->text().toDouble();
 
@@ -393,7 +398,7 @@ void QrestMainWindow::statusPermMessage(const QString& message) const {
 
 void QrestMainWindow::statusTempMessage(const QString& message) const {
 
-       ui.statusbar->showMessage(message, Constants::STATUSBAR_TEMP_TIMEOUT);
+    ui.statusbar->showMessage(message, Constants::STATUSBAR_TEMP_TIMEOUT);
 }
 
 void QrestMainWindow::statusClear(void) const {
