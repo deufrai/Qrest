@@ -63,6 +63,30 @@ public:
      */
     static const double STEADINESS_TARGET_RATIO = 0.90;
 
+    /**
+     * progressPie widget default value
+     */
+    static const double PROGRESSPIE_DEFAULT_VALUE = 0.0;
+
+    /**
+     * value for a full progresspie
+     */
+    static const double PROGRESSPIE_FULL = 1.0;
+
+    /**
+     * temp messages are shown for 2 seconds
+     */
+    static const int STATUSBAR_TEMP_TIMEOUT = 2000;
+
+    //Constants used for default tempo value and limits
+
+    /** Default tempo for app startup */
+    static const double TEMPO_DEFAULT = 60.0;
+    /** Minimum allowed tempo as input. */
+    static const double TEMPO_MIN = 1.0;
+    /** Maximum allowed tempo as input. */
+    static const double TEMPO_MAX = 999.0;
+
 };
 
 #endif /* CONSTANTS_H_ */

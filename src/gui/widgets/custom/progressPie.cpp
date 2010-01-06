@@ -31,8 +31,10 @@
 //
 ////////////////////////////////////////////////////////////////////////////
 ProgressPie::ProgressPie(QWidget* parent) :
-    QWidget(parent), _threshold(0.0), _value(0.0), _pRedBrush(new QBrush(
-            Qt::red)), _pGreenBrush(new QBrush(Qt::darkGreen)) {
+    QWidget(parent),
+    _value(Constants::PROGRESSPIE_DEFAULT_VALUE),
+    _pRedBrush(new QBrush(Qt::red)),
+    _pGreenBrush(new QBrush(Qt::darkGreen)) {
 
     /*
      * we want this widget to be enclosed within a square that has the same

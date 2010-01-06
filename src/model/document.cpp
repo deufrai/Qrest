@@ -29,7 +29,7 @@
 Document* Document::_instance = 0;
 
 Document::Document() :
-    _tempo(TEMPO_DEFAULT), _steady(true), _steadiness(1.0),
+    _tempo(Constants::TEMPO_DEFAULT), _steady(true), _steadiness(FULL_STEADINESS),
             _tempoFromTap(false), _multiplier(MULTIPLIER_PLAIN) {
 
     // init vector of Delay objects
@@ -73,7 +73,7 @@ void Document::destroy() {
 
 void Document::setTempo(const double tempo) {
 
-    if ((TEMPO_MIN <= tempo && tempo <= TEMPO_MAX)) {
+    if ((Constants::TEMPO_MIN <= tempo && tempo <= Constants::TEMPO_MAX)) {
 
         _tempo = tempo;
         updateDelays();
