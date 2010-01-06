@@ -68,6 +68,11 @@ public:
      */
     static const double PROGESSPIE_DEFAULT_VALUE = 0.0;
 
+    /**
+     * value for a full progresspie
+     */
+    static const double PROGRESSPIE_FULL = 1.0;
+
 };
 
 #endif /* CONSTANTS_H_ */

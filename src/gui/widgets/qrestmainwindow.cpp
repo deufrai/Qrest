@@ -129,7 +129,7 @@ void QrestMainWindow::updateView(void) {
 
     } else {
 
-        _pie->setValue(1.0);
+        _pie->setValue(Constants::PROGRESSPIE_FULL);
         statusClear();
     }
 
