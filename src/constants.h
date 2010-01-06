@@ -78,6 +78,15 @@ public:
      */
     static const int STATUSBAR_TEMP_TIMEOUT = 1500;
 
+    //Constants used for default tempo value and limits
+
+    /** Default tempo for app startup */
+    static const double TEMPO_DEFAULT = 60.0;
+    /** Minimum allowed tempo as input. */
+    static const double TEMPO_MIN = 1.0;
+    /** Maximum allowed tempo as input. */
+    static const double TEMPO_MAX = 999.0;
+
 };
 
 #endif /* CONSTANTS_H_ */

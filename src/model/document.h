@@ -236,15 +236,6 @@ private:
     static const int THIRTYSECOND = 5;
     static const int DELAYS_COUNT = 6;
 
-    //Constants used for default tempo value and limits
-
-    /** Default tempo for app startup */
-    static const double TEMPO_DEFAULT = 60.0;
-    /** Minimum allowed tempo as input. */
-    static const double TEMPO_MIN = 1.0;
-    /** Maximum allowed tempo as input. */
-    static const double TEMPO_MAX = 999.0;
-
     /** complete steadiness is expressed as 1 as a double */
     static const double FULL_STEADINESS = 1.0;
 
