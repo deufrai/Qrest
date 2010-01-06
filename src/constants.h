@@ -66,7 +66,7 @@ public:
     /**
      * progressPie widget default value
      */
-    static const double PROGESSPIE_DEFAULT_VALUE = 0.0;
+    static const double PROGRESSPIE_DEFAULT_VALUE = 0.0;
 
     /**
      * value for a full progresspie

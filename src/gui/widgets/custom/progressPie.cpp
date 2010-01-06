@@ -32,7 +32,7 @@
 ////////////////////////////////////////////////////////////////////////////
 ProgressPie::ProgressPie(QWidget* parent) :
     QWidget(parent),
-    _value(Constants::PROGESSPIE_DEFAULT_VALUE),
+    _value(Constants::PROGRESSPIE_DEFAULT_VALUE),
     _pRedBrush(new QBrush(Qt::red)),
     _pGreenBrush(new QBrush(Qt::darkGreen)) {
 
