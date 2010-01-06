@@ -73,6 +73,11 @@ public:
      */
     static const double PROGRESSPIE_FULL = 1.0;
 
+    /**
+     * temp messages are shown for 1.5 seconds
+     */
+    static const int STATUSBAR_TEMP_TIMEOUT = 1500;
+
 };
 
 #endif /* CONSTANTS_H_ */
