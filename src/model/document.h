@@ -245,6 +245,9 @@ private:
     /** Maximum allowed tempo as input. */
     static const double TEMPO_MAX = 999.0;
 
+    /** complete steadiness is expressed as 1 as a double */
+    static const double FULL_STEADINESS = 1.0;
+
     // Constants used for the multiplier
 public:
     /** Mutlilpier for plain notes */
