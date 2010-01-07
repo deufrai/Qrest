@@ -19,7 +19,7 @@
 
 #include "constants.h"
 
-const char* Constants::VERSION_STRING = "0.5-alpha2";
+const char* Constants::VERSION_STRING = "0.5-RC1";
 
 #ifdef _WIN32
 const char* Constants::I18N_FOLDER_LOCATION = "i18n";
