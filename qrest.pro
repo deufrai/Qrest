@@ -3,7 +3,8 @@ TARGET = qrest
 linux-* { 
     BINDEST = /usr/bin/
     SHARE = /usr/share/$$TARGET
-    DOCDEST = $$SHARE/doc
+    
+    DOCDEST = /usr/share/doc/$$TARGET
     LANGDEST = $$SHARE/i18n
     MANDEST = /usr/share/man/man1/
     ICONDEST = $$SHARE/icons
