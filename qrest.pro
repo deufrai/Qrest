@@ -1,5 +1,6 @@
 TEMPLATE = app
 TARGET = qrest
+ICON = resources/pix/qrest.icns
 linux-* { 
     BINDEST = /usr/bin/
     SHARE = /usr/share/$$TARGET
