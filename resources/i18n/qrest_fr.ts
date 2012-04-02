@@ -54,6 +54,14 @@
         <source>Keep tapping...</source>
         <translation>Continuez à cliquer...</translation>
     </message>
+    <message numerus="yes">
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="139"/>
+        <source>Displayed BPM reliability : %n</source>
+        <translation>
+            <numerusform>Faibilité du BPM affiché : %n</numerusform>
+            <numerusform>Faibilité du BPM affiché : %n</numerusform>
+        </translation>
+    </message>
     <message>
         <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="164"/>
         <source>Recalculation needed</source>
@@ -68,14 +76,6 @@
         <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="253"/>
         <source>Please consider reporting this as a bug on Qrest&apos;s website.</source>
         <translation>Envisagez s&apos;il vous plaît de consigner ce bug sur le site web de Qrest.</translation>
-    </message>
-    <message numerus="yes">
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="139"/>
-        <source>displayed BPM value is %n% reliable</source>
-        <translation>
-            <numerusform>Le BPM affiché est fiable à %n%</numerusform>
-            <numerusform>Le BPM affiché est fiable à %n%</numerusform>
-        </translation>
     </message>
     <message>
         <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="257"/>
