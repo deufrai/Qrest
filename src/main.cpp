@@ -41,13 +41,8 @@ int main(int argc, char *argv[]) {
 
     // create and install a translator according to system locale
     QTranslator translator;
-    QString translationFilePath = LocaleHelper::getTranslationFilePath();
 
-#ifndef QT_NO_DEBUG
-    qDebug() << "Translation file path :" << translationFilePath;
-#endif
-
-    bool bTransLoaded = translator.load(LocaleHelper::getTranslationFilePath());
+    bool bTransLoaded = translator.load("qrest_" + LocaleHelper::getLocale(), ":/i18n");
 
     if (bTransLoaded) {
 

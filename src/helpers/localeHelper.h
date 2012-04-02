@@ -39,26 +39,26 @@ private:
 
 public:
 
-	/**
-	 * Get path to translation file according to system locale.
-	 *
-	 * \return the path
-	 */
-	static QString getTranslationFilePath(void);
+    /**
+     * Get path to help file according to system locale.
+     *
+     * \return the path
+     */
+    static QString getHelpFilePath(void);
 
-	/**
-	 * Get path to help file according to system locale.
-	 *
-	 * \return the path
-	 */
-	static QString getHelpFilePath(void);
+    /**
+     * Get path to default (en) help file.
+     *
+     * \return the path
+     */
+    static QString getDefaultHelpFilePath();
 
-	/**
-	 * Get path to default (en) help file.
-	 *
-	 * \return the path
-	 */
-	static QString getDefaultHelpFilePath();
+    /**
+     * get system locale
+     *
+     * \return the system locale
+     */
+    static QString getLocale();
 };
 
 #endif /* LOCALEHELPER_H_ */

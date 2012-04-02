@@ -28,17 +28,11 @@ LocaleHelper::LocaleHelper() {}
 
 LocaleHelper::~LocaleHelper() {}
 
-QString LocaleHelper::getTranslationFilePath() {
+QString LocaleHelper::getLocale() {
 
-    QString translationFilePath;
-
-    translationFilePath.append(Constants::I18N_FOLDER_LOCATION)
-    .append(QDir::separator())
-    .append("qrest_")
-    .append(locale);
-
-	return translationFilePath;
+    return locale;
 }
+
 
 QString LocaleHelper::getHelpFilePath() {
 
