@@ -36,27 +36,13 @@ QString LocaleHelper::getLocale() {
 
 QString LocaleHelper::getHelpFilePath() {
 
-    QString helpPath;
-
-    helpPath.append(Constants::ONLINE_HELP_LOCATION)
-    .append(QDir::separator())
-    .append(locale)
-    .append(QDir::separator())
-    .append("index.html");
-
-    return helpPath;
+    return QString(":/html/")
+            .append(locale)
+            .append("/index.html");
 }
 
 
 QString LocaleHelper::getDefaultHelpFilePath() {
 
-    QString helpPath;
-
-    helpPath.append(Constants::ONLINE_HELP_LOCATION)
-    .append(QDir::separator())
-    .append("en")
-    .append(QDir::separator())
-    .append("index.html");
-
-    return helpPath;
+    return ":/html/en/index.html";
 }
