@@ -1,5 +1,6 @@
 TEMPLATE = app
 TARGET = qrest
+ICON = resources/pix/qrest.icns
 linux-* { 
     BINDEST = /usr/bin/
     SHARE = /usr/share/$$TARGET
@@ -52,10 +53,12 @@ FORMS += src/gui/forms/qrestpreferencesdialog.ui \
     src/gui/forms/qrestmainwindow.ui \
     src/gui/forms/qresthelpviewer.ui \
     src/gui/forms/qrestaboutdialog.ui
-RESOURCES += resources/pixmaps.qrc
-TRANSLATIONS = i18n/qrest_fr.ts \
-    i18n/qrest_es.ts \
-    i18n/qrest_pt.ts
+RESOURCES += resources/pixmaps.qrc \
+    resources/i18n.qrc \
+    resources/online_doc.qrc
+TRANSLATIONS = resources/i18n/qrest_fr.ts \
+    resources/i18n/qrest_es.ts \
+    resources/i18n/qrest_pt.ts
 UI_DIR = src/gui/forms
 MOC_DIR = tmp
 OBJECTS_DIR = tmp

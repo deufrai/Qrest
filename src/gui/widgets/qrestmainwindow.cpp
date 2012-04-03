@@ -136,8 +136,8 @@ void QrestMainWindow::updateView(void) {
     /*
      * update steadiness widget's tooltip text
      */
-    _pie->setToolTip(tr("displayed BPM value is %n% reliable", "",
-            (int) (_document->getSteadiness() * 100)));
+    _pie->setToolTip(tr("Displayed BPM reliability : %n", 0,
+                        (int) (_document->getSteadiness() * 100)).append("%"));
 }
 
 ////////////////////////////////////////////////////////////////////////////////

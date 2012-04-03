@@ -64,5 +64,5 @@ void QrestHelpViewer::destroy() {
 
 void QrestHelpViewer::setSource(const QString& source) {
 
-    ui.helpBrowser->setSource(QUrl(source));
+    ui.helpBrowser->setSource(QUrl::fromLocalFile(source));
 }
