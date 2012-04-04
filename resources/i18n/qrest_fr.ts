@@ -238,7 +238,7 @@
     <message>
         <location filename="../../src/gui/forms/qrestpreferencesdialog.ui" line="47"/>
         <source>Remember window &amp;position</source>
-        <translation>Enregistrer &amp;position de la fenêtre</translation>
+        <translation>Enregistrer la &amp;position de la fenêtre</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/qrestpreferencesdialog.ui" line="78"/>
