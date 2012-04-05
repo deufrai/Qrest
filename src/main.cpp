@@ -39,6 +39,14 @@ int main(int argc, char *argv[]) {
 
     QApplication application(argc, argv);
 
+    /*
+     * Don't show icons for menu items on Mac
+     *
+     */
+#ifdef Q_WS_MAC
+        application.setAttribute(Qt::AA_DontShowIconsInMenus);
+#endif
+
     // create and install a translator according to system locale
     QTranslator translator;
 

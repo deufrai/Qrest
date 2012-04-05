@@ -566,6 +566,9 @@
    <property name="shortcut" >
     <string>Ctrl+Q</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::QuitRole</enum>
+   </property>
   </action>
   <action name="actionAbout" >
    <property name="icon" >
@@ -577,6 +580,9 @@
    </property>
    <property name="statusTip" >
     <string>About Qrest</string>
+   </property>
+   <property name="menuRole">
+    <enum>QAction::AboutRole</enum>
    </property>
   </action>
   <action name="actionHelp" >
@@ -605,6 +611,9 @@
    <property name="shortcut" >
     <string>Ctrl+P</string>
    </property>
+   <property name="menuRole">
+    <enum>QAction::PreferencesRole</enum>
+   </property>
   </action>
  </widget>
  <tabstops>
@@ -627,11 +636,6 @@
   <tabstop>thirtySecondLfoEdit</tabstop>
  </tabstops>
  <resources>
-  <include location="../../../resources/pixmaps.qrc" />
-  <include location="../../../resources/pixmaps.qrc" />
-  <include location="../../../resources/pixmaps.qrc" />
-  <include location="../../../resources/pixmaps.qrc" />
-  <include location="../../../resources/pixmaps.qrc" />
   <include location="../../../resources/pixmaps.qrc" />
  </resources>
  <connections/>
