@@ -65,18 +65,12 @@ int main(int argc, char *argv[]) {
         qWarning() << "Failed to load translation file";
     }
 
-    // create app data
-    Document::getInstance();
-
     // create and show main window
     QrestMainWindow mainWindow;
     mainWindow.resize(mainWindow.minimumSizeHint());
     mainWindow.show();
 
     int nResult = application.exec();
-
-    // release APP data
-    Document::destroy();
 
     return nResult;
 }
