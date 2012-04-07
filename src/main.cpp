@@ -70,7 +70,5 @@ int main(int argc, char *argv[]) {
     mainWindow.resize(mainWindow.minimumSizeHint());
     mainWindow.show();
 
-    int nResult = application.exec();
-
-    return nResult;
+    return application.exec();
 }
