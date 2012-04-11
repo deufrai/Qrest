@@ -4,12 +4,9 @@ ICON = resources/pix/qrest.icns
 linux-* { 
     BINDEST = /usr/bin/
     SHARE = /usr/share/$$TARGET
-    
-    DOCDEST = /usr/share/doc/$$TARGET
     LANGDEST = $$SHARE/i18n
     MANDEST = /usr/share/man/man1/
     ICONDEST = $$SHARE/icons
-    DOCSRC = doc/html
     LANGSRC = i18n/*.qm
     BINSRC = ./qrest
     MANSRC = doc/manpages/man1/qrest.1.gz
@@ -66,9 +63,6 @@ OBJECTS_DIR = tmp
 RCC_DIR = tmp
 RC_FILE = resources/winicon.rc
 linux-* { 
-    userguides.path = $$DOCDEST
-    userguides.files = $$DOCSRC
-    INSTALLS += userguides
     languages.path = $$LANGDEST
     languages.files = $$LANGSRC
     INSTALLS += languages
