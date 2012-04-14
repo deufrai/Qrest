@@ -28,42 +28,56 @@
  *	Have fun
  */
 
-#include "model/document.h"
 #include <QtGui>
 #include <QApplication>
+#include <QLibraryInfo>
+
+#include "model/document.h"
 #include "gui/widgets/qrestmainwindow.h"
 #include "constants.h"
 #include "helpers/localeHelper.h"
 
+/**
+ * Install translator into the application
+ *
+ * \param app : the target application
+ * \param filePrefix : prefix used to ID this tranlsation
+ * \param folderPath : path to the folder where translation is located
+ */
+void installTranslator (QApplication& app, QString& filePrefix, QString& folderPath);
+
+
+
+//////////////////////////////////////////////////
+//
+// Life starts here
+//
+//////////////////////////////////////////////////
 int main(int argc, char *argv[]) {
 
     QApplication application(argc, argv);
 
-    /*
-     * Don't show icons for menu items on Mac
-     *
-     */
+
+    // Don't show icons for menu items on Mac
 #ifdef Q_WS_MAC
         application.setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
 
-    // create and install a translator according to system locale
-    QTranslator translator;
 
-    bool bTransLoaded = translator.load("qrest_" + LocaleHelper::getLocale(), ":/i18n");
+    // create and install translators for application & Qt itself, according to system locale
+    QString appTransfilePrefix= "qrest_";
+    QString appTransFolderPath = ":/i18n";
+    installTranslator(application, appTransfilePrefix, appTransFolderPath);
 
-    if (bTransLoaded) {
-
-#ifndef QT_NO_DEBUG
-        qDebug() << "Translation file loaded successfully";
+    /*
+     * on Mac, some menu entries are merged into the "application menu" and their translations are
+     * provided by a Qt specific translation file
+     */
+#ifdef Q_WS_MAC
+    QString qtTransfilePrefix= "qt_";
+    QString qtTransFolderPath = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
+    installTranslator(application, qtTransfilePrefix, qtTransFolderPath);
 #endif
-
-        application.installTranslator(&translator);
-
-    } else {
-
-        qWarning() << "Failed to load translation file";
-    }
 
     // create and show main window
     QrestMainWindow mainWindow;
@@ -71,4 +85,28 @@ int main(int argc, char *argv[]) {
     mainWindow.show();
 
     return application.exec();
+}
+
+
+
+void installTranslator (QApplication& app, QString& filePrefix, QString& folderPath) {
+
+
+    QTranslator* pTranslator = new QTranslator();
+
+    bool isTransLoaded = pTranslator->load(filePrefix + LocaleHelper::getLocale(), folderPath);
+
+    if (isTransLoaded) {
+
+#ifndef QT_NO_DEBUG
+        qDebug() << "Translation file loaded successfully : " << filePrefix + LocaleHelper::getLocale();
+#endif
+
+        app.installTranslator(pTranslator);
+
+    } else {
+
+        qWarning() << "Failed to load translation file <<  : " << filePrefix + LocaleHelper::getLocale();
+    }
+
 }
