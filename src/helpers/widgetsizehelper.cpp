@@ -25,6 +25,7 @@
 #include <QRadioButton>
 #include <QGroupBox>
 #include <QCheckBox>
+#include <QStatusBar>
 
 #include "widgetsizehelper.h"
 #include "../constants.h"
@@ -51,6 +52,7 @@ void WidgetSizeHelper::setDefaultFontSize(QWidget* pWidget) {
          *  - QRadioButton
          *  - QGroupBox
          *  - QCheckBox
+         *  - QStatusBar
          */
         QWidget* pChild = static_cast<QWidget*> ( children.at(i) );
 
@@ -58,7 +60,8 @@ void WidgetSizeHelper::setDefaultFontSize(QWidget* pWidget) {
               qobject_cast<QLineEdit*>(pChild) != NULL ||
               qobject_cast<QRadioButton*>(pChild) != NULL ||
               qobject_cast<QGroupBox*>(pChild) != NULL  ||
-              qobject_cast<QCheckBox*>(pChild) != NULL )
+              qobject_cast<QCheckBox*>(pChild) != NULL  ||
+              qobject_cast<QStatusBar*>(pChild) != NULL )
         {
             QFont lFont = pChild->font();
             lFont.setPointSize(Constants::MAC_FONT_SIZE);
