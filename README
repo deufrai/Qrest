@@ -1,0 +1,34 @@
+QREST
+
+A musician toolkit aimed at helping composers, performers, recordists and mixers finding out :
+
+- The tempo of a musical piece
+- calculate delay times for common notes, according to tempo
+- calculate LFO frequencies for common notes, according to tempo
+
+Qrest is a standalone desktop application running on GNU/linux, Windows and Mac OSX
+
+Website : http://www.qrest.org
+
+---
+
+Code is C++ and relies on the Qt framework for GUI
+
+All non-GUI code is Qt-free, with the only exception of the timer used for TAPTEMPO feature. (We would most gladly welcome a portable FIXME for this one)
+
+---
+
+Git repository : https://github.com/deufrai/qrest
+Mirrored by    : git://wardsback.org/qrest
+
+ branch layout :
+================
+
+- master : latest stable, production release
+- releases-### : feature-frozen version under tests for next release + maintenance code, once release ### has gone live
+- dev : unscheduled / experimental code for future features & releases
+
+
+PEACE and Think ! It ain't illegal yet !
+
+
