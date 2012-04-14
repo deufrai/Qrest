@@ -37,6 +37,8 @@
 #include "constants.h"
 #include "helpers/localeHelper.h"
 
+
+
 /**
  * Install translator into the application
  *
@@ -57,26 +59,30 @@ int main(int argc, char *argv[]) {
 
     QApplication application(argc, argv);
 
-
-    // Don't show icons for menu items on Mac
-#ifdef Q_WS_MAC
-        application.setAttribute(Qt::AA_DontShowIconsInMenus);
-#endif
-
-
-    // create and install translators for application & Qt itself, according to system locale
+    // create and install translators for the application according to system locale
     QString appTransfilePrefix= "qrest_";
     QString appTransFolderPath = ":/i18n";
     installTranslator(application, appTransfilePrefix, appTransFolderPath);
 
-    /*
-     * on Mac, some menu entries are merged into the "application menu" and their translations are
-     * provided by a Qt specific translation file
-     */
+
 #ifdef Q_WS_MAC
+
+    /*
+     * on Mac :
+     *
+     * - some menu entries are merged into the "application menu" and their translations are
+     *   provided by a Qt specific translation file
+     *
+     * - no icons are shown next to menu items
+     */
+
+    // install translator for Qt itself
     QString qtTransfilePrefix= "qt_";
     QString qtTransFolderPath = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
     installTranslator(application, qtTransfilePrefix, qtTransFolderPath);
+
+    // Don't show icons for menu items on Mac
+    application.setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
 
     // create and show main window
@@ -106,7 +112,7 @@ void installTranslator (QApplication& app, QString& filePrefix, QString& folderP
 
     } else {
 
-        qWarning() << "Failed to load translation file <<  : " << filePrefix + LocaleHelper::getLocale();
+        qWarning() << "Failed to load translation file : " << filePrefix + LocaleHelper::getLocale();
     }
 
 }
