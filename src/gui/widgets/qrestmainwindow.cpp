@@ -31,6 +31,7 @@
 #include "../../model/document.h"
 #include "custom/progressPie.h"
 #include "../../helpers/localeHelper.h"
+#include "../../helpers/widgetsizehelper.h"
 #include <QFile>
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -47,6 +48,11 @@ QrestMainWindow::QrestMainWindow(QWidget *parent) :
 
     // setting up GUI
     ui.setupUi(this);
+
+#ifdef Q_WS_MAC
+    // set default font sizes
+    WidgetSizeHelper::setDefaultFontSize( this );
+#endif
 
     // setup steadiness indocator
     _pie = new ProgressPie();

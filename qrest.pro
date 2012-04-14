@@ -17,6 +17,7 @@ linux-* {
 }
 QT += core \
     gui
+
 HEADERS += src/helpers/localeHelper.h \
     src/gui/widgets/custom/progressPie.h \
     src/gui/widgets/qrestpreferencesdialog.h \
@@ -33,6 +34,7 @@ HEADERS += src/helpers/localeHelper.h \
     src/dp/observer.h \
     src/model/delay.h \
     src/model/document.h
+
 SOURCES += src/helpers/localeHelper.cpp \
     src/gui/widgets/custom/progressPie.cpp \
     src/gui/widgets/qrestpreferencesdialog.cpp \
@@ -50,6 +52,13 @@ SOURCES += src/helpers/localeHelper.cpp \
     src/model/delay.cpp \
     src/model/document.cpp \
     src/main.cpp
+
+#We only complie the WidgetSizeHelper on Mac
+macx {
+    HEADERS += src/helpers/widgetsizehelper.h
+    SOURCES += src/helpers/widgetsizehelper.cpp
+}
+
 FORMS += src/gui/forms/qrestpreferencesdialog.ui \
     src/gui/forms/qrestmainwindow.ui \
     src/gui/forms/qresthelpviewer.ui \

@@ -87,6 +87,9 @@ public:
     /** Maximum allowed tempo as input. */
     static const double TEMPO_MAX = 999.0;
 
+    /** Size (in points) of widget fonts for mac */
+    static const int MAC_FONT_SIZE = 13;
+
 };
 
 #endif /* CONSTANTS_H_ */
