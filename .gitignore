@@ -7,3 +7,4 @@ ui_qrest*.h
 .cproject
 tmp/
 qrest
+/.settings
