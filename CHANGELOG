@@ -1,7 +1,8 @@
-v0.5 (In progress)
+v0.5
 ====
 	* remember main window position.
-	Closes #7,#9
+    * changed layout to hrizontal
+    * steadiness indicator is now progressive
     
 v0.4.1
 ======

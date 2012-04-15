@@ -1,7 +1,7 @@
 /*
  *  qrest
  *
- *  Copyright (C) 2008-2009 - Frédéric CORNU
+ *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -86,6 +86,9 @@ public:
     static const double TEMPO_MIN = 1.0;
     /** Maximum allowed tempo as input. */
     static const double TEMPO_MAX = 999.0;
+
+    /** Size (in points) of widget fonts for mac */
+    static const int MAC_FONT_SIZE = 13;
 
 };
 

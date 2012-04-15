@@ -1,6 +1,7 @@
 #include "qrestpreferencesdialog.h"
 
 #include "../../settings/settings.h"
+#include "../../helpers/widgetsizehelper.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -10,6 +11,11 @@
 QrestPreferencesDialog::QrestPreferencesDialog(QWidget *parent) :
     QDialog(parent) {
     ui.setupUi(this);
+
+#ifdef Q_WS_MAC
+    // set default font sizes
+    WidgetSizeHelper::setDefaultFontSize( this );
+#endif
 
     ui.chkRememberWindowPos->setChecked(
             Settings::getInstance()->getSettings() .value(

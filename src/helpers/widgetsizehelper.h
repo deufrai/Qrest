@@ -17,33 +17,29 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef TAPTEMPOCALCULATORTESTCASE_H_
-#define TAPTEMPOCALCULATORTESTCASE_H_
 
-#include <QtTest/QtTest>
+#ifndef WIDGETSIZEHELPER_H
+#define WIDGETSIZEHELPER_H
 
-/*
- * Unit tests against TapTempoCalculator.
- */
-class TapTempoCalculatorTestCase: public QObject {
+class QWidget;
 
-Q_OBJECT
-
+/**
+  * Helper class (ifdefed on Mac) to set bigger font sizes
+  */
+class WidgetSizeHelper
+{
 public:
-    TapTempoCalculatorTestCase();
-    virtual ~TapTempoCalculatorTestCase();
+    WidgetSizeHelper();
 
-private slots:
-    /*
-     * test fixture : simulates 4 taps at 60 BPM.
+    /**
+     * recusrive scan of the whole parent -> child hierarchy of the widget param
+     * and sets bigger font size for widgets that have text to show
+     *
+     * \param the widget to scan
+     *
      */
-    void initTestCase();
-
-    /*
-     * actual tests.
-     */
-    void testTapTempoAt60BPM();
-    void testSteadiness();
+    static void setDefaultFontSize(QWidget*);
 };
 
-#endif /* TAPTEMPOCALCULATORTESTCASE_H_ */
+#endif // WIDGETSIZEHELPER_H
+

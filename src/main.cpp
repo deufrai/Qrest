@@ -1,7 +1,7 @@
 /*
  *  qest
  *
- *  Copyright (C) 2008-2009 - Frédéric CORNU
+ *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -28,56 +28,91 @@
  *	Have fun
  */
 
-#include "model/document.h"
 #include <QtGui>
 #include <QApplication>
+#include <QLibraryInfo>
+
+#include "model/document.h"
 #include "gui/widgets/qrestmainwindow.h"
 #include "constants.h"
 #include "helpers/localeHelper.h"
 
+
+
+/**
+ * Install translator into the application
+ *
+ * \param app : the target application
+ * \param filePrefix : prefix used to ID this tranlsation
+ * \param folderPath : path to the folder where translation is located
+ */
+void installTranslator (QApplication& app, QString& filePrefix, QString& folderPath);
+
+
+
+//////////////////////////////////////////////////
+//
+// Life starts here
+//
+//////////////////////////////////////////////////
 int main(int argc, char *argv[]) {
 
     QApplication application(argc, argv);
 
-    /*
-     * Don't show icons for menu items on Mac
-     *
-     */
+    // create and install translators for the application according to system locale
+    QString appTransfilePrefix= "qrest_";
+    QString appTransFolderPath = ":/i18n";
+    installTranslator(application, appTransfilePrefix, appTransFolderPath);
+
+
 #ifdef Q_WS_MAC
-        application.setAttribute(Qt::AA_DontShowIconsInMenus);
+
+    /*
+     * on Mac :
+     *
+     * - some menu entries are merged into the "application menu" and their translations are
+     *   provided by a Qt specific translation file
+     *
+     * - no icons are shown next to menu items
+     */
+
+    // install translator for Qt itself
+    QString qtTransfilePrefix= "qt_";
+    QString qtTransFolderPath = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
+    installTranslator(application, qtTransfilePrefix, qtTransFolderPath);
+
+    // Don't show icons for menu items on Mac
+    application.setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
-
-    // create and install a translator according to system locale
-    QTranslator translator;
-
-    bool bTransLoaded = translator.load("qrest_" + LocaleHelper::getLocale(), ":/i18n");
-
-    if (bTransLoaded) {
-
-#ifndef QT_NO_DEBUG
-        qDebug() << "main.cpp : Translation file loaded successfully";
-#endif
-
-        application.installTranslator(&translator);
-
-    } else {
-
-        qWarning() << "main.cpp : Failed to load translation file";
-    }
-
-    // create app data
-    Document::getInstance();
 
     // create and show main window
     QrestMainWindow mainWindow;
-
     mainWindow.resize(mainWindow.minimumSizeHint());
     mainWindow.show();
 
-    int nResult = application.exec();
+    return application.exec();
+}
 
-    // release APP data
-    Document::destroy();
 
-    return nResult;
+
+void installTranslator (QApplication& app, QString& filePrefix, QString& folderPath) {
+
+
+    QTranslator* pTranslator = new QTranslator();
+
+    bool isTransLoaded = pTranslator->load(filePrefix + LocaleHelper::getLocale(), folderPath);
+
+    if (isTransLoaded) {
+
+#ifndef QT_NO_DEBUG
+        qDebug() << "Translation file loaded successfully : " << filePrefix + LocaleHelper::getLocale();
+#endif
+
+        app.installTranslator(pTranslator);
+
+    } else {
+
+        qWarning() << "Failed to load translation file : " << filePrefix + LocaleHelper::getLocale();
+    }
+
 }

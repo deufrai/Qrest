@@ -1,7 +1,7 @@
 /*
  *  qrest
  *
- *  Copyright (C) 2008-2009 - Frédéric CORNU
+ *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -25,8 +25,8 @@ const char* Constants::VERSION_STRING = "0.6-dev";
 const char* Constants::I18N_FOLDER_LOCATION = "i18n";
 const char* Constants::ONLINE_HELP_LOCATION = "doc/html";
 #else
-const char* Constants::I18N_FOLDER_LOCATION = "/usr/share/qrest/i18n";
-const char* Constants::ONLINE_HELP_LOCATION = "/usr/share/qrest/doc/html";
+	const char* Constants::I18N_FOLDER_LOCATION = "/usr/share/qrest/i18n";
+	const char* Constants::ONLINE_HELP_LOCATION = "/usr/share/doc/qrest/html";
 #endif
 
 Constants::Constants() {
