@@ -21,13 +21,6 @@
 
 const char* Constants::VERSION_STRING = "0.5-RC1";
 
-#ifdef _WIN32
-	const char* Constants::I18N_FOLDER_LOCATION = "i18n";
-	const char* Constants::ONLINE_HELP_LOCATION = "doc/html";
-#else
-	const char* Constants::I18N_FOLDER_LOCATION = "/usr/share/qrest/i18n";
-	const char* Constants::ONLINE_HELP_LOCATION = "/usr/share/doc/qrest/html";
-#endif
 
 Constants::Constants() {
 
