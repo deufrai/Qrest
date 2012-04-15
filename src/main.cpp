@@ -29,14 +29,15 @@
  */
 
 #include <QtGui>
-#include <QApplication>
 #include <QLibraryInfo>
+#include <QApplication>
 
 #include "model/document.h"
 #include "gui/widgets/qrestmainwindow.h"
 #include "constants.h"
 #include "helpers/localeHelper.h"
-
+#include "midi/midiengine.h"
+#include "midi/midimroadcaster.h"
 
 
 /**
@@ -85,10 +86,20 @@ int main(int argc, char *argv[]) {
     application.setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
 
+
     // create and show main window
     QrestMainWindow mainWindow;
     mainWindow.resize(mainWindow.minimumSizeHint());
     mainWindow.show();
+
+    // connections
+    QObject::connect(MidiBroadcaster::getInstance(),
+    		SIGNAL(bip()),
+    		MidiBroadcaster::getInstance(),
+    		SLOT(onBip()));
+
+    // init MIDI manager
+    MidiEngine::getInstance()->start();
 
     return application.exec();
 }

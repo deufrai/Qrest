@@ -218,6 +218,21 @@ public:
         _steadiness = steadiness;
     }
 
+    /**
+     * Get MIDI operations availability
+     *
+     * \return true if MIDI operations are available
+     */
+    inline bool isMidiAvailable () const {
+
+    	return _midiAvailable;
+    }
+
+    inline void setMidiAvailable( const bool midiAvailable ) {
+
+    	_midiAvailable = midiAvailable;
+    }
+
 private:
 
     ////////////////////////////////////////////////////////////////////////////
@@ -273,6 +288,9 @@ private:
 
     /** The multiplier used for plain, dotted and triplet notes */
     double _multiplier;
+
+    /** Indicates if MIDI operations are available */
+    bool _midiAvailable;
 
     ////////////////////////////////////////////////////////////////////////////
     //

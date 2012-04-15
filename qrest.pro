@@ -12,8 +12,10 @@ linux-* {
 }
 QT += core \
     gui
-
-HEADERS += src/helpers/localeHelper.h \
+HEADERS += src/midi/midimroadcaster.h \
+    src/midi/alsamidiengine.h \
+    src/midi/midiengine.h \
+    src/helpers/localeHelper.h \
     src/gui/widgets/custom/progressPie.h \
     src/gui/widgets/qrestpreferencesdialog.h \
     src/settings/settings.h \
@@ -29,8 +31,10 @@ HEADERS += src/helpers/localeHelper.h \
     src/dp/observer.h \
     src/model/delay.h \
     src/model/document.h
-
-SOURCES += src/helpers/localeHelper.cpp \
+SOURCES += src/midi/midimroadcaster.cpp \
+    src/midi/Alsamidiengine.cpp \
+    src/midi/midiengine.cpp \
+    src/helpers/localeHelper.cpp \
     src/gui/widgets/custom/progressPie.cpp \
     src/gui/widgets/qrestpreferencesdialog.cpp \
     src/settings/settings.cpp \
@@ -48,12 +52,13 @@ SOURCES += src/helpers/localeHelper.cpp \
     src/model/document.cpp \
     src/main.cpp
 
-#We only complie the WidgetSizeHelper on Mac
-macx {
+# We only complie the WidgetSizeHelper on Mac
+macx { 
     HEADERS += src/helpers/widgetsizehelper.h
     SOURCES += src/helpers/widgetsizehelper.cpp
 }
-
+INCLUDEPATH += /usr/include/alsa
+LIBS += -lasound
 FORMS += src/gui/forms/qrestpreferencesdialog.ui \
     src/gui/forms/qrestmainwindow.ui \
     src/gui/forms/qresthelpviewer.ui \
