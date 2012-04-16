@@ -21,21 +21,19 @@
 #include "../model/document.h"
 #include <iostream>
 
-
 RtMidiEngine::RtMidiEngine() {
 
 }
 
 RtMidiEngine::~RtMidiEngine() {
 
-	if ( _midiIn ) {
+	if (_midiIn) {
 
 		_midiIn->closePort();
 		delete _midiIn;
-		_midiIn  = 0;
+		_midiIn = 0;
 	}
 }
-
 
 void RtMidiEngine::init() {
 
@@ -45,57 +43,55 @@ void RtMidiEngine::init() {
 	/*
 	 * Discovering available ports
 	 */
-	unsigned int nPorts = _midiIn->getPortCount();
-
-    std::cout << "There are " << nPorts << " MIDI input sources available." << std::endl;
-
-	std::string portName;
-
-	for (unsigned int i = 0; i < nPorts; i++) {
-
-		try {
-
-			portName = _midiIn->getPortName(i);
-
-		} catch (RtError &error) {
-
-			error.printMessage();
-		}
-
-        std::cout << "  Input Port #" << i + 1 << ": " << portName << std::endl;
-	}
-
+	listPhysicalDevices();
 
 	// We don't want to ignore timing-related MIDI events
 	_midiIn->ignoreTypes(true, false, true);
 
 	// We open a named port
-    try {
+	try {
 
-//        _midiIn->openVirtualPort("MIDI Clock IN");
-        _midiIn->openPort(0, "MIDI Clock IN");
+		_midiIn->openPort(0, "MIDI Clock IN");
 
-        // If all goes wel untill here, MIDI is now available
-        Document::getInstance()->setMidiAvailable(true);
+		// If all goes wel untill here, MIDI is now available
+		Document::getInstance()->setMidiAvailable(true);
 
-    } catch (RtError &error) {
+	} catch (RtError &error) {
 
-        error.printMessage();
-    }
+		error.printMessage();
+	}
 }
 
+void RtMidiEngine::listPhysicalDevices() {
+
+	unsigned int nPorts = _midiIn->getPortCount();
+
+	std::cerr << nPorts << " MIDI input sources available :" << std::endl;
+
+	for (unsigned int i = 0; i < nPorts; i++) {
+
+		try {
+
+			std::cerr << "  * Input Port #" << i + 1 << ": "
+					<< _midiIn->getPortName(i) << std::endl;
+
+		} catch (RtError &error) {
+
+			error.printMessage();
+		}
+	}
+}
 
 int RtMidiEngine::readEvent() {
 
 	// some specs about the value of message first byte, for interresting events
-	static const int MIDI_START =  		0xFA;
-	static const int MIDI_CONTINUE =  	0xFB;
-	static const int MIDI_STOP =  		0xFC;
-	static const int MIDI_CLOCK =  		0xF8;
-
+	static const int MIDI_START = 0xFA;
+	static const int MIDI_CONTINUE = 0xFB;
+	static const int MIDI_STOP = 0xFC;
+	static const int MIDI_CLOCK = 0xF8;
 
 	// read next message in queue
-	_midiIn->getMessage(& _message);
+	_midiIn->getMessage(&_message);
 
 	/*
 	 * we sleep for 1ms because getMessage calls are non-blocking
@@ -104,11 +100,10 @@ int RtMidiEngine::readEvent() {
 	msleep(1);
 
 	// if the queue was empty, so is the current message
-	if ( _message.size() > 0 ) {
-
+	if (_message.size() > 0) {
 
 		// We read the firt byte & check the type of event it describes
-		switch ( (int)_message[0] ) {
+		switch ((int) _message[0]) {
 
 		case MIDI_CLOCK:
 
@@ -130,5 +125,4 @@ int RtMidiEngine::readEvent() {
 
 	return EVENT_UNHANDLED;
 }
-
 

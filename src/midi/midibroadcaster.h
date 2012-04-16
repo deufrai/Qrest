@@ -99,12 +99,12 @@ public slots:
 	void onBip();
 
 	/**
-	 * Tell everyone that MIDI Clock just started
+	 * Tell Document that MIDI Clock just started
 	 */
 	void onStart();
 
 	/**
-	 * Tell everyone that MIDI Clock just stopped
+	 * Tell Document that MIDI Clock just stopped
 	 */
 	void onStop();
 };

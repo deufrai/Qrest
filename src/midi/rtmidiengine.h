@@ -21,7 +21,7 @@
 #define RTMIDIENGINE_H_
 
 #include "midiengine.h"
-#include "RtMidi.h"
+#include "contrib/RtMidi.h"
 
 #include <vector>
 
@@ -52,12 +52,22 @@ public:
 	void init();
 	int readEvent();
 
+private:
+	////////////////////////////////////////////////////////////////////////////
+	//
+	// PRIVATE FUNCTION
+	//
+	////////////////////////////////////////////////////////////////////////////
+	/**
+	 * List all physical MIDI devices attached to the system
+	 */
+	void listPhysicalDevices();
+
 	////////////////////////////////////////////////////////////////////////////
 	//
 	// RtMIDI implementation support members
 	//
 	////////////////////////////////////////////////////////////////////////////
-private:
 	RtMidiIn* _midiIn;
 	std::vector<unsigned char> _message;
 

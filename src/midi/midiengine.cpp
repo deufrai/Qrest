@@ -18,12 +18,7 @@
  */
 
 #include "midiengine.h"
-//#ifdef linux
-//#include "alsamidiengine.h"
-//#endif
-
 #include "rtmidiengine.h"
-
 #include "../constants.h"
 #include "midibroadcaster.h"
 #include "../model/document.h"
@@ -43,12 +38,7 @@ MidiEngine* MidiEngine::getInstance() {
 
 	if ( 0 == _instance ) {
 
-//#ifdef linux
-//		_instance = new AlsaMidiEngine();
-//#endif
-
 		_instance = new RtMidiEngine();
-
 	}
 
 	return _instance;

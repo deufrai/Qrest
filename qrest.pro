@@ -3,8 +3,8 @@ TARGET = qrest
 ICON = resources/pix/qrest.icns
 QT += core \
     gui
-HEADERS += src/midi/RtError.h \
-    src/midi/RtMidi.h \
+HEADERS += src/midi/contrib/RtError.h \
+    src/midi/contrib/RtMidi.h \
     src/midi/rtmidiengine.h \
     src/midi/midibroadcaster.h \
     src/midi/midiengine.h \
@@ -24,7 +24,7 @@ HEADERS += src/midi/RtError.h \
     src/dp/observer.h \
     src/model/delay.h \
     src/model/document.h
-SOURCES += src/midi/RtMidi.cpp \
+SOURCES += src/midi/contrib/RtMidi.cpp \
     src/midi/rtmidiengine.cpp \
     src/midi/midibroadcaster.cpp \
     src/midi/midiengine.cpp \
@@ -47,30 +47,28 @@ SOURCES += src/midi/RtMidi.cpp \
     src/main.cpp
 
 # Platform specific compilations
-macx {
+macx { 
     # WidgetSizehelper is only used on Mac
     HEADERS += src/helpers/widgetsizehelper.h
     SOURCES += src/helpers/widgetsizehelper.cpp
+    
     # RtMidi needs those
     DEFINES += __MACOSX_CORE__
-    LIBS += -framework CoreAudio -framework CoreMidi -framework CoreFoundation
+    LIBS += -framework CoreAudio \
+        -framework CoreMidi \
+        -framework CoreFoundation
 }
-linux-* {
-	# RtMidi needs those
-    LIBS += -lasound -lpthread
+linux-* { 
+    # RtMidi needs those
+    LIBS += -lasound \
+        -lpthread
     DEFINES += __LINUX_ALSASEQ__
-    # ALSA MIDI library
-    INCLUDEPATH += /usr/include/alsa
-    SOURCES += src/midi/alsamidiengine.cpp
-    HEADERS += src/midi/alsamidiengine.h
 }
-
-win32 {
-	# RtMidi needs those
+win32 { 
+    # RtMidi needs those
     DEFINES += __WINDOWS_MM__
     LIBS += -lwinmm
 }
-
 FORMS += src/gui/forms/qrestpreferencesdialog.ui \
     src/gui/forms/qrestmainwindow.ui \
     src/gui/forms/qresthelpviewer.ui \
@@ -88,7 +86,7 @@ RCC_DIR = tmp
 RC_FILE = resources/winicon.rc
 
 # Linux install
-linux-* {
+linux-* { 
     BINSRC = ./qrest
     BINDEST = /usr/bin/
     SHARE = /usr/share/$$TARGET
