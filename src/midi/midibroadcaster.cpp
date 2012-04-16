@@ -17,8 +17,9 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "midimroadcaster.h"
+#include "midibroadcaster.h"
 #include "../process/tapTempoCalculator.h"
+#include "../model/document.h"
 
 MidiBroadcaster* MidiBroadcaster::_instance = 0;
 
@@ -36,6 +37,17 @@ void MidiBroadcaster::onMidiQuarter() {
 	emit bip();
 }
 
+void MidiBroadcaster::onMidiStart() {
+
+	emit start();
+}
+
+void MidiBroadcaster::onMidiStop() {
+
+	emit stop();
+}
+
+
 MidiBroadcaster* MidiBroadcaster::getInstance() {
 
 	if ( 0 == _instance ) {
@@ -48,6 +60,20 @@ MidiBroadcaster* MidiBroadcaster::getInstance() {
 
 void MidiBroadcaster::onBip() {
 
+	Document::getInstance()->setTempoSource(Document::TEMPO_SOURCE_MIDI);
 	TapTempoCalculator::getInstance()->process();
 
 }
+
+void MidiBroadcaster::onStart() {
+
+	Document::getInstance()->setMidiClockRunning(true);
+}
+
+void MidiBroadcaster::onStop() {
+
+	Document::getInstance()->setMidiClockRunning(false);
+}
+
+
+

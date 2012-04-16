@@ -90,6 +90,9 @@ public:
     /** Size (in points) of widget fonts for mac */
     static const int MAC_FONT_SIZE = 13;
 
+    /** How many MIDI CLock events in a quarter note ? */
+    static const int MIDI_CLOCK_EVENTS_PER_QUARTER = 24;
+
 };
 
 #endif /* CONSTANTS_H_ */

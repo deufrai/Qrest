@@ -12,7 +12,7 @@ linux-* {
 }
 QT += core \
     gui
-HEADERS += src/midi/midimroadcaster.h \
+HEADERS += src/midi/midibroadcaster.h \
     src/midi/alsamidiengine.h \
     src/midi/midiengine.h \
     src/helpers/localeHelper.h \
@@ -31,7 +31,7 @@ HEADERS += src/midi/midimroadcaster.h \
     src/dp/observer.h \
     src/model/delay.h \
     src/model/document.h
-SOURCES += src/midi/midimroadcaster.cpp \
+SOURCES += src/midi/midibroadcaster.cpp \
     src/midi/Alsamidiengine.cpp \
     src/midi/midiengine.cpp \
     src/helpers/localeHelper.cpp \

@@ -37,7 +37,7 @@
 #include "constants.h"
 #include "helpers/localeHelper.h"
 #include "midi/midiengine.h"
-#include "midi/midimroadcaster.h"
+#include "midi/midibroadcaster.h"
 
 
 /**
@@ -97,6 +97,18 @@ int main(int argc, char *argv[]) {
     		SIGNAL(bip()),
     		MidiBroadcaster::getInstance(),
     		SLOT(onBip()));
+
+    QObject::connect(MidiBroadcaster::getInstance(),
+    		SIGNAL(start()),
+    		MidiBroadcaster::getInstance(),
+    		SLOT(onStart()));
+
+    QObject::connect(MidiBroadcaster::getInstance(),
+    	    SIGNAL(stop()),
+    	    MidiBroadcaster::getInstance(),
+    	    SLOT(onStop()));
+
+
 
     // init MIDI manager
     MidiEngine::getInstance()->start();

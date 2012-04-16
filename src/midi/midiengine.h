@@ -77,7 +77,7 @@ public:
 	/**
 	 * Read next MIDI event
 	 */
-	virtual void readEvent() = 0;
+	virtual int readEvent() = 0;
 
 private:
     ////////////////////////////////////////////////////////////////////////////
@@ -93,12 +93,25 @@ private:
 
     ////////////////////////////////////////////////////////////////////////////
     //
-    // PRIVATE FUNCTIONS
+    // MEMBERS
     //
     ////////////////////////////////////////////////////////////////////////////
-protected:
+private:
 	/** count how many MIDI clock events have been recieved */
 	int nTickCounter;
+
+protected:
+
+	/**
+	 * The handled MIDI events
+	 */
+	enum eventTypes {
+
+		EVENT_UNHANDLED,
+		EVENT_CLOCK,
+		EVENT_START,
+		EVENT_STOP
+	};
 };
 
 #endif /* MIDIENGINE_H_ */

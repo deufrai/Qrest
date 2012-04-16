@@ -65,6 +65,18 @@ public:
 	 */
 	void onMidiQuarter();
 
+	/**
+	 * Simply emits a Qt signal (start()) when MIDI engine detects that MIDI clock
+	 * has started
+	 */
+	void onMidiStart();
+
+	/**
+	 * Simply emits a Qt signal (stop()) when MIDI engine detects that MIDI clock
+	 * has stopped
+	 */
+	void onMidiStop();
+
 	////////////////////////////////////////////////////////////////////////////
 	//
 	// SIGNALS
@@ -72,6 +84,8 @@ public:
 	////////////////////////////////////////////////////////////////////////////
 signals:
 	void bip();
+	void start();
+	void stop();
 
 	////////////////////////////////////////////////////////////////////////////
 	//
@@ -83,6 +97,16 @@ public slots:
 	 * Ask the TapTempoCalculator to take the current time into account
 	 */
 	void onBip();
+
+	/**
+	 * Tell everyone that MIDI Clock just started
+	 */
+	void onStart();
+
+	/**
+	 * Tell everyone that MIDI Clock just stopped
+	 */
+	void onStop();
 };
 
 #endif /* MIDIMROADCASTER_H_ */

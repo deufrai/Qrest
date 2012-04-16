@@ -18,13 +18,6 @@
  */
 
 #include "alsamidiengine.h"
-#include "midimroadcaster.h"
-#include "../model/document.h"
-
-#include <iostream>
-
-using std::cerr;
-using std::endl;
 
 AlsaMidiEngine::AlsaMidiEngine()
 
@@ -43,44 +36,52 @@ void AlsaMidiEngine::init() {
     bool okSoFar = snd_seq_open(&_seqHandle, "default", SND_SEQ_OPEN_INPUT, 0) == 0;
 
 
+    // Set ALSA client name
     if (okSoFar)
     	okSoFar = snd_seq_set_client_name(_seqHandle, "qrest") == 0;
 
+    // open an input port to the sequencer
     if (okSoFar) {
     	 _port = snd_seq_create_simple_port(_seqHandle, "Midi Clock IN",
                           SND_SEQ_PORT_CAP_WRITE|SND_SEQ_PORT_CAP_SUBS_WRITE,
                           SND_SEQ_PORT_TYPE_APPLICATION);
-
-    	 okSoFar = _port >= 0;
     }
-
-    if (okSoFar) {
-
-    		Document::getInstance()->setMidiAvailable(okSoFar);
-    }
-
 }
 
-void AlsaMidiEngine::readEvent() {
+int AlsaMidiEngine::readEvent() {
 
+	/*
+	 * actual MIDI event read is done here
+	 *
+	 * Since we're running in a distinct thread, we can use ALSA's default blocking read
+	 */
 	snd_seq_event_t *ev = 0;
 	snd_seq_event_input(_seqHandle, &ev);
 
+	/*
+	 * report cpatured event
+	 */
 	switch ( ev->type ) {
 
 	case SND_SEQ_EVENT_CLOCK:
 
-			if ( --nTickCounter == 0 ) {
+		return EVENT_CLOCK;
+		break;
 
-				cerr << "24 MIDI Clock events recieved. Triggering quarter note" << endl;
-				nTickCounter = 24;
+	case SND_SEQ_EVENT_CONTINUE:
+	case SND_SEQ_EVENT_START:
 
-				MidiBroadcaster::getInstance()->onMidiQuarter();
-			}
+		return EVENT_START;
+		break;
 
+	case SND_SEQ_EVENT_STOP:
+
+		return EVENT_STOP;
 		break;
 
 	default:
 		break;
 	}
+
+	return EVENT_UNHANDLED;
 }
