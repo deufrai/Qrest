@@ -3,7 +3,10 @@ TARGET = qrest
 ICON = resources/pix/qrest.icns
 QT += core \
     gui
-HEADERS += src/midi/midibroadcaster.h \
+HEADERS += src/midi/RtError.h \
+    src/midi/RtMidi.h \
+    src/midi/rtmidiengine.h \
+    src/midi/midibroadcaster.h \
     src/midi/midiengine.h \
     src/helpers/localeHelper.h \
     src/gui/widgets/custom/progressPie.h \
@@ -21,7 +24,9 @@ HEADERS += src/midi/midibroadcaster.h \
     src/dp/observer.h \
     src/model/delay.h \
     src/model/document.h
-SOURCES += src/midi/midibroadcaster.cpp \
+SOURCES += src/midi/RtMidi.cpp \
+    src/midi/rtmidiengine.cpp \
+    src/midi/midibroadcaster.cpp \
     src/midi/midiengine.cpp \
     src/helpers/localeHelper.cpp \
     src/gui/widgets/custom/progressPie.cpp \
@@ -50,7 +55,8 @@ macx {
 linux-* { 
     # ALSA MIDI library
     INCLUDEPATH += /usr/include/alsa
-    LIBS += -lasound
+    LIBS += -lasound -lpthread
+    DEFINES += __LINUX_ALSASEQ__
     SOURCES += src/midi/alsamidiengine.cpp
     HEADERS += src/midi/alsamidiengine.h
 }

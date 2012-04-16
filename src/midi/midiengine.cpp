@@ -18,9 +18,11 @@
  */
 
 #include "midiengine.h"
-#ifdef linux
-#include "alsamidiengine.h"
-#endif
+//#ifdef linux
+//#include "alsamidiengine.h"
+//#endif
+
+#include "rtmidiengine.h"
 
 #include "../constants.h"
 #include "midibroadcaster.h"
@@ -41,9 +43,11 @@ MidiEngine* MidiEngine::getInstance() {
 
 	if ( 0 == _instance ) {
 
-#ifdef linux
-		_instance = new AlsaMidiEngine();
-#endif
+//#ifdef linux
+//		_instance = new AlsaMidiEngine();
+//#endif
+
+		_instance = new RtMidiEngine();
 
 	}
 
@@ -87,6 +91,9 @@ void MidiEngine::run() {
 			case EVENT_STOP:
 
 				MidiBroadcaster::getInstance()->onMidiStop();
+				break;
+
+			default:
 				break;
 			}
 		}
