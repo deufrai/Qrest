@@ -21,6 +21,7 @@
 #include "alsamidiengine.h"
 #include "../constants.h"
 #include "midibroadcaster.h"
+#include "../model/document.h"
 
 MidiEngine* MidiEngine::_instance = 0;
 
@@ -37,8 +38,10 @@ MidiEngine* MidiEngine::getInstance() {
 
 	if ( 0 == _instance ) {
 
+#ifdef linux
 		_instance = new AlsaMidiEngine();
-		_instance->init();
+#endif
+
 	}
 
 	return _instance;
@@ -52,34 +55,37 @@ void MidiEngine::run() {
 	 * handled by the application data store : Document
 	 */
 
-	while (true) {
+	if ( Document::getInstance()->isMidiAvailable() ) {
 
-		switch ( readEvent() ) {
+		while (true) {
 
-		case EVENT_CLOCK:
+			switch ( readEvent() ) {
 
-			/*
-			 * MIDI clock events are triggered 24 times in a quarter note.
-			 * So every 24 MIDI clock events, we trigger a 'quarter' message
-			 */
+			case EVENT_CLOCK:
 
-			if ( ++nTickCounter == Constants::MIDI_CLOCK_EVENTS_PER_QUARTER ) {
+				/*
+				 * MIDI clock events are triggered 24 times in a quarter note.
+				 * So every 24 MIDI clock events, we trigger a 'quarter' message
+				 */
 
-				nTickCounter = 0;
-				MidiBroadcaster::getInstance()->onMidiQuarter();
+				if ( ++nTickCounter == Constants::MIDI_CLOCK_EVENTS_PER_QUARTER ) {
+
+					nTickCounter = 0;
+					MidiBroadcaster::getInstance()->onMidiQuarter();
+				}
+
+				break;
+
+			case EVENT_START:
+
+				MidiBroadcaster::getInstance()->onMidiStart();
+				break;
+
+			case EVENT_STOP:
+
+				MidiBroadcaster::getInstance()->onMidiStop();
+				break;
 			}
-
-			break;
-
-		case EVENT_START:
-
-			MidiBroadcaster::getInstance()->onMidiStart();
-			break;
-
-		case EVENT_STOP:
-
-			MidiBroadcaster::getInstance()->onMidiStop();
-			break;
 		}
 	}
 }

@@ -79,6 +79,27 @@ public:
      */
     void setTempo(const double tempo);
 
+
+    /**
+     * is MIDI available
+     *
+     * \return true if MIDI engine is ready
+     */
+	inline bool isMidiAvailable() const {
+
+		return _midiAvailable;
+	}
+
+	/**
+	 * set the availability of MIDI operations
+	 *
+	 * \param midiAvailable : MIDI avilability
+	 */
+	inline void setMidiAvailable(bool midiAvailable) {
+
+		_midiAvailable = midiAvailable;
+	}
+
     /**
      * Get the tempo.
      *
@@ -309,6 +330,9 @@ private:
 
     /** Indicates running state of MIDI clock */
     bool _midiClockRunning;
+
+    /** are MIDI operations available ? */
+    bool _midiAvailable;
 
     ////////////////////////////////////////////////////////////////////////////
     //

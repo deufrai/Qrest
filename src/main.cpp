@@ -110,8 +110,17 @@ int main(int argc, char *argv[]) {
 
 
 
-    // init MIDI manager
-    MidiEngine::getInstance()->start();
+    /*
+     * init MIDI manager
+     */
+    MidiEngine* pMidiEngine = MidiEngine::getInstance();
+
+    // pMidiEngine will be null if no implementation has been compiled for current platform
+    if ( pMidiEngine ) {
+
+    	pMidiEngine->init();
+    	pMidiEngine->start();
+    }
 
     return application.exec();
 }

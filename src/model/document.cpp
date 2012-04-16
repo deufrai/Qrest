@@ -34,7 +34,8 @@ Document::Document() :
     _steadiness(FULL_STEADINESS),
     _tempoSource(TEMPO_SOURCE_KEYBOARD),
     _multiplier(MULTIPLIER_PLAIN),
-    _midiClockRunning(false) {
+    _midiClockRunning(false),
+    _midiAvailable(false) {
 
     // init vector of Delay objects
     initDelays();

@@ -18,6 +18,7 @@
  */
 
 #include "alsamidiengine.h"
+#include "../model/document.h"
 
 AlsaMidiEngine::AlsaMidiEngine()
 
@@ -45,6 +46,8 @@ void AlsaMidiEngine::init() {
     	 _port = snd_seq_create_simple_port(_seqHandle, "Midi Clock IN",
                           SND_SEQ_PORT_CAP_WRITE|SND_SEQ_PORT_CAP_SUBS_WRITE,
                           SND_SEQ_PORT_TYPE_APPLICATION);
+
+    	 Document::getInstance()->setMidiAvailable(_port >= 0);
     }
 }
 

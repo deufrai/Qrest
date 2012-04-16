@@ -1,19 +1,9 @@
 TEMPLATE = app
 TARGET = qrest
 ICON = resources/pix/qrest.icns
-linux-* { 
-    BINDEST = /usr/bin/
-    SHARE = /usr/share/$$TARGET
-    MANDEST = /usr/share/man/man1/
-    ICONDEST = $$SHARE/icons
-    BINSRC = ./qrest
-    MANSRC = doc/manpages/man1/qrest.1.gz
-    ICONSRC = resources/pix/qresticon.png
-}
 QT += core \
     gui
 HEADERS += src/midi/midibroadcaster.h \
-    src/midi/alsamidiengine.h \
     src/midi/midiengine.h \
     src/helpers/localeHelper.h \
     src/gui/widgets/custom/progressPie.h \
@@ -32,7 +22,6 @@ HEADERS += src/midi/midibroadcaster.h \
     src/model/delay.h \
     src/model/document.h
 SOURCES += src/midi/midibroadcaster.cpp \
-    src/midi/Alsamidiengine.cpp \
     src/midi/midiengine.cpp \
     src/helpers/localeHelper.cpp \
     src/gui/widgets/custom/progressPie.cpp \
@@ -52,13 +41,19 @@ SOURCES += src/midi/midibroadcaster.cpp \
     src/model/document.cpp \
     src/main.cpp
 
-# We only complie the WidgetSizeHelper on Mac
+# Platform specific compilations
 macx { 
+    # WidgetSizehelper is only used on Mac
     HEADERS += src/helpers/widgetsizehelper.h
     SOURCES += src/helpers/widgetsizehelper.cpp
 }
-INCLUDEPATH += /usr/include/alsa
-LIBS += -lasound
+linux-* { 
+    # ALSA MIDI library
+    INCLUDEPATH += /usr/include/alsa
+    LIBS += -lasound
+    SOURCES += src/midi/alsamidiengine.cpp
+    HEADERS += src/midi/alsamidiengine.h
+}
 FORMS += src/gui/forms/qrestpreferencesdialog.ui \
     src/gui/forms/qrestmainwindow.ui \
     src/gui/forms/qresthelpviewer.ui \
@@ -74,7 +69,16 @@ MOC_DIR = tmp
 OBJECTS_DIR = tmp
 RCC_DIR = tmp
 RC_FILE = resources/winicon.rc
+
+# Linux install
 linux-* { 
+    BINSRC = ./qrest
+    BINDEST = /usr/bin/
+    SHARE = /usr/share/$$TARGET
+    MANSRC = doc/manpages/man1/qrest.1.gz
+    MANDEST = /usr/share/man/man1/
+    ICONSRC = resources/pix/qresticon.png
+    ICONDEST = $$SHARE/icons
     target.path = /usr/bin
     INSTALLS += target
     manpages.path = $$MANDEST
