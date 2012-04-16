@@ -47,21 +47,30 @@ SOURCES += src/midi/RtMidi.cpp \
     src/main.cpp
 
 # Platform specific compilations
-macx { 
+macx {
     # WidgetSizehelper is only used on Mac
     HEADERS += src/helpers/widgetsizehelper.h
     SOURCES += src/helpers/widgetsizehelper.cpp
+    # RtMidi needs those
     DEFINES += __MACOSX_CORE__
     LIBS += -framework CoreAudio -framework CoreMidi -framework CoreFoundation
 }
-linux-* { 
-    # ALSA MIDI library
-    INCLUDEPATH += /usr/include/alsa
+linux-* {
+	# RtMidi needs those
     LIBS += -lasound -lpthread
     DEFINES += __LINUX_ALSASEQ__
+    # ALSA MIDI library
+    INCLUDEPATH += /usr/include/alsa
     SOURCES += src/midi/alsamidiengine.cpp
     HEADERS += src/midi/alsamidiengine.h
 }
+
+win32 {
+	# RtMidi needs those
+    DEFINES += __WINDOWS_MM__
+    LIBS += -lwinmm
+}
+
 FORMS += src/gui/forms/qrestpreferencesdialog.ui \
     src/gui/forms/qrestmainwindow.ui \
     src/gui/forms/qresthelpviewer.ui \
@@ -79,7 +88,7 @@ RCC_DIR = tmp
 RC_FILE = resources/winicon.rc
 
 # Linux install
-linux-* { 
+linux-* {
     BINSRC = ./qrest
     BINDEST = /usr/bin/
     SHARE = /usr/share/$$TARGET
