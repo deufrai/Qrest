@@ -51,6 +51,8 @@ macx {
     # WidgetSizehelper is only used on Mac
     HEADERS += src/helpers/widgetsizehelper.h
     SOURCES += src/helpers/widgetsizehelper.cpp
+    DEFINES += __MACOSX_CORE__
+    LIBS += -framework CoreAudio -framework CoreMidi -framework CoreFoundation
 }
 linux-* { 
     # ALSA MIDI library

@@ -47,7 +47,7 @@ void RtMidiEngine::init() {
 	 */
 	unsigned int nPorts = _midiIn->getPortCount();
 
-	std::cout << "\nThere are " << nPorts << " MIDI input sources available.\n";
+    std::cout << "There are " << nPorts << " MIDI input sources available." << std::endl;
 
 	std::string portName;
 
@@ -62,7 +62,7 @@ void RtMidiEngine::init() {
 			error.printMessage();
 		}
 
-		std::cout << "  Input Port #" << i + 1 << ": " << portName << '\n';
+        std::cout << "  Input Port #" << i + 1 << ": " << portName << std::endl;
 	}
 
 
@@ -70,10 +70,18 @@ void RtMidiEngine::init() {
 	_midiIn->ignoreTypes(true, false, true);
 
 	// We open a named port
-	_midiIn->openPort(0, "MIDI Clock IN");
+    try {
 
-	// If all goes wel untill here, MIDI is now available
-	Document::getInstance()->setMidiAvailable(true);
+//        _midiIn->openVirtualPort("MIDI Clock IN");
+        _midiIn->openPort(0, "MIDI Clock IN");
+
+        // If all goes wel untill here, MIDI is now available
+        Document::getInstance()->setMidiAvailable(true);
+
+    } catch (RtError &error) {
+
+        error.printMessage();
+    }
 }
 
 
