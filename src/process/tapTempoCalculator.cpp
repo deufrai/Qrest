@@ -82,7 +82,6 @@ void TapTempoCalculator::process() {
     _deltas.pop_front();
 
     // are deltas steady ?
-    pDocument->setTempoFromTap(true);
     getSteadiness();
 
     // set tempo according to average

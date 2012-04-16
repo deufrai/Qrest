@@ -79,6 +79,27 @@ public:
      */
     void setTempo(const double tempo);
 
+
+    /**
+     * is MIDI available
+     *
+     * \return true if MIDI engine is ready
+     */
+	inline bool isMidiAvailable() const {
+
+		return _midiAvailable;
+	}
+
+	/**
+	 * set the availability of MIDI operations
+	 *
+	 * \param midiAvailable : MIDI avilability
+	 */
+	inline void setMidiAvailable(bool midiAvailable) {
+
+		_midiAvailable = midiAvailable;
+	}
+
     /**
      * Get the tempo.
      *
@@ -88,23 +109,6 @@ public:
         return _tempo;
     }
 
-    /**
-     * Get tempoFromTap flag
-     *
-     * \return tempoFromTap flag
-     */
-    inline bool isTempoFromTap(void) const {
-        return _tempoFromTap;
-    }
-
-    /**
-     * Set tempoFromTap flag
-     *
-     * \param tempoFromTap to set
-     */
-    inline void setTempoFromTap(const bool tempoFromTap) {
-        _tempoFromTap = tempoFromTap;
-    }
 
     /**
      * Get multiplier
@@ -215,8 +219,58 @@ public:
      * \param steadiness the steadiness value.
      */
     inline void setSteadiness(const double steadiness) {
+
         _steadiness = steadiness;
     }
+
+    /**
+     * Get MIDI operations availability
+     *
+     * \return true if MIDI operations are available
+     */
+    inline bool isMidiClockRunning () const {
+
+    	return _midiClockRunning;
+    }
+
+    inline void setMidiClockRunning( const bool midiClockRunning ) {
+
+    	_midiClockRunning = midiClockRunning;
+    	notifyObservers();
+    }
+
+    /**
+     * Set tempo source
+     *
+     * \param source from tempoSource enum
+     **/
+    inline void setTempoSource (const int source) {
+
+    	_tempoSource = source;
+    }
+
+    /**
+     * Get tempo source
+     *
+     * \ the tempo source, values are from tempoSource enum
+     */
+    inline int getTempoSource () const {
+
+    	return _tempoSource;
+    }
+
+    ////////////////////////////////////////////////////////////////////////////
+	//
+	// TEMPO source enum
+	//
+	////////////////////////////////////////////////////////////////////////////
+
+    enum tempoSource {
+
+    	TEMPO_SOURCE_KEYBOARD,
+    	TEMPO_SOURCE_TAP,
+    	TEMPO_SOURCE_MIDI
+    };
 
 private:
 
@@ -268,11 +322,17 @@ private:
     /** stediness value : between 0 and 1, represents how steady taps are */
     double _steadiness;
 
-    /** does tempo value come from taptempo ? */
-    bool _tempoFromTap;
+    /** tempo source */
+    int _tempoSource;
 
     /** The multiplier used for plain, dotted and triplet notes */
     double _multiplier;
+
+    /** Indicates running state of MIDI clock */
+    bool _midiClockRunning;
+
+    /** are MIDI operations available ? */
+    bool _midiAvailable;
 
     ////////////////////////////////////////////////////////////////////////////
     //

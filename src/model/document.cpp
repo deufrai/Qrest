@@ -29,8 +29,13 @@
 Document* Document::_instance = 0;
 
 Document::Document() :
-    _tempo(Constants::TEMPO_DEFAULT), _steady(true), _steadiness(FULL_STEADINESS),
-            _tempoFromTap(false), _multiplier(MULTIPLIER_PLAIN) {
+    _tempo(Constants::TEMPO_DEFAULT),
+    _steady(true),
+    _steadiness(FULL_STEADINESS),
+    _tempoSource(TEMPO_SOURCE_KEYBOARD),
+    _multiplier(MULTIPLIER_PLAIN),
+    _midiClockRunning(false),
+    _midiAvailable(false) {
 
     // init vector of Delay objects
     initDelays();

@@ -119,25 +119,57 @@ void QrestMainWindow::updateView(void) {
 
     /*
      * update steadiness widget and status bar.
+     *
      */
-    if (_document->isTempoFromTap()) {
+    // Steadiness widget is displayed full green with empty statusBar only when tempo source is keyboard
+    if ( _document->getTempoSource() == Document::TEMPO_SOURCE_KEYBOARD ) {
 
-        if (_document->isSteady()) {
-
-            statusPermMessage(tr("You're steady"));
-
-        } else {
-
-            statusPermMessage(tr("Keep tapping..."));
-        }
-
-        _pie->setValue(_document->getSteadiness());
+    	_pie->setValue(Constants::PROGRESSPIE_FULL);
+    	statusClear();
 
     } else {
 
-        _pie->setValue(Constants::PROGRESSPIE_FULL);
-        statusClear();
+    	_pie->setValue(_document->getSteadiness());
+
+		if ( _document->getTempoSource() == Document::TEMPO_SOURCE_TAP ) {
+
+			if ( _document->isSteady() ) {
+
+				statusPermMessage(tr("You're steady"));
+
+			} else {
+
+				statusPermMessage(tr("Keep tapping..."));
+			}
+
+		} else {
+
+			// here, tempo source is MIDI Clock
+
+			if (_document->isMidiClockRunning()) {
+
+				if ( _document->isSteady() ) {
+
+					statusPermMessage(tr("MIDI synchro : OK"));
+
+				} else {
+
+					statusPermMessage(tr("MIDI synchro : In Progress.."));
+				}
+
+			} else {
+
+				statusClear();
+			}
+		}
     }
+
+    /*
+     * Enable BPM input field & TAP button if MIDI is not running
+     */
+    ui.tempoEdit->setEnabled( ! _document->isMidiClockRunning() );
+    ui.tapButton->setEnabled( ! _document->isMidiClockRunning() );
+
 
     /*
      * update steadiness widget's tooltip text
@@ -178,22 +210,23 @@ void QrestMainWindow::on_tempoEdit_textEdited(const QString& text) {
 
 void QrestMainWindow::on_tapButton_pressed() {
 
+	_document->setTempoSource(_document->TEMPO_SOURCE_TAP);
     TapTempoCalculator::getInstance()->process();
 }
 
 void QrestMainWindow::on_plainRadio_clicked() {
 
-    Document::getInstance()->setMultiplier(Document::MULTIPLIER_PLAIN);
+    _document->setMultiplier(Document::MULTIPLIER_PLAIN);
 }
 
 void QrestMainWindow::on_dottedRadio_clicked() {
 
-    Document::getInstance()->setMultiplier(Document::MULTIPLIER_DOTTED);
+    _document->setMultiplier(Document::MULTIPLIER_DOTTED);
 }
 
 void QrestMainWindow::on_tripletRadio_clicked() {
 
-    Document::getInstance()->setMultiplier(Document::MULTIPLIER_TRIPLET);
+    _document->setMultiplier(Document::MULTIPLIER_TRIPLET);
 }
 
 void QrestMainWindow::on_actionQuit_triggered() {
@@ -391,7 +424,7 @@ void QrestMainWindow::updateLfoDisplays(void) {
 void QrestMainWindow::processTempoInput(void) const {
 
     // tempo has been entered numerically
-    _document->setTempoFromTap(false);
+    _document->setTempoSource(Document::TEMPO_SOURCE_KEYBOARD);
 
     // get tempo input field content and pass it to document
     _document->setTempo(ui.tempoEdit->text().toDouble());
