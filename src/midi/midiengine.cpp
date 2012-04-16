@@ -18,7 +18,10 @@
  */
 
 #include "midiengine.h"
+#ifdef linux
 #include "alsamidiengine.h"
+#endif
+
 #include "../constants.h"
 #include "midibroadcaster.h"
 #include "../model/document.h"
