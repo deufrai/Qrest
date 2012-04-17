@@ -65,10 +65,10 @@ void MidiController::midiSyncStart() {
 void MidiController::midiSyncStop() {
 
 	_synchroTimeoutTimer->stop();
-	Document::getInstance()->setMidiClockRunning(false);
 	_midiEngine->stop();
 	_midiEngine->closePort();
 	_midiEngine->cleanup();
+	Document::getInstance()->setMidiClockRunning(false);
 
 }
 
