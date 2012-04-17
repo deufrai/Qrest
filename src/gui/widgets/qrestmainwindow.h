@@ -23,6 +23,7 @@
 #include <QtGui/QMainWindow>
 #include "../forms/ui_qrestmainwindow.h"
 #include "../../dp/observer.h"
+#include "../../midi/midicontroller.h"
 
 class Document;
 class ProgressPie;
@@ -116,9 +117,23 @@ private slots:
     void on_actionHelp_triggered();
 
     /**
+     * Slot that gets called when Midi Clock Sync checkbox is clicked
+     *
+     * \ param : state -- the new state of that box
+     *
+     * We will only react to Qt::Checked & Qt::Unchecked
+     */
+    void on_midiSlaveCheckBox_stateChanged(int state);
+
+    /**
      * Makes sure help viewer is on front.
      */
     void raiseHelp();
+
+    /**
+     * We lost MIDI Clock synchro
+     */
+    void lost_synchro();
 
 private:
 

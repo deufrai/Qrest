@@ -70,7 +70,12 @@ public:
     //
     ////////////////////////////////////////////////////////////////////////////
 	/**
-	 * Initialize the platform specific MIDI implementation
+	 * Stop the thrad execution
+	 */
+	void stop();
+
+	/**
+	 * Initialize and start the MIDI engine
 	 */
 	virtual void init() = 0;
 
@@ -78,6 +83,29 @@ public:
 	 * Read next MIDI event
 	 */
 	virtual int readEvent() = 0;
+
+	/**
+	 * Stop & cleanup the current MIDI engine
+	 */
+	virtual void cleanup() = 0;
+
+	/**
+	 * Open a MIDI input port connected to a physical MIDI device
+	 *
+	 * \param portNumber : Device ID
+	 */
+	virtual void openPort( const int portNumber ) = 0;
+
+	/**
+	 * Open a MIDI virtual input port (for inter-application comm. )
+	 */
+	virtual void openVirtualPort() = 0;
+
+	/**
+	 * Close the open MIDI input port
+	 *
+	 */
+	virtual void closePort() = 0;
 
 private:
     ////////////////////////////////////////////////////////////////////////////
@@ -98,7 +126,10 @@ private:
     ////////////////////////////////////////////////////////////////////////////
 private:
 	/** count how many MIDI clock events have been recieved */
-	int nTickCounter;
+	int _nTickCounter;
+
+	/** Should we keep looping ? */
+	bool _mustRun;
 
 protected:
 

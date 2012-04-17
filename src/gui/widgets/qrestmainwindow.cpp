@@ -21,6 +21,8 @@
 #include <QMessageBox>
 #include <QApplication>
 #include <QWheelEvent>
+#include <QFile>
+
 #include "qrestmainwindow.h"
 #include "../../process/tapTempoCalculator.h"
 #include "qrestaboutdialog.h"
@@ -32,7 +34,8 @@
 #include "custom/progressPie.h"
 #include "../../helpers/localeHelper.h"
 #include "../../helpers/widgetsizehelper.h"
-#include <QFile>
+#include "../../midi/midicontroller.h"
+
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -150,11 +153,11 @@ void QrestMainWindow::updateView(void) {
 
 				if ( _document->isSteady() ) {
 
-					statusPermMessage(tr("MIDI synchro : OK"));
+					statusPermMessage(tr("MIDI Clock Sync : OK"));
 
 				} else {
 
-					statusPermMessage(tr("MIDI synchro : In Progress.."));
+					statusPermMessage(tr("MIDI Clock Sync : Waiting..."));
 				}
 
 			} else {
@@ -163,12 +166,6 @@ void QrestMainWindow::updateView(void) {
 			}
 		}
     }
-
-    /*
-     * Enable BPM input field & TAP button if MIDI is not running
-     */
-    ui.tempoEdit->setEnabled( ! _document->isMidiClockRunning() );
-    ui.tapButton->setEnabled( ! _document->isMidiClockRunning() );
 
 
     /*
@@ -307,6 +304,37 @@ void QrestMainWindow::raiseHelp() {
     pViewer->activateWindow();
     pViewer->raise();
 
+}
+
+
+void QrestMainWindow::on_midiSlaveCheckBox_stateChanged(int state) {
+
+	switch ( state ) {
+
+	case Qt::Checked:
+
+		ui.tapButton->setEnabled(false);
+		ui.tempoEdit->setEnabled(false);
+		MidiController::getInstance()->midiSyncStart();
+		break;
+
+	case Qt::Unchecked:
+
+		ui.tapButton->setEnabled(true);
+		ui.tempoEdit->setEnabled(true);
+		MidiController::getInstance()->midiSyncStop();
+		break;
+
+	default:
+		break;
+	}
+
+}
+
+void QrestMainWindow::lost_synchro() {
+
+		ui.midiSlaveCheckBox->setChecked(false);
+		statusPermMessage(tr("MIDI Clock Sync : Lost"));
 }
 
 ////////////////////////////////////////////////////////////////////////////////

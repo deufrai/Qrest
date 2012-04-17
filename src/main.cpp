@@ -37,8 +37,7 @@
 #include "constants.h"
 #include "helpers/localeHelper.h"
 #include "midi/midiengine.h"
-#include "midi/midibroadcaster.h"
-
+#include "midi/midicontroller.h"
 
 /**
  * Install translator into the application
@@ -86,41 +85,37 @@ int main(int argc, char *argv[]) {
     application.setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
 
-
-    // create and show main window
+    // create main window
     QrestMainWindow mainWindow;
-    mainWindow.resize(mainWindow.minimumSizeHint());
-    mainWindow.show();
 
-    // connections
-    QObject::connect(MidiBroadcaster::getInstance(),
+    // setup all Qt SIGNAL/SLOT connexions
+	// Midicontroller bip => Midicontroller onBip
+    QObject::connect(MidiController::getInstance(),
     		SIGNAL(bip()),
-    		MidiBroadcaster::getInstance(),
+    		MidiController::getInstance(),
     		SLOT(onBip()));
 
-    QObject::connect(MidiBroadcaster::getInstance(),
+	// Midicontroller start => Midicontroller onStart
+    QObject::connect(MidiController::getInstance(),
     		SIGNAL(start()),
-    		MidiBroadcaster::getInstance(),
+    		MidiController::getInstance(),
     		SLOT(onStart()));
 
-    QObject::connect(MidiBroadcaster::getInstance(),
+    // Midicontroller stop => Midicontroller onStop
+    QObject::connect(MidiController::getInstance(),
     	    SIGNAL(stop()),
-    	    MidiBroadcaster::getInstance(),
+    	    MidiController::getInstance(),
     	    SLOT(onStop()));
 
+    // Midicontroller lost_synchro => MainWindow on_lost_synchro
+    QObject::connect(MidiController::getInstance(),
+    	    SIGNAL(lost_synchro()),
+    	    & mainWindow,
+    	    SLOT(lost_synchro()));
 
-
-    /*
-     * init MIDI manager
-     */
-    MidiEngine* pMidiEngine = MidiEngine::getInstance();
-
-    // pMidiEngine will be null if no implementation has been compiled for current platform
-    if ( pMidiEngine ) {
-
-    	pMidiEngine->init();
-    	pMidiEngine->start();
-    }
+    // Show mainwindow
+    mainWindow.resize(mainWindow.minimumSizeHint());
+    mainWindow.show();
 
     return application.exec();
 }

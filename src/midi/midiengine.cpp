@@ -20,13 +20,15 @@
 #include "midiengine.h"
 #include "rtmidiengine.h"
 #include "../constants.h"
-#include "midibroadcaster.h"
+#include "midicontroller.h"
 #include "../model/document.h"
 
 MidiEngine* MidiEngine::_instance = 0;
 
 MidiEngine::MidiEngine()
-: nTickCounter( 0 ) {
+: _nTickCounter(0),
+  _mustRun(false)
+{
 
 }
 
@@ -36,7 +38,7 @@ MidiEngine::~MidiEngine() {
 
 MidiEngine* MidiEngine::getInstance() {
 
-	if ( 0 == _instance ) {
+	if (0 == _instance) {
 
 		_instance = new RtMidiEngine();
 	}
@@ -44,7 +46,15 @@ MidiEngine* MidiEngine::getInstance() {
 	return _instance;
 }
 
+void MidiEngine::stop() {
+
+	_mustRun = false;
+}
+
 void MidiEngine::run() {
+
+	// this is set to start running, and may be set to false by MidiEngine::stop()
+	_mustRun = true;
 
 	/*
 	 * We start the endless loop and translate MIDI events into calls to the
@@ -52,40 +62,37 @@ void MidiEngine::run() {
 	 * handled by the application data store : Document
 	 */
 
-	if ( Document::getInstance()->isMidiAvailable() ) {
+	while (_mustRun) {
 
-		while (true) {
+		switch (readEvent()) {
 
-			switch ( readEvent() ) {
+		case EVENT_CLOCK:
 
-			case EVENT_CLOCK:
+			/*
+			 * MIDI clock events are triggered 24 times in a quarter note.
+			 * So every 24 MIDI clock events, we trigger a 'quarter' message
+			 */
 
-				/*
-				 * MIDI clock events are triggered 24 times in a quarter note.
-				 * So every 24 MIDI clock events, we trigger a 'quarter' message
-				 */
+			if (++_nTickCounter == Constants::MIDI_CLOCK_EVENTS_PER_QUARTER) {
 
-				if ( ++nTickCounter == Constants::MIDI_CLOCK_EVENTS_PER_QUARTER ) {
-
-					nTickCounter = 0;
-					MidiBroadcaster::getInstance()->onMidiQuarter();
-				}
-
-				break;
-
-			case EVENT_START:
-
-				MidiBroadcaster::getInstance()->onMidiStart();
-				break;
-
-			case EVENT_STOP:
-
-				MidiBroadcaster::getInstance()->onMidiStop();
-				break;
-
-			default:
-				break;
+				_nTickCounter = 0;
+				MidiController::getInstance()->midiQuarter();
 			}
+
+			break;
+
+		case EVENT_START:
+
+			MidiController::getInstance()->midiStart();
+			break;
+
+		case EVENT_STOP:
+
+			MidiController::getInstance()->midiStop();
+			break;
+
+		default:
+			break;
 		}
 	}
 }

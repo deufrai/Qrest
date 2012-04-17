@@ -27,12 +27,7 @@ RtMidiEngine::RtMidiEngine() {
 
 RtMidiEngine::~RtMidiEngine() {
 
-	if (_midiIn) {
 
-		_midiIn->closePort();
-		delete _midiIn;
-		_midiIn = 0;
-	}
 }
 
 void RtMidiEngine::init() {
@@ -40,27 +35,56 @@ void RtMidiEngine::init() {
 	// Create the engine
 	_midiIn = new RtMidiIn("qrest");
 
-	/*
-	 * Discovering available ports
-	 */
-	listPhysicalDevices();
-
 	// We don't want to ignore timing-related MIDI events
 	_midiIn->ignoreTypes(true, false, true);
 
-	// We open a named port
-	try {
+}
 
-		_midiIn->openPort(0, "MIDI Clock IN");
+void RtMidiEngine::openPort( const int portNumber ) {
 
-		// If all goes wel untill here, MIDI is now available
-		Document::getInstance()->setMidiAvailable(true);
+	if ( _midiIn ) {
 
-	} catch (RtError &error) {
+		try {
 
-		error.printMessage();
+			_midiIn->openPort(portNumber, "MIDI Clock IN");
+
+		} catch (RtError &error) {
+
+			error.printMessage();
+		}
 	}
 }
+
+void RtMidiEngine::openVirtualPort() {
+
+	if ( _midiIn ) {
+
+		try {
+
+			_midiIn->openVirtualPort("MIDI Clock IN");
+
+		} catch (RtError &error) {
+
+			error.printMessage();
+		}
+	}
+}
+
+void RtMidiEngine::closePort() {
+
+		if ( _midiIn ) {
+
+		try {
+
+			_midiIn->closePort();
+
+		} catch (RtError &error) {
+
+			error.printMessage();
+		}
+	}
+}
+
 
 void RtMidiEngine::listPhysicalDevices() {
 
@@ -124,5 +148,15 @@ int RtMidiEngine::readEvent() {
 	}
 
 	return EVENT_UNHANDLED;
+}
+
+void RtMidiEngine::cleanup() {
+
+	if (_midiIn) {
+
+		delete _midiIn;
+		_midiIn = 0;
+	}
+
 }
 

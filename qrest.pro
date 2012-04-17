@@ -3,10 +3,10 @@ TARGET = qrest
 ICON = resources/pix/qrest.icns
 QT += core \
     gui
-HEADERS += src/midi/contrib/RtError.h \
+HEADERS += src/midi/midicontroller.h \
+    src/midi/contrib/RtError.h \
     src/midi/contrib/RtMidi.h \
     src/midi/rtmidiengine.h \
-    src/midi/midibroadcaster.h \
     src/midi/midiengine.h \
     src/helpers/localeHelper.h \
     src/gui/widgets/custom/progressPie.h \
@@ -24,9 +24,9 @@ HEADERS += src/midi/contrib/RtError.h \
     src/dp/observer.h \
     src/model/delay.h \
     src/model/document.h
-SOURCES += src/midi/contrib/RtMidi.cpp \
+SOURCES += src/midi/midicontroller.cpp \
+    src/midi/contrib/RtMidi.cpp \
     src/midi/rtmidiengine.cpp \
-    src/midi/midibroadcaster.cpp \
     src/midi/midiengine.cpp \
     src/helpers/localeHelper.cpp \
     src/gui/widgets/custom/progressPie.cpp \
@@ -54,9 +54,12 @@ macx {
     
     # RtMidi needs those
     DEFINES += __MACOSX_CORE__
-    LIBS += -framework CoreAudio \
-        -framework CoreMidi \
-        -framework CoreFoundation
+    LIBS += -framework \
+        CoreAudio \
+        -framework \
+        CoreMidi \
+        -framework \
+        CoreFoundation
 }
 linux-* { 
     # RtMidi needs those

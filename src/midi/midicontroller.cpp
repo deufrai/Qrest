@@ -17,58 +17,79 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "midibroadcaster.h"
+#include "midicontroller.h"
 #include "../process/tapTempoCalculator.h"
 #include "../model/document.h"
 
-MidiBroadcaster* MidiBroadcaster::_instance = 0;
+MidiController* MidiController::_instance = 0;
 
-MidiBroadcaster::MidiBroadcaster()
-: _synchroTimeoutTimer(new QTimer(this)) {
+MidiController::MidiController()
+: _synchroTimeoutTimer(new QTimer(this)),
+  _midiEngine(MidiEngine::getInstance())
+
+{
 
 	_synchroTimeoutTimer->setSingleShot(true);
 
 	connect(_synchroTimeoutTimer, SIGNAL(timeout()), this, SLOT(onSyncTimeout()));
 }
 
-MidiBroadcaster::~MidiBroadcaster() {
+MidiController::~MidiController() {
 
 }
 
-void MidiBroadcaster::onMidiQuarter() {
+void MidiController::midiQuarter() {
 
 	_synchroTimeoutTimer->start(Constants::MIDI_SYNC_TIMEOUT_MS);
 	emit bip();
 }
 
-void MidiBroadcaster::onMidiStart() {
+void MidiController::midiStart() {
 
 	emit start();
 }
 
-void MidiBroadcaster::onMidiStop() {
+void MidiController::midiStop() {
 
 	_synchroTimeoutTimer->stop();
 	emit stop();
 }
 
-void MidiBroadcaster::onSyncTimeout() {
+void MidiController::midiSyncStart() {
 
-	emit stop();
+	_midiEngine->init();
+	_midiEngine->openVirtualPort();
+	_midiEngine->start();
+}
+
+void MidiController::midiSyncStop() {
+
+	_synchroTimeoutTimer->stop();
+	Document::getInstance()->setMidiClockRunning(false);
+	_midiEngine->stop();
+	_midiEngine->closePort();
+	_midiEngine->cleanup();
+
+}
+
+void MidiController::onSyncTimeout() {
+
+	Document::getInstance()->setMidiClockRunning(false);
+	emit lost_synchro();
 }
 
 
-MidiBroadcaster* MidiBroadcaster::getInstance() {
+MidiController* MidiController::getInstance() {
 
 	if ( 0 == _instance ) {
 
-		_instance = new MidiBroadcaster();
+		_instance = new MidiController();
 	}
 
 	return _instance;
 }
 
-void MidiBroadcaster::onBip() {
+void MidiController::onBip() {
 
 	Document::getInstance()->setTempoSource(Document::TEMPO_SOURCE_MIDI);
 	Document::getInstance()->setMidiClockRunning(true);
@@ -76,15 +97,14 @@ void MidiBroadcaster::onBip() {
 
 }
 
-void MidiBroadcaster::onStart() {
+void MidiController::onStart() {
 
 	Document::getInstance()->setMidiClockRunning(true);
 }
 
-void MidiBroadcaster::onStop() {
+void MidiController::onStop() {
 
 	Document::getInstance()->setMidiClockRunning(false);
 }
-
 
 
