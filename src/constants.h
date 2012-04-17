@@ -93,6 +93,12 @@ public:
     /** How many MIDI CLock events in a quarter note ? */
     static const int MIDI_CLOCK_EVENTS_PER_QUARTER = 24;
 
+    /**
+     * How many milliseconds without recieving a midi Quarter event
+     * before considering that synchro is lost ?
+     * */
+    static const int MIDI_SYNC_TIMEOUT_MS = 2000;
+
 };
 
 #endif /* CONSTANTS_H_ */

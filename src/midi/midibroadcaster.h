@@ -21,6 +21,8 @@
 #define MIDIMROADCASTER_H_
 
 #include <QObject>
+#include <QTimer>
+#include "../constants.h"
 
 /**
  * The only purpose of this class is to recieve calls from the various
@@ -89,7 +91,7 @@ signals:
 
 	////////////////////////////////////////////////////////////////////////////
 	//
-	// PUBLIC SLOTS
+	// SLOTS
 	//
 	////////////////////////////////////////////////////////////////////////////
 public slots:
@@ -107,6 +109,26 @@ public slots:
 	 * Tell Document that MIDI Clock just stopped
 	 */
 	void onStop();
+
+private slots:
+	/**
+	 * Tell everyone MIDI Sync has been lots
+	 */
+	void onSyncTimeout();
+
+	////////////////////////////////////////////////////////////////////////////
+	//
+	// MEMBERS
+	//
+	////////////////////////////////////////////////////////////////////////////
+protected:
+	/**
+	 * Timer used stop listening to MIDI clock events when no events are recieved
+	 * after a certain time
+	 *
+	 * see : Constants::MIDI_SYNC_TIMEOUT_MS
+	 */
+	QTimer* _synchroTimeoutTimer;
 };
 
 #endif /* MIDIMROADCASTER_H_ */

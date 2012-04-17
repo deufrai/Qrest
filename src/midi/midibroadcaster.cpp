@@ -23,9 +23,12 @@
 
 MidiBroadcaster* MidiBroadcaster::_instance = 0;
 
-MidiBroadcaster::MidiBroadcaster() {
+MidiBroadcaster::MidiBroadcaster()
+: _synchroTimeoutTimer(new QTimer(this)) {
 
+	_synchroTimeoutTimer->setSingleShot(true);
 
+	connect(_synchroTimeoutTimer, SIGNAL(timeout()), this, SLOT(onSyncTimeout()));
 }
 
 MidiBroadcaster::~MidiBroadcaster() {
@@ -34,6 +37,7 @@ MidiBroadcaster::~MidiBroadcaster() {
 
 void MidiBroadcaster::onMidiQuarter() {
 
+	_synchroTimeoutTimer->start(Constants::MIDI_SYNC_TIMEOUT_MS);
 	emit bip();
 }
 
@@ -43,6 +47,12 @@ void MidiBroadcaster::onMidiStart() {
 }
 
 void MidiBroadcaster::onMidiStop() {
+
+	_synchroTimeoutTimer->stop();
+	emit stop();
+}
+
+void MidiBroadcaster::onSyncTimeout() {
 
 	emit stop();
 }
@@ -61,6 +71,7 @@ MidiBroadcaster* MidiBroadcaster::getInstance() {
 void MidiBroadcaster::onBip() {
 
 	Document::getInstance()->setTempoSource(Document::TEMPO_SOURCE_MIDI);
+	Document::getInstance()->setMidiClockRunning(true);
 	TapTempoCalculator::getInstance()->process();
 
 }
