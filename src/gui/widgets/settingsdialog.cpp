@@ -69,7 +69,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     // setup a RegExp validator for midi input name. Only 7bit ASCII
     QRegExp* midiPortNameRegExp = new QRegExp("[A-Za-z0-9 ]+");
     QRegExpValidator* midiInputPortNameValidator = new QRegExpValidator(
-            *midiPortNameRegExp);
+            *midiPortNameRegExp, this);
     ui.midiPortNameLineEdit->setValidator(midiInputPortNameValidator);
 }
 
