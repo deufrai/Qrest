@@ -333,11 +333,16 @@ void QrestMainWindow::on_midiSlaveCheckBox_stateChanged(int state) {
 
 void QrestMainWindow::lost_synchro() {
 
+	QString lMessage = QString("<p><b>")
+			.append(tr("MIDI CLock synchronisation has been lost"))
+			.append("</b></p><p>")
+			.append(tr("External MIDI Clock source stopped emitting without sending the STOP command."))
+			.append("</p><p>")
+			.append(tr("MIDI Clock slave mode will be disabled."))
+			.append("</p>");
+
 	QMessageBox::warning(this,
-			tr("MIDI Clock timeout"),
-			tr("<p><b>MIDI CLock synchronisation has been lost</b></p>"
-					"<p>It seems like your MIDI Clock source stopped emitting without sending the STOP command.</p>"
-					"<p>MIDI Clock slave will be disabled.</p>"));
+			tr("MIDI Clock timeout"), lMessage);
 
 	ui.midiSlaveCheckBox->setChecked(false);
 }
