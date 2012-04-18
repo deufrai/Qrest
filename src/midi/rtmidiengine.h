@@ -72,7 +72,10 @@ private:
 	// RtMIDI implementation support members
 	//
 	////////////////////////////////////////////////////////////////////////////
+	/** The RtMidi engine */
 	RtMidiIn* _midiIn;
+
+	/** container of last recieved MIDI message */
 	std::vector<unsigned char> _message;
 
 };
