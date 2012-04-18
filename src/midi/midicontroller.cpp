@@ -29,13 +29,22 @@ MidiController::MidiController()
 
 {
 
+	// Setup MIDI Clock timeout detector
 	_synchroTimeoutTimer->setSingleShot(true);
-
 	connect(_synchroTimeoutTimer, SIGNAL(timeout()), this, SLOT(onSyncTimeout()));
+
+	// startup MIDI engine
+	_midiEngine->init();
+	_midiEngine->openVirtualPort();
+	_midiEngine->start();
+
 }
 
 MidiController::~MidiController() {
 
+	_midiEngine->stop();
+	_midiEngine->closePort();
+	_midiEngine->cleanup();
 }
 
 void MidiController::midiQuarter() {
@@ -57,17 +66,13 @@ void MidiController::midiStop() {
 
 void MidiController::midiSyncStart() {
 
-	_midiEngine->init();
-	_midiEngine->openVirtualPort();
-	_midiEngine->start();
+	_midiEngine->setSlave(true);
 }
 
 void MidiController::midiSyncStop() {
 
+	_midiEngine->setSlave(false);
 	_synchroTimeoutTimer->stop();
-	_midiEngine->stop();
-	_midiEngine->closePort();
-	_midiEngine->cleanup();
 	Document::getInstance()->setMidiClockRunning(false);
 
 }

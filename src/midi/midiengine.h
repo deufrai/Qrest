@@ -107,6 +107,16 @@ public:
 	 */
 	virtual void closePort() = 0;
 
+	/**
+	 * Should we start ot stop synchronizing to MIDI Clock ?
+	 *
+	 * \param : slave -- yes to sync
+	 */
+	inline void setSlave(const bool slave) {
+
+		_midiClockSlave = slave;
+	}
+
 private:
     ////////////////////////////////////////////////////////////////////////////
     //
@@ -130,6 +140,9 @@ private:
 
 	/** Should we keep looping ? */
 	bool _mustRun;
+
+	/** are we listening to MIDI Clock */
+	bool _midiClockSlave;
 
 protected:
 

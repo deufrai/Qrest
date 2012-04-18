@@ -27,7 +27,8 @@ MidiEngine* MidiEngine::_instance = 0;
 
 MidiEngine::MidiEngine()
 : _nTickCounter(0),
-  _mustRun(false)
+  _mustRun(false),
+  _midiClockSlave(false)
 {
 
 }
@@ -64,35 +65,46 @@ void MidiEngine::run() {
 
 	while (_mustRun) {
 
-		switch (readEvent()) {
+		/*
+		 * We keep listening to the MIDI input queue, so it doesn't fill up
+		 * but really inspect recieved events if we have to
+		 */
 
-		case EVENT_CLOCK:
+		int nEvent = readEvent();
 
-			/*
-			 * MIDI clock events are triggered 24 times in a quarter note.
-			 * So every 24 MIDI clock events, we trigger a 'quarter' message
-			 */
 
-			if (++_nTickCounter == Constants::MIDI_CLOCK_EVENTS_PER_QUARTER) {
+		if (_midiClockSlave) {
 
-				_nTickCounter = 0;
-				MidiController::getInstance()->midiQuarter();
+			switch (nEvent) {
+
+			case EVENT_CLOCK:
+
+				/*
+				 * MIDI clock events are triggered 24 times in a quarter note.
+				 * So every 24 MIDI clock events, we trigger a 'quarter' message
+				 */
+
+				if (++_nTickCounter == Constants::MIDI_CLOCK_EVENTS_PER_QUARTER) {
+
+					_nTickCounter = 0;
+					MidiController::getInstance()->midiQuarter();
+				}
+
+				break;
+
+			case EVENT_START:
+
+				MidiController::getInstance()->midiStart();
+				break;
+
+			case EVENT_STOP:
+
+				MidiController::getInstance()->midiStop();
+				break;
+
+			default:
+				break;
 			}
-
-			break;
-
-		case EVENT_START:
-
-			MidiController::getInstance()->midiStart();
-			break;
-
-		case EVENT_STOP:
-
-			MidiController::getInstance()->midiStop();
-			break;
-
-		default:
-			break;
 		}
 	}
 }
