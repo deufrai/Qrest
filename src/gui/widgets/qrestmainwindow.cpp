@@ -29,12 +29,12 @@
 #include "../../constants.h"
 #include "qresthelpviewer.h"
 #include "../../settings/settings.h"
-#include "qrestpreferencesdialog.h"
 #include "../../model/document.h"
 #include "custom/progressPie.h"
 #include "../../helpers/localeHelper.h"
 #include "../../helpers/widgetsizehelper.h"
 #include "../../midi/midicontroller.h"
+#include "settingsdialog.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -242,7 +242,7 @@ void QrestMainWindow::on_actionAbout_triggered() {
 
 void QrestMainWindow::on_actionPreferences_triggered() {
 
-	QrestPreferencesDialog dlg(this);
+	SettingsDialog dlg(this);
 
 	dlg.resize(dlg.minimumSizeHint());
 

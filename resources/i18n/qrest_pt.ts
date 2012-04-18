@@ -109,7 +109,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="346"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="345"/>
         <source>MIDI Clock timeout</source>
         <translation type="unfinished"></translation>
     </message>
@@ -255,36 +255,54 @@
     </message>
 </context>
 <context>
-    <name>QrestPreferencesDialogClass</name>
+    <name>SettingsDialog</name>
     <message>
-        <location filename="../../src/gui/forms/qrestpreferencesdialog.ui" line="14"/>
-        <source>Qrest preferences</source>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="23"/>
+        <source>Main</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestpreferencesdialog.ui" line="32"/>
-        <source>User Interface</source>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="24"/>
+        <source>Midi</source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
+    <name>SettingsDialogClass</name>
+    <message>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="17"/>
+        <source>Qrest settings</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestpreferencesdialog.ui" line="44"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="73"/>
+        <source>MAIN</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="86"/>
         <source>Should Qrest&apos;s main window be opened at the screen location it had on last run ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestpreferencesdialog.ui" line="47"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="89"/>
         <source>Remember window &amp;position</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestpreferencesdialog.ui" line="78"/>
-        <source>OK</source>
-        <translation type="unfinished">OK</translation>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="109"/>
+        <source>MIDI</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestpreferencesdialog.ui" line="91"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="135"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="145"/>
+        <source>OK</source>
+        <translation type="unfinished">OK</translation>
     </message>
 </context>
 </TS>

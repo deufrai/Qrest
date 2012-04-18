@@ -23,6 +23,9 @@ Settings* Settings::_instance = 0;
 const char* Settings::WINDOW_POSITION = "windowPosition";
 const char* Settings::REMEMBER_WINDOW_POSITION = "rememberWindowPosition";
 
+const char* Settings::MIDI_PORT_NAME = "midiPortName";
+const char* Settings::MIDI_PORT_NAME_DEFAUT = "Qrest MIDI IN";
+
 Settings::Settings() :
     _settings("wardsback", "qrest") {
 

@@ -3,14 +3,14 @@ TARGET = qrest
 ICON = resources/pix/qrest.icns
 QT += core \
     gui
-HEADERS += src/midi/midicontroller.h \
+HEADERS += src/gui/widgets/settingsdialog.h \
+    src/midi/midicontroller.h \
     src/midi/contrib/RtError.h \
     src/midi/contrib/RtMidi.h \
     src/midi/rtmidiengine.h \
     src/midi/midiengine.h \
     src/helpers/localeHelper.h \
     src/gui/widgets/custom/progressPie.h \
-    src/gui/widgets/qrestpreferencesdialog.h \
     src/settings/settings.h \
     src/gui/widgets/qrestmainwindow.h \
     src/gui/widgets/qresthelpviewer.h \
@@ -24,13 +24,13 @@ HEADERS += src/midi/midicontroller.h \
     src/dp/observer.h \
     src/model/delay.h \
     src/model/document.h
-SOURCES += src/midi/midicontroller.cpp \
+SOURCES += src/gui/widgets/settingsdialog.cpp \
+    src/midi/midicontroller.cpp \
     src/midi/contrib/RtMidi.cpp \
     src/midi/rtmidiengine.cpp \
     src/midi/midiengine.cpp \
     src/helpers/localeHelper.cpp \
     src/gui/widgets/custom/progressPie.cpp \
-    src/gui/widgets/qrestpreferencesdialog.cpp \
     src/settings/settings.cpp \
     src/gui/widgets/qrestmainwindow.cpp \
     src/gui/widgets/qresthelpviewer.cpp \
@@ -72,7 +72,7 @@ win32 {
     DEFINES += __WINDOWS_MM__
     LIBS += -lwinmm
 }
-FORMS += src/gui/forms/qrestpreferencesdialog.ui \
+FORMS += src/gui/forms/settingsdialog.ui \
     src/gui/forms/qrestmainwindow.ui \
     src/gui/forms/qresthelpviewer.ui \
     src/gui/forms/qrestaboutdialog.ui

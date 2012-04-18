@@ -89,6 +89,12 @@ public:
 	 * MIDI Clock Synchro has been canceled
 	 */
 	void midiSyncStop();
+
+
+	/**
+	 * Reset the midi engine
+	 */
+	void reset();
 	////////////////////////////////////////////////////////////////////////////
 	//
 	// SIGNALS

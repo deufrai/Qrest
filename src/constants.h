@@ -104,11 +104,6 @@ public:
      */
     static const char* MIDI_ENGINE_NAME;
 
-    /**
-     * default name of our MIDI input port
-     */
-    static const char* MIDI_PORT_NAME;
-
 };
 
 #endif /* CONSTANTS_H_ */

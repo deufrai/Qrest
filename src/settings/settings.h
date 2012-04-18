@@ -76,6 +76,12 @@ public:
     /** key used to store 'remember window position' flag default value. */
     static const bool REMEMBER_WINDOW_POSITION_DEFAULT = false;
 
+    /** key used to store MIDI port name */
+    static const char* MIDI_PORT_NAME;
+
+    /** key used to store MIDI port default name */
+    static const char* MIDI_PORT_NAME_DEFAUT;
+
     ////////////////////////////////////////////////////////////////////////////
     //
     // INTERFACE

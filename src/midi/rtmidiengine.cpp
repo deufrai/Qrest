@@ -22,6 +22,7 @@
 #include "rtmidiengine.h"
 #include "../model/document.h"
 #include "../constants.h"
+#include "../settings/settings.h"
 
 RtMidiEngine::RtMidiEngine() {
 
@@ -48,7 +49,10 @@ void RtMidiEngine::openPort( const int portNumber ) {
 
 		try {
 
-            _midiIn->openPort(portNumber, Constants::MIDI_PORT_NAME);
+            _midiIn->openPort(portNumber,
+            		Settings::getInstance()->getSettings().value(
+            				Settings::MIDI_PORT_NAME,
+            				Settings::MIDI_PORT_NAME_DEFAUT).toString().toStdString());
 
 		} catch (RtError &error) {
 
@@ -63,7 +67,9 @@ void RtMidiEngine::openVirtualPort() {
 
 		try {
 
-            _midiIn->openVirtualPort(Constants::MIDI_PORT_NAME);
+            _midiIn->openVirtualPort(Settings::getInstance()->getSettings().value(
+    				Settings::MIDI_PORT_NAME,
+    				Settings::MIDI_PORT_NAME_DEFAUT).toString().toStdString());
 
 		} catch (RtError &error) {
 

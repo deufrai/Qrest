@@ -113,3 +113,13 @@ void MidiController::onStop() {
 }
 
 
+void MidiController::reset() {
+
+	_midiEngine->stop();
+	_midiEngine->closePort();
+	_midiEngine->cleanup();
+
+	_midiEngine->init();
+	_midiEngine->openVirtualPort();
+	_midiEngine->start();
+}
