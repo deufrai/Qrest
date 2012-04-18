@@ -312,7 +312,7 @@
     <message>
         <location filename="../../src/gui/forms/settingsdialog.ui" line="109"/>
         <source>Midi input port name : </source>
-        <translation>Nom du port d&apos;enrée MIDI : </translation>
+        <translation>Nom du port d&apos;entrée MIDI : </translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/settingsdialog.ui" line="158"/>
