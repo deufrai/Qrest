@@ -38,9 +38,9 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
 
     // poulpate left-side sections list
     QListWidgetItem* mainSection = new QListWidgetItem(tr("Main"),
-            ui.sectionsList);
+                                                       ui.sectionsList);
     QListWidgetItem* midiSection = new QListWidgetItem(tr("Midi"),
-            ui.sectionsList);
+                                                       ui.sectionsList);
     ui.sectionsList->addItem(mainSection);
     ui.sectionsList->addItem(midiSection);
 
@@ -49,27 +49,26 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
 
             Settings::getInstance()->getSettings().value(
 
-            Settings::REMEMBER_WINDOW_POSITION,
-                    Settings::REMEMBER_WINDOW_POSITION_DEFAULT
-
-                    ).toBool());
+                    Settings::REMEMBER_WINDOW_POSITION,
+                    Settings::REMEMBER_WINDOW_POSITION_DEFAULT).toBool());
 
     // prefill 'midi input port name' according to saved prefs
     ui.midiPortNameLineEdit->setText(
 
-    Settings::getInstance()->getSettings().value(
+            Settings::getInstance()->getSettings().value(
 
-    Settings::MIDI_PORT_NAME, Settings::MIDI_PORT_NAME_DEFAUT
-
-    ).toString());
+                    Settings::MIDI_PORT_NAME,
+                    Settings::MIDI_PORT_NAME_DEFAUT).toString());
 
     // wet set main section active by default
     ui.sectionsList->setItemSelected(mainSection, true);
 
     // setup a RegExp validator for midi input name. Only 7bit ASCII
     QRegExp* midiPortNameRegExp = new QRegExp("[A-Za-z0-9 ]+");
+
     QRegExpValidator* midiInputPortNameValidator = new QRegExpValidator(
             *midiPortNameRegExp, this);
+
     ui.midiPortNameLineEdit->setValidator(midiInputPortNameValidator);
 }
 
@@ -80,25 +79,27 @@ SettingsDialog::~SettingsDialog() {
 void SettingsDialog::accept() {
 
     // MIDI Input port name cannot be empty
-    QString midiInputPortNewName = ui.midiPortNameLineEdit->text().trimmed().simplified();
+    QString midiInputPortNewName =
+            ui.midiPortNameLineEdit->text().trimmed().simplified();
 
-    if (  midiInputPortNewName.isEmpty()) {
+    if (midiInputPortNewName.isEmpty()) {
 
-        QMessageBox::critical(this, tr("Invalid data"), tr ("MIDI input port name cannot be empty"));
+        QMessageBox::critical(this, tr("Invalid data"),
+                              tr("MIDI input port name cannot be empty"));
         return;
     }
 
     // save 'remember window position' settings
     Settings::getInstance()->getSettings().setValue(
 
-    Settings::REMEMBER_WINDOW_POSITION, ui.chkRememberWindowPos->isChecked());
+            Settings::REMEMBER_WINDOW_POSITION,
+            ui.chkRememberWindowPos->isChecked());
 
     // if midi input port name has been changed, we reset the midi engine with that new name
     QString midiInputPortOldName = Settings::getInstance()->getSettings().value(
 
-    Settings::MIDI_PORT_NAME, Settings::MIDI_PORT_NAME_DEFAUT
-
-    ).toString();
+            Settings::MIDI_PORT_NAME,
+            Settings::MIDI_PORT_NAME_DEFAUT).toString();
 
     if (QString::compare(midiInputPortNewName, midiInputPortOldName)) {
 
