@@ -101,7 +101,7 @@
     <message>
         <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="339"/>
         <source>External MIDI Clock source stopped emitting without sending the STOP command.</source>
-        <translation>La source externe de MIDI CLock a arrêté d&apos;émettre sans envoyer la commande STOP.</translation>
+        <translation>La source externe de MIDI Clock a arrêté d&apos;émettre sans envoyer la commande STOP.</translation>
     </message>
     <message>
         <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="341"/>
