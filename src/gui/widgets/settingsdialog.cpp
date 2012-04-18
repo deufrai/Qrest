@@ -109,7 +109,7 @@ void SettingsDialog::accept() {
 
         Settings::getInstance()->getSettings().sync();
 
-        MidiController::getInstance()->reset();
+        MidiController::getInstance()->resetEngine();
     }
 
     QDialog::accept();

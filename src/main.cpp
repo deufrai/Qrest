@@ -109,9 +109,17 @@ int main(int argc, char *argv[]) {
 
     // Midicontroller lost_synchro => MainWindow on_lost_synchro
     QObject::connect(MidiController::getInstance(),
-    	    SIGNAL(lost_synchro()),
-    	    & mainWindow,
-    	    SLOT(lost_synchro()));
+            SIGNAL(lost_synchro()),
+            & mainWindow,
+            SLOT(lost_synchro()));
+
+    // Midicontroller reset => MainWindow onMidiEngineReset
+    QObject::connect(MidiController::getInstance(),
+            SIGNAL(reset()),
+            & mainWindow,
+            SLOT(onMidiEngineReset()));
+
+
 
     // Show mainwindow
     mainWindow.resize(mainWindow.minimumSizeHint());

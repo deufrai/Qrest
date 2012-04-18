@@ -113,8 +113,11 @@ void MidiController::onStop() {
 }
 
 
-void MidiController::reset() {
+void MidiController::resetEngine() {
 
+    emit reset();
+
+    Document::getInstance()->setMidiClockRunning(false);
 	_midiEngine->stop();
 	_midiEngine->closePort();
 	_midiEngine->cleanup();

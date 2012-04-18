@@ -347,6 +347,12 @@ void QrestMainWindow::lost_synchro() {
 	ui.midiSlaveCheckBox->setChecked(false);
 }
 
+void QrestMainWindow::onMidiEngineReset() {
+
+    ui.midiSlaveCheckBox->setChecked(false);
+    statusClear();
+}
+
 ////////////////////////////////////////////////////////////////////////////////
 //
 // EVENT HANDLERS
