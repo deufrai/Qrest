@@ -17,9 +17,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <iostream>
+
 #include "rtmidiengine.h"
 #include "../model/document.h"
-#include <iostream>
+#include "../constants.h"
 
 RtMidiEngine::RtMidiEngine() {
 
@@ -33,7 +35,7 @@ RtMidiEngine::~RtMidiEngine() {
 void RtMidiEngine::init() {
 
 	// Create the engine
-	_midiIn = new RtMidiIn("qrest");
+    _midiIn = new RtMidiIn(Constants::MIDI_ENGINE_NAME);
 
 	// We don't want to ignore timing-related MIDI events
 	_midiIn->ignoreTypes(true, false, true);
@@ -46,7 +48,7 @@ void RtMidiEngine::openPort( const int portNumber ) {
 
 		try {
 
-			_midiIn->openPort(portNumber, "MIDI Clock IN");
+            _midiIn->openPort(portNumber, Constants::MIDI_PORT_NAME);
 
 		} catch (RtError &error) {
 
@@ -61,7 +63,7 @@ void RtMidiEngine::openVirtualPort() {
 
 		try {
 
-			_midiIn->openVirtualPort("MIDI Clock IN");
+            _midiIn->openVirtualPort(Constants::MIDI_PORT_NAME);
 
 		} catch (RtError &error) {
 

@@ -99,6 +99,16 @@ public:
      * */
     static const int MIDI_SYNC_TIMEOUT_MS = 2000;
 
+    /**
+     * default name of our MIDI engine
+     */
+    static const char* MIDI_ENGINE_NAME;
+
+    /**
+     * default name of our MIDI input port
+     */
+    static const char* MIDI_PORT_NAME;
+
 };
 
 #endif /* CONSTANTS_H_ */
