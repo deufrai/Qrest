@@ -84,7 +84,7 @@ void SettingsDialog::accept() {
 
     if (  midiInputPortNewName.isEmpty()) {
 
-        QMessageBox::critical(this, tr("no Way !!!"), tr ("MIDI input port name cannot be empty"));
+        QMessageBox::critical(this, tr("Invalid data"), tr ("MIDI input port name cannot be empty"));
         return;
     }
 

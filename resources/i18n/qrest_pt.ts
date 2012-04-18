@@ -257,13 +257,23 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="23"/>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="40"/>
         <source>Main</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="24"/>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="42"/>
         <source>Midi</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="87"/>
+        <source>Invalid data</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="87"/>
+        <source>MIDI input port name cannot be empty</source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -275,32 +285,42 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="73"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="62"/>
         <source>MAIN</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="86"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="68"/>
         <source>Should Qrest&apos;s main window be opened at the screen location it had on last run ?</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="89"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="71"/>
         <source>Remember window &amp;position</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="109"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="98"/>
         <source>MIDI</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="135"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="106"/>
+        <source>Cannot accept special characters. Only letters, spaces and numbers</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="109"/>
+        <source>Midi input port name : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="158"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="145"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="168"/>
         <source>OK</source>
         <translation type="unfinished">OK</translation>
     </message>
