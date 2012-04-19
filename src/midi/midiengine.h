@@ -100,7 +100,7 @@ public:
      *
      * \return a boolean reflecting the success of the operation
      */
-    virtual bool openPort( const std::string ) = 0;
+    virtual bool openPort( const std::string portName ) = 0;
 
     /**
      * Close the open MIDI input port
@@ -111,7 +111,7 @@ public:
     /**
      * Should we start ot stop synchronizing to MIDI Clock ?
      *
-     * \param : slave -- yes to sync
+     * \param slave -- yes to sync
      */
     inline void setSlave(const bool slave) {
 

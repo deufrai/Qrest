@@ -12,6 +12,7 @@ class MidiEvent {
 
 protected:
     MidiEvent();
+public:
     virtual ~MidiEvent();
 
 };

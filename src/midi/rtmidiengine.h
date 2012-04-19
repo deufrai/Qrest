@@ -52,7 +52,7 @@ public:
     void init();
     int readEvent();
     void cleanup();
-    bool openPort( const std::string );
+    bool openPort( const std::string portName );
     void closePort();
 
     /**
