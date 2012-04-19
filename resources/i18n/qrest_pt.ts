@@ -295,7 +295,7 @@
     </message>
     <message>
         <location filename="../../src/gui/widgets/settingsdialog.cpp" line="46"/>
-        <source>Midi</source>
+        <source>MIDI</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
@@ -348,7 +348,7 @@
     </message>
     <message>
         <location filename="../../src/gui/forms/settingsdialog.ui" line="108"/>
-        <source>Cannot accept special characters. Only letters, spaces and numbers</source>
+        <source>This name will be used by your system to identify qrest&apos;s MIDI input port</source>
         <translation type="unfinished"></translation>
     </message>
     <message>

@@ -43,7 +43,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
 
     // poulpate left-side sections list
     _mainSection = new QListWidgetItem(tr("Main"), ui.sectionsList);
-    _midiSection = new QListWidgetItem(tr("Midi"), ui.sectionsList);
+    _midiSection = new QListWidgetItem(tr("MIDI"), ui.sectionsList);
     ui.sectionsList->addItem(_mainSection);
     ui.sectionsList->addItem(_midiSection);
 
