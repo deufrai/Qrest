@@ -323,51 +323,51 @@
     <name>SettingsDialogClass</name>
     <message>
         <location filename="../../src/gui/forms/settingsdialog.ui" line="17"/>
-        <source>Qrest settings</source>
-        <translation>Réglages Qrest</translation>
+        <source>Qrest preferences</source>
+        <translation>Préférences Qrest</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="62"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="66"/>
         <source>MAIN</source>
         <translation>GENERAL</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="68"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="72"/>
         <source>Should Qrest&apos;s main window be opened at the screen location it had on last run ?</source>
         <translation>La fenêtre principale de Qrest doit-elle être ouverte à l&apos;endroit où elle était lors de l&apos;exécution précédente ?</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="71"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="75"/>
         <source>Remember window &amp;position</source>
         <translation>Enregistrer la &amp;position de la fenêtre</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="98"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="102"/>
         <source>MIDI</source>
         <translation>MIDI</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="108"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="112"/>
         <source>This name will be used by your system to identify qrest&apos;s MIDI input port</source>
         <translation>Nom utilisé par votre système pour identifier le port d&apos;entrée MIDI de qrest</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="111"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="115"/>
         <source>Midi input &amp;port name : </source>
         <translation>Nom du &amp;port d&apos;entrée MIDI : </translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="121"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="125"/>
         <source>Connect  to &amp;device : </source>
         <translation>&amp;Connexion au périphérique : </translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="208"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="212"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="218"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="222"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>

@@ -14,7 +14,11 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>Qrest settings</string>
+   <string>Qrest preferences</string>
+  </property>
+  <property name="windowIcon">
+   <iconset resource="../../../resources/pixmaps.qrc">
+    <normaloff>:/icons/pix/qresticon.png</normaloff>:/icons/pix/qresticon.png</iconset>
   </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
@@ -232,7 +236,9 @@
   </layout>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="../../../resources/pixmaps.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>pushButton_2</sender>
