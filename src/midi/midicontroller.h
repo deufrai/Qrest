@@ -41,117 +41,141 @@ class MidiController : public QObject {
 
 Q_OBJECT
 
-	////////////////////////////////////////////////////////////////////////////
-	//
-	// INIT
-	//
-	////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // INIT
+    //
+    ////////////////////////////////////////////////////////////////////////////
 private:
-	MidiController();
-	virtual ~MidiController();
+    MidiController();
+    virtual ~MidiController();
 
-	////////////////////////////////////////////////////////////////////////////
-	//
-	// INTERFACE
-	//
-	////////////////////////////////////////////////////////////////////////////
+    /** The single instance */
+    static MidiController* _instance;
+
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // INTERFACE
+    //
+    ////////////////////////////////////////////////////////////////////////////
 public:
-	/** The single instance */
-	static MidiController* _instance;
 
-	/** Instanciate and/or return the single instance */
-	static MidiController* getInstance();
+    /** Instanciate and/or return the single instance */
+    static MidiController* getInstance();
 
-	/**
-	 * Simply emits a Qt signal (bip()) when MIDI engine detects a quarter note has
-	 * ellapsed while recieving MIDI Clock.
-	 */
-	void midiQuarter();
+    /**
+     * Simply emits a Qt signal (bip()) when MIDI engine detects a quarter note has
+     * ellapsed while recieving MIDI Clock.
+     */
+    void midiQuarter();
 
-	/**
-	 * Simply emits a Qt signal (start()) when MIDI engine detects that MIDI clock
-	 * has started
-	 */
-	void midiStart();
+    /**
+     * Simply emits a Qt signal (start()) when MIDI engine detects that MIDI clock
+     * has started
+     */
+    void midiStart();
 
-	/**
-	 * Simply emits a Qt signal (stop()) when MIDI engine detects that MIDI clock
-	 * has stopped
-	 */
-	void midiStop();
+    /**
+     * Simply emits a Qt signal (stop()) when MIDI engine detects that MIDI clock
+     * has stopped
+     */
+    void midiStop();
 
-	/**
-	 * MIDI Clock Synchro has been requested
-	 */
-	void midiSyncStart();
+    /**
+     * MIDI Clock Synchro has been requested
+     */
+    void midiSyncStart();
 
-	/**
-	 * MIDI Clock Synchro has been canceled
-	 */
-	void midiSyncStop();
+    /**
+     * MIDI Clock Synchro has been canceled
+     */
+    void midiSyncStop();
 
+    /**
+     * Get a list of available MIDI devices' names
+     *
+     * \return a list of device names
+     */
+    const std::vector<std::string> getDeviceNames();
 
-	/**
-	 * Reset the midi engine
-	 */
-	void resetEngine();
-	////////////////////////////////////////////////////////////////////////////
-	//
-	// SIGNALS
-	//
-	////////////////////////////////////////////////////////////////////////////
+    /**
+     * Open a MIDI input port
+     *
+     * \return a boolean reflecting the success of the operation
+     */
+    bool openPort( );
+
+    /**
+     * close the MIDI input port
+     */
+    void closePort();
+
+    /**
+     * close open port & reopen
+     */
+    bool resetPort();
+
+    /**
+     * Reset the midi engine
+     */
+    void resetEngine();
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // SIGNALS
+    //
+    ////////////////////////////////////////////////////////////////////////////
 signals:
-	void bip();
-	void start();
-	void stop();
-	void lost_synchro();
-	void reset();
+    void bip();
+    void start();
+    void stop();
+    void lost_synchro();
+    void reset();
 
-	////////////////////////////////////////////////////////////////////////////
-	//
-	// SLOTS
-	//
-	////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // SLOTS
+    //
+    ////////////////////////////////////////////////////////////////////////////
 public slots:
-	/**
-	 * Ask the TapTempoCalculator to take the current time into account
-	 */
-	void onBip();
+    /**
+     * Ask the TapTempoCalculator to take the current time into account
+     */
+    void onBip();
 
-	/**
-	 * Tell Document that MIDI Clock just started
-	 */
-	void onStart();
+    /**
+     * Tell Document that MIDI Clock just started
+     */
+    void onStart();
 
-	/**
-	 * Tell Document that MIDI Clock just stopped
-	 */
-	void onStop();
+    /**
+     * Tell Document that MIDI Clock just stopped
+     */
+    void onStop();
 
 private slots:
-	/**
-	 * Tell everyone MIDI Sync has been lots
-	 */
-	void onSyncTimeout();
+    /**
+     * Tell everyone MIDI Sync has been lots
+     */
+    void onSyncTimeout();
 
-	////////////////////////////////////////////////////////////////////////////
-	//
-	// MEMBERS
-	//
-	////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // MEMBERS
+    //
+    ////////////////////////////////////////////////////////////////////////////
 protected:
-	/**
-	 * Timer used stop listening to MIDI clock events when no events are recieved
-	 * after a certain time
-	 *
-	 * see : Constants::MIDI_SYNC_TIMEOUT_MS
-	 */
-	QTimer* _synchroTimeoutTimer;
+    /**
+     * Timer used stop listening to MIDI clock events when no events are recieved
+     * after a certain time
+     *
+     * see : Constants::MIDI_SYNC_TIMEOUT_MS
+     */
+    QTimer* _synchroTimeoutTimer;
 
-	/**
-	 * Pointer to the unique MIDI engine
-	 */
-	MidiEngine* _midiEngine;
+    /**
+     * Pointer to the unique MIDI engine
+     */
+    MidiEngine* _midiEngine;
 };
 
 #endif /* MIDIMROADCASTER_H_ */

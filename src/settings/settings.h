@@ -82,6 +82,12 @@ public:
     /** key used to store MIDI port default name */
     static const char* MIDI_PORT_NAME_DEFAUT;
 
+    /** key used to store MIDI device name */
+    static const char* MIDI_DEVICE;
+
+    /** key used to store MIDI device name when MIDI has never been used */
+    static const char* MIDI_DEVICE_DEFAULT;
+
     ////////////////////////////////////////////////////////////////////////////
     //
     // INTERFACE

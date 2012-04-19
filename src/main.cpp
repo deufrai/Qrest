@@ -31,6 +31,7 @@
 #include <QtGui>
 #include <QLibraryInfo>
 #include <QApplication>
+#include <QMessageBox>
 
 #include "model/document.h"
 #include "gui/widgets/qrestmainwindow.h"
@@ -38,6 +39,8 @@
 #include "helpers/localeHelper.h"
 #include "midi/midiengine.h"
 #include "midi/midicontroller.h"
+#include "gui/widgets/settingsdialog.h"
+#include "settings/settings.h"
 
 /**
  * Install translator into the application
@@ -85,27 +88,58 @@ int main(int argc, char *argv[]) {
     application.setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
 
+    // check if we have a prefered MIDI device
+    QString prefredMidiDevice = Settings::getInstance()->getSettings().value(
+
+        Settings::MIDI_DEVICE,
+        Settings::MIDI_DEVICE_DEFAULT
+                ).toString();
+
+    if ( 0 == prefredMidiDevice.compare(Settings::MIDI_DEVICE_DEFAULT) ) {
+
+        QMessageBox::information(0,
+                                QObject::tr("Welcome to Qrest"),
+                                QObject::tr("It appears this is your first use of qrest's MIDI features")
+                                .append("\n\n")
+                                .append(QObject::tr("You are invited to check qrest's MIDI settings and chose the MDI device you want to connect to")));
+
+        SettingsDialog dlg;
+        dlg.exec();
+    }
+
+    // start MIDI connection
+    if ( ! MidiController::getInstance()->resetPort() ) {
+
+        QMessageBox::critical(0,
+                              QObject::tr("MIDI Connection failure"),
+                              QObject::tr("MIDI connection could not be made to device : ")
+                              .append(Settings::getInstance()->getSettings().value(
+
+                                  Settings::MIDI_DEVICE,
+                                  Settings::MIDI_DEVICE_DEFAULT).toString()));
+    }
+
     // create main window
     QrestMainWindow mainWindow;
 
     // setup all Qt SIGNAL/SLOT connexions
-	// Midicontroller bip => Midicontroller onBip
+    // Midicontroller bip => Midicontroller onBip
     QObject::connect(MidiController::getInstance(),
-    		SIGNAL(bip()),
-    		MidiController::getInstance(),
-    		SLOT(onBip()));
+            SIGNAL(bip()),
+            MidiController::getInstance(),
+            SLOT(onBip()));
 
-	// Midicontroller start => Midicontroller onStart
+    // Midicontroller start => Midicontroller onStart
     QObject::connect(MidiController::getInstance(),
-    		SIGNAL(start()),
-    		MidiController::getInstance(),
-    		SLOT(onStart()));
+            SIGNAL(start()),
+            MidiController::getInstance(),
+            SLOT(onStart()));
 
     // Midicontroller stop => Midicontroller onStop
     QObject::connect(MidiController::getInstance(),
-    	    SIGNAL(stop()),
-    	    MidiController::getInstance(),
-    	    SLOT(onStop()));
+            SIGNAL(stop()),
+            MidiController::getInstance(),
+            SLOT(onStop()));
 
     // Midicontroller lost_synchro => MainWindow on_lost_synchro
     QObject::connect(MidiController::getInstance(),

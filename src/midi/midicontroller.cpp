@@ -20,6 +20,7 @@
 #include "midicontroller.h"
 #include "../process/tapTempoCalculator.h"
 #include "../model/document.h"
+#include "../settings/settings.h"
 
 MidiController* MidiController::_instance = 0;
 
@@ -29,87 +30,86 @@ MidiController::MidiController()
 
 {
 
-	// Setup MIDI Clock timeout detector
-	_synchroTimeoutTimer->setSingleShot(true);
-	connect(_synchroTimeoutTimer, SIGNAL(timeout()), this, SLOT(onSyncTimeout()));
+    // Setup MIDI Clock timeout detector
+    _synchroTimeoutTimer->setSingleShot(true);
+    connect(_synchroTimeoutTimer, SIGNAL(timeout()), this, SLOT(onSyncTimeout()));
 
-	// startup MIDI engine
-	_midiEngine->init();
-	_midiEngine->openVirtualPort();
-	_midiEngine->start();
+    // startup MIDI engine
+    _midiEngine->init();
+
 
 }
 
 MidiController::~MidiController() {
 
-	_midiEngine->stop();
-	_midiEngine->closePort();
-	_midiEngine->cleanup();
+    _midiEngine->stop();
+    _midiEngine->closePort();
+    _midiEngine->cleanup();
 }
 
 void MidiController::midiQuarter() {
 
-	_synchroTimeoutTimer->start(Constants::MIDI_SYNC_TIMEOUT_MS);
-	emit bip();
+    _synchroTimeoutTimer->start(Constants::MIDI_SYNC_TIMEOUT_MS);
+    emit bip();
 }
 
 void MidiController::midiStart() {
 
-	emit start();
+    emit start();
 }
 
 void MidiController::midiStop() {
 
-	_synchroTimeoutTimer->stop();
-	emit stop();
+    _synchroTimeoutTimer->stop();
+    emit stop();
 }
 
 void MidiController::midiSyncStart() {
 
-	_midiEngine->setSlave(true);
+    _midiEngine->setSlave(true);
 }
 
 void MidiController::midiSyncStop() {
 
-	_midiEngine->setSlave(false);
-	_synchroTimeoutTimer->stop();
-	Document::getInstance()->setMidiClockRunning(false);
+    _midiEngine->setSlave(false);
+    _synchroTimeoutTimer->stop();
+    Document::getInstance()->setMidiClockRunning(false);
 
 }
 
 void MidiController::onSyncTimeout() {
 
-	Document::getInstance()->setMidiClockRunning(false);
-	emit lost_synchro();
+    Document::getInstance()->setMidiClockRunning(false);
+    emit lost_synchro();
 }
 
 
 MidiController* MidiController::getInstance() {
 
-	if ( 0 == _instance ) {
+    if ( 0 == _instance ) {
 
-		_instance = new MidiController();
-	}
+        _instance = new MidiController();
+    }
 
-	return _instance;
+    return _instance;
 }
 
 void MidiController::onBip() {
 
-	Document::getInstance()->setTempoSource(Document::TEMPO_SOURCE_MIDI);
-	Document::getInstance()->setMidiClockRunning(true);
-	TapTempoCalculator::getInstance()->process();
+    Document::getInstance()->setTempoSource(Document::TEMPO_SOURCE_MIDI);
+    Document::getInstance()->setMidiClockRunning(true);
+    TapTempoCalculator::getInstance()->process();
 
 }
 
 void MidiController::onStart() {
 
-	Document::getInstance()->setMidiClockRunning(true);
+    Document::getInstance()->setMidiClockRunning(true);
 }
 
 void MidiController::onStop() {
 
-	Document::getInstance()->setMidiClockRunning(false);
+    Document::getInstance()->setMidiClockRunning(false);
 }
 
 
@@ -117,12 +117,47 @@ void MidiController::resetEngine() {
 
     emit reset();
 
-    Document::getInstance()->setMidiClockRunning(false);
-	_midiEngine->stop();
-	_midiEngine->closePort();
-	_midiEngine->cleanup();
+    closePort();
+    _midiEngine->cleanup();
 
-	_midiEngine->init();
-	_midiEngine->openVirtualPort();
-	_midiEngine->start();
+    _midiEngine->init();
+    openPort();
+}
+
+const std::vector<std::string> MidiController::getDeviceNames() {
+
+    return _midiEngine->getDeviceNames();
+}
+
+bool MidiController::openPort( ) {
+
+    std::string portName = Settings::getInstance()->getSettings().value(
+                Settings::MIDI_DEVICE,
+                Settings::MIDI_DEVICE_DEFAULT
+                           ).toString().toStdString();
+
+     if ( _midiEngine->openPort(portName) ) {
+
+         _midiEngine->start();
+         return true;
+
+     } else {
+
+         return false;
+     }
+
+}
+
+void MidiController::closePort() {
+
+    Document::getInstance()->setMidiClockRunning(false);
+    _midiEngine->stop();
+    _midiEngine->closePort();
+}
+
+
+bool MidiController::resetPort() {
+
+    closePort();
+     return openPort();
 }

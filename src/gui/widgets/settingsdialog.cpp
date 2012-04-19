@@ -37,12 +37,12 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
     // poulpate left-side sections list
-    QListWidgetItem* mainSection = new QListWidgetItem(tr("Main"),
+    _mainSection = new QListWidgetItem(tr("Main"),
                                                        ui.sectionsList);
-    QListWidgetItem* midiSection = new QListWidgetItem(tr("Midi"),
+    _midiSection = new QListWidgetItem(tr("Midi"),
                                                        ui.sectionsList);
-    ui.sectionsList->addItem(mainSection);
-    ui.sectionsList->addItem(midiSection);
+    ui.sectionsList->addItem(_mainSection);
+    ui.sectionsList->addItem(_midiSection);
 
     // check 'remember window position' according to saved prefs
     ui.chkRememberWindowPos->setChecked(
@@ -60,8 +60,34 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
                     Settings::MIDI_PORT_NAME,
                     Settings::MIDI_PORT_NAME_DEFAUT).toString());
 
+    /*
+     * populate devices comboBox
+     * and make devices comboBox show the currently used device (if found)
+     */
+    ui.devicesCombo->setSizeAdjustPolicy(QComboBox::AdjustToContents);
+    std::vector<std::string> devices = MidiController::getInstance()->getDeviceNames();
+    QString currentlyUsedDevice = Settings::getInstance()->getSettings().value(
+
+        Settings::MIDI_DEVICE,
+        Settings::MIDI_DEVICE_DEFAULT).toString();
+
+    int currentlyUsedDeviceIndex = 0;
+
+
+    for (unsigned int i=0; i<devices.size(); i++) {
+
+        ui.devicesCombo->addItem(QString::fromStdString(devices.at(i)));
+
+        if ( 0 == devices.at(i).compare(currentlyUsedDevice.toStdString()) ) {
+
+            currentlyUsedDeviceIndex = i;
+        }
+    }
+
+    ui.devicesCombo->setCurrentIndex(currentlyUsedDeviceIndex);
+
     // wet set main section active by default
-    ui.sectionsList->setItemSelected(mainSection, true);
+    ui.sectionsList->setItemSelected(_mainSection, true);
 
     // setup a RegExp validator for midi input name. Only 7bit ASCII
     QRegExp* midiPortNameRegExp = new QRegExp("[A-Za-z0-9 ]+");
@@ -109,9 +135,35 @@ void SettingsDialog::accept() {
 
         Settings::getInstance()->getSettings().sync();
 
+        // reset MIDI engine
         MidiController::getInstance()->resetEngine();
     }
 
-    QDialog::accept();
+    // if connected device has changed, we reset the connection
+    QString oldConnectedDevice = Settings::getInstance()->getSettings().value(
 
+            Settings::MIDI_DEVICE,
+            Settings::MIDI_DEVICE_DEFAULT).toString();
+
+    QString newConnectedDevice = ui.devicesCombo->currentText();
+
+    if ( oldConnectedDevice.compare(newConnectedDevice) ) {
+
+        // save connected device
+        Settings::getInstance()->getSettings().setValue(
+                    Settings::MIDI_DEVICE,
+                    newConnectedDevice);
+
+        Settings::getInstance()->getSettings().sync();
+
+        // start listening to that device
+        if ( ! MidiController::getInstance()->resetPort() ) {
+
+            QMessageBox::critical(this,
+                                  tr("MIDI Connection failure"),
+                                  tr("MIDI connection could not be made to device : ").append(newConnectedDevice));
+        }
+    }
+
+    QDialog::accept();
 }

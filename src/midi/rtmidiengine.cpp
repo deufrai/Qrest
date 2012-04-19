@@ -30,141 +30,176 @@ RtMidiEngine::RtMidiEngine() {
 
 RtMidiEngine::~RtMidiEngine() {
 
-
 }
 
 void RtMidiEngine::init() {
 
-	// Create the engine
+    // Create the engine
     _midiIn = new RtMidiIn(Constants::MIDI_ENGINE_NAME);
 
-	// We don't want to ignore timing-related MIDI events
-	_midiIn->ignoreTypes(true, false, true);
-
+    // We don't want to ignore timing-related MIDI events
+    _midiIn->ignoreTypes(true, false, true);
 }
 
-void RtMidiEngine::openPort( const int portNumber ) {
+bool RtMidiEngine::openPort( const std::string deviceName) {
 
-	if ( _midiIn ) {
+    if ( _midiIn ) {
 
-		try {
+        std::string portName = Settings::getInstance()->getSettings().value(
+                    Settings::MIDI_PORT_NAME,
+                    Settings::MIDI_PORT_NAME_DEFAUT).toString().toStdString();
 
-            _midiIn->openPort(portNumber,
-            		Settings::getInstance()->getSettings().value(
-            				Settings::MIDI_PORT_NAME,
-            				Settings::MIDI_PORT_NAME_DEFAUT).toString().toStdString());
+        /*
+         * if deviceName is empty, we are opening a virtual port (Linux & Mac)
+         */
+        if ( deviceName.empty() ) {
 
-		} catch (RtError &error) {
+            try {
 
-			error.printMessage();
-		}
-	}
-}
+                _midiIn->openVirtualPort(portName);
+                return true;
 
-void RtMidiEngine::openVirtualPort() {
+            } catch (RtError& error) {
 
-	if ( _midiIn ) {
+                error.printMessage();
+                return false;
+            }
+        }
 
-		try {
+        /*
+         * if deviceName is not empty, we are opening a physical port (windows)
+         *
+         * We get the list of all detected devices and search for
+         * deviceName in that list.
+         *
+         * if found
+         *
+         *  - Open a physical port to it and return true
+         *
+         * else
+         *
+         * - return false
+         */
+        std::vector<std::string> devices = getDeviceNames();
 
-            _midiIn->openVirtualPort(Settings::getInstance()->getSettings().value(
-    				Settings::MIDI_PORT_NAME,
-    				Settings::MIDI_PORT_NAME_DEFAUT).toString().toStdString());
+        for (unsigned int i=0; i<devices.size(); i++) {
 
-		} catch (RtError &error) {
+            std::string current = devices.at(i);
 
-			error.printMessage();
-		}
-	}
+            if ( 0 == current.compare(deviceName) ) {
+
+                try {
+
+                    _midiIn->openPort(i, portName);
+                    return true;
+
+                } catch (RtError &error) {
+
+                    error.printMessage();
+                }
+            }
+        }
+    }
+
+    // in here, either the MIDI engine is NULL or our device cannot be found
+    return false;
 }
 
 void RtMidiEngine::closePort() {
 
-		if ( _midiIn ) {
+        if ( _midiIn ) {
 
-		try {
+        try {
 
-			_midiIn->closePort();
+            _midiIn->closePort();
 
-		} catch (RtError &error) {
+        } catch (RtError &error) {
 
-			error.printMessage();
-		}
-	}
+            error.printMessage();
+        }
+    }
 }
 
 
-void RtMidiEngine::listPhysicalDevices() {
+const std::vector<std::string> RtMidiEngine::getDeviceNames() {
 
-	unsigned int nPorts = _midiIn->getPortCount();
+    unsigned int nPorts = _midiIn->getPortCount();
 
-	std::cerr << nPorts << " MIDI input sources available :" << std::endl;
+    std::vector<std::string> devices;
 
-	for (unsigned int i = 0; i < nPorts; i++) {
+    for (unsigned int i = 0; i < nPorts; i++) {
 
-		try {
+        try {
 
-			std::cerr << "  * Input Port #" << i + 1 << ": "
-					<< _midiIn->getPortName(i) << std::endl;
+            devices.push_back(_midiIn->getPortName(i));
 
-		} catch (RtError &error) {
+        } catch (RtError &error) {
 
-			error.printMessage();
-		}
-	}
+            error.printMessage();
+        }
+    }
+
+    std::vector<std::string>::const_iterator it = devices.begin();
+
+    while ( it != devices.end() ) {
+
+        std::cerr << *it++ << std::endl;
+    }
+
+    return devices;
 }
 
 int RtMidiEngine::readEvent() {
 
-	// some specs about the value of message first byte, for interresting events
-	static const int MIDI_START = 0xFA;
-	static const int MIDI_CONTINUE = 0xFB;
-	static const int MIDI_STOP = 0xFC;
-	static const int MIDI_CLOCK = 0xF8;
+    // some specs about the value of message first byte, for interresting events
+    static const int MIDI_START = 0xFA;
+    static const int MIDI_CONTINUE = 0xFB;
+    static const int MIDI_STOP = 0xFC;
+    static const int MIDI_CLOCK = 0xF8;
 
-	// read next message in queue
-	_midiIn->getMessage(&_message);
+    // read next message in queue
+    _midiIn->getMessage(&_message);
 
-	/*
-	 * we sleep for 1ms because getMessage calls are non-blocking
-	 * and we don't want to hog the CPU with the handling of empty messages
-	 */
-	msleep(1);
+    /*
+     * we sleep for 1ms because getMessage calls are non-blocking
+     * and we don't want to hog the CPU with the handling of empty messages
+     */
+    msleep(1);
 
-	// if the queue was empty, so is the current message
-	if (_message.size() > 0) {
+    // if the queue was empty, so is the current message
+    if (_message.size() > 0) {
 
-		// We read the firt byte & check the type of event it describes
-		switch ((int) _message[0]) {
+        // We read the firt byte & check the type of event it describes
+        switch ((int) _message[0]) {
 
-		case MIDI_CLOCK:
+        case MIDI_CLOCK:
 
-			return EVENT_CLOCK;
-			break;
+            return EVENT_CLOCK;
+            break;
 
-		case MIDI_START:
-		case MIDI_CONTINUE:
+        case MIDI_START:
+        case MIDI_CONTINUE:
 
-			return EVENT_START;
-			break;
+            return EVENT_START;
+            break;
 
-		case MIDI_STOP:
+        case MIDI_STOP:
 
-			return EVENT_STOP;
-			break;
-		}
-	}
+            return EVENT_STOP;
+            break;
+        }
+    }
 
-	return EVENT_UNHANDLED;
+    return EVENT_UNHANDLED;
 }
 
 void RtMidiEngine::cleanup() {
 
-	if (_midiIn) {
+    if (_midiIn) {
 
-		delete _midiIn;
-		_midiIn = 0;
-	}
+        delete _midiIn;
+        _midiIn = 0;
+    }
 
 }
 

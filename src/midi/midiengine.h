@@ -21,6 +21,7 @@
 #define MIDIENGINE_H_
 
 #include <QThread>
+#include <vector>
 
 /**
  * Main interface for MIDI operations implemented as a Singleton
@@ -43,8 +44,8 @@ protected:
     // INIT
     //
     ////////////////////////////////////////////////////////////////////////////
-	MidiEngine();
-	virtual ~MidiEngine();
+    MidiEngine();
+    virtual ~MidiEngine();
 
 
     ////////////////////////////////////////////////////////////////////////////
@@ -53,15 +54,15 @@ protected:
     //
     ////////////////////////////////////////////////////////////////////////////
 private:
-	static MidiEngine* _instance;
+    static MidiEngine* _instance;
 
 public:
-	/**
-	 * Instanciate the Singleton
-	 *
-	 * \return the unique instance
-	 */
-	static MidiEngine* getInstance();
+    /**
+     * Instanciate the Singleton
+     *
+     * \return the unique instance
+     */
+    static MidiEngine* getInstance();
 
 
     ////////////////////////////////////////////////////////////////////////////
@@ -69,53 +70,60 @@ public:
     // INTERFACE
     //
     ////////////////////////////////////////////////////////////////////////////
-	/**
-	 * Stop the thrad execution
-	 */
-	void stop();
+    /**
+     * Stop the thrad execution
+     */
+    void stop();
 
-	/**
-	 * Initialize and start the MIDI engine
-	 */
-	virtual void init() = 0;
+    /**
+     * Initialize and start the MIDI engine
+     */
+    virtual void init() = 0;
 
-	/**
-	 * Read next MIDI event
-	 */
-	virtual int readEvent() = 0;
+    /**
+     * Read next MIDI event
+     */
+    virtual int readEvent() = 0;
 
-	/**
-	 * Stop & cleanup the current MIDI engine
-	 */
-	virtual void cleanup() = 0;
+    /**
+     * Stop & cleanup the current MIDI engine
+     */
+    virtual void cleanup() = 0;
 
-	/**
-	 * Open a MIDI input port connected to a physical MIDI device
-	 *
-	 * \param portNumber : Device ID
-	 */
-	virtual void openPort( const int portNumber ) = 0;
+    /**
+     * Open a MIDI input port connected to a physical MIDI device
+     *
+     * \param portName : the name of the device to connect to
+     *
+     * if a blank name is given (param default value), then we
+     * open a virtual port (Linux & Mac only)
+     *
+     * \return a boolean reflecting the success of the operation
+     */
+    virtual bool openPort( const std::string = "" ) = 0;
 
-	/**
-	 * Open a MIDI virtual input port (for inter-application comm. )
-	 */
-	virtual void openVirtualPort() = 0;
+    /**
+     * Close the open MIDI input port
+     *
+     */
+    virtual void closePort() = 0;
 
-	/**
-	 * Close the open MIDI input port
-	 *
-	 */
-	virtual void closePort() = 0;
+    /**
+     * Should we start ot stop synchronizing to MIDI Clock ?
+     *
+     * \param : slave -- yes to sync
+     */
+    inline void setSlave(const bool slave) {
 
-	/**
-	 * Should we start ot stop synchronizing to MIDI Clock ?
-	 *
-	 * \param : slave -- yes to sync
-	 */
-	inline void setSlave(const bool slave) {
+        _midiClockSlave = slave;
+    }
 
-		_midiClockSlave = slave;
-	}
+    /*
+     * return a list of available MIDI devices' names
+     *
+     * \return a list of names
+     */
+    virtual const std::vector<std::string> getDeviceNames() = 0;
 
 private:
     ////////////////////////////////////////////////////////////////////////////
@@ -123,10 +131,10 @@ private:
     // PRIVATE FUNCTIONS
     //
     ////////////////////////////////////////////////////////////////////////////
-	/**
-	 * QThread implementation
-	 */
-	void run();
+    /**
+     * QThread implementation
+     */
+    void run();
 
 
     ////////////////////////////////////////////////////////////////////////////
@@ -135,27 +143,27 @@ private:
     //
     ////////////////////////////////////////////////////////////////////////////
 private:
-	/** count how many MIDI clock events have been recieved */
-	int _nTickCounter;
+    /** count how many MIDI clock events have been recieved */
+    int _nTickCounter;
 
-	/** Should we keep looping ? */
-	bool _mustRun;
+    /** Should we keep looping ? */
+    bool _mustRun;
 
-	/** are we listening to MIDI Clock */
-	bool _midiClockSlave;
+    /** are we listening to MIDI Clock */
+    bool _midiClockSlave;
 
 protected:
 
-	/**
-	 * The handled MIDI events
-	 */
-	enum eventTypes {
+    /**
+     * The handled MIDI events
+     */
+    enum eventTypes {
 
-		EVENT_UNHANDLED,
-		EVENT_CLOCK,
-		EVENT_START,
-		EVENT_STOP
-	};
+        EVENT_UNHANDLED,
+        EVENT_CLOCK,
+        EVENT_START,
+        EVENT_STOP
+    };
 };
 
 #endif /* MIDIENGINE_H_ */
