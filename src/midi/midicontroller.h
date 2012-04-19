@@ -130,6 +130,8 @@ signals:
     void stop();
     void lost_synchro();
     void reset();
+    void startTimeoutDetector();
+    void stopTimeoutDetector();
 
     ////////////////////////////////////////////////////////////////////////////
     //
@@ -157,6 +159,16 @@ private slots:
      * Tell everyone MIDI Sync has been lots
      */
     void onSyncTimeout();
+
+    /**
+     * start MIDI Clocktimeout timer
+     */
+    void onStartTimeoutDetector();
+
+    /**
+     * stop MIDI Clocktimeout timer
+     */
+    void onStopTimeoutDetector();
 
     ////////////////////////////////////////////////////////////////////////////
     //

@@ -25,14 +25,34 @@
 MidiController* MidiController::_instance = 0;
 
 MidiController::MidiController()
-: _synchroTimeoutTimer(new QTimer(this)),
-  _midiEngine(MidiEngine::getInstance())
+    : _synchroTimeoutTimer(new QTimer(this)),
+      _midiEngine(MidiEngine::getInstance())
 
 {
 
     // Setup MIDI Clock timeout detector
     _synchroTimeoutTimer->setSingleShot(true);
+    _synchroTimeoutTimer->setInterval(Constants::MIDI_SYNC_TIMEOUT_MS);
     connect(_synchroTimeoutTimer, SIGNAL(timeout()), this, SLOT(onSyncTimeout()));
+
+    // setup connections
+    // Midicontroller bip => Midicontroller onBip
+    QObject::connect(this,
+                     SIGNAL(bip()),
+                     this,
+                     SLOT(onBip()));
+
+    // Midicontroller start => Midicontroller onStart
+    QObject::connect(this,
+                     SIGNAL(start()),
+                     this,
+                     SLOT(onStart()));
+
+    // Midicontroller stop => Midicontroller onStop
+    QObject::connect(this,
+                     SIGNAL(stop()),
+                     this,
+                     SLOT(onStop()));
 
     // startup MIDI engine
     _midiEngine->init();
@@ -49,7 +69,7 @@ MidiController::~MidiController() {
 
 void MidiController::midiQuarter() {
 
-    _synchroTimeoutTimer->start(Constants::MIDI_SYNC_TIMEOUT_MS);
+    emit startTimeoutDetector();
     emit bip();
 }
 
@@ -60,7 +80,7 @@ void MidiController::midiStart() {
 
 void MidiController::midiStop() {
 
-    _synchroTimeoutTimer->stop();
+    emit stopTimeoutDetector();
     emit stop();
 }
 
@@ -72,7 +92,7 @@ void MidiController::midiSyncStart() {
 void MidiController::midiSyncStop() {
 
     _midiEngine->setSlave(false);
-    _synchroTimeoutTimer->stop();
+    stopTimeoutDetector();
     Document::getInstance()->setMidiClockRunning(false);
 
 }
@@ -134,17 +154,17 @@ bool MidiController::openPort( ) {
     std::string portName = Settings::getInstance()->getSettings().value(
                 Settings::MIDI_DEVICE,
                 Settings::MIDI_DEVICE_DEFAULT
-                           ).toString().toStdString();
+                ).toString().toStdString();
 
-     if ( _midiEngine->openPort(portName) ) {
+    if ( _midiEngine->openPort(portName) ) {
 
-         _midiEngine->start();
-         return true;
+        _midiEngine->start();
+        return true;
 
-     } else {
+    } else {
 
-         return false;
-     }
+        return false;
+    }
 
 }
 
@@ -158,6 +178,18 @@ void MidiController::closePort() {
 
 bool MidiController::resetPort() {
 
+    emit reset();
     closePort();
-     return openPort();
+    return openPort();
+}
+
+void MidiController::onStartTimeoutDetector() {
+
+    _synchroTimeoutTimer->start();
+}
+
+
+void MidiController::onStopTimeoutDetector() {
+
+    _synchroTimeoutTimer->stop();
 }

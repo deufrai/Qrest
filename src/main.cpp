@@ -123,24 +123,6 @@ int main(int argc, char *argv[]) {
     QrestMainWindow mainWindow;
 
     // setup all Qt SIGNAL/SLOT connexions
-    // Midicontroller bip => Midicontroller onBip
-    QObject::connect(MidiController::getInstance(),
-            SIGNAL(bip()),
-            MidiController::getInstance(),
-            SLOT(onBip()));
-
-    // Midicontroller start => Midicontroller onStart
-    QObject::connect(MidiController::getInstance(),
-            SIGNAL(start()),
-            MidiController::getInstance(),
-            SLOT(onStart()));
-
-    // Midicontroller stop => Midicontroller onStop
-    QObject::connect(MidiController::getInstance(),
-            SIGNAL(stop()),
-            MidiController::getInstance(),
-            SLOT(onStop()));
-
     // Midicontroller lost_synchro => MainWindow on_lost_synchro
     QObject::connect(MidiController::getInstance(),
             SIGNAL(lost_synchro()),
