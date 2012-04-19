@@ -33,14 +33,17 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     WidgetSizeHelper::setDefaultFontSize( this );
 #endif
 
+#ifndef Q_WS_WIN
+    ui.devicesCombo->setHidden(true);
+    ui.connectDeviceLabel->setHidden(true);
+#endif
+
     // we don't want the "what's this" button on this dialog
     this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
     // poulpate left-side sections list
-    _mainSection = new QListWidgetItem(tr("Main"),
-                                                       ui.sectionsList);
-    _midiSection = new QListWidgetItem(tr("Midi"),
-                                                       ui.sectionsList);
+    _mainSection = new QListWidgetItem(tr("Main"), ui.sectionsList);
+    _midiSection = new QListWidgetItem(tr("Midi"), ui.sectionsList);
     ui.sectionsList->addItem(_mainSection);
     ui.sectionsList->addItem(_midiSection);
 
@@ -60,6 +63,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
                     Settings::MIDI_PORT_NAME,
                     Settings::MIDI_PORT_NAME_DEFAUT).toString());
 
+#ifdef Q_WS_WIN
     /*
      * populate devices comboBox
      * and make devices comboBox show the currently used device (if found)
@@ -85,6 +89,7 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     }
 
     ui.devicesCombo->setCurrentIndex(currentlyUsedDeviceIndex);
+#endif
 
     // wet set main section active by default
     ui.sectionsList->setItemSelected(_mainSection, true);
@@ -139,6 +144,7 @@ void SettingsDialog::accept() {
         MidiController::getInstance()->resetEngine();
     }
 
+#ifdef Q_WS_WIN
     // if connected device has changed, we reset the connection
     QString oldConnectedDevice = Settings::getInstance()->getSettings().value(
 
@@ -164,6 +170,7 @@ void SettingsDialog::accept() {
                                   tr("MIDI connection could not be made to device : ").append(newConnectedDevice));
         }
     }
+#endif
 
     QDialog::accept();
 }

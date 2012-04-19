@@ -88,6 +88,7 @@ int main(int argc, char *argv[]) {
     application.setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
 
+#ifdef Q_WS_WIN
     // check if we have a prefered MIDI device
     QString prefredMidiDevice = Settings::getInstance()->getSettings().value(
 
@@ -106,6 +107,22 @@ int main(int argc, char *argv[]) {
         SettingsDialog dlg;
         dlg.exec();
     }
+#else
+    /*
+     * on Linux and Mac make sure prefered device is the empty string
+     * so we open virtual ports instead of physical ports
+     */
+    QString preferedDevice = Settings::getInstance()->getSettings().value(
+
+            Settings::MIDI_DEVICE,
+            Settings::MIDI_DEVICE_DEFAULT).toString();
+
+    if ( ! preferedDevice.trimmed().simplified().isEmpty() ) {
+
+        Settings::getInstance()->getSettings().setValue(Settings::MIDI_DEVICE, "");
+        Settings::getInstance()->getSettings().sync() ;
+    }
+#endif
 
     // start MIDI connection
     if ( ! MidiController::getInstance()->resetPort() ) {
@@ -121,23 +138,6 @@ int main(int argc, char *argv[]) {
 
     // create main window
     QrestMainWindow mainWindow;
-
-    // setup all Qt SIGNAL/SLOT connexions
-    // Midicontroller lost_synchro => MainWindow on_lost_synchro
-    QObject::connect(MidiController::getInstance(),
-            SIGNAL(lost_synchro()),
-            & mainWindow,
-            SLOT(lost_synchro()));
-
-    // Midicontroller reset => MainWindow onMidiEngineReset
-    QObject::connect(MidiController::getInstance(),
-            SIGNAL(reset()),
-            & mainWindow,
-            SLOT(onMidiEngineReset()));
-
-
-
-    // Show mainwindow
     mainWindow.resize(mainWindow.minimumSizeHint());
     mainWindow.show();
 

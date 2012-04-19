@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>548</width>
-    <height>160</height>
+    <height>175</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -116,7 +116,7 @@
                    </widget>
                   </item>
                   <item>
-                   <widget class="QLabel" name="label">
+                   <widget class="QLabel" name="connectDeviceLabel">
                     <property name="text">
                      <string>Connect  to &amp;device : </string>
                     </property>

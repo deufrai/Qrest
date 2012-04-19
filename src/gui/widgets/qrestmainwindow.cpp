@@ -75,6 +75,20 @@ QrestMainWindow::QrestMainWindow(QWidget *parent) :
 	// register as an event filter for tempo input field
 	ui.tempoEdit->installEventFilter(this);
 
+	// setup connections
+    // setup all Qt SIGNAL/SLOT connexions
+    // Midicontroller lost_synchro => MainWindow on_lost_synchro
+    QObject::connect(MidiController::getInstance(),
+            SIGNAL(lost_synchro()),
+            this,
+            SLOT(lost_synchro()));
+
+    // Midicontroller reset => MainWindow onMidiEngineReset
+    QObject::connect(MidiController::getInstance(),
+            SIGNAL(reset()),
+            this,
+            SLOT(onMidiEngineReset()));
+
 	// move to last position stored in user's preferences if asked.
 	if (Settings::getInstance()->getSettings().value(
 			Settings::REMEMBER_WINDOW_POSITION,
