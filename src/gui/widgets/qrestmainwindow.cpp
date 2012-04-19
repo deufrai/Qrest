@@ -167,11 +167,11 @@ void QrestMainWindow::updateView(void) {
 
 				if (_document->isSteady()) {
 
-					statusPermMessage(tr("MIDI Clock Sync : OK"));
+					statusPermMessage(tr("MIDI Clock Sync : Locked"));
 
 				} else {
 
-					statusPermMessage(tr("MIDI Clock Sync : Waiting..."));
+					statusPermMessage(tr("MIDI Clock Sync : Acquiring..."));
 				}
 
 			} else {

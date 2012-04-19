@@ -4,27 +4,27 @@
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../src/main.cpp" line="102"/>
+        <location filename="../../src/main.cpp" line="107"/>
         <source>Welcome to Qrest</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="103"/>
+        <location filename="../../src/main.cpp" line="108"/>
         <source>It appears this is your first use of qrest&apos;s MIDI features</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="105"/>
+        <location filename="../../src/main.cpp" line="110"/>
         <source>You are invited to check qrest&apos;s MIDI settings and chose the MDI device you want to connect to</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="131"/>
+        <location filename="../../src/main.cpp" line="121"/>
         <source>MIDI Connection failure</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="132"/>
+        <location filename="../../src/main.cpp" line="122"/>
         <source>MIDI connection could not be made to device : </source>
         <translation type="unfinished"></translation>
     </message>
@@ -83,12 +83,6 @@
         <translation>Continua a clicar...</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="170"/>
-        <source>MIDI Clock Sync : OK</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="174"/>
         <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="331"/>
         <source>MIDI Clock Sync : Waiting...</source>
         <translation type="unfinished"></translation>
@@ -100,6 +94,16 @@
             <numerusform></numerusform>
             <numerusform></numerusform>
         </translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="170"/>
+        <source>MIDI Clock Sync : Locked</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="174"/>
+        <source>MIDI Clock Sync : Acquiring...</source>
+        <translation type="unfinished"></translation>
     </message>
     <message>
         <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="213"/>
