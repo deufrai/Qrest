@@ -36,23 +36,34 @@ MidiController::MidiController()
     connect(_synchroTimeoutTimer, SIGNAL(timeout()), this, SLOT(onSyncTimeout()));
 
     // setup connections
-    // Midicontroller bip => Midicontroller onBip
     QObject::connect(this,
                      SIGNAL(bip()),
                      this,
                      SLOT(onBip()));
 
-    // Midicontroller start => Midicontroller onStart
+
     QObject::connect(this,
                      SIGNAL(start()),
                      this,
                      SLOT(onStart()));
 
-    // Midicontroller stop => Midicontroller onStop
+
     QObject::connect(this,
                      SIGNAL(stop()),
                      this,
                      SLOT(onStop()));
+
+    QObject::connect(this,
+                     SIGNAL(stopTimeoutDetector()),
+                     this,
+                     SLOT(onStopTimeoutDetector()));
+
+    QObject::connect(this,
+                     SIGNAL(startTimeoutDetector()),
+                     this,
+                     SLOT(onStartTimeoutDetector()));
+
+
 
     // startup MIDI engine
     _midiEngine->init();
