@@ -3,7 +3,18 @@ TARGET = qrest
 ICON = resources/pix/qrest.icns
 QT += core \
     gui
-HEADERS += src/gui/widgets/settingsdialog.h \
+HEADERS += src/midi/events/midieventfactory.h \
+    src/midi/events/midicontrolchange.h \
+    src/midi/events/midinoteon.h \
+    src/midi/events/midicontinue.h \
+    src/midi/events/midistop.h \
+    src/midi/events/midistart.h \
+    src/midi/events/midiclock.h \
+    src/midi/events/mididoubleevent.h \
+    src/midi/events/midiprogramchange.h \
+    src/midi/events/midisimpleevent.h \
+    src/midi/events/midievent.h \
+    src/gui/widgets/settingsdialog.h \
     src/midi/midicontroller.h \
     src/midi/contrib/RtError.h \
     src/midi/contrib/RtMidi.h \
@@ -24,7 +35,18 @@ HEADERS += src/gui/widgets/settingsdialog.h \
     src/dp/observer.h \
     src/model/delay.h \
     src/model/document.h
-SOURCES += src/gui/widgets/settingsdialog.cpp \
+SOURCES += src/midi/events/midieventfactory.cpp \
+    src/midi/events/midicontrolchange.cpp \
+    src/midi/events/midinoteon.cpp \
+    src/midi/events/midicontinue.cpp \
+    src/midi/events/midistop.cpp \
+    src/midi/events/midistart.cpp \
+    src/midi/events/midiclock.cpp \
+    src/midi/events/mididoubleevent.cpp \
+    src/midi/events/midipogramchange.cpp \
+    src/midi/events/midisimpleevent.cpp \
+    src/midi/events/midievent.cpp \
+    src/gui/widgets/settingsdialog.cpp \
     src/midi/midicontroller.cpp \
     src/midi/contrib/RtMidi.cpp \
     src/midi/rtmidiengine.cpp \
