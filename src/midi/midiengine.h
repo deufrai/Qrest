@@ -100,7 +100,7 @@ public:
      *
      * \return a boolean reflecting the success of the operation
      */
-    virtual bool openPort( const std::string = "" ) = 0;
+    virtual bool openPort( const std::string ) = 0;
 
     /**
      * Close the open MIDI input port

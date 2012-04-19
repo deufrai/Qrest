@@ -89,12 +89,17 @@ int main(int argc, char *argv[]) {
 #endif
 
 #ifdef Q_WS_WIN
-    // check if we have a prefered MIDI device
+    /*
+     * On windows, there are no virtual MIDI ports. So we must make sure
+     * we have a physical device to connect to.
+     *
+     * We check saved settings and look if we have a prefered MIDI device.
+     * If not, we display the settings dialog box
+     */
     QString prefredMidiDevice = Settings::getInstance()->getSettings().value(
 
         Settings::MIDI_DEVICE,
-        Settings::MIDI_DEVICE_DEFAULT
-                ).toString();
+        Settings::MIDI_DEVICE_DEFAULT).toString();
 
     if ( 0 == prefredMidiDevice.compare(Settings::MIDI_DEVICE_DEFAULT) ) {
 
@@ -107,24 +112,9 @@ int main(int argc, char *argv[]) {
         SettingsDialog dlg;
         dlg.exec();
     }
-#else
-    /*
-     * on Linux and Mac make sure prefered device is the empty string
-     * so we open virtual ports instead of physical ports
-     */
-    QString preferedDevice = Settings::getInstance()->getSettings().value(
-
-            Settings::MIDI_DEVICE,
-            Settings::MIDI_DEVICE_DEFAULT).toString();
-
-    if ( ! preferedDevice.trimmed().simplified().isEmpty() ) {
-
-        Settings::getInstance()->getSettings().setValue(Settings::MIDI_DEVICE, "");
-        Settings::getInstance()->getSettings().sync() ;
-    }
 #endif
 
-    // start MIDI connection
+    // Open MIDI connection and start listening to incomming events
     if ( ! MidiController::getInstance()->resetPort() ) {
 
         QMessageBox::critical(0,

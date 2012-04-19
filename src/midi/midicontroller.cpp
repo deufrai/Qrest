@@ -162,10 +162,24 @@ const std::vector<std::string> MidiController::getDeviceNames() {
 
 bool MidiController::openPort( ) {
 
+#ifdef Q_WS_WIN
+    /**
+     * On windows, we use physical MIDI ports. So a device name needs to
+     * be present in saved settings.
+     */
     std::string portName = Settings::getInstance()->getSettings().value(
                 Settings::MIDI_DEVICE,
                 Settings::MIDI_DEVICE_DEFAULT
                 ).toString().toStdString();
+
+#else
+
+    /**
+     * On Mac & Linux, vurtual MIDI ports are used, to the openPort function
+     * needs to recieve a blank portName string
+     */
+    std::string portName = "";
+#endif
 
     if ( _midiEngine->openPort(portName) ) {
 

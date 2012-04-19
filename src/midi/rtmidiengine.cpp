@@ -84,9 +84,7 @@ bool RtMidiEngine::openPort( const std::string deviceName) {
 
         for (unsigned int i=0; i<devices.size(); i++) {
 
-            std::string current = devices.at(i);
-
-            if ( 0 == current.compare(deviceName) ) {
+            if ( 0 == devices.at(i).compare(deviceName) ) {
 
                 try {
 
