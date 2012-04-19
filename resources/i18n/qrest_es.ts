@@ -2,6 +2,34 @@
 <!DOCTYPE TS>
 <TS version="2.0" language="es_ES">
 <context>
+    <name>QObject</name>
+    <message>
+        <location filename="../../src/main.cpp" line="102"/>
+        <source>Welcome to Qrest</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/main.cpp" line="103"/>
+        <source>It appears this is your first use of qrest&apos;s MIDI features</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/main.cpp" line="105"/>
+        <source>You are invited to check qrest&apos;s MIDI settings and chose the MDI device you want to connect to</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/main.cpp" line="131"/>
+        <source>MIDI Connection failure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/main.cpp" line="132"/>
+        <source>MIDI connection could not be made to device : </source>
+        <translation type="unfinished"></translation>
+    </message>
+</context>
+<context>
     <name>QrestAboutDialog</name>
     <message>
         <location filename="../../src/gui/forms/qrestaboutdialog.ui" line="16"/>
@@ -45,28 +73,28 @@
         <translation>A sus ordenes, jefe</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="141"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="155"/>
         <source>You&apos;re steady</source>
         <translation>Está estable</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="145"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="159"/>
         <source>Keep tapping...</source>
         <translation>Sigue clicando…</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="156"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="170"/>
         <source>MIDI Clock Sync : OK</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="160"/>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="317"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="174"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="331"/>
         <source>MIDI Clock Sync : Waiting...</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="174"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="188"/>
         <source>Displayed BPM reliability : %n</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -74,42 +102,42 @@
         </translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="199"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="213"/>
         <source>Recalculation needed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="286"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="300"/>
         <source>Online help file could not be found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="287"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="301"/>
         <source>Please consider reporting this as a bug on Qrest&apos;s website.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="292"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="306"/>
         <source>Warning : No help file found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="337"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="351"/>
         <source>MIDI CLock synchronisation has been lost</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="339"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="353"/>
         <source>External MIDI Clock source stopped emitting without sending the STOP command.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="341"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="355"/>
         <source>MIDI Clock slave mode will be disabled.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="345"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="359"/>
         <source>MIDI Clock timeout</source>
         <translation type="unfinished"></translation>
     </message>
@@ -257,23 +285,33 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="40"/>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="45"/>
         <source>Main</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="42"/>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="46"/>
         <source>Midi</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="87"/>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="118"/>
         <source>Invalid data</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="87"/>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="119"/>
         <source>MIDI input port name cannot be empty</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="169"/>
+        <source>MIDI Connection failure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="170"/>
+        <source>MIDI connection could not be made to device : </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -305,22 +343,27 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="106"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="108"/>
         <source>Cannot accept special characters. Only letters, spaces and numbers</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="109"/>
-        <source>Midi input port name : </source>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="111"/>
+        <source>Midi input &amp;port name : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="158"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="121"/>
+        <source>Connect  to &amp;device : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="208"/>
         <source>Cancel</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="168"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="218"/>
         <source>OK</source>
         <translation type="unfinished">OK</translation>
     </message>
