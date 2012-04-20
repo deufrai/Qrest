@@ -21,6 +21,9 @@
 
 #include "midievent.h"
 
+/**
+ * Represents a MIDI Continue event
+ */
 class MidiContinue: public MidiEvent {
 public:
     MidiContinue();

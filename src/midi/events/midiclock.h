@@ -22,6 +22,9 @@
 
 #include "midievent.h"
 
+/**
+ * Represents a MIDI Clock event
+ */
 class MidiClock: public MidiEvent {
 public:
     MidiClock();

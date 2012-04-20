@@ -20,6 +20,9 @@
 #ifndef MIDIEVENT_H_
 #define MIDIEVENT_H_
 
+/**
+ * Abstract type representing a MIDI event
+ */
 class MidiEvent {
 
 protected:

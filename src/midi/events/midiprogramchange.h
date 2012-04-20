@@ -22,8 +22,18 @@
 
 #include "midisimpleevent.h"
 
+/**
+ * Represents a MIDI Program Change event
+ */
 class MidiProgramChange: public MidiSimpleEvent {
+
 public:
+    /**
+     * The only constructor
+     *
+     * @param channel   affected MIDI channel
+     * @param program   Program number
+     */
     MidiProgramChange(const unsigned char channel, const unsigned char program);
     virtual ~MidiProgramChange();
 };

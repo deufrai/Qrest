@@ -35,25 +35,48 @@ MidiEventFactory::~MidiEventFactory() {
 MidiEvent* MidiEventFactory::createEvent(
         const std::vector<unsigned char> data) {
 
+    /*
+     * Note, control changes and program change share this structure for byte #0
+     *
+     * the type of event is code on the 4 msb
+     * the channel is coded on the 4 lsb
+     *
+     * The fact that they use channel information makes them part of what is called
+     * the voice messages Category
+     */
     static const unsigned char TYPE_NOTE_ON = 0x90;
     static const unsigned char TYPE_CONTROL_CHANGE = 0xB0;
     static const unsigned char TYPE_PROGRAM_CHANGE = 0xC0;
+
+    /*
+     * all events whose byte #0 value is greater that 0xEF dont have channel information
+     * their type is code in the whole byte #0
+     */
     static const unsigned char TYPE_CLOCK_START = 0xFA;
     static const unsigned char TYPE_CLOCK_CONTINUE = 0xFB;
     static const unsigned char TYPE_CLOCK_STOP = 0xFC;
     static const unsigned char TYPE_CLOCK_CLOCK = 0xF8;
 
+    /*
+     * status will be used for MIDI clock events
+     *
+     * type, channel, value1 & value2 will be used for all voice messages
+     */
     unsigned char status = data.at(0);
-    unsigned char type = 0;
-    unsigned char channel = 0;
-    unsigned char value1 = 0;
-    unsigned char value2 = 0;
 
     MidiEvent* event = 0;
 
     if (status < 0xF0) {
 
+        unsigned char type = 0;
+        unsigned char channel = 0;
+        unsigned char value1 = 0;
+        unsigned char value2 = 0;
+
+        // we get the 4 msb into type
         type = status & 0xF0;
+
+        // we get the 4 lsb into channel, with numbering starting at 0
         channel = (status & 0xF) + 1;
 
         if (data.size() > 1)
@@ -86,9 +109,7 @@ MidiEvent* MidiEventFactory::createEvent(
 
     } else {
 
-        std::cout << "Type : " << std::hex << (int) status << std::dec
-                << " Channel : " << (int) channel << " Value1 : "
-                << (int) value1 << " Value2 : " << (int) value2 << std::endl;
+        std::cout << "Type : " << std::hex << (int) status << std::endl;
 
         switch (status) {
 

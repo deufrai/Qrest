@@ -21,8 +21,18 @@
 
 #include "mididoubleevent.h"
 
+/**
+ * Represents a MIDI Note ON event
+ */
 class MidiNoteOn: public MidiDoubleEvent {
 public:
+    /**
+     * The only constructor
+     *
+     * @param channel   affected MIDI channel
+     * @param value1    note number
+     * @param value2    note velocity
+     */
     MidiNoteOn(const unsigned char channel, const unsigned char value1, const unsigned char value2);
     virtual ~MidiNoteOn();
 };

@@ -22,17 +22,38 @@
 
 #include "midisimpleevent.h"
 
+/**
+ * Abstract type representing a 3 bytes MIDI event
+ */
 class MidiDoubleEvent: public MidiSimpleEvent {
-public:
+
+protected:
+
+    /**
+     * The only constructor
+     *
+     * @param channel   affected MIDI channel
+     * @param value1    value of byte #1
+     * @param value2    value of byte #2
+     */
     MidiDoubleEvent(const unsigned char channel, const unsigned char value1, const unsigned char value2);
+
+public:
     virtual ~MidiDoubleEvent();
 
+protected:
+    /**
+     * Get the value of byte #2
+     *
+     * @return value of byte #2
+     */
     inline unsigned char getValue2() const {
 
         return _value2;
     }
 
 private:
+    /** value of byte #2 */
     unsigned char _value2;
 };
 

@@ -21,8 +21,19 @@
 
 #include "mididoubleevent.h"
 
+/**
+ * Represents a MIDI Control Change event
+ */
 class MidiControlChange: public MidiDoubleEvent {
 public:
+
+    /**
+     * The only constructor
+     *
+     * @param channel   affected MIDI channel
+     * @param value1    control number
+     * @param value2    control value
+     */
     MidiControlChange(const unsigned char channel, const unsigned char value1, const unsigned char value2);
     virtual ~MidiControlChange();
 };

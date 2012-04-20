@@ -22,12 +22,23 @@
 #include "midievent.h"
 #include <vector>
 
+/**
+ * Factory for MIDI events
+ */
 class MidiEventFactory {
 private:
     MidiEventFactory();
     virtual ~MidiEventFactory();
 
 public:
+
+    /**
+     * Create a MIDI event from raw data
+     *
+     * @param data raw data provided by the MIDI engine
+     *
+     * @return a MIDI event
+     */
     static MidiEvent* createEvent(const std::vector<unsigned char> data);
 };
 
