@@ -41,7 +41,6 @@ protected:
 public:
     virtual ~MidiDoubleEvent();
 
-protected:
     /**
      * Get the value of byte #2
      *
