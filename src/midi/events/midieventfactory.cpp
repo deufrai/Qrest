@@ -34,7 +34,7 @@ MidiEventFactory::~MidiEventFactory() {
 }
 
 MidiEvent* MidiEventFactory::createEvent(
-        const std::vector<unsigned char> data) {
+        const std::vector<unsigned char>* data) {
 
     /*
      * Note, control changes and program change share this structure for byte #0
@@ -63,7 +63,7 @@ MidiEvent* MidiEventFactory::createEvent(
      *
      * type, channel, value1 & value2 will be used for all voice messages
      */
-    unsigned char status = data.at(0);
+    unsigned char status = data->at(0);
 
     MidiEvent* event = 0;
 
@@ -80,11 +80,11 @@ MidiEvent* MidiEventFactory::createEvent(
         // we get the 4 lsb into channel, with numbering starting at 0
         channel = (status & 0xF) + 1;
 
-        if (data.size() > 1)
-            value1 = data.at(1);
+        if (data->size() > 1)
+            value1 = data->at(1);
 
-        if (data.size() > 2)
-            value2 = data.at(2);
+        if (data->size() > 2)
+            value2 = data->at(2);
 
         switch (type) {
 

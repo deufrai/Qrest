@@ -169,7 +169,7 @@ int RtMidiEngine::readEvent() {
     if (_message.size() > 0) {
 
         //TODO : test to be removed
-        delete MidiEventFactory::createEvent(_message);
+        delete MidiEventFactory::createEvent(&_message);
 
         // We read the firt byte & check the type of event it describes
         switch ((int) _message[0]) {

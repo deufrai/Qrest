@@ -39,7 +39,7 @@ public:
      *
      * @return a MIDI event
      */
-    static MidiEvent* createEvent(const std::vector<unsigned char> data);
+    static MidiEvent* createEvent(const std::vector<unsigned char>* data);
 };
 
 #endif /* MIDIEVENTFACTORY_H_ */
