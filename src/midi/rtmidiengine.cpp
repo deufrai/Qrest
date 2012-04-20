@@ -23,6 +23,7 @@
 #include "../model/document.h"
 #include "../constants.h"
 #include "../settings/settings.h"
+#include "events/midieventfactory.h"
 
 RtMidiEngine::RtMidiEngine() {
 
@@ -166,6 +167,9 @@ int RtMidiEngine::readEvent() {
 
     // if the queue was empty, so is the current message
     if (_message.size() > 0) {
+
+        //TODO : test to be removed
+        delete MidiEventFactory::createEvent(&_message);
 
         // We read the firt byte & check the type of event it describes
         switch ((int) _message[0]) {

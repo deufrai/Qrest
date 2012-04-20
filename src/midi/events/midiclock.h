@@ -17,29 +17,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef MIDICLOCK_H_
+#define MIDICLOCK_H_
 
-#ifndef WIDGETSIZEHELPER_H
-#define WIDGETSIZEHELPER_H
-
-class QWidget;
+#include "midievent.h"
 
 /**
-  * Helper class (ifdefed on Mac) to set bigger font sizes
-  */
-class WidgetSizeHelper
-{
+ * Represents a MIDI Clock event
+ */
+class MidiClock: public MidiEvent {
 public:
-    WidgetSizeHelper();
-
-    /**
-     * recusrive scan of the whole parent -> child hierarchy of the widget param
-     * and sets bigger font size for widgets that have text to show
-     *
-     * \param pWidget : the widget to scan
-     *
-     */
-    static void setDefaultFontSize(QWidget*);
+    MidiClock();
+    virtual ~MidiClock();
 };
 
-#endif // WIDGETSIZEHELPER_H
-
+#endif /* MIDICLOCK_H_ */

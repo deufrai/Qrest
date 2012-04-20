@@ -17,29 +17,43 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef MIDIDOUBLEEVENT_H_
+#define MIDIDOUBLEEVENT_H_
 
-#ifndef WIDGETSIZEHELPER_H
-#define WIDGETSIZEHELPER_H
-
-class QWidget;
+#include "midisimpleevent.h"
 
 /**
-  * Helper class (ifdefed on Mac) to set bigger font sizes
-  */
-class WidgetSizeHelper
-{
-public:
-    WidgetSizeHelper();
+ * Abstract type representing a 3 bytes MIDI event
+ */
+class MidiDoubleEvent: public MidiSimpleEvent {
+
+protected:
 
     /**
-     * recusrive scan of the whole parent -> child hierarchy of the widget param
-     * and sets bigger font size for widgets that have text to show
+     * The only constructor
      *
-     * \param pWidget : the widget to scan
-     *
+     * @param channel   affected MIDI channel
+     * @param value1    value of byte #1
+     * @param value2    value of byte #2
      */
-    static void setDefaultFontSize(QWidget*);
+    MidiDoubleEvent(const unsigned char channel, const unsigned char value1, const unsigned char value2);
+
+public:
+    virtual ~MidiDoubleEvent();
+
+    /**
+     * Get the value of byte #2
+     *
+     * @return value of byte #2
+     */
+    inline unsigned char getValue2() const {
+
+        return _value2;
+    }
+
+private:
+    /** value of byte #2 */
+    unsigned char _value2;
 };
 
-#endif // WIDGETSIZEHELPER_H
-
+#endif /* MIDIDOUBLEEVENT_H_ */

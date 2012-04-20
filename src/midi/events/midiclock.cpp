@@ -17,29 +17,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "midiclock.h"
 
-#ifndef WIDGETSIZEHELPER_H
-#define WIDGETSIZEHELPER_H
+MidiClock::MidiClock() {
 
-class QWidget;
 
-/**
-  * Helper class (ifdefed on Mac) to set bigger font sizes
-  */
-class WidgetSizeHelper
-{
-public:
-    WidgetSizeHelper();
+}
 
-    /**
-     * recusrive scan of the whole parent -> child hierarchy of the widget param
-     * and sets bigger font size for widgets that have text to show
-     *
-     * \param pWidget : the widget to scan
-     *
-     */
-    static void setDefaultFontSize(QWidget*);
-};
+MidiClock::~MidiClock() {
 
-#endif // WIDGETSIZEHELPER_H
+}
 

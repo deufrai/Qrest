@@ -1,5 +1,4 @@
-/*
- *  qrest
+/*  qrest
  *
  *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
@@ -17,29 +16,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include "midinoteon.h"
 
-#ifndef WIDGETSIZEHELPER_H
-#define WIDGETSIZEHELPER_H
+MidiNoteOn::MidiNoteOn(const unsigned char channel, const unsigned char value1, const unsigned char value2)
+: MidiDoubleEvent(channel, value1, value2) { }
 
-class QWidget;
 
-/**
-  * Helper class (ifdefed on Mac) to set bigger font sizes
-  */
-class WidgetSizeHelper
-{
-public:
-    WidgetSizeHelper();
-
-    /**
-     * recusrive scan of the whole parent -> child hierarchy of the widget param
-     * and sets bigger font size for widgets that have text to show
-     *
-     * \param pWidget : the widget to scan
-     *
-     */
-    static void setDefaultFontSize(QWidget*);
-};
-
-#endif // WIDGETSIZEHELPER_H
+MidiNoteOn::~MidiNoteOn() { }
 

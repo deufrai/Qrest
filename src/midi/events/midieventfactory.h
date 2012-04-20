@@ -1,5 +1,4 @@
-/*
- *  qrest
+/*  qrest
  *
  *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
@@ -17,29 +16,30 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef MIDIEVENTFACTORY_H_
+#define MIDIEVENTFACTORY_H_
 
-#ifndef WIDGETSIZEHELPER_H
-#define WIDGETSIZEHELPER_H
-
-class QWidget;
+#include "midievent.h"
+#include <vector>
 
 /**
-  * Helper class (ifdefed on Mac) to set bigger font sizes
-  */
-class WidgetSizeHelper
-{
+ * Factory for MIDI events
+ */
+class MidiEventFactory {
+private:
+    MidiEventFactory();
+    virtual ~MidiEventFactory();
+
 public:
-    WidgetSizeHelper();
 
     /**
-     * recusrive scan of the whole parent -> child hierarchy of the widget param
-     * and sets bigger font size for widgets that have text to show
+     * Create a MIDI event from raw data
      *
-     * \param pWidget : the widget to scan
+     * @param data raw data provided by the MIDI engine
      *
+     * @return a MIDI event
      */
-    static void setDefaultFontSize(QWidget*);
+    static MidiEvent* createEvent(const std::vector<unsigned char>* data);
 };
 
-#endif // WIDGETSIZEHELPER_H
-
+#endif /* MIDIEVENTFACTORY_H_ */

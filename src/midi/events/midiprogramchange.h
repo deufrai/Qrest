@@ -17,29 +17,25 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef MIDIPROGRAMCHANGE_H_
+#define MIDIPROGRAMCHANGE_H_
 
-#ifndef WIDGETSIZEHELPER_H
-#define WIDGETSIZEHELPER_H
-
-class QWidget;
+#include "midisimpleevent.h"
 
 /**
-  * Helper class (ifdefed on Mac) to set bigger font sizes
-  */
-class WidgetSizeHelper
-{
-public:
-    WidgetSizeHelper();
+ * Represents a MIDI Program Change event
+ */
+class MidiProgramChange: public MidiSimpleEvent {
 
+public:
     /**
-     * recusrive scan of the whole parent -> child hierarchy of the widget param
-     * and sets bigger font size for widgets that have text to show
+     * The only constructor
      *
-     * \param pWidget : the widget to scan
-     *
+     * @param channel   affected MIDI channel
+     * @param program   Program number
      */
-    static void setDefaultFontSize(QWidget*);
+    MidiProgramChange(const unsigned char channel, const unsigned char program);
+    virtual ~MidiProgramChange();
 };
 
-#endif // WIDGETSIZEHELPER_H
-
+#endif /* MIDIPROGRAMCHANGE_H_ */

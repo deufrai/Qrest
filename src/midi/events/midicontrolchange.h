@@ -1,5 +1,4 @@
-/*
- *  qrest
+/*  qrest
  *
  *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
@@ -17,29 +16,26 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef MIDICONTROLCHANGE_H_
+#define MIDICONTROLCHANGE_H_
 
-#ifndef WIDGETSIZEHELPER_H
-#define WIDGETSIZEHELPER_H
-
-class QWidget;
+#include "mididoubleevent.h"
 
 /**
-  * Helper class (ifdefed on Mac) to set bigger font sizes
-  */
-class WidgetSizeHelper
-{
+ * Represents a MIDI Control Change event
+ */
+class MidiControlChange: public MidiDoubleEvent {
 public:
-    WidgetSizeHelper();
 
     /**
-     * recusrive scan of the whole parent -> child hierarchy of the widget param
-     * and sets bigger font size for widgets that have text to show
+     * The only constructor
      *
-     * \param pWidget : the widget to scan
-     *
+     * @param channel   affected MIDI channel
+     * @param value1    control number
+     * @param value2    control value
      */
-    static void setDefaultFontSize(QWidget*);
+    MidiControlChange(const unsigned char channel, const unsigned char value1, const unsigned char value2);
+    virtual ~MidiControlChange();
 };
 
-#endif // WIDGETSIZEHELPER_H
-
+#endif /* MIDICONTROLCHANGE_H_ */

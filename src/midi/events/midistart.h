@@ -17,29 +17,15 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef MIDISTART_H_
+#define MIDISTART_H_
 
-#ifndef WIDGETSIZEHELPER_H
-#define WIDGETSIZEHELPER_H
+#include "midievent.h"
 
-class QWidget;
-
-/**
-  * Helper class (ifdefed on Mac) to set bigger font sizes
-  */
-class WidgetSizeHelper
-{
+class MidiStart: public MidiEvent {
 public:
-    WidgetSizeHelper();
-
-    /**
-     * recusrive scan of the whole parent -> child hierarchy of the widget param
-     * and sets bigger font size for widgets that have text to show
-     *
-     * \param pWidget : the widget to scan
-     *
-     */
-    static void setDefaultFontSize(QWidget*);
+    MidiStart();
+    virtual ~MidiStart();
 };
 
-#endif // WIDGETSIZEHELPER_H
-
+#endif /* MIDISTART_H_ */

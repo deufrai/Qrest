@@ -1,5 +1,4 @@
-/*
- *  qrest
+/*  qrest
  *
  *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
@@ -17,29 +16,18 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef MIDICONTINUE_H_
+#define MIDICONTINUE_H_
 
-#ifndef WIDGETSIZEHELPER_H
-#define WIDGETSIZEHELPER_H
-
-class QWidget;
+#include "midievent.h"
 
 /**
-  * Helper class (ifdefed on Mac) to set bigger font sizes
-  */
-class WidgetSizeHelper
-{
+ * Represents a MIDI Continue event
+ */
+class MidiContinue: public MidiEvent {
 public:
-    WidgetSizeHelper();
-
-    /**
-     * recusrive scan of the whole parent -> child hierarchy of the widget param
-     * and sets bigger font size for widgets that have text to show
-     *
-     * \param pWidget : the widget to scan
-     *
-     */
-    static void setDefaultFontSize(QWidget*);
+    MidiContinue();
+    virtual ~MidiContinue();
 };
 
-#endif // WIDGETSIZEHELPER_H
-
+#endif /* MIDICONTINUE_H_ */
