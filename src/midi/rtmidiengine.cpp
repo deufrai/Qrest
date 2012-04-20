@@ -24,6 +24,7 @@
 #include "../constants.h"
 #include "../settings/settings.h"
 #include "events/midieventfactory.h"
+#include "midicontroller.h"
 
 RtMidiEngine::RtMidiEngine() {
 
@@ -58,6 +59,7 @@ bool RtMidiEngine::openPort( const std::string deviceName) {
             try {
 
                 _midiIn->openVirtualPort(portName);
+                _midiIn->setCallback(&mycallback);
                 return true;
 
             } catch (RtError& error) {
@@ -90,6 +92,7 @@ bool RtMidiEngine::openPort( const std::string deviceName) {
                 try {
 
                     _midiIn->openPort(i, portName);
+                    _midiIn->setCallback(&mycallback);
                     return true;
 
                 } catch (RtError &error) {
@@ -148,52 +151,11 @@ const std::vector<std::string> RtMidiEngine::getDeviceNames() {
     return devices;
 }
 
-int RtMidiEngine::readEvent() {
+void RtMidiEngine::mycallback( double deltatime, std::vector< unsigned char > *message, void *userData ) {
 
-    // some specs about the value of message first byte, for interresting events
-    static const int MIDI_START = 0xFA;
-    static const int MIDI_CONTINUE = 0xFB;
-    static const int MIDI_STOP = 0xFC;
-    static const int MIDI_CLOCK = 0xF8;
-
-    // read next message in queue
-    _midiIn->getMessage(&_message);
-
-    /*
-     * we sleep for 1ms because getMessage calls are non-blocking
-     * and we don't want to hog the CPU with the handling of empty messages
-     */
-    msleep(1);
-
-    // if the queue was empty, so is the current message
-    if (_message.size() > 0) {
-
-        //TODO : test to be removed
-        delete MidiEventFactory::createEvent(&_message);
-
-        // We read the firt byte & check the type of event it describes
-        switch ((int) _message[0]) {
-
-        case MIDI_CLOCK:
-
-            return EVENT_CLOCK;
-            break;
-
-        case MIDI_START:
-        case MIDI_CONTINUE:
-
-            return EVENT_START;
-            break;
-
-        case MIDI_STOP:
-
-            return EVENT_STOP;
-            break;
-        }
-    }
-
-    return EVENT_UNHANDLED;
+    MidiController::getInstance()->processMidiEvent( MidiEventFactory::createEvent(message) );
 }
+
 
 void RtMidiEngine::cleanup() {
 

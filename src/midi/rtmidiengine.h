@@ -50,7 +50,6 @@ public:
     //
     ////////////////////////////////////////////////////////////////////////////
     void init();
-    int readEvent();
     void cleanup();
     bool openPort( const std::string portName );
     void closePort();
@@ -61,6 +60,9 @@ public:
     const std::vector<std::string> getDeviceNames();
 
 private:
+
+    static void mycallback( double deltatime, std::vector< unsigned char > *message, void *userData );
+
     ////////////////////////////////////////////////////////////////////////////
     //
     // RtMIDI implementation support members

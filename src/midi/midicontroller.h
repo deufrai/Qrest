@@ -21,21 +21,19 @@
 #define MIDIMROADCASTER_H_
 
 #include <QObject>
-#include <QTimer>
 #include "../constants.h"
 #include "midiengine.h"
+#include "states/midistate.h"
 
 /**
  * This class will be our central point for all MIDI operations.
  * Relaying information between the MIDI engine & all other objects in the app
  *
- * Another key point in this class is de-coupling the MidiEngine thread from the GUI thread
+ * It also serve the purpose of de-coupling the MIDI engine's internal thead (RtMidi implementation)
+ * from the GUI. So changes on the GUI can be made ins response to MIDI event hadling in the different
+ * states of the controller.
  *
- * Since the events fired from the MidiEngine thread will affect what is displayed
- * on the GUI, we must use Qt signals to avoid GUI modifications from outside
- * the main application"s event loop.
- *
- * So this class's Qt signals are connected to slots of this same class.
+ * De-coupling is done with Qt Signals & Slots
  **/
 class MidiController : public QObject {
 
@@ -62,34 +60,6 @@ public:
 
     /** Instanciate and/or return the single instance */
     static MidiController* getInstance();
-
-    /**
-     * Simply emits a Qt signal (bip()) when MIDI engine detects a quarter note has
-     * ellapsed while recieving MIDI Clock.
-     */
-    void midiQuarter();
-
-    /**
-     * Simply emits a Qt signal (start()) when MIDI engine detects that MIDI clock
-     * has started
-     */
-    void midiStart();
-
-    /**
-     * Simply emits a Qt signal (stop()) when MIDI engine detects that MIDI clock
-     * has stopped
-     */
-    void midiStop();
-
-    /**
-     * MIDI Clock Synchro has been requested
-     */
-    void midiSyncStart();
-
-    /**
-     * MIDI Clock Synchro has been canceled
-     */
-    void midiSyncStop();
 
     /**
      * Get a list of available MIDI devices' names
@@ -119,56 +89,44 @@ public:
      * Reset the midi engine
      */
     void resetEngine();
-    ////////////////////////////////////////////////////////////////////////////
-    //
-    // SIGNALS
-    //
-    ////////////////////////////////////////////////////////////////////////////
+
+    /**
+     * Process a new MIDI event.
+     *
+     * In fact, we pass it to our current State
+     *
+     * @param event the MIDI event to process
+     */
+    void processMidiEvent(const MidiEvent* event);
+
+    /**
+     * Start MIDI Clock sync
+     */
+    void startMidiSync();
+
+    /**
+     * stop MIDI Clock sync
+     */
+    void stopMidiSync();
+
 signals:
-    void bip();
-    void start();
-    void stop();
-    void lost_synchro();
-    void reset();
-    void startTimeoutDetector();
-    void stopTimeoutDetector();
-
-    ////////////////////////////////////////////////////////////////////////////
-    //
-    // SLOTS
-    //
-    ////////////////////////////////////////////////////////////////////////////
-public slots:
     /**
-     * Ask the TapTempoCalculator to take the current time into account
+     * Emitted when a new MIDI event has been recieved from the MIDI engine callback
      */
-    void onBip();
+    void midiEventRecieved(const MidiEvent*);
 
     /**
-     * Tell Document that MIDI Clock just started
+     * Emitted when MIDI engine or MIDI port has been reset
      */
-    void onStart();
+    void midiReset();
 
-    /**
-     * Tell Document that MIDI Clock just stopped
-     */
-    void onStop();
 
 private slots:
     /**
-     * Tell everyone MIDI Sync has been lots
+     * Pass the event to our current state
      */
-    void onSyncTimeout();
+    void onMidiEventRecieved(const MidiEvent* event);
 
-    /**
-     * start MIDI Clocktimeout timer
-     */
-    void onStartTimeoutDetector();
-
-    /**
-     * stop MIDI Clocktimeout timer
-     */
-    void onStopTimeoutDetector();
 
     ////////////////////////////////////////////////////////////////////////////
     //
@@ -177,17 +135,18 @@ private slots:
     ////////////////////////////////////////////////////////////////////////////
 protected:
     /**
-     * Timer used stop listening to MIDI clock events when no events are recieved
-     * after a certain time
-     *
-     * see : Constants::MIDI_SYNC_TIMEOUT_MS
-     */
-    QTimer* _synchroTimeoutTimer;
-
-    /**
      * Pointer to the unique MIDI engine
      */
     MidiEngine* _midiEngine;
+
+    /** The FreeWheelState */
+    MidiState* _freeWheelState;
+
+    /** The SyncState */
+    MidiState* _syncState;
+
+    /** The current state */
+    MidiState* _currentState;
 };
 
 #endif /* MIDIMROADCASTER_H_ */

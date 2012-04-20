@@ -21,97 +21,34 @@
 #include "../process/tapTempoCalculator.h"
 #include "../model/document.h"
 #include "../settings/settings.h"
+#include "states/freewheelstate.h"
+#include "states/syncstate.h"
 
 MidiController* MidiController::_instance = 0;
 
 MidiController::MidiController()
-    : _synchroTimeoutTimer(new QTimer(this)),
-      _midiEngine(MidiEngine::getInstance())
+: _midiEngine(MidiEngine::getInstance()),
+  _freeWheelState(new FreeWheelSate()),
+  _syncState(new SyncState()),
+  _currentState(_freeWheelState)
+
 
 {
+//    // Setup MIDI Clock timeout detector
+//    _synchroTimeoutTimer->setSingleShot(true);
+//    _synchroTimeoutTimer->setInterval(Constants::MIDI_SYNC_TIMEOUT_MS);
+//    connect(_synchroTimeoutTimer, SIGNAL(timeout()), this, SLOT(onSyncTimeout()));
 
-    // Setup MIDI Clock timeout detector
-    _synchroTimeoutTimer->setSingleShot(true);
-    _synchroTimeoutTimer->setInterval(Constants::MIDI_SYNC_TIMEOUT_MS);
-    connect(_synchroTimeoutTimer, SIGNAL(timeout()), this, SLOT(onSyncTimeout()));
-
-    // setup connections
-    QObject::connect(this,
-                     SIGNAL(bip()),
-                     this,
-                     SLOT(onBip()));
-
-
-    QObject::connect(this,
-                     SIGNAL(start()),
-                     this,
-                     SLOT(onStart()));
-
-
-    QObject::connect(this,
-                     SIGNAL(stop()),
-                     this,
-                     SLOT(onStop()));
-
-    QObject::connect(this,
-                     SIGNAL(stopTimeoutDetector()),
-                     this,
-                     SLOT(onStopTimeoutDetector()));
-
-    QObject::connect(this,
-                     SIGNAL(startTimeoutDetector()),
-                     this,
-                     SLOT(onStartTimeoutDetector()));
-
-
+    connect(this, SIGNAL(midiEventRecieved(const MidiEvent*)), this, SLOT(onMidiEventRecieved(const MidiEvent*)));
 
     // startup MIDI engine
     _midiEngine->init();
-
-
 }
 
 MidiController::~MidiController() {
 
-    _midiEngine->stop();
     _midiEngine->closePort();
     _midiEngine->cleanup();
-}
-
-void MidiController::midiQuarter() {
-
-    emit startTimeoutDetector();
-    emit bip();
-}
-
-void MidiController::midiStart() {
-
-    emit start();
-}
-
-void MidiController::midiStop() {
-
-    emit stopTimeoutDetector();
-    emit stop();
-}
-
-void MidiController::midiSyncStart() {
-
-    _midiEngine->setSlave(true);
-}
-
-void MidiController::midiSyncStop() {
-
-    _midiEngine->setSlave(false);
-    stopTimeoutDetector();
-    Document::getInstance()->setMidiClockRunning(false);
-
-}
-
-void MidiController::onSyncTimeout() {
-
-    Document::getInstance()->setMidiClockRunning(false);
-    emit lost_synchro();
 }
 
 
@@ -125,31 +62,13 @@ MidiController* MidiController::getInstance() {
     return _instance;
 }
 
-void MidiController::onBip() {
-
-    Document::getInstance()->setTempoSource(Document::TEMPO_SOURCE_MIDI);
-    Document::getInstance()->setMidiClockRunning(true);
-    TapTempoCalculator::getInstance()->process();
-
-}
-
-void MidiController::onStart() {
-
-    Document::getInstance()->setMidiClockRunning(true);
-}
-
-void MidiController::onStop() {
-
-    Document::getInstance()->setMidiClockRunning(false);
-}
-
 
 void MidiController::resetEngine() {
 
-    emit reset();
-
     closePort();
     _midiEngine->cleanup();
+
+    emit midiReset();
 
     _midiEngine->init();
     openPort();
@@ -175,46 +94,46 @@ bool MidiController::openPort( ) {
 #else
 
     /**
-     * On Mac & Linux, vurtual MIDI ports are used, to the openPort function
+     * On Mac & Linux, virtual MIDI ports are used. So the openPort function
      * needs to recieve a blank portName string
      */
     std::string portName = "";
 #endif
 
-    if ( _midiEngine->openPort(portName) ) {
-
-        _midiEngine->start();
-        return true;
-
-    } else {
-
-        return false;
-    }
-
+    return _midiEngine->openPort(portName);
 }
 
 void MidiController::closePort() {
 
-    Document::getInstance()->setMidiClockRunning(false);
-    _midiEngine->stop();
+    _currentState->reset();
+    _currentState = _freeWheelState;
     _midiEngine->closePort();
 }
 
 
 bool MidiController::resetPort() {
 
-    emit reset();
     closePort();
+    emit midiReset();
     return openPort();
 }
 
-void MidiController::onStartTimeoutDetector() {
+void MidiController::startMidiSync() {
 
-    _synchroTimeoutTimer->start();
+    _currentState = _syncState;
 }
 
+void MidiController::stopMidiSync() {
 
-void MidiController::onStopTimeoutDetector() {
+    _currentState = _freeWheelState;
+}
 
-    _synchroTimeoutTimer->stop();
+void MidiController::processMidiEvent(const MidiEvent* event ) {
+
+    emit midiEventRecieved(event);
+}
+
+void MidiController::onMidiEventRecieved(const MidiEvent* event) {
+
+    _currentState->processEvent(event);
 }

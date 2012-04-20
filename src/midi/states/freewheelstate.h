@@ -1,5 +1,4 @@
-/*
- *  qrest
+/*  qrest
  *
  *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
@@ -17,28 +16,26 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "midiengine.h"
-#include "rtmidiengine.h"
-#include "../constants.h"
-#include "midicontroller.h"
-#include "../model/document.h"
+#ifndef FREEWHEEL_H_
+#define FREEWHEEL_H_
 
-MidiEngine* MidiEngine::_instance = 0;
+#include "midistate.h"
 
-MidiEngine::MidiEngine() {
+/**
+ * The FreeWheel mode in which we simply discard any incoming MIDI event
+ */
+class FreeWheelSate: public MidiState {
 
-}
+public:
+    FreeWheelSate();
+    virtual ~FreeWheelSate();
 
-MidiEngine::~MidiEngine() {
+    virtual void processEvent(const MidiEvent* event);
 
-}
+    /*
+     * We have nothing to reset
+     */
+    virtual void reset() {}
+};
 
-MidiEngine* MidiEngine::getInstance() {
-
-	if (0 == _instance) {
-
-		_instance = new RtMidiEngine();
-	}
-
-	return _instance;
-}
+#endif /* FREEWHEEL_H_ */

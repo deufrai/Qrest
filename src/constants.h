@@ -81,10 +81,13 @@ public:
     static const int MIDI_CLOCK_EVENTS_PER_QUARTER = 24;
 
     /**
-     * How many milliseconds without recieving a midi Quarter event
+     * How many milliseconds without recieving a midi clock event
      * before considering that synchro is lost ?
-     * */
-    static const int MIDI_SYNC_TIMEOUT_MS = 2000;
+     *
+     * 170 ms is roughly the time ellapsed between two MidiClock events at 15 BPM
+     * which is sloooooooow enough
+     **/
+    static const int MIDI_SYNC_TIMEOUT_MS = 170;
 
     /**
      * default name of our MIDI engine

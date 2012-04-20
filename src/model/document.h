@@ -85,9 +85,7 @@ public:
      *
      * \return the tempo
      */
-    inline double getTempo(void) const {
-        return _tempo;
-    }
+    inline double getTempo(void) const { return _tempo; }
 
 
     /**
@@ -95,10 +93,7 @@ public:
      *
      * \return the multiplier
      */
-    inline double getMultiplier(void) const {
-
-        return _multiplier;
-    }
+    inline double getMultiplier(void) const { return _multiplier; }
 
     /**
      * Set the multiplier
@@ -117,102 +112,83 @@ public:
      *
      * \return steadiness flag
      */
-    inline bool isSteady(void) const {
-        return _steady;
-    }
+    inline bool isSteady(void) const { return _steady; }
 
     /**
      * Set steadiness flag
      *
      * \param steady steadiness flag value
      */
-    inline void setSteady(const bool steady) {
-        _steady = steady;
-    }
+    inline void setSteady(const bool steady) { _steady = steady; }
 
     /**
      * Get the delay object for a whole note
      *
      * \return the 'whole' delay
      */
-    inline Delay* getWholeDelay() const {
-        return _delays[WHOLE];
-    }
+    inline Delay* getWholeDelay() const { return _delays[WHOLE]; }
 
     /**
      * Get the delay object for a half note
      *
      * \return the 'half' delay
      */
-    inline Delay* getHalfDelay() const {
-        return _delays[HALF];
-    }
+    inline Delay* getHalfDelay() const { return _delays[HALF]; }
 
     /**
      * Get the delay object for a quarter note
      *
      * \return the 'quarter' delay
      */
-    inline Delay* getQuarterDelay() const {
-        return _delays[QUARTER];
-    }
+    inline Delay* getQuarterDelay() const { return _delays[QUARTER]; }
 
     /**
      * Get the delay object for a eighth note
      *
      * \return the 'eighth' delay
      */
-    inline Delay* getEighthDelay() const {
-        return _delays[EIGHTH];
-    }
+    inline Delay* getEighthDelay() const { return _delays[EIGHTH]; }
 
     /**
      * Get the delay object for a sixteenth note
      *
      * \return the 'sixteenth' delay
      */
-    inline Delay* getSixTeenthDelay() const {
-        return _delays[SIXTEENTH];
-    }
+    inline Delay* getSixTeenthDelay() const { return _delays[SIXTEENTH]; }
 
     /**
      * Get the delay object for a thirtysecond note
      *
      * \return the 'thirtysecond' delay
      */
-    inline Delay* getThirtySecondDelay() const {
-        return _delays[THIRTYSECOND];
-    }
+    inline Delay* getThirtySecondDelay() const { return _delays[THIRTYSECOND]; }
 
     /**
      * Get steadiness value.
      *
      * \return the steadiness value
      */
-    inline double getSteadiness() const {
-        return _steadiness;
-    }
+    inline double getSteadiness() const { return _steadiness; }
 
     /**
      * Set steadiness value.
      *
      * \param steadiness the steadiness value.
      */
-    inline void setSteadiness(const double steadiness) {
-
-        _steadiness = steadiness;
-    }
+    inline void setSteadiness(const double steadiness) { _steadiness = steadiness; }
 
     /**
      * Get MIDI operations availability
      *
      * \return true if MIDI operations are available
      */
-    inline bool isMidiClockRunning () const {
+    inline bool isMidiClockRunning () const { return _midiClockRunning; }
 
-    	return _midiClockRunning;
-    }
-
+    /**
+     * The the value of the _midiClockRunning flag
+     *
+     * @param midiClockRunning are we slaved to MIDI Clock ?
+     */
     inline void setMidiClockRunning( const bool midiClockRunning ) {
 
     	_midiClockRunning = midiClockRunning;
@@ -224,20 +200,33 @@ public:
      *
      * \param source from tempoSource enum
      **/
-    inline void setTempoSource (const int source) {
-
-    	_tempoSource = source;
-    }
+    inline void setTempoSource (const int source) { _tempoSource = source; }
 
     /**
      * Get tempo source
      *
      * \ the tempo source, values are from tempoSource enum
      */
-    inline int getTempoSource () const {
+    inline int getTempoSource () const { return _tempoSource; }
 
-    	return _tempoSource;
+    /**
+     * Set the value of our midiclock timeout;
+     *
+     * @param timeout has MIDI Clock source timed out ?
+     */
+    inline void setMidiClockTimeout ( bool timeout) {
+
+        _midiClockTimeout = timeout;
+
+        /*
+         * If a MIDI Clock timeout has aoocured, we notify our observers
+         */
+        if ( _midiClockTimeout )
+            notifyObservers();
     }
+
+    inline bool isMidiClockTimeout() const { return _midiClockTimeout; }
+
 
     ////////////////////////////////////////////////////////////////////////////
 	//
@@ -249,7 +238,7 @@ public:
 
     	TEMPO_SOURCE_KEYBOARD,
     	TEMPO_SOURCE_TAP,
-    	TEMPO_SOURCE_MIDI
+    	TEMPO_SOURCE_MIDI_CLOCK
     };
 
 private:
@@ -310,6 +299,9 @@ private:
 
     /** Indicates running state of MIDI clock */
     bool _midiClockRunning;
+
+    /** Has MIDI Clock source times out */
+    bool _midiClockTimeout;
 
 
     ////////////////////////////////////////////////////////////////////////////

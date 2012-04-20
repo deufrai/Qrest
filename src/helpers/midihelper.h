@@ -49,7 +49,7 @@ public:
      *
      * @param noteNumber MIDI note number
      *
-     * @return tectual representation
+     * @return textual representation
      */
     static std::string getNoteNameFromNotNumber( const unsigned char noteNumber );
 

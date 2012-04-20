@@ -1,5 +1,4 @@
-/*
- *  qrest
+/*  qrest
  *
  *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
@@ -17,28 +16,13 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "midiengine.h"
-#include "rtmidiengine.h"
-#include "../constants.h"
-#include "midicontroller.h"
-#include "../model/document.h"
+#include "midistate.h"
 
-MidiEngine* MidiEngine::_instance = 0;
+MidiState::~MidiState() {
 
-MidiEngine::MidiEngine() {
+}
+MidiState::MidiState() {
+
 
 }
 
-MidiEngine::~MidiEngine() {
-
-}
-
-MidiEngine* MidiEngine::getInstance() {
-
-	if (0 == _instance) {
-
-		_instance = new RtMidiEngine();
-	}
-
-	return _instance;
-}

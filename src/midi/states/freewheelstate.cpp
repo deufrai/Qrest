@@ -1,5 +1,4 @@
-/*
- *  qrest
+/*  qrest
  *
  *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
@@ -17,28 +16,19 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include "midiengine.h"
-#include "rtmidiengine.h"
-#include "../constants.h"
-#include "midicontroller.h"
-#include "../model/document.h"
+#include "freewheelstate.h"
 
-MidiEngine* MidiEngine::_instance = 0;
-
-MidiEngine::MidiEngine() {
+FreeWheelSate::FreeWheelSate() {
 
 }
 
-MidiEngine::~MidiEngine() {
+FreeWheelSate::~FreeWheelSate() {
 
 }
 
-MidiEngine* MidiEngine::getInstance() {
+void FreeWheelSate::processEvent(const MidiEvent* event) {
 
-	if (0 == _instance) {
-
-		_instance = new RtMidiEngine();
-	}
-
-	return _instance;
+    // we simply ignore the event
+    delete event;
 }
+

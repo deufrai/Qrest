@@ -130,11 +130,6 @@ private slots:
      */
     void raiseHelp();
 
-    /**
-     * We lost MIDI Clock synchro
-     */
-    void lost_synchro();
-
 
     ////////////////////////////////////////////////////////////////////////////
     //

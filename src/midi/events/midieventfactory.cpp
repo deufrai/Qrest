@@ -129,42 +129,6 @@ MidiEvent* MidiEventFactory::createEvent(
         }
     }
 
-    if ( MidiNoteOn* note = dynamic_cast<MidiNoteOn*> (event) ) {
-
-        std::cout << "Note : channel " << (int)note->getChannel()
-                << ", Number : " << (int)note->getValue1()
-                << ", Name : " << MidiHelper::getNoteNameFromNotNumber(note->getValue1())
-                << ", Velocity : " << (int)note->getValue2() << std::endl;
-
-    } else if ( MidiControlChange* cc = dynamic_cast<MidiControlChange*> (event) ) {
-
-        std::cout << "Control Change : channel " << (int)cc->getChannel()
-                << ", Number : " << (int)cc->getValue1()
-                << ", Value : " << (int)cc->getValue2() << std::endl;
-
-    } else if ( MidiProgramChange* pc = dynamic_cast<MidiProgramChange*> (event) ) {
-
-        std::cout << "Program change : channel " << (int)pc->getChannel()
-                << ", Number : " << (int)pc->getValue1() << std::endl;
-
-    } else if ( dynamic_cast<MidiClock*> (event) ) {
-
-        std::cout << "MIDI Clock" << std::endl;
-
-    } else if ( dynamic_cast<MidiStart*> (event) ) {
-
-        std::cout << "MIDI Start" << std::endl;
-
-    } else if ( dynamic_cast<MidiContinue*> (event) ) {
-
-        std::cout << "MIDI Continue" << std::endl;
-
-    } else if ( dynamic_cast<MidiStop*> (event) ) {
-
-        std::cout << "MIDI Stop" << std::endl;
-
-    }
-
     return event;
 
 }

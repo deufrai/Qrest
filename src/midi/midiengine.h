@@ -20,23 +20,16 @@
 #ifndef MIDIENGINE_H_
 #define MIDIENGINE_H_
 
-#include <QThread>
 #include <vector>
+#include <string>
 
 /**
- * Main interface for MIDI operations implemented as a Singleton
+ * Main interface for MIDI operations implemented as a Singleton.
  *
- * Will hide platform sepcific implementation.
+ * Will hide lowLevel MIDI operations
  *
- * Will run in a thread that will keep listening for these MIDI evnents :
- *
- *   - MIDI clock
- *   - Transport stop
- *   - Transport resume
- *
- * and post these infos to the MidiBroadcaster in charge of emitting Qt signals
  */
-class MidiEngine: public QThread {
+class MidiEngine {
 
 protected:
     ////////////////////////////////////////////////////////////////////////////
@@ -70,20 +63,11 @@ public:
     // INTERFACE
     //
     ////////////////////////////////////////////////////////////////////////////
-    /**
-     * Stop the thrad execution
-     */
-    void stop();
 
     /**
      * Initialize and start the MIDI engine
      */
     virtual void init() = 0;
-
-    /**
-     * Read next MIDI event
-     */
-    virtual int readEvent() = 0;
 
     /**
      * Stop & cleanup the current MIDI engine
@@ -109,61 +93,11 @@ public:
     virtual void closePort() = 0;
 
     /**
-     * Should we start ot stop synchronizing to MIDI Clock ?
-     *
-     * \param slave -- yes to sync
-     */
-    inline void setSlave(const bool slave) {
-
-        _midiClockSlave = slave;
-    }
-
-    /*
      * return a list of available MIDI devices' names
      *
      * \return a list of names
      */
     virtual const std::vector<std::string> getDeviceNames() = 0;
-
-private:
-    ////////////////////////////////////////////////////////////////////////////
-    //
-    // PRIVATE FUNCTIONS
-    //
-    ////////////////////////////////////////////////////////////////////////////
-    /**
-     * QThread implementation
-     */
-    void run();
-
-
-    ////////////////////////////////////////////////////////////////////////////
-    //
-    // MEMBERS
-    //
-    ////////////////////////////////////////////////////////////////////////////
-private:
-    /** count how many MIDI clock events have been recieved */
-    int _nTickCounter;
-
-    /** Should we keep looping ? */
-    bool _mustRun;
-
-    /** are we listening to MIDI Clock */
-    bool _midiClockSlave;
-
-protected:
-
-    /**
-     * The handled MIDI events
-     */
-    enum eventTypes {
-
-        EVENT_UNHANDLED,
-        EVENT_CLOCK,
-        EVENT_START,
-        EVENT_STOP
-    };
 };
 
 #endif /* MIDIENGINE_H_ */
