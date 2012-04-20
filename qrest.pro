@@ -3,7 +3,8 @@ TARGET = qrest
 ICON = resources/pix/qrest.icns
 QT += core \
     gui
-HEADERS += src/midi/events/midieventfactory.h \
+HEADERS += src/helpers/midihelper.h \
+    src/midi/events/midieventfactory.h \
     src/midi/events/midicontrolchange.h \
     src/midi/events/midinoteon.h \
     src/midi/events/midicontinue.h \
@@ -35,7 +36,8 @@ HEADERS += src/midi/events/midieventfactory.h \
     src/dp/observer.h \
     src/model/delay.h \
     src/model/document.h
-SOURCES += src/midi/events/midieventfactory.cpp \
+SOURCES += src/helpers/midihelper.cpp \
+    src/midi/events/midieventfactory.cpp \
     src/midi/events/midicontrolchange.cpp \
     src/midi/events/midinoteon.cpp \
     src/midi/events/midicontinue.cpp \

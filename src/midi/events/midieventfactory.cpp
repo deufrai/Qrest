@@ -25,6 +25,7 @@
 #include "midicontinue.h"
 #include "midistop.h"
 #include "midiclock.h"
+#include "../../helpers/midihelper.h"
 
 MidiEventFactory::MidiEventFactory() {
 }
@@ -132,6 +133,7 @@ MidiEvent* MidiEventFactory::createEvent(
 
         std::cout << "Note : channel " << (int)note->getChannel()
                 << ", Number : " << (int)note->getValue1()
+                << ", Name : " << MidiHelper::getNoteNameFromNotNumber(note->getValue1())
                 << ", Velocity : " << (int)note->getValue2() << std::endl;
 
     } else if ( MidiControlChange* cc = dynamic_cast<MidiControlChange*> (event) ) {
