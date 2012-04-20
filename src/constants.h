@@ -46,19 +46,6 @@ public:
     static const char* VERSION_STRING;
 
     /**
-     * String describing path to i18n folder.
-     *
-     * It may be expressed as a relative path from where bianry is,
-     * or absolutely.
-     */
-    static const char* I18N_FOLDER_LOCATION;
-
-    /**
-     * String describing path to online help.
-     */
-    static const char* ONLINE_HELP_LOCATION;
-
-    /**
      * targetted steadiness ration for taps to be considered steady
      */
     static const double STEADINESS_TARGET_RATIO = 0.90;
