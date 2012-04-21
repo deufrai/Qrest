@@ -153,6 +153,13 @@ const std::vector<std::string> RtMidiEngine::getDeviceNames() {
 
 void RtMidiEngine::mycallback( double deltatime, std::vector< unsigned char > *message, void *userData ) {
 
+    /*
+     * We don't like warnings, even when we are not responsible.
+     * this simply does nothing but we don't want to get used to see warnings
+     */
+    userData = 0;
+    deltatime = 0;
+
     MidiController::getInstance()->processMidiEvent( MidiEventFactory::createEvent(message) );
 }
 
