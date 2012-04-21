@@ -109,11 +109,37 @@ public:
      */
     void stopMidiSync();
 
+    /**
+     * Enter learning mode
+     */
+    void startLearning();
+
+    /**
+     * quit learning mode
+     */
+    void stopLearning();
+
+    /**
+     * A MIDI event has been learned. we pass it to GUI
+     * and switch back to freewhell state
+     *
+     * @param event the event
+     */
+    void learnStateCapturedEvent(const MidiEvent* event);
+
 signals:
     /**
      * Emitted when a new MIDI event has been recieved from the MIDI engine callback
+     *
      */
     void midiEventRecieved(const MidiEvent*);
+
+    /**
+     * Emitted when a MIDI event has been learned.
+     * Will be caught by the MIDI learning GUI
+     *
+     */
+    void learnedEvent(const MidiEvent*);
 
     /**
      * Emitted when MIDI engine or MIDI port has been reset
@@ -145,8 +171,13 @@ protected:
     /** The SyncState */
     MidiState* _syncState;
 
+    /** The LearnState */
+    MidiState* _learnState;
+
     /** The current state */
     MidiState* _currentState;
+
+
 };
 
 #endif /* MIDIMROADCASTER_H_ */

@@ -23,6 +23,7 @@
 #include "../dp/observable.h"
 #include "delay.h"
 #include <vector>
+#include "../midi/events/midievent.h"
 
 /**
  * Stores all application data.
@@ -232,6 +233,20 @@ public:
      */
     inline bool isMidiClockTimeout() const { return _midiClockTimeout; }
 
+    /**
+     * Set the trigger event
+     *
+     * @param event : the event to store
+     */
+    inline void setTriggerEvent(const MidiEvent* event) { delete _triggerEvent; _triggerEvent = event; }
+
+    /**
+     * Get the trigger Event
+     *
+     * @return the trigger event
+     */
+    inline const MidiEvent* getTriggerEvent() const { return _triggerEvent; }
+
 
     ////////////////////////////////////////////////////////////////////////////
 	//
@@ -307,6 +322,9 @@ private:
 
     /** Has MIDI Clock source times out */
     bool _midiClockTimeout;
+
+    /** the MIDI event that will trigger the TAP function */
+    const MidiEvent* _triggerEvent;
 
 
     ////////////////////////////////////////////////////////////////////////////

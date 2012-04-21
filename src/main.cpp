@@ -41,6 +41,7 @@
 #include "midi/midicontroller.h"
 #include "gui/widgets/settingsdialog.h"
 #include "settings/settings.h"
+#include "../src/gui/widgets/midilearndialog.h"
 
 /**
  * Install translator into the application
@@ -125,6 +126,10 @@ int main(int argc, char *argv[]) {
                                   Settings::MIDI_DEVICE,
                                   Settings::MIDI_DEVICE_DEFAULT).toString()));
     }
+
+    //TODO : test
+    MidiLearnDialog dlg;
+    dlg.exec();
 
     // create main window
     QrestMainWindow mainWindow;

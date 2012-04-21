@@ -3,7 +3,9 @@ TARGET = qrest
 ICON = resources/pix/qrest.icns
 QT += core \
     gui
-HEADERS += src/midi/states/syncstate.h \
+HEADERS += src/gui/widgets/midilearndialog.h \
+    src/midi/states/learnstate.h \
+    src/midi/states/syncstate.h \
     src/midi/states/freewheelstate.h \
     src/midi/states/midistate.h \
     src/helpers/midihelper.h \
@@ -39,7 +41,9 @@ HEADERS += src/midi/states/syncstate.h \
     src/dp/observer.h \
     src/model/delay.h \
     src/model/document.h
-SOURCES += src/midi/states/syncstate.cpp \
+SOURCES += src/gui/widgets/midilearndialog.cpp \
+    src/midi/states/learnstate.cpp \
+    src/midi/states/syncstate.cpp \
     src/midi/states/freewheelstate.cpp \
     src/midi/states/midistate.cpp \
     src/helpers/midihelper.cpp \
@@ -102,7 +106,8 @@ win32 {
     DEFINES += __WINDOWS_MM__
     LIBS += -lwinmm
 }
-FORMS += src/gui/forms/settingsdialog.ui \
+FORMS += src/gui/forms/midilearndialog.ui \
+    src/gui/forms/settingsdialog.ui \
     src/gui/forms/qrestmainwindow.ui \
     src/gui/forms/qresthelpviewer.ui \
     src/gui/forms/qrestaboutdialog.ui

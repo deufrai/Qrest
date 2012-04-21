@@ -35,7 +35,8 @@ Document::Document() :
     _tempoSource(TEMPO_SOURCE_KEYBOARD),
     _multiplier(MULTIPLIER_PLAIN),
     _midiClockRunning(false),
-    _midiClockTimeout(false) {
+    _midiClockTimeout(false),
+    _triggerEvent(0) {
 
     // init vector of Delay objects
     initDelays();

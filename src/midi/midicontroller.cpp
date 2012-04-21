@@ -23,6 +23,7 @@
 #include "../settings/settings.h"
 #include "states/freewheelstate.h"
 #include "states/syncstate.h"
+#include "states/learnstate.h"
 
 MidiController* MidiController::_instance = 0;
 
@@ -30,6 +31,7 @@ MidiController::MidiController()
 : _midiEngine(MidiEngine::getInstance()),
   _freeWheelState(new FreeWheelState()),
   _syncState(new SyncState()),
+  _learnState(new LearnState()),
   _currentState(_freeWheelState)
 
 
@@ -133,4 +135,19 @@ void MidiController::processMidiEvent(const MidiEvent* event ) {
 void MidiController::onMidiEventRecieved(const MidiEvent* event) {
 
     _currentState->processEvent(event);
+}
+
+void MidiController::stopLearning() {
+
+    _currentState = _freeWheelState;
+}
+
+void MidiController::startLearning() {
+
+    _currentState = _learnState;
+}
+
+void MidiController::learnStateCapturedEvent(const MidiEvent* event) {
+
+    emit learnedEvent(event);
 }
