@@ -121,6 +121,7 @@ void MidiController::startMidiSync() {
 
 void MidiController::stopMidiSync() {
 
+    _currentState->reset();
     _currentState = _freeWheelState;
 }
 
