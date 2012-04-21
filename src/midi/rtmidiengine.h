@@ -59,9 +59,31 @@ public:
      */
     const std::vector<std::string> getDeviceNames();
 
-private:
 
+
+    /**
+     * callback function called each time RtMidi recieves a MIDI event
+     *
+     * @param deltatime : a timestamp (not used in Qrest)
+     * @param message : pointer to the recieved data
+     * @param userData : pointer to user bundled user data (not used in Qrest)
+     */
     static void mycallback( double deltatime, std::vector< unsigned char > *message, void *userData );
+
+private:
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // PRIVATE FUNCTIONS
+    //
+    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Create a suitable port name by checking if there are already running
+     * Qrest instances on the system.
+     *
+     * In that case, return the prefered port name appened with a number
+     * otherwise simply return the prefered name
+     */
+    std::string createPortName();
 
     ////////////////////////////////////////////////////////////////////////////
     //

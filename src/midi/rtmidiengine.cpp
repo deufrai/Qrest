@@ -45,47 +45,65 @@ void RtMidiEngine::init() {
     _midiIn->ignoreTypes(true, false, true);
 }
 
+std::string RtMidiEngine::createPortName() {
+
+    std::string portName = Settings::getInstance()->getSettings().value(
+                Settings::MIDI_PORT_NAME,
+                Settings::MIDI_PORT_NAME_DEFAUT).toString().toStdString();
+
+    /*
+     * QREST-27 : Automatic MIDI port rename when several Qrest instance are running
+     *
+     * - We scan ports already opened by qrest
+     *   they will show up like that:
+     *
+     * On Linux : <engine_name>:<0>
+     * On Mac   : <real_port_name>
+     * On Win   : we don't care, it just works
+     *
+     *   So we have 2 distinct cases to handle :
+     *
+     * On Linux :
+     *   we count the number of already running Qrest instances by checking against the engine name
+     *
+     * On Mac :
+     *   we count the number of already running Qrest instances by checking prefered port name
+     */
+
+    RtMidiOut midiOut(Constants::MIDI_ENGINE_NAME);
+
+    unsigned int    portCount       = midiOut.getPortCount();
+    unsigned int    instanceCount   = 0;
+
+    for (unsigned int i = 0; i < portCount ; i++) {
+
+        std::string currentName = midiOut.getPortName(i);
+
+#ifndef Q_WS_MAC
+        if ( currentName.find(Constants::MIDI_ENGINE_NAME) < currentName.npos ) {
+#else
+        if ( currentName.find(portName) < currentName.npos ) {
+#endif
+
+            instanceCount++;
+        }
+    }
+
+    if ( instanceCount > 0 ) {
+
+        std::stringstream stream;
+
+        stream << portName << instanceCount +1;
+
+        portName = stream.str();
+    }
+
+    return portName;
+}
+
 bool RtMidiEngine::openPort( const std::string deviceName) {
 
     if ( _midiIn ) {
-
-        std::string portName = Settings::getInstance()->getSettings().value(
-                    Settings::MIDI_PORT_NAME,
-                    Settings::MIDI_PORT_NAME_DEFAUT).toString().toStdString();
-
-        /*
-         * QREST-27 : Automatic MIDI port rename when several Qrest instance are running
-         *
-         * - We scan ports already opened by qrest
-         *   they will show up like that: <engine_name>:<0>
-         *
-         *   So we count the number of already running Qrest instances
-         *   and rename our new port accordingly
-         */
-
-        RtMidiOut midiOut(Constants::MIDI_ENGINE_NAME);
-
-        unsigned int    portCount       = midiOut.getPortCount();
-        unsigned int    instanceCount   = 0;
-
-        for (unsigned int i = 0; i < portCount ; i++) {
-
-            std::string currentName = midiOut.getPortName(i);
-
-            if ( currentName.find(Constants::MIDI_ENGINE_NAME) < currentName.npos ) {
-
-                instanceCount++;
-            }
-        }
-
-        if ( instanceCount > 0 ) {
-
-            std::stringstream stream;
-
-            stream << portName << instanceCount +1;
-
-            portName = stream.str();
-        }
 
         /*
          * if deviceName is empty, we are opening a virtual port (Linux & Mac)
@@ -94,7 +112,7 @@ bool RtMidiEngine::openPort( const std::string deviceName) {
 
             try {
 
-                _midiIn->openVirtualPort(portName);
+                _midiIn->openVirtualPort(createPortName());
                 _midiIn->setCallback(&mycallback);
                 return true;
 
@@ -127,7 +145,7 @@ bool RtMidiEngine::openPort( const std::string deviceName) {
 
                 try {
 
-                    _midiIn->openPort(i, portName);
+                    _midiIn->openPort(i, createPortName());
                     _midiIn->setCallback(&mycallback);
                     return true;
 
