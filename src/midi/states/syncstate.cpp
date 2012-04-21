@@ -68,6 +68,7 @@ void SyncState::processEvent(const MidiEvent* event) {
          */
 
         // We tell everyone that we are now following external sync
+        
         _midiClockCounter = 0;
         Document::getInstance()->setMidiClockRunning(true);
 
@@ -94,10 +95,16 @@ void SyncState::processEvent(const MidiEvent* event) {
          * Midi Clock events are sent 24 times every 4th note.
          * So we count them intill we have 24 and then trigger a tempo calculation
          *
-         */
+         */      
         if ( ++_midiClockCounter == Constants::MIDI_CLOCK_EVENTS_PER_QUARTER ) {
-
-            _midiClockCounter = 0;
+            
+            /*
+             * we want the GUI to update correctly, even if we enter slave mode
+             * AFTER the Midi Start event has been sent
+             */
+            Document::getInstance()->setMidiClockRunning(true);
+            
+            _midiClockCounter = 0;            
             Document::getInstance()->setTempoSource(Document::TEMPO_SOURCE_MIDI_CLOCK);
             TapTempoCalculator::getInstance()->process();
         }
