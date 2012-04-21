@@ -42,7 +42,7 @@ void MidiHelper::initNames() {
 }
 
 
-std::string MidiHelper::getNoteNameFromNotNumber( const unsigned char noteNumber ) {
+std::string MidiHelper::getNoteNameFromNoteNumber( const unsigned char noteNumber ) {
 
     // initialize support vector on first call
     if ( names.size() != NOTES_IN_OCTAVE )

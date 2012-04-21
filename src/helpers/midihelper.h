@@ -51,7 +51,7 @@ public:
      *
      * @return textual representation
      */
-    static std::string getNoteNameFromNotNumber( const unsigned char noteNumber );
+    static std::string getNoteNameFromNoteNumber( const unsigned char noteNumber );
 
     /**
      * Initialize names

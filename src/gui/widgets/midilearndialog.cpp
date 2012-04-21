@@ -55,7 +55,7 @@ void MidiLearnDialog::onEventLearned(const MidiEvent* event) {
              */
             ui.typeEdit->setText(tr("Note ON"));
             ui.valueLabel->setText(tr("Note : "));
-            ui.valueEdit->setText(QString::fromStdString(MidiHelper::getNoteNameFromNotNumber(
+            ui.valueEdit->setText(QString::fromStdString(MidiHelper::getNoteNameFromNoteNumber(
                     note->getValue1())));
 
         } else if ( const MidiControlChange* cc = dynamic_cast<const MidiControlChange*> (_candidate) ) {
