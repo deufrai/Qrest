@@ -12,9 +12,7 @@ Website : http://www.qrest.org
 
 ---
 
-Code is C++ and relies on the Qt framework for GUI
-
-All non-GUI code is Qt-free, with the only exception of the timer used for TAPTEMPO feature. (We would most gladly welcome a portable FIXME for this one)
+Code is C++ and relies on the Qt framework
 
 ---
 
