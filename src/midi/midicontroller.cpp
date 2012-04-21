@@ -34,11 +34,7 @@ MidiController::MidiController()
 
 
 {
-//    // Setup MIDI Clock timeout detector
-//    _synchroTimeoutTimer->setSingleShot(true);
-//    _synchroTimeoutTimer->setInterval(Constants::MIDI_SYNC_TIMEOUT_MS);
-//    connect(_synchroTimeoutTimer, SIGNAL(timeout()), this, SLOT(onSyncTimeout()));
-
+    // connect our MIDI egnine <--> GUI decoupling signal / slots
     connect(this, SIGNAL(midiEventRecieved(const MidiEvent*)), this, SLOT(onMidiEventRecieved(const MidiEvent*)));
 
     // startup MIDI engine
