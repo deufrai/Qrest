@@ -18,6 +18,7 @@
  */
 
 #include <iostream>
+#include <sstream>
 
 #include "rtmidiengine.h"
 #include "../model/document.h"
@@ -25,6 +26,7 @@
 #include "../settings/settings.h"
 #include "events/midieventfactory.h"
 #include "midicontroller.h"
+
 
 RtMidiEngine::RtMidiEngine() {
 
@@ -50,6 +52,40 @@ bool RtMidiEngine::openPort( const std::string deviceName) {
         std::string portName = Settings::getInstance()->getSettings().value(
                     Settings::MIDI_PORT_NAME,
                     Settings::MIDI_PORT_NAME_DEFAUT).toString().toStdString();
+
+        /*
+         * QREST-27 : Automatic MIDI port rename when several Qrest instance are running
+         *
+         * - We scan ports already opened by qrest
+         *   they will show up like that: <engine_name>:<0>
+         *
+         *   So we count the number of already running Qrest instances
+         *   and rename our new port accordingly
+         */
+
+        RtMidiOut midiOut(Constants::MIDI_ENGINE_NAME);
+
+        unsigned int    portCount       = midiOut.getPortCount();
+        unsigned int    instanceCount   = 0;
+
+        for (unsigned int i = 0; i < portCount ; i++) {
+
+            std::string currentName = midiOut.getPortName(i);
+
+            if ( currentName.find(Constants::MIDI_ENGINE_NAME) < currentName.npos ) {
+
+                instanceCount++;
+            }
+        }
+
+        if ( instanceCount > 0 ) {
+
+            std::stringstream stream;
+
+            stream << portName << instanceCount +1;
+
+            portName = stream.str();
+        }
 
         /*
          * if deviceName is empty, we are opening a virtual port (Linux & Mac)
