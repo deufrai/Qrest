@@ -2252,7 +2252,7 @@ std::string RtMidiIn :: getPortName( unsigned int portNumber )
   stringName = std::string( deviceCaps.szPname );
 #endif
 
-  return stringName;
+  return stringName.erase(stringName.find_first_of('\0'));
 }
 
 //*********************************************************************//
@@ -2289,7 +2289,7 @@ std::string RtMidiOut :: getPortName( unsigned int portNumber )
   stringName = std::string( deviceCaps.szPname );
 #endif
 
-  return stringName;
+  return stringName.erase(stringName.find_first_of('\0'));
 }
 
 void RtMidiOut :: initialize( const std::string& /*clientName*/ )
