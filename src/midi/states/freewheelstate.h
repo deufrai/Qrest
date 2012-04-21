@@ -24,11 +24,11 @@
 /**
  * The FreeWheel mode in which we simply discard any incoming MIDI event
  */
-class FreeWheelSate: public MidiState {
+class FreeWheelState: public MidiState {
 
 public:
-    FreeWheelSate();
-    virtual ~FreeWheelSate();
+    FreeWheelState();
+    virtual ~FreeWheelState();
 
     virtual void processEvent(const MidiEvent* event);
 

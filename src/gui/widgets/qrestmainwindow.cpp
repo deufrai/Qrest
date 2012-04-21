@@ -178,6 +178,9 @@ void QrestMainWindow::updateView(void) {
 					(int) (_document->getSteadiness() * 100)).append("%"));
 
 
+	/*
+	 * detect a MIDI Clock source timeout
+	 */
 	if (  _document->isMidiClockTimeout()) {
 
         // we disable MIDI Clock sync

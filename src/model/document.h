@@ -219,12 +219,17 @@ public:
         _midiClockTimeout = timeout;
 
         /*
-         * If a MIDI Clock timeout has aoocured, we notify our observers
+         * If a MIDI Clock timeout has occured, we notify our observers
          */
         if ( _midiClockTimeout )
             notifyObservers();
     }
 
+    /**
+     * Has our MIDI Clock source timed out ?
+     *
+     * @return well, yes or no
+     */
     inline bool isMidiClockTimeout() const { return _midiClockTimeout; }
 
 

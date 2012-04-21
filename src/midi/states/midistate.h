@@ -25,7 +25,7 @@
  * Interface for all State ojects that will help represent the various
  * states of the MIDI controller :
  *
- *  - Freewheel : We don't care about midi recieved MIDI events
+ *  - Freewheel : We don't care about recieved MIDI events
  *  - Sync      : We sync application BPM whith recieved MIDI Clock events
  *  - TAP       : We trigger TAPs with MIDI events
  *  - Learn     : We listen for only one event for TAP learn mode

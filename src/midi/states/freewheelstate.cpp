@@ -18,15 +18,15 @@
 
 #include "freewheelstate.h"
 
-FreeWheelSate::FreeWheelSate() {
+FreeWheelState::FreeWheelState() {
 
 }
 
-FreeWheelSate::~FreeWheelSate() {
+FreeWheelState::~FreeWheelState() {
 
 }
 
-void FreeWheelSate::processEvent(const MidiEvent* event) {
+void FreeWheelState::processEvent(const MidiEvent* event) {
 
     // we simply ignore the event
     delete event;

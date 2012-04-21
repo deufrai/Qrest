@@ -28,7 +28,7 @@ MidiController* MidiController::_instance = 0;
 
 MidiController::MidiController()
 : _midiEngine(MidiEngine::getInstance()),
-  _freeWheelState(new FreeWheelSate()),
+  _freeWheelState(new FreeWheelState()),
   _syncState(new SyncState()),
   _currentState(_freeWheelState)
 
