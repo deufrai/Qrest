@@ -12,6 +12,8 @@ MidiLearnDialog::MidiLearnDialog(QWidget *parent)
 
 	ui.setupUi(this);
 
+	displayEvent(Document::getInstance()->getTriggerEvent());
+
 	connect(MidiController::getInstance(),
 	        SIGNAL(learnedEvent(const MidiEvent*)),
 	        this,
@@ -28,7 +30,7 @@ MidiLearnDialog::~MidiLearnDialog() {
 void MidiLearnDialog::onEventLearned(const MidiEvent* event) {
 
 
-    if ( event != 0 ) {
+    if ( event ) {
 
         /* in here we are sure to recieve an event that is of one of those types
          *
@@ -44,11 +46,21 @@ void MidiLearnDialog::onEventLearned(const MidiEvent* event) {
         delete _candidate;
         _candidate = event;
 
+        displayEvent(_candidate);
+
+    }
+}
+
+void MidiLearnDialog::displayEvent(const MidiEvent* event) {
+
+
+    if ( event ) {
+
         // channel info is common to these 3 types
         ui.channelEdit->setText(
-                QString::number( (int) ((dynamic_cast<const MidiSimpleEvent*> (_candidate))->getChannel()) ) );
+                QString::number( (int) ((dynamic_cast<const MidiSimpleEvent*> (event))->getChannel()) ) );
 
-        if ( const MidiNoteOn* note = dynamic_cast<const MidiNoteOn*> (_candidate) ) {
+        if ( const MidiNoteOn* note = dynamic_cast<const MidiNoteOn*> (event) ) {
 
             /*
              * Note ON
@@ -58,16 +70,16 @@ void MidiLearnDialog::onEventLearned(const MidiEvent* event) {
             ui.valueEdit->setText(QString::fromStdString(MidiHelper::getNoteNameFromNoteNumber(
                     note->getValue1())));
 
-        } else if ( const MidiControlChange* cc = dynamic_cast<const MidiControlChange*> (_candidate) ) {
+        } else if ( const MidiControlChange* cc = dynamic_cast<const MidiControlChange*> (event) ) {
 
             /*
              * Control change
              */
-            ui.typeEdit->setText(tr("Conctrol Change"));
+            ui.typeEdit->setText(tr("Control Change"));
             ui.valueLabel->setText(tr("Control # : "));
             ui.valueEdit->setText(QString::number(cc->getValue1()));
 
-        } else if ( const MidiProgramChange* pc = dynamic_cast<const MidiProgramChange*> (_candidate) ) {
+        } else if ( const MidiProgramChange* pc = dynamic_cast<const MidiProgramChange*> (event) ) {
 
             /*
              * Program change
@@ -77,6 +89,7 @@ void MidiLearnDialog::onEventLearned(const MidiEvent* event) {
             ui.valueEdit->setText(QString::number(pc->getValue1()));
         }
     }
+
 }
 
 void MidiLearnDialog::accept() {
