@@ -101,13 +101,6 @@ QrestMainWindow::~QrestMainWindow() {
 ////////////////////////////////////////////////////////////////////////////////
 void QrestMainWindow::updateView(void) {
 
-    /*
-     * pixmaps used for steadiness hint
-     */
-    static QPixmap redHint(":/lights/pix/red_hint.png");
-    static QPixmap greenHint(":/lights/pix/green_hint.png");
-    static QPixmap emptyPixmap;
-
     // update tempo input field with validated value
     ui.tempoEdit->setText(QString::number(_document->getTempo()));
 
