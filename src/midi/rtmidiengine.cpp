@@ -27,6 +27,17 @@
 #include "events/midieventfactory.h"
 #include "midicontroller.h"
 
+RtMidiEngine* RtMidiEngine::_instance = 0;
+
+RtMidiEngine* RtMidiEngine::getInstance() {
+
+    if ( _instance == 0 ) {
+
+        _instance = new RtMidiEngine();
+    }
+
+    return _instance;
+}
 
 RtMidiEngine::RtMidiEngine()
 : _midiIn(0) {

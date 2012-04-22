@@ -11,7 +11,6 @@ HEADERS += src/midi/states/taptriggerstate.h \
     src/midi/states/freewheelstate.h \
     src/midi/states/midistate.h \
     src/midi/events/midieventfactory.h \
-    src/midi/events/midicontrolchange.h \
     src/midi/events/midinoteon.h \
     src/midi/events/midicontinue.h \
     src/midi/events/midistop.h \
@@ -50,7 +49,6 @@ SOURCES += src/midi/states/taptriggerstate.cpp \
     src/midi/states/freewheelstate.cpp \
     src/midi/states/midistate.cpp \
     src/midi/events/midieventfactory.cpp \
-    src/midi/events/midicontrolchange.cpp \
     src/midi/events/midinoteon.cpp \
     src/midi/events/midicontinue.cpp \
     src/midi/events/midistop.cpp \

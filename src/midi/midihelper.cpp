@@ -77,18 +77,6 @@ const QStringList MidiHelper::noteToStringList(const MidiNoteOn* note) {
     return list;
 }
 
-const QStringList MidiHelper::controlToStringList(const MidiControlChange* control) {
-
-    QStringList list;
-
-    list << Constants::MIDI_TYPE_CC << QString::number(control->getChannel())
-         << QString::number(control->getValue1())
-         << QString::number(control->getValue2());
-
-    return list;
-
-}
-
 const QStringList MidiHelper::programToStringList(const MidiProgramChange* program) {
 
     QStringList list;
@@ -128,13 +116,6 @@ bool MidiHelper::midiEventMatchesReference(const MidiEvent* event, const MidiEve
 
         return noteEvent->getChannel() == noteRef->getChannel() &&
                noteEvent->getValue1()  == noteRef->getValue1();
-
-    } else if ( const MidiControlChange* ccEvent = dynamic_cast<const MidiControlChange*> (event) ) {
-
-        const MidiControlChange* ccRef = dynamic_cast<const MidiControlChange*> (ref);
-
-        return ccEvent->getChannel() == ccRef->getChannel() &&
-               ccEvent->getValue1()  == ccRef->getValue1();
 
     } else {
 

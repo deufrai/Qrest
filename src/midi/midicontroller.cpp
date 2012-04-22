@@ -24,16 +24,17 @@
 #include "states/freewheelstate.h"
 #include "states/syncstate.h"
 #include "states/learnstate.h"
+#include "states/taptriggerstate.h"
+#include "rtmidiengine.h"
 
 #ifndef QT_NO_DEBUG
 #include <QDebug>
-#include "states/taptriggerstate.h"
 #endif
 
 MidiController* MidiController::_instance = 0;
 
 MidiController::MidiController()
-: _midiEngine(MidiEngine::getInstance()),
+: _midiEngine(RtMidiEngine::getInstance()),
   _freeWheelState(new FreeWheelState()),
   _syncState(new SyncState()),
   _learnState(new LearnState()),

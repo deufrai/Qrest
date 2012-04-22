@@ -208,10 +208,6 @@ void saveSettings() {
 
             list = MidiHelper::noteToStringList(note);
 
-        } else if ( const MidiControlChange* control = dynamic_cast<const MidiControlChange*> (event) ) {
-
-            list = MidiHelper::controlToStringList(control);
-
         } else if ( const MidiProgramChange* program = dynamic_cast<const MidiProgramChange*> (event) ) {
 
             list = MidiHelper::programToStringList(program);

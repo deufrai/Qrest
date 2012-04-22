@@ -98,9 +98,6 @@ public:
     /** flag used to represent a MidiNoteOn when serialized to QStringList */
     static const QString MIDI_TYPE_NOTE;
 
-    /** flag used to represent a MidiControlChange when serialized to QStringList */
-    static const QString MIDI_TYPE_CC;
-
     /** flag used to represent a MidiProgramChange when serialized to QStringList */
     static const QString MIDI_TYPE_PC;
 

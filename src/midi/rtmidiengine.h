@@ -49,17 +49,17 @@ public:
     // INTERFACE
     //
     ////////////////////////////////////////////////////////////////////////////
-    void init();
-    void cleanup();
-    bool openPort( const std::string& deviceName );
-    void closePort();
+    virtual void init();
+    virtual void cleanup();
+    virtual bool openPort( const std::string& deviceName );
+    virtual void closePort();
 
     /**
      * List all physical MIDI devices attached to the system
      */
     const std::vector<std::string> getDeviceNames();
 
-
+    static RtMidiEngine* getInstance();
 
     /**
      * callback function called each time RtMidi recieves a MIDI event
@@ -71,6 +71,15 @@ public:
     static void mycallback( double deltatime, std::vector< unsigned char > *message, void *userData );
 
 private:
+
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // SINGLETON
+    //
+    ////////////////////////////////////////////////////////////////////////////
+
+    static RtMidiEngine* _instance;
+
     ////////////////////////////////////////////////////////////////////////////
     //
     // PRIVATE FUNCTIONS

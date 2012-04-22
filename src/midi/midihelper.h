@@ -21,7 +21,6 @@
 #include <string>
 #include <vector>
 #include "../midi/events/midinoteon.h"
-#include "../midi/events/midicontrolchange.h"
 #include "../midi/events/midiprogramchange.h"
 #include <QStringList>
 
@@ -82,17 +81,6 @@ public:
      * @return a string representation of that MidiProgramChange
      */
     static const QStringList programToStringList(const MidiProgramChange* program);
-
-    /**
-     * return a string representation of a MidiControlChange
-     *
-     * internal data separated by DELIM
-     *
-     * @param control : the MidiControlChange
-     *
-     * @return a string representation of that MidiControlChange
-     */
-    static const QStringList controlToStringList(const MidiControlChange* control);
 
     /**
      * Check if a MIDI event matches with a refence event

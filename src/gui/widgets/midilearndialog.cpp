@@ -1,7 +1,6 @@
 #include "midilearndialog.h"
 #include "../../midi/midicontroller.h"
 #include "../../midi/events/midinoteon.h"
-#include "../../midi/events/midicontrolchange.h"
 #include "../../midi/events/midiprogramchange.h"
 #include "../../midi/midihelper.h"
 #include "../../model/document.h"
@@ -39,7 +38,6 @@ void MidiLearnDialog::onEventLearned(const MidiEvent* event) {
         /* in here we are sure to recieve an event that is of one of those types
          *
          *  - NoteOn
-         *  - Control Change
          *  - Program Change
          *
          *  because in learn mode, the midicontroller will send a NULL if it received
@@ -74,15 +72,6 @@ void MidiLearnDialog::displayEvent(const MidiEvent* event) {
             ui.valueLabel->setText(tr("Note : "));
             ui.valueEdit->setText(QString::fromStdString(MidiHelper::getNoteNameFromNoteNumber(
                     note->getValue1())));
-
-        } else if ( const MidiControlChange* cc = dynamic_cast<const MidiControlChange*> (event) ) {
-
-            /*
-             * Control change
-             */
-            ui.typeEdit->setText(tr("Control Change"));
-            ui.valueLabel->setText(tr("Control : "));
-            ui.valueEdit->setText(QString::number(cc->getValue1()));
 
         } else if ( const MidiProgramChange* pc = dynamic_cast<const MidiProgramChange*> (event) ) {
 

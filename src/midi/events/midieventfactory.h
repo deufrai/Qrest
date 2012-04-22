@@ -22,7 +22,6 @@
 #include "midievent.h"
 #include <vector>
 #include "midinoteon.h"
-#include "midicontrolchange.h"
 #include "midiprogramchange.h"
 #include <QStringList>
 
@@ -43,7 +42,6 @@ public:
      *
      * - Note ON
      * - Program change
-     * - Controle change
      * - Midi Clock
      * - Midi Start
      * - Midi Stop
@@ -62,7 +60,6 @@ public:
      *
      * - Note ON
      * - Program change
-     * - Control change
      *
      * @param list : the string representation
      *

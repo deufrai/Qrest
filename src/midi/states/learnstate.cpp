@@ -18,7 +18,6 @@
 
 #include "learnstate.h"
 #include "../events/midinoteon.h"
-#include "../events/midicontrolchange.h"
 #include "../events/midiprogramchange.h"
 #include "../midicontroller.h"
 
@@ -35,14 +34,12 @@ void LearnState::processEvent(const MidiEvent* event) {
      * We handle 3 different types of events :
      *
      *  - Note ON
-     *  - Control Change
      *  - Program Change
      *
      * If we recieve any other type of event, we will send a NULL
      */
 
     if ( dynamic_cast<const MidiNoteOn*>        (event) != 0 ||
-         dynamic_cast<const MidiControlChange*> (event) != 0 ||
          dynamic_cast<const MidiProgramChange*> (event) != 0 ) {
 
         MidiController::getInstance()->learnStateCapturedEvent(event);

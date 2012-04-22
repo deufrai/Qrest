@@ -19,7 +19,6 @@
 #include "midieventfactory.h"
 #include "midinoteon.h"
 #include <iostream>
-#include "midicontrolchange.h"
 #include "midiprogramchange.h"
 #include "midistart.h"
 #include "midicontinue.h"
@@ -39,7 +38,7 @@ MidiEvent* MidiEventFactory::createEvent(
         const std::vector<unsigned char>* data) {
 
     /*
-     * Note, control changes and program change share the same fist byte structure :
+     * Note and program change share the same fist byte structure :
      *
      * the type of event is coded on the 4 msb
      * the channel is coded on the 4 lsb
@@ -48,7 +47,6 @@ MidiEvent* MidiEventFactory::createEvent(
      * the voice messages Category
      */
     static const unsigned char TYPE_NOTE_ON = 0x90;
-    static const unsigned char TYPE_CONTROL_CHANGE = 0xB0;
     static const unsigned char TYPE_PROGRAM_CHANGE = 0xC0;
 
     /*
@@ -92,10 +90,6 @@ MidiEvent* MidiEventFactory::createEvent(
 
             case TYPE_NOTE_ON:
                 event = new MidiNoteOn(channel, value1, value2);
-                break;
-
-            case TYPE_CONTROL_CHANGE:
-                event = new MidiControlChange(channel, value1, value2);
                 break;
 
             case TYPE_PROGRAM_CHANGE:
@@ -145,7 +139,7 @@ const MidiEvent* MidiEventFactory::createEvent(const QStringList& list) {
     MidiEvent* event = 0;
 
     /*
-     * If we have 4 values, we're dealing wit notes or control change
+     * If we have 4 values, we're dealing wit notes
      * If we have 3 values, we're dealing with program change
      */
     QString type = list.at(0);
@@ -157,14 +151,6 @@ const MidiEvent* MidiEventFactory::createEvent(const QStringList& list) {
             if ( type == Constants::MIDI_TYPE_NOTE ) {
 
                 event = new MidiNoteOn(
-
-                        list.at(1).toUInt(),
-                        list.at(2).toUInt(),
-                        list.at(3).toUInt());
-
-            } else if ( type == Constants::MIDI_TYPE_CC ) {
-
-                event = new MidiControlChange(
 
                         list.at(1).toUInt(),
                         list.at(2).toUInt(),

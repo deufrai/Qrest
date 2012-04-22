@@ -23,8 +23,6 @@
 #include "midicontroller.h"
 #include "../model/document.h"
 
-MidiEngine* MidiEngine::_instance = 0;
-
 MidiEngine::MidiEngine() {
 
 }
@@ -33,12 +31,3 @@ MidiEngine::~MidiEngine() {
 
 }
 
-MidiEngine* MidiEngine::getInstance() {
-
-	if (0 == _instance) {
-
-		_instance = new RtMidiEngine();
-	}
-
-	return _instance;
-}
