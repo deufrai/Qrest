@@ -25,7 +25,7 @@
 #include "midicontinue.h"
 #include "midistop.h"
 #include "midiclock.h"
-#include "../../helpers/midihelper.h"
+#include "../midihelper.h"
 #include <QStringList>
 #include "../../constants.h"
 

@@ -94,6 +94,21 @@ public:
      */
     static const QStringList controlToStringList(const MidiControlChange* control);
 
+    /**
+     * Check if a MIDI event matches with a refence event
+     *
+     * We consider a match if both have the same :
+     *
+     * - type
+     * - channel
+     * - value1
+     *
+     * @param event     : the event to be tetsed
+     * @param reference : the reference event
+     * @return          : true if match
+     */
+    static bool midiEventMatchesReference(const MidiEvent* event, const MidiEvent* ref);
+
 };
 
 #endif /* MIDIHELPER_H_ */

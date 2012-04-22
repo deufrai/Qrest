@@ -3,7 +3,7 @@
 #include "../../midi/events/midinoteon.h"
 #include "../../midi/events/midicontrolchange.h"
 #include "../../midi/events/midiprogramchange.h"
-#include "../../helpers/midihelper.h"
+#include "../../midi/midihelper.h"
 #include "../../model/document.h"
 
 

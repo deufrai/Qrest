@@ -25,6 +25,11 @@
 #include "states/syncstate.h"
 #include "states/learnstate.h"
 
+#ifndef QT_NO_DEBUG
+#include <QDebug>
+#include "states/taptriggerstate.h"
+#endif
+
 MidiController* MidiController::_instance = 0;
 
 MidiController::MidiController()
@@ -32,6 +37,7 @@ MidiController::MidiController()
   _freeWheelState(new FreeWheelState()),
   _syncState(new SyncState()),
   _learnState(new LearnState()),
+  _triggerState(new TapTriggerState),
   _currentState(_freeWheelState)
 
 
@@ -63,6 +69,10 @@ MidiController* MidiController::getInstance() {
 
 void MidiController::resetEngine() {
 
+    #ifndef QT_NO_DEBUG
+            qDebug() << "CONTROLLER : resetEngine()";
+    #endif
+
     closePort();
     _midiEngine->cleanup();
 
@@ -78,6 +88,10 @@ const std::vector<std::string> MidiController::getDeviceNames() {
 }
 
 bool MidiController::openPort( ) {
+
+#ifndef QT_NO_DEBUG
+        qDebug() << "MidiController::openPort - ";
+#endif
 
 #ifdef Q_WS_WIN
     /**
@@ -103,6 +117,10 @@ bool MidiController::openPort( ) {
 
 void MidiController::closePort() {
 
+    #ifndef QT_NO_DEBUG
+            qDebug() << "MidiController::closePort - ";
+    #endif
+
     _currentState->reset();
     _currentState = _freeWheelState;
     _midiEngine->closePort();
@@ -111,6 +129,10 @@ void MidiController::closePort() {
 
 bool MidiController::resetPort() {
 
+    #ifndef QT_NO_DEBUG
+            qDebug() << "MidiController::resetPort - ";
+    #endif
+
     closePort();
     emit midiReset();
     return openPort();
@@ -118,11 +140,19 @@ bool MidiController::resetPort() {
 
 void MidiController::startMidiSync() {
 
+    #ifndef QT_NO_DEBUG
+            qDebug() << "MidiController::startMidiSync - ";
+    #endif
+
     _currentState->reset();
     _currentState = _syncState;
 }
 
 void MidiController::stopMidiSync() {
+
+    #ifndef QT_NO_DEBUG
+            qDebug() << "MidiController::stopMidiSync - ";
+    #endif
 
     _currentState->reset();
     _currentState = _freeWheelState;
@@ -140,11 +170,39 @@ void MidiController::onMidiEventRecieved(const MidiEvent* event) {
 
 void MidiController::stopLearning() {
 
+    #ifndef QT_NO_DEBUG
+            qDebug() << "MidiController::stopLearning - ";
+    #endif
+
+    _currentState->reset();
+    _currentState = _freeWheelState;
+}
+
+void MidiController::startTriggerMode() {
+
+    #ifndef QT_NO_DEBUG
+            qDebug() << "MidiController::startTriggerMode - ";
+    #endif
+
+    _currentState->reset();
+    _currentState = _triggerState;
+}
+
+void MidiController::stopTriggerMode() {
+
+    #ifndef QT_NO_DEBUG
+            qDebug() << "MidiController::stopTriggerMode - ";
+    #endif
+
     _currentState->reset();
     _currentState = _freeWheelState;
 }
 
 void MidiController::startLearning() {
+
+    #ifndef QT_NO_DEBUG
+            qDebug() << "MidiController::startLearning - ";
+    #endif
 
     _currentState->reset();
     /*
@@ -163,6 +221,10 @@ void MidiController::startLearning() {
 }
 
 void MidiController::learnStateCapturedEvent(const MidiEvent* event) {
+
+    #ifndef QT_NO_DEBUG
+            qDebug() << "MidiController::learnStateCapturedEvent - ";
+    #endif
 
     emit learnedEvent(event);
 }

@@ -43,7 +43,7 @@
 #include "gui/widgets/settingsdialog.h"
 #include "settings/settings.h"
 #include "midi/events/midieventfactory.h"
-#include "helpers/midihelper.h"
+#include "midi/midihelper.h"
 
 
 /**

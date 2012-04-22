@@ -35,6 +35,7 @@
 #include "../../helpers/widgetsizehelper.h"
 #include "../../midi/midicontroller.h"
 #include "settingsdialog.h"
+#include "midilearndialog.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -336,6 +337,7 @@ void QrestMainWindow::on_midiSlaveCheckBox_stateChanged(int state) {
 
 		ui.tapButton->setEnabled(false);
 		ui.tempoEdit->setEnabled(false);
+		ui.triggerCheckBox->setChecked(false);
 		statusPermMessage(tr("MIDI Clock Sync : Waiting..."));
 		MidiController::getInstance()->startMidiSync();
 		break;
@@ -351,6 +353,57 @@ void QrestMainWindow::on_midiSlaveCheckBox_stateChanged(int state) {
 	default:
 		break;
 	}
+
+}
+
+void QrestMainWindow::on_triggerCheckBox_stateChanged(int state) {
+
+    switch (state) {
+
+    case Qt::Checked:
+
+        if ( checkIfTriggerModePossible() ) {
+
+            ui.midiSlaveCheckBox->setChecked(false);
+            MidiController::getInstance()->startTriggerMode();
+
+        } else {
+
+            ui.triggerCheckBox->setChecked(false);
+        }
+
+        break;
+
+    case Qt::Unchecked:
+
+        MidiController::getInstance()->stopTriggerMode();
+        break;
+
+    default:
+        break;
+    }
+}
+
+bool QrestMainWindow::checkIfTriggerModePossible() {
+
+    if ( ! _document->getTriggerEvent() ) {
+
+        QString message = tr("A MIDI trigger event for TAPTEMPO has not yey been set")
+                .append("<br/>")
+                .append("You will be redirected to the trigger learning interface");
+
+        QMessageBox::warning(this,
+
+                tr("No configured MIDI trigger"),
+                message
+        );
+
+        MidiLearnDialog dlg(this);
+        dlg.exec();
+    }
+
+    return _document->getTriggerEvent() != 0;
+
 
 }
 

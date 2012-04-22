@@ -126,6 +126,15 @@ private slots:
     void on_midiSlaveCheckBox_stateChanged(int state);
 
     /**
+     * Slot that gets called when MIDI trigger checkbox is clicked
+     *
+     * \ param : state -- the new state of that box
+     *
+     * We will only react to Qt::Checked & Qt::Unchecked
+     */
+    void on_triggerCheckBox_stateChanged(int state);
+
+    /**
      * Makes sure help viewer is on front.
      */
     void raiseHelp();
@@ -207,6 +216,17 @@ private:
      * Refresh LFO display fields.
      */
     void updateLfoDisplays(void);
+
+    /**
+     * We check if we have a configured MIDI trigger.
+     *
+     * If not, we display a warning message and redirect
+     * the user to the trigger setup dialog.
+     *
+     * @return true if we have a trigger or user sets one up
+     *         and falsa if user fails to provide one
+     */
+    bool checkIfTriggerModePossible();
 
     ////////////////////////////////////////////////////////////////////////////
     //

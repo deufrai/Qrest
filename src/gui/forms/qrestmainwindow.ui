@@ -79,7 +79,7 @@
            <item>
             <widget class="QCheckBox" name="midiSlaveCheckBox">
              <property name="text">
-              <string>&amp;MIDI</string>
+              <string>&amp;Sync</string>
              </property>
             </widget>
            </item>
@@ -90,6 +90,13 @@
              </property>
              <property name="text">
               <string>T&amp;AP</string>
+             </property>
+            </widget>
+           </item>
+           <item>
+            <widget class="QCheckBox" name="triggerCheckBox">
+             <property name="text">
+              <string>Tri&amp;gger</string>
              </property>
             </widget>
            </item>

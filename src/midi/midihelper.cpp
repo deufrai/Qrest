@@ -19,7 +19,12 @@
 #include "midihelper.h"
 #include <sstream>
 #include <QStringList>
+#include <typeinfo>
 #include "../constants.h"
+
+#ifndef QT_NO_DEBUG
+#include <QDebug>
+#endif
 
 std::vector<std::string> MidiHelper::names;
 
@@ -92,4 +97,48 @@ const QStringList MidiHelper::programToStringList(const MidiProgramChange* progr
                 << QString::number(program->getValue1());
 
     return list;
+}
+
+
+bool MidiHelper::midiEventMatchesReference(const MidiEvent* event, const MidiEvent* ref) {
+
+#ifndef QT_NO_DEBUG
+    if ( event != 0 )
+        qDebug() << "MidiHelper::midiEventMatchesReference - event:" << typeid(*event).name();
+
+    if ( ref != 0 )
+        qDebug() << "MidiHelper::midiEventMatchesReference - ref:" << typeid(*ref).name();
+#endif
+
+    if ( event == 0 || ref == 0 )
+        return false;
+
+    if ( typeid(*event) != (typeid(*ref)) )
+        return false;
+
+    // we now know that both event are of the same type, let's check the guts
+
+    if ( const MidiNoteOn* noteEvent = dynamic_cast<const MidiNoteOn*> (event) ) {
+
+        const MidiNoteOn* noteRef = dynamic_cast<const MidiNoteOn*> (ref);
+
+        return noteEvent->getChannel() == noteRef->getChannel() &&
+               noteEvent->getValue1()  == noteRef->getValue1();
+
+    } else if ( const MidiControlChange* ccEvent = dynamic_cast<const MidiControlChange*> (event) ) {
+
+        const MidiControlChange* ccRef = dynamic_cast<const MidiControlChange*> (ref);
+
+        return ccEvent->getChannel() == ccRef->getChannel() &&
+               ccEvent->getValue1()  == ccRef->getValue1();
+
+    } else {
+
+        const MidiProgramChange* pcEvent = dynamic_cast<const MidiProgramChange*> (event);
+        const MidiProgramChange* pcRef = dynamic_cast<const MidiProgramChange*> (ref);
+
+        return pcEvent->getChannel() == pcRef->getChannel() &&
+               pcEvent->getValue1()  == pcRef->getValue1();
+
+    }
 }

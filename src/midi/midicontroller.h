@@ -120,6 +120,16 @@ public:
     void stopLearning();
 
     /**
+     * Enter trigger mode
+     */
+    void startTriggerMode();
+
+    /**
+     * Stop trigger mode
+     */
+    void stopTriggerMode();
+
+    /**
      * A MIDI event has been learned. we pass it to GUI
      * and switch back to freewhell state
      *
@@ -178,6 +188,9 @@ protected:
 
     /** The LearnState */
     MidiState* _learnState;
+
+    /** The TapTriggerState */
+    MidiState* _triggerState;
 
     /** The current state */
     MidiState* _currentState;
