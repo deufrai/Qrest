@@ -173,16 +173,14 @@ void QrestMainWindow::updateView(void) {
 
 	/*
 	 * detect a MIDI Clock source timeout
-	 *
-	 * FIXME : We recieve 2 warnings !
 	 */
 	if (  _document->isMidiClockTimeout()) {
 
-        // we disable MIDI Clock sync
-        ui.midiSlaveCheckBox->setChecked(false);
-
         // we aknowledge the timeout
         _document->setMidiClockTimeout(false);
+
+        // we disable MIDI Clock sync
+        ui.midiSlaveCheckBox->setChecked(false);
 
         // and display a warning
 	    QString lMessage = QString("<p><b>")
