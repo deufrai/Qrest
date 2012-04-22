@@ -47,11 +47,8 @@ DelayCalculator* DelayCalculator::getInstance(void) {
 
 void DelayCalculator::destroy(void) {
 
-    if (_instance) {
-
-        delete _instance;
-        _instance = 0;
-    }
+    delete _instance;
+    _instance = 0;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

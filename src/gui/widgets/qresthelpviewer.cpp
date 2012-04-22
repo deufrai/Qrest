@@ -20,7 +20,7 @@
 #include "qresthelpviewer.h"
 #include <QUrl>
 
-QrestHelpViewer* QrestHelpViewer::instance = NULL;
+QrestHelpViewer* QrestHelpViewer::instance = 0;
 
 ////////////////////////////////////////////////////////////////////////////
 //
@@ -44,7 +44,7 @@ QrestHelpViewer::~QrestHelpViewer() {
 ////////////////////////////////////////////////////////////////////////////
 QrestHelpViewer* QrestHelpViewer::getInstance() {
 
-    if (NULL == instance) {
+    if (0 == instance) {
 
         instance = new QrestHelpViewer();
     }
@@ -54,11 +54,8 @@ QrestHelpViewer* QrestHelpViewer::getInstance() {
 
 void QrestHelpViewer::destroy() {
 
-    if (instance) {
-
-        delete instance;
-        instance = NULL;
-    }
+    delete instance;
+    instance = 0;
 }
 
 

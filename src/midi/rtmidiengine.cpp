@@ -28,7 +28,8 @@
 #include "midicontroller.h"
 
 
-RtMidiEngine::RtMidiEngine() {
+RtMidiEngine::RtMidiEngine()
+: _midiIn(0) {
 
 }
 
@@ -101,7 +102,7 @@ std::string RtMidiEngine::createPortName() {
     return portName;
 }
 
-bool RtMidiEngine::openPort( const std::string deviceName) {
+bool RtMidiEngine::openPort( const std::string& deviceName) {
 
     if ( _midiIn ) {
 
@@ -220,11 +221,7 @@ void RtMidiEngine::mycallback( double deltatime, std::vector< unsigned char > *m
 
 void RtMidiEngine::cleanup() {
 
-    if (_midiIn) {
-
-        delete _midiIn;
-        _midiIn = 0;
-    }
-
+    delete _midiIn;
+    _midiIn = 0;
 }
 

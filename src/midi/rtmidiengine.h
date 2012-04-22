@@ -51,7 +51,7 @@ public:
     ////////////////////////////////////////////////////////////////////////////
     void init();
     void cleanup();
-    bool openPort( const std::string portName );
+    bool openPort( const std::string& deviceName );
     void closePort();
 
     /**

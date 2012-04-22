@@ -77,14 +77,14 @@ public:
     /**
      * Open a MIDI input port connected to a physical MIDI device
      *
-     * \param portName : the name of the device to connect to
+     * \param deviceName : the name of the device to connect to
      *
      * if a blank name is given (param default value), then we
      * open a virtual port (Linux & Mac only)
      *
      * \return a boolean reflecting the success of the operation
      */
-    virtual bool openPort( const std::string portName ) = 0;
+    virtual bool openPort( const std::string& deviceName ) = 0;
 
     /**
      * Close the open MIDI input port
