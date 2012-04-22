@@ -105,9 +105,13 @@ bool MidiHelper::midiEventMatchesReference(const MidiEvent* event, const MidiEve
 #ifndef QT_NO_DEBUG
     if ( event != 0 )
         qDebug() << "MidiHelper::midiEventMatchesReference - event:" << typeid(*event).name();
+    else
+        qDebug() << "MidiHelper::midiEventMatchesReference - event: NULL";
 
     if ( ref != 0 )
-        qDebug() << "MidiHelper::midiEventMatchesReference - ref:" << typeid(*ref).name();
+        qDebug() << "MidiHelper::midiEventMatchesReference - ref  :" << typeid(*ref).name();
+    else
+        qDebug() << "MidiHelper::midiEventMatchesReference - ref  : NULL";
 #endif
 
     if ( event == 0 || ref == 0 )
