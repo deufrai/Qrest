@@ -40,12 +40,18 @@
              <property name="text">
               <string>Type : </string>
              </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
+             </property>
             </widget>
            </item>
            <item>
             <widget class="QLabel" name="channelLabel">
              <property name="text">
               <string>Channel : </string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>
@@ -58,7 +64,10 @@
               </size>
              </property>
              <property name="text">
-              <string>Valeur : </string>
+              <string>Value : </string>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
              </property>
             </widget>
            </item>

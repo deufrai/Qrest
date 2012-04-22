@@ -112,7 +112,10 @@
                      <string>This name will be used by your system to identify qrest's MIDI input port</string>
                     </property>
                     <property name="text">
-                     <string>Midi input &amp;port name : </string>
+                     <string>Midi input &amp;port name :</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                     </property>
                     <property name="buddy">
                      <cstring>midiPortNameLineEdit</cstring>
@@ -121,8 +124,14 @@
                   </item>
                   <item>
                    <widget class="QLabel" name="connectDeviceLabel">
+                    <property name="toolTip">
+                     <string>The MIDI device to connect to</string>
+                    </property>
                     <property name="text">
-                     <string>Connect  to &amp;device : </string>
+                     <string>Connect  to &amp;device :</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                     </property>
                     <property name="buddy">
                      <cstring>devicesCombo</cstring>
@@ -131,8 +140,14 @@
                   </item>
                   <item>
                    <widget class="QLabel" name="label">
+                    <property name="toolTip">
+                     <string>Review or set a new MIDI trigger for the TAPTEMPO</string>
+                    </property>
                     <property name="text">
-                     <string>TAP MIDI &amp;Trigger : </string>
+                     <string>TAPTEMPO MIDI &amp;Trigger :</string>
+                    </property>
+                    <property name="alignment">
+                     <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>
                     </property>
                     <property name="buddy">
                      <cstring>triggerButton</cstring>
