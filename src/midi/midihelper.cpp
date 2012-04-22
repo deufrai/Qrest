@@ -22,10 +22,6 @@
 #include <typeinfo>
 #include "../constants.h"
 
-#ifndef QT_NO_DEBUG
-#include <QDebug>
-#endif
-
 std::vector<std::string> MidiHelper::names;
 
 MidiHelper::MidiHelper() { }
@@ -89,18 +85,6 @@ const QStringList MidiHelper::programToStringList(const MidiProgramChange* progr
 
 
 bool MidiHelper::midiEventMatchesReference(const MidiEvent* event, const MidiEvent* ref) {
-
-#ifndef QT_NO_DEBUG
-    if ( event != 0 )
-        qDebug() << "MidiHelper::midiEventMatchesReference - event:" << typeid(*event).name();
-    else
-        qDebug() << "MidiHelper::midiEventMatchesReference - event: NULL";
-
-    if ( ref != 0 )
-        qDebug() << "MidiHelper::midiEventMatchesReference - ref  :" << typeid(*ref).name();
-    else
-        qDebug() << "MidiHelper::midiEventMatchesReference - ref  : NULL";
-#endif
 
     if ( event == 0 || ref == 0 )
         return false;

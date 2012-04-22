@@ -89,7 +89,12 @@ QrestMainWindow::QrestMainWindow(QWidget *parent) :
 	}
 
 	// connect MIDI controler reset signal
-	connect(MidiController::getInstance(), SIGNAL(midiReset()), this, SLOT(onMidiEngineReset()));
+	connect(MidiController::getInstance(), SIGNAL(sigMidiReset()),  this, SLOT(onMidiEngineReset()));
+	connect(MidiController::getInstance(), SIGNAL(sigFreewheel()),  this, SLOT(onFreewheel()));
+	connect(MidiController::getInstance(), SIGNAL(sigTrigger()),    this, SLOT(onTrigger()));
+	connect(MidiController::getInstance(), SIGNAL(sigLearn()),      this, SLOT(onLearn()));
+	connect(MidiController::getInstance(), SIGNAL(sigSync()),       this, SLOT(onSync()));
+	connect(MidiController::getInstance(), SIGNAL(sigTimeout()),    this, SLOT(onTimeout()));
 }
 
 QrestMainWindow::~QrestMainWindow() {
@@ -170,32 +175,23 @@ void QrestMainWindow::updateView(void) {
 	_pie->setToolTip(
 			tr("Displayed BPM reliability : %n", 0,
 					(int) (_document->getSteadiness() * 100)).append("%"));
+}
 
 
-	/*
-	 * detect a MIDI Clock source timeout
-	 */
-	if (  _document->isMidiClockTimeout()) {
 
-        // we aknowledge the timeout
-        _document->setMidiClockTimeout(false);
+void QrestMainWindow::onTimeout() {
 
-        // we disable MIDI Clock sync
-        ui.midiSlaveCheckBox->setChecked(false);
+    // and display a warning
+    QString lMessage = QString("<p><b>")
+	                    .append(tr("MIDI CLock synchronisation has been lost"))
+	                    .append("</b></p><p>")
+	                    .append(tr("External MIDI Clock source stopped emitting without sending the STOP command."))
+	                    .append("</p><p>")
+	                    .append(tr("MIDI Clock slave mode will be disabled."))
+	                    .append("</p>");
 
-        // and display a warning
-	    QString lMessage = QString("<p><b>")
-	            .append(tr("MIDI CLock synchronisation has been lost"))
-	            .append("</b></p><p>")
-	            .append(tr("External MIDI Clock source stopped emitting without sending the STOP command."))
-	            .append("</p><p>")
-	            .append(tr("MIDI Clock slave mode will be disabled."))
-	            .append("</p>");
-
-	    QMessageBox::warning(this,
-	            tr("MIDI Clock timeout"), lMessage);
-
-	}
+    QMessageBox::warning(this,
+            tr("MIDI Clock timeout"), lMessage);
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -329,59 +325,75 @@ void QrestMainWindow::raiseHelp() {
 
 }
 
-void QrestMainWindow::on_midiSlaveCheckBox_stateChanged(int state) {
+/**
+ * Slot that gets called when 'freewheel' radio button is clicked
+ */
+void QrestMainWindow::on_freewheelRadio_clicked() {
 
-	switch (state) {
 
-	case Qt::Checked:
-
-		ui.tapButton->setEnabled(false);
-		ui.tempoEdit->setEnabled(false);
-		ui.triggerCheckBox->setChecked(false);
-		statusPermMessage(tr("MIDI Clock Sync : Waiting..."));
-		MidiController::getInstance()->syncMode();
-		break;
-
-	case Qt::Unchecked:
-
-        MidiController::getInstance()->freeWheel();
-		ui.tapButton->setEnabled(true);
-		ui.tempoEdit->setEnabled(true);
-		statusClear();
-		break;
-
-	default:
-		break;
-	}
-
+    MidiController::getInstance()->freeWheel();
 }
 
-void QrestMainWindow::on_triggerCheckBox_stateChanged(int state) {
+/**
+ * Slot that gets called when 'MIDI sync' radio button is clicked
+ */
+void QrestMainWindow::on_syncRadio_clicked() {
 
-    switch (state) {
+    MidiController::getInstance()->syncMode();
+}
 
-    case Qt::Checked:
+/**
+ * Slot that gets called when 'MIDI TapTempo' radio button is clicked
+ */
+void QrestMainWindow::on_triggerRadio_clicked() {
 
-        if ( checkIfTriggerModePossible() ) {
 
-            ui.midiSlaveCheckBox->setChecked(false);
-            MidiController::getInstance()->triggerMode();
+    if ( checkIfTriggerModePossible() ) {
 
-        } else {
+        MidiController::getInstance()->triggerMode();
 
-            ui.triggerCheckBox->setChecked(false);
-        }
-
-        break;
-
-    case Qt::Unchecked:
+    } else {
 
         MidiController::getInstance()->freeWheel();
-        break;
-
-    default:
-        break;
     }
+}
+
+void QrestMainWindow::onFreewheel() {
+
+    setTempoInputControlsEnable(true);
+    ui.freewheelRadio->setChecked(true);
+    statusClear();
+}
+
+void QrestMainWindow::onTrigger() {
+
+    setTempoInputControlsEnable(true);
+    ui.triggerRadio->setChecked(true);
+}
+
+void QrestMainWindow::onLearn() {
+
+    setTempoInputControlsEnable(true);
+    ui.freewheelRadio->setChecked(true);
+}
+
+void QrestMainWindow::onSync() {
+
+    setTempoInputControlsEnable(false);
+    ui.syncRadio->setChecked(true);
+    statusPermMessage(tr("MIDI Clock Sync : Waiting..."));
+}
+
+////////////////////////////////////////////////////////////////////////////
+//
+// PRIVATE FUNCTIONS
+//
+////////////////////////////////////////////////////////////////////////////
+
+void QrestMainWindow::setTempoInputControlsEnable(bool enabled = true) {
+
+    ui.tempoEdit->setEnabled(enabled);
+    ui.tapButton->setEnabled(enabled);
 }
 
 bool QrestMainWindow::checkIfTriggerModePossible() {
@@ -403,13 +415,12 @@ bool QrestMainWindow::checkIfTriggerModePossible() {
     }
 
     return _document->getTriggerEvent() != 0;
-
-
 }
 
 void QrestMainWindow::onMidiEngineReset() {
 
-    ui.midiSlaveCheckBox->setChecked(false);
+    ui.freewheelRadio->setChecked(true);
+    setTempoInputControlsEnable();
     statusClear();
 }
 

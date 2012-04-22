@@ -117,27 +117,49 @@ private slots:
     void on_actionHelp_triggered();
 
     /**
-     * Slot that gets called when Midi Clock Sync checkbox is clicked
-     *
-     * \ param : state -- the new state of that box
-     *
-     * We will only react to Qt::Checked & Qt::Unchecked
+     * Slot that gets called when 'freewheel' radio button is clicked
      */
-    void on_midiSlaveCheckBox_stateChanged(int state);
+    void on_freewheelRadio_clicked();
 
     /**
-     * Slot that gets called when MIDI trigger checkbox is clicked
-     *
-     * \ param : state -- the new state of that box
-     *
-     * We will only react to Qt::Checked & Qt::Unchecked
+     * Slot that gets called when 'MIDI sync' radio button is clicked
      */
-    void on_triggerCheckBox_stateChanged(int state);
+    void on_syncRadio_clicked();
+
+    /**
+     * Slot that gets called when 'MIDI TapTempo' radio button is clicked
+     */
+    void on_triggerRadio_clicked();
 
     /**
      * Makes sure help viewer is on front.
      */
     void raiseHelp();
+
+    /**
+     * A MIDI Clock timeout has been detected
+     */
+    void onTimeout();
+
+    /**
+     * entered freewheel mode
+     */
+    void onFreewheel();
+
+    /**
+     * entered trigger mode
+     */
+    void onTrigger();
+
+    /**
+     * entered learn mode
+     */
+    void onLearn();
+
+    /**
+     * entered sync mode
+     */
+    void onSync();
 
 
     ////////////////////////////////////////////////////////////////////////////
@@ -175,7 +197,7 @@ private:
 
     ////////////////////////////////////////////////////////////////////////////
     //
-    // FUNCTIONS
+    // PRIVATE FUNCTIONS
     //
     ////////////////////////////////////////////////////////////////////////////
     /**
@@ -227,6 +249,13 @@ private:
      *         and falsa if user fails to provide one
      */
     bool checkIfTriggerModePossible();
+
+    /**
+     * En/Dis-able tempo input related UI controls
+     *
+     * @param enabled : well .... you know ...
+     */
+    void setTempoInputControlsEnable(bool enabled);
 
     ////////////////////////////////////////////////////////////////////////////
     //

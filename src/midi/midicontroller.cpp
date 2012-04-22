@@ -44,7 +44,7 @@ MidiController::MidiController()
 
 {
     // connect our MIDI egnine <--> GUI decoupling signal / slots
-    connect(this, SIGNAL(midiEventRecieved(const MidiEvent*)), this, SLOT(onMidiEventRecieved(const MidiEvent*)));
+    connect(this, SIGNAL(sigMidiEventRecieved(const MidiEvent*)), this, SLOT(onMidiEventRecieved(const MidiEvent*)));
 
     // startup MIDI engine
     _midiEngine->init();
@@ -70,14 +70,14 @@ MidiController* MidiController::getInstance() {
 
 void MidiController::resetEngine() {
 
-    #ifndef QT_NO_DEBUG
-            qDebug() << "CONTROLLER : resetEngine()";
-    #endif
+#ifndef QT_NO_DEBUG
+        qDebug() << "MidiController::resetEngine - ";
+#endif
 
     closePort();
     _midiEngine->cleanup();
 
-    emit midiReset();
+    emit sigMidiReset();
 
     _midiEngine->init();
     openPort();
@@ -122,8 +122,7 @@ void MidiController::closePort() {
             qDebug() << "MidiController::closePort - ";
     #endif
 
-    _currentState->reset();
-    _currentState = _freeWheelState;
+    freeWheel();
     _midiEngine->closePort();
 }
 
@@ -135,7 +134,7 @@ bool MidiController::resetPort() {
     #endif
 
     closePort();
-    emit midiReset();
+    emit sigMidiReset();
     return openPort();
 }
 
@@ -148,7 +147,7 @@ void MidiController::triggerMode() {
 
     _currentState->reset();
 
-    //TODO : manage transitions
+    emit sigTrigger();
 
     _currentState = _triggerState;
 }
@@ -162,7 +161,7 @@ void MidiController::learnMode() {
 
     _currentState->reset();
 
-    //TODO : manage transitions
+    emit sigLearn();
 
     _currentState = _learnState;
 }
@@ -176,7 +175,7 @@ void MidiController::syncMode() {
 
     _currentState->reset();
 
-    //TODO : manage transitions
+    emit sigSync();
 
     _currentState = _syncState;
 }
@@ -190,15 +189,26 @@ void MidiController::freeWheel() {
 
     _currentState->reset();
 
-    //TODO : manage transitions
+    emit sigFreewheel();
 
     _currentState = _freeWheelState;
 }
 
 
+void MidiController::timeOutDetected() {
+
+    #ifndef QT_NO_DEBUG
+            qDebug() << "MidiController::timeOutDetected - ";
+    #endif
+
+
+    freeWheel();
+    emit sigTimeout();
+}
+
 void MidiController::processMidiEvent(const MidiEvent* event ) {
 
-    emit midiEventRecieved(event);
+    emit sigMidiEventRecieved(event);
 }
 
 void MidiController::onMidiEventRecieved(const MidiEvent* event) {
@@ -209,9 +219,5 @@ void MidiController::onMidiEventRecieved(const MidiEvent* event) {
 
 void MidiController::learnStateCapturedEvent(const MidiEvent* event) {
 
-    #ifndef QT_NO_DEBUG
-            qDebug() << "MidiController::learnStateCapturedEvent - ";
-    #endif
-
-    emit learnedEvent(event);
+    emit sigLearnedEvent(event);
 }

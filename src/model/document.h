@@ -211,29 +211,6 @@ public:
     inline int getTempoSource () const { return _tempoSource; }
 
     /**
-     * Set the value of our midiclock timeout;
-     *
-     * @param timeout has MIDI Clock source timed out ?
-     */
-    inline void setMidiClockTimeout ( bool timeout) {
-
-        _midiClockTimeout = timeout;
-
-        /*
-         * If a MIDI Clock timeout has occured, we notify our observers
-         */
-        if ( _midiClockTimeout )
-            notifyObservers();
-    }
-
-    /**
-     * Has our MIDI Clock source timed out ?
-     *
-     * @return well, yes or no
-     */
-    inline bool isMidiClockTimeout() const { return _midiClockTimeout; }
-
-    /**
      * Set the trigger event
      *
      * @param event : the event to store
@@ -319,9 +296,6 @@ private:
 
     /** Indicates running state of MIDI clock */
     bool _midiClockRunning;
-
-    /** Has MIDI Clock source times out */
-    bool _midiClockTimeout;
 
     /** the MIDI event that will trigger the TAP function */
     const MidiEvent* _triggerEvent;

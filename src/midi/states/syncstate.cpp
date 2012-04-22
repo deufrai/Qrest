@@ -24,6 +24,7 @@
 #include "../events/midiclock.h"
 #include "../../constants.h"
 #include "../../process/tapTempoCalculator.h"
+#include "../../midi/midicontroller.h"
 
 SyncState::SyncState()
 : _midiClockCounter(0),
@@ -46,12 +47,11 @@ void SyncState::reset() {
 
     _midiClockTimeoutDetector->stop();
     Document::getInstance()->setMidiClockRunning(false);
-    Document::getInstance()->setMidiClockTimeout(false);
 }
 
 void SyncState::onMidiClockTimeoutDetectorTimeout() {
 
-    Document::getInstance()->setMidiClockTimeout(true);
+    MidiController::getInstance()->timeOutDetected();
 }
 
 void SyncState::processEvent(const MidiEvent* event) {

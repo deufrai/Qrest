@@ -15,7 +15,7 @@ MidiLearnDialog::MidiLearnDialog(QWidget *parent)
 	displayEvent(Document::getInstance()->getTriggerEvent());
 
 	connect(MidiController::getInstance(),
-	        SIGNAL(learnedEvent(const MidiEvent*)),
+	        SIGNAL(sigLearnedEvent(const MidiEvent*)),
 	        this,
 	        SLOT(onEventLearned(const MidiEvent*)));
 

@@ -115,6 +115,13 @@ public:
      */
     void learnStateCapturedEvent(const MidiEvent* event);
 
+    /**
+     * A MIDI Clock timeout has been detected by the syncState
+     *
+     * We switch batch to freewheel and alert everyone
+     */
+    void timeOutDetected();
+
     ////////////////////////////////////////////////////////////////////////////
     //
     // PRIVATE FUNCTIONS
@@ -143,19 +150,45 @@ signals:
      * Emitted when a new MIDI event has been recieved from the MIDI engine callback
      *
      */
-    void midiEventRecieved(const MidiEvent*);
+    void sigMidiEventRecieved(const MidiEvent*);
 
     /**
      * Emitted when a MIDI event has been learned.
      * Will be caught by the MIDI learning GUI
      *
      */
-    void learnedEvent(const MidiEvent*);
+    void sigLearnedEvent(const MidiEvent*);
 
     /**
      * Emitted when MIDI engine or MIDI port has been reset
      */
-    void midiReset();
+    void sigMidiReset();
+
+
+    /**
+     * Emitted when a MIDI Clock timeout has been detected
+     */
+    void sigTimeout();
+
+    /**
+     * Emitted when entering freewheel mode
+     */
+    void sigFreewheel();
+
+    /**
+     * Emitted when entering trigger mode
+     */
+    void sigTrigger();
+
+    /**
+     * Emitted when entrering learn mode
+     */
+    void sigLearn();
+
+    /**
+     * Emitted when entering sync mode
+     */
+    void sigSync();
 
 
 private slots:

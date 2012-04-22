@@ -35,7 +35,8 @@
  * - MidiStart
  *
  * And once we saw the first MidiClock event, we want to detect if we stop recieving more MidiClock
- * events without having recieved an MidiStop first. That would tell us that MIDI Clock input has been lost accidentally
+ * events without having recieved an MidiStop first.
+ * That would tell us that MIDI Clock input has been lost accidentally
  */
 class SyncState: public QObject, public MidiState {
 
