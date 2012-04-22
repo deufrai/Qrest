@@ -17,6 +17,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef QT_NO_DEBUG
+#include <QDebug>
+#endif
+
 #include "midicontroller.h"
 #include "../process/tapTempoCalculator.h"
 #include "../model/document.h"
@@ -26,10 +30,6 @@
 #include "states/learnstate.h"
 #include "states/taptriggerstate.h"
 #include "rtmidiengine.h"
-
-#ifndef QT_NO_DEBUG
-#include <QDebug>
-#endif
 
 MidiController* MidiController::_instance = 0;
 

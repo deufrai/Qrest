@@ -69,18 +69,6 @@ public:
     const std::vector<std::string> getDeviceNames();
 
     /**
-     * Open a MIDI input port
-     *
-     * \return a boolean reflecting the success of the operation
-     */
-    bool openPort( );
-
-    /**
-     * close the MIDI input port
-     */
-    void closePort();
-
-    /**
      * close open port & reopen
      */
     bool resetPort();
@@ -136,6 +124,24 @@ public:
      * @param event the event
      */
     void learnStateCapturedEvent(const MidiEvent* event);
+
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // PRIVATE FUNCTIONS
+    //
+    ////////////////////////////////////////////////////////////////////////////
+private:
+    /**
+     * Open a MIDI input port
+     *
+     * \return a boolean reflecting the success of the operation
+     */
+    bool openPort();
+
+    /**
+     * close the MIDI input port
+     */
+    void closePort();
 
     ////////////////////////////////////////////////////////////////////////////
     //
