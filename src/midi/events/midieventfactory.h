@@ -68,7 +68,7 @@ public:
      *
      * @return a pointer to MidiEvent
      */
-    static const MidiEvent* createEvent(const QStringList& string);
+    static const MidiEvent* createEvent(const QStringList& list);
 
 };
 
