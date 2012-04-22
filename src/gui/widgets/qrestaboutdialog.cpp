@@ -36,7 +36,7 @@ QrestAboutDialog::QrestAboutDialog(const char* versionString, QWidget *parent) :
             "Qrest - Really Easy Studio Toolkit") .append("</h2>") .append(
             "<p>") .append("Version : ") .append(versionString) .append("</p>") .append(
             "<p>") .append(tr("Author")).append(
-            " : <a href=\"mailto:fcornu@qrest.org?subject=Qrest\">fcornu@qrest.org</a>") .append(
+            " : Fr&eacute;d&eacute;ric CORNU <a href=\"mailto:fcornu@wardsback.org?subject=Qrest\">fcornu@wardsback.org</a>") .append(
             "</p>") .append("<p>") .append(tr("Website")).append(
             " : <a href=\"http://www.qrest.org/\">http://www.qrest.org</a>") .append(
             "</p>") .append("<p>") .append(tr("License")).append(
