@@ -4,32 +4,22 @@
 <context>
     <name>MidiLearnDialog</name>
     <message>
-        <location filename="../../src/gui/widgets/midilearndialog.cpp" line="73"/>
+        <location filename="../../src/gui/widgets/midilearndialog.cpp" line="71"/>
         <source>Note ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/midilearndialog.cpp" line="74"/>
+        <location filename="../../src/gui/widgets/midilearndialog.cpp" line="72"/>
         <source>Note : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/midilearndialog.cpp" line="83"/>
-        <source>Control Change</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/widgets/midilearndialog.cpp" line="84"/>
-        <source>Control : </source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/widgets/midilearndialog.cpp" line="92"/>
+        <location filename="../../src/gui/widgets/midilearndialog.cpp" line="81"/>
         <source>Program Change</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/midilearndialog.cpp" line="93"/>
+        <location filename="../../src/gui/widgets/midilearndialog.cpp" line="82"/>
         <source>Program : </source>
         <translation type="unfinished"></translation>
     </message>
@@ -139,27 +129,27 @@
 <context>
     <name>QrestMainWindow</name>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="73"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="74"/>
         <source>I&apos;m ready, sir</source>
         <translation>A sus ordenes, jefe</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="137"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="143"/>
         <source>You&apos;re steady</source>
         <translation>Está estable</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="141"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="147"/>
         <source>Keep tapping...</source>
         <translation>Sigue clicando…</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="339"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="384"/>
         <source>MIDI Clock Sync : Waiting...</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="170"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="176"/>
         <source>Displayed BPM reliability : %n</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -167,52 +157,67 @@
         </translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="152"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="158"/>
         <source>MIDI Clock Sync : Locked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="156"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="162"/>
         <source>MIDI Clock Sync : Acquiring...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="221"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="218"/>
         <source>Recalculation needed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="308"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="305"/>
         <source>Online help file could not be found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="309"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="306"/>
         <source>Please consider reporting this as a bug on Qrest&apos;s website.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="314"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="311"/>
         <source>Warning : No help file found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="187"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="403"/>
+        <source>A MIDI trigger event for TAPTEMPO has not yey been set</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="405"/>
+        <source>You will be redirected to the trigger learning interface</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="409"/>
+        <source>No configured MIDI trigger</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="186"/>
         <source>MIDI CLock synchronisation has been lost</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="189"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="188"/>
         <source>External MIDI Clock source stopped emitting without sending the STOP command.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="191"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="190"/>
         <source>MIDI Clock slave mode will be disabled.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="195"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="194"/>
         <source>MIDI Clock timeout</source>
         <translation type="unfinished"></translation>
     </message>
@@ -225,134 +230,149 @@
         <translation>Qrest</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="39"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="41"/>
         <source>Tempo Input</source>
         <translation>Tempo</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="47"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="55"/>
         <source>Temp&amp;o  : </source>
         <translation>Temp&amp;o :</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="75"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="86"/>
         <source>Enter tempo in BPM and hit &apos;enter&apos; or use mouse wheel</source>
         <translation>Entre el tiempo en BPM y valide can “Entrar” o utilize la rueda del ratón</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="82"/>
-        <source>&amp;MIDI</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="89"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="93"/>
         <source>Click in sync with beats until steadiness indicator goes green</source>
         <translation>Pulse en sincronización con los tiempos hasta que el indicador de estabilidad se vuelve verde</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="92"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="96"/>
         <source>T&amp;AP</source>
         <translation>T&amp;AP</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="104"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="108"/>
         <source>Variants</source>
         <translation>Variantes</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="110"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="114"/>
         <source>&amp;Plain</source>
         <translation>&amp;Normal</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="120"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="124"/>
         <source>&amp;Dotted</source>
         <translation>&amp;Punteada</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="127"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="131"/>
         <source>&amp;Triplet</source>
         <translation>&amp;Tresillo</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="139"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="143"/>
+        <source>MIDI</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="149"/>
+        <source>Of&amp;f</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="159"/>
+        <source>MIDI Clock &amp;Sync</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="166"/>
+        <source>TapTempo trig&amp;ger</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="178"/>
         <source>Delays and LFOs</source>
         <translation>Plazos y LFOs</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="149"/>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="348"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="188"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="387"/>
         <source>ms</source>
         <translation>ms</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="159"/>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="358"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="198"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="397"/>
         <source>Hz</source>
         <translation>Hz</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="547"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="586"/>
         <source>&amp;Help</source>
         <translation>Ayu&amp;da</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="554"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="593"/>
         <source>&amp;File</source>
         <translation>&amp;Fichero</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="575"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="614"/>
         <source>&amp;Quit</source>
         <translation>&amp;Salir</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="578"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="617"/>
         <source>Quit Qrest</source>
         <translation>Salir de Qrest</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="581"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="620"/>
         <source>Ctrl+Q</source>
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="593"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="632"/>
         <source>About &amp;Qrest...</source>
         <translation>A proposito de &amp;Qrest...</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="596"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="635"/>
         <source>About Qrest</source>
         <translation>A proposito de Qrest</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="608"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="647"/>
         <source>Online &amp;Help</source>
         <translation>&amp;Ayuda en línea</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="611"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="650"/>
         <source>Help</source>
         <translation>Ayuda</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="560"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="599"/>
         <source>&amp;Edit</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="620"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="659"/>
         <source>&amp;Preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="623"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="662"/>
         <source>Open preferences dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="626"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="665"/>
         <source>Ctrl+P</source>
         <translation type="unfinished"></translation>
     </message>

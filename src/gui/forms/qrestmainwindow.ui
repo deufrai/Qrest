@@ -146,7 +146,7 @@
          <item row="0" column="0">
           <widget class="QRadioButton" name="freewheelRadio">
            <property name="text">
-            <string>&amp;Off</string>
+            <string>Of&amp;f</string>
            </property>
            <property name="checked">
             <bool>true</bool>
@@ -156,14 +156,14 @@
          <item row="1" column="0">
           <widget class="QRadioButton" name="syncRadio">
            <property name="text">
-            <string>MIDI Clock Sync</string>
+            <string>MIDI Clock &amp;Sync</string>
            </property>
           </widget>
          </item>
          <item row="2" column="0">
           <widget class="QRadioButton" name="triggerRadio">
            <property name="text">
-            <string>MIDI TapTempo</string>
+            <string>TapTempo trig&amp;ger</string>
            </property>
           </widget>
          </item>

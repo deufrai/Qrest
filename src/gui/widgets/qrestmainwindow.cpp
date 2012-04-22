@@ -402,7 +402,7 @@ bool QrestMainWindow::checkIfTriggerModePossible() {
 
         QString message = tr("A MIDI trigger event for TAPTEMPO has not yey been set")
                 .append("<br/>")
-                .append("You will be redirected to the trigger learning interface");
+                .append(tr("You will be redirected to the trigger learning interface"));
 
         QMessageBox::warning(this,
 
