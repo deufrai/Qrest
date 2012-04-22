@@ -173,6 +173,8 @@ void QrestMainWindow::updateView(void) {
 
 	/*
 	 * detect a MIDI Clock source timeout
+	 *
+	 * FIXME : We recieve 2 warnings !
 	 */
 	if (  _document->isMidiClockTimeout()) {
 
@@ -342,9 +344,9 @@ void QrestMainWindow::on_midiSlaveCheckBox_stateChanged(int state) {
 
 	case Qt::Unchecked:
 
+        MidiController::getInstance()->stopMidiSync();
 		ui.tapButton->setEnabled(true);
 		ui.tempoEdit->setEnabled(true);
-		MidiController::getInstance()->stopMidiSync();
 		statusClear();
 		break;
 
