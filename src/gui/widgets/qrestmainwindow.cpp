@@ -351,10 +351,6 @@ void QrestMainWindow::on_triggerRadio_clicked() {
     if ( checkIfTriggerModePossible() ) {
 
         MidiController::getInstance()->triggerMode();
-
-    } else {
-
-        MidiController::getInstance()->freeWheel();
     }
 }
 

@@ -144,7 +144,7 @@
         <translation>Sigue clicando…</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="384"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="380"/>
         <source>MIDI Clock Sync : Waiting...</source>
         <translation type="unfinished"></translation>
     </message>
@@ -187,17 +187,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="403"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="399"/>
         <source>A MIDI trigger event for TAPTEMPO has not yey been set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="405"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="401"/>
         <source>You will be redirected to the trigger learning interface</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="409"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="405"/>
         <source>No configured MIDI trigger</source>
         <translation type="unfinished"></translation>
     </message>

@@ -144,7 +144,7 @@
         <translation>Continuez à cliquer...</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="384"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="380"/>
         <source>MIDI Clock Sync : Waiting...</source>
         <translation>Synchro MIDI Clock : En attente...</translation>
     </message>
@@ -187,17 +187,17 @@
         <translation>Attetion : Fichier d&apos;aide non trouvé</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="403"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="399"/>
         <source>A MIDI trigger event for TAPTEMPO has not yey been set</source>
-        <translation>Aucun évènement MIDI n&apos;a été défini comme trigger pour le TAPTEMOP</translation>
+        <translation>Aucun évènement MIDI n&apos;a été défini comme trigger pour le TAPTEMPO</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="401"/>
+        <source>You will be redirected to the trigger learning interface</source>
+        <translation>Nous allons vous rediriger sur l&apos;interface de configuration du trigger</translation>
     </message>
     <message>
         <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="405"/>
-        <source>You will be redirected to the trigger learning interface</source>
-        <translation>Nous allons vous rediriger sur l&apos;interface d&apos;apprentissage du trigger</translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="409"/>
         <source>No configured MIDI trigger</source>
         <translation>Aucun trigger MIDI configuré</translation>
     </message>
