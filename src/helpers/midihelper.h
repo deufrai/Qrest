@@ -20,6 +20,10 @@
 #define MIDIHELPER_H_
 #include <string>
 #include <vector>
+#include "../midi/events/midinoteon.h"
+#include "../midi/events/midicontrolchange.h"
+#include "../midi/events/midiprogramchange.h"
+#include <QStringList>
 
 /**
  * Helper class for MIDI operations
@@ -41,7 +45,6 @@ private:
     static const unsigned int NOTES_IN_OCTAVE = 12;
 
 public:
-
     /**
      * Return a textual representation of a MIDI note in German notation + octave number.
      *
@@ -57,6 +60,40 @@ public:
      * Initialize names
      */
     static void initNames();
+
+    /**
+     * return a string representation of a MidiNoteOn
+     *
+     * internal data separated by DELIM
+     *
+     * @param note : the MidiNoteOn
+     *
+     * @return a string representation of that note
+     */
+    static const QStringList noteToStringList(const MidiNoteOn* note);
+
+    /**
+     * return a string representation of a MidiProgramChange
+     *
+     * internal data separated by DELIM
+     *
+     * @param program : the MidiProgramChange
+     *
+     * @return a string representation of that MidiProgramChange
+     */
+    static const QStringList programToStringList(const MidiProgramChange* program);
+
+    /**
+     * return a string representation of a MidiControlChange
+     *
+     * internal data separated by DELIM
+     *
+     * @param control : the MidiControlChange
+     *
+     * @return a string representation of that MidiControlChange
+     */
+    static const QStringList controlToStringList(const MidiControlChange* control);
+
 };
 
 #endif /* MIDIHELPER_H_ */

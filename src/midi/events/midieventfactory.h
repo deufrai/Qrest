@@ -21,6 +21,10 @@
 
 #include "midievent.h"
 #include <vector>
+#include "midinoteon.h"
+#include "midicontrolchange.h"
+#include "midiprogramchange.h"
+#include <QStringList>
 
 /**
  * Factory for MIDI events
@@ -33,13 +37,39 @@ private:
 public:
 
     /**
-     * Create a MIDI event from raw data
+     * Create a MidiEvent from raw data.
+     *
+     * Will return NULL if event's type is not of :
+     *
+     * - Note ON
+     * - Program change
+     * - Controle change
+     * - Midi Clock
+     * - Midi Start
+     * - Midi Stop
+     * - Midi Continue
      *
      * @param data raw data provided by the MIDI engine
      *
-     * @return a MIDI event
+     * @return a pointer to MidiEvent
      */
     static MidiEvent* createEvent(const std::vector<unsigned char>* data);
+
+    /**
+     * Create a MidiEvent from a string representation that was sed to store app settings.
+     *
+     * Will return NULL if string doesn't represent one of these type of events :
+     *
+     * - Note ON
+     * - Program change
+     * - Control change
+     *
+     * @param list : the string representation
+     *
+     * @return a pointer to MidiEvent
+     */
+    static const MidiEvent* createEvent(const QStringList& string);
+
 };
 
 #endif /* MIDIEVENTFACTORY_H_ */

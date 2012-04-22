@@ -81,7 +81,7 @@ void MidiLearnDialog::displayEvent(const MidiEvent* event) {
              * Control change
              */
             ui.typeEdit->setText(tr("Control Change"));
-            ui.valueLabel->setText(tr("Control # : "));
+            ui.valueLabel->setText(tr("Control : "));
             ui.valueEdit->setText(QString::number(cc->getValue1()));
 
         } else if ( const MidiProgramChange* pc = dynamic_cast<const MidiProgramChange*> (event) ) {
@@ -90,11 +90,10 @@ void MidiLearnDialog::displayEvent(const MidiEvent* event) {
              * Program change
              */
             ui.typeEdit->setText(tr("Program Change"));
-            ui.valueLabel->setText(tr("Program # : "));
+            ui.valueLabel->setText(tr("Program : "));
             ui.valueEdit->setText(QString::number(pc->getValue1()));
         }
     }
-
 }
 
 void MidiLearnDialog::accept() {

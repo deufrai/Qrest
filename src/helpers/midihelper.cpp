@@ -18,6 +18,8 @@
 
 #include "midihelper.h"
 #include <sstream>
+#include <QStringList>
+#include "../constants.h"
 
 std::vector<std::string> MidiHelper::names;
 
@@ -57,4 +59,37 @@ std::string MidiHelper::getNoteNameFromNoteNumber( const unsigned char noteNumbe
             << (int) (noteNumber / NOTES_IN_OCTAVE) -1; // octave numbering begin at -1
 
     return stream.str();
+}
+
+const QStringList MidiHelper::noteToStringList(const MidiNoteOn* note) {
+
+    QStringList list;
+
+    list << Constants::MIDI_TYPE_NOTE << QString::number(note->getChannel())
+         << QString::number(note->getValue1())
+         << QString::number(note->getValue2());
+
+    return list;
+}
+
+const QStringList MidiHelper::controlToStringList(const MidiControlChange* control) {
+
+    QStringList list;
+
+    list << Constants::MIDI_TYPE_CC << QString::number(control->getChannel())
+         << QString::number(control->getValue1())
+         << QString::number(control->getValue2());
+
+    return list;
+
+}
+
+const QStringList MidiHelper::programToStringList(const MidiProgramChange* program) {
+
+    QStringList list;
+
+    list << Constants::MIDI_TYPE_PC << QString::number(program->getChannel())
+                << QString::number(program->getValue1());
+
+    return list;
 }

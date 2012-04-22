@@ -88,6 +88,9 @@ public:
     /** key used to store MIDI device name when MIDI has never been used */
     static const char* MIDI_DEVICE_DEFAULT;
 
+    /** key used to store the TAP MIDI trigger event */
+    static const char* MIDI_TRIGGER_EVENT;
+
     ////////////////////////////////////////////////////////////////////////////
     //
     // INTERFACE
@@ -101,10 +104,6 @@ public:
      */
     static Settings* getInstance();
 
-    /**
-     * Release memory.
-     */
-    static void destroy();
 
     ////////////////////////////////////////////////////////////////////////////
     //

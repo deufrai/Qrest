@@ -26,6 +26,8 @@
 #include "midistop.h"
 #include "midiclock.h"
 #include "../../helpers/midihelper.h"
+#include <QStringList>
+#include "../../constants.h"
 
 MidiEventFactory::MidiEventFactory() {
 }
@@ -37,9 +39,9 @@ MidiEvent* MidiEventFactory::createEvent(
         const std::vector<unsigned char>* data) {
 
     /*
-     * Note, control changes and program change share this structure for byte #0
+     * Note, control changes and program change share the same fist byte structure :
      *
-     * the type of event is code on the 4 msb
+     * the type of event is coded on the 4 msb
      * the channel is coded on the 4 lsb
      *
      * The fact that they use channel information makes them part of what is called
@@ -51,7 +53,7 @@ MidiEvent* MidiEventFactory::createEvent(
 
     /*
      * all events whose byte #0 value is greater that 0xEF dont have channel information
-     * their type is code in the whole byte #0
+     * their type is coded in the whole first byte
      */
     static const unsigned char TYPE_CLOCK_START = 0xFA;
     static const unsigned char TYPE_CLOCK_CONTINUE = 0xFB;
@@ -133,3 +135,61 @@ MidiEvent* MidiEventFactory::createEvent(
 
 }
 
+const MidiEvent* MidiEventFactory::createEvent(const QStringList& list) {
+
+
+    /*
+     * Implemented only for MdiNoteOn, MidiControlChange & MidiProgramChange
+     */
+
+    MidiEvent* event = 0;
+
+    /*
+     * If we have 4 values, we're dealing wit notes or control change
+     * If we have 3 values, we're dealing with program change
+     */
+    QString type = list.at(0);
+
+    switch (list.size()) {
+
+        case 4:
+
+            if ( type == Constants::MIDI_TYPE_NOTE ) {
+
+                event = new MidiNoteOn(
+
+                        list.at(1).toUInt(),
+                        list.at(2).toUInt(),
+                        list.at(3).toUInt());
+
+            } else if ( type == Constants::MIDI_TYPE_CC ) {
+
+                event = new MidiControlChange(
+
+                        list.at(1).toUInt(),
+                        list.at(2).toUInt(),
+                        list.at(3).toUInt());
+
+            }
+
+            break;
+
+        case 3:
+
+            if ( type == Constants::MIDI_TYPE_PC ) {
+
+                event = new MidiProgramChange(
+
+                        list.at(1).toUInt(),
+                        list.at(2).toUInt());
+            }
+
+            break;
+
+        default:
+            break;
+    }
+
+    return event;
+
+}
