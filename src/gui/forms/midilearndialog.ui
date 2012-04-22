@@ -74,7 +74,11 @@
             </widget>
            </item>
            <item>
-            <widget class="QLineEdit" name="channelEdit"/>
+            <widget class="QLineEdit" name="channelEdit">
+             <property name="readOnly">
+              <bool>true</bool>
+             </property>
+            </widget>
            </item>
            <item>
             <widget class="QLineEdit" name="valueEdit">
