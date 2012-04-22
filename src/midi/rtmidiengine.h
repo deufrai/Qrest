@@ -59,6 +59,11 @@ public:
      */
     const std::vector<std::string> getDeviceNames();
 
+    /**
+     * Instanciate this engine
+     *
+     * @return a pointer to RtMidiEngine
+     */
     static RtMidiEngine* getInstance();
 
     /**
@@ -77,7 +82,7 @@ private:
     // SINGLETON
     //
     ////////////////////////////////////////////////////////////////////////////
-
+    /** the single instance */
     static RtMidiEngine* _instance;
 
     ////////////////////////////////////////////////////////////////////////////

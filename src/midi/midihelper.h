@@ -92,7 +92,7 @@ public:
      * - value1
      *
      * @param event     : the event to be tetsed
-     * @param reference : the reference event
+     * @param ref       : the reference event
      * @return          : true if match
      */
     static bool midiEventMatchesReference(const MidiEvent* event, const MidiEvent* ref);
