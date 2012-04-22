@@ -118,6 +118,7 @@ bool MidiController::resetPort() {
 
 void MidiController::startMidiSync() {
 
+    _currentState->reset();
     _currentState = _syncState;
 }
 
@@ -139,11 +140,25 @@ void MidiController::onMidiEventRecieved(const MidiEvent* event) {
 
 void MidiController::stopLearning() {
 
+    _currentState->reset();
     _currentState = _freeWheelState;
 }
 
 void MidiController::startLearning() {
 
+    _currentState->reset();
+    /*
+     * TODO : emitting a reset here is too much.
+     * this signal is meant for a bigger event, the reset of the whole MIDI engine
+     *
+     * But this is all we can do untill we have real
+     * State Macgine implementation permitting us to
+     * trigger specific events on specific State transitions
+     *
+     * Can be done with a test on _currentState before assigning it
+     * the new state
+     */
+    emit midiReset();
     _currentState = _learnState;
 }
 

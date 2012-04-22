@@ -127,6 +127,11 @@ public:
      */
     void learnStateCapturedEvent(const MidiEvent* event);
 
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // SIGNALS
+    //
+    ////////////////////////////////////////////////////////////////////////////
 signals:
     /**
      * Emitted when a new MIDI event has been recieved from the MIDI engine callback

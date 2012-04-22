@@ -6,6 +6,7 @@
 #include "../../helpers/midihelper.h"
 #include "../../model/document.h"
 
+
 MidiLearnDialog::MidiLearnDialog(QWidget *parent)
 : QDialog(parent),
   _candidate(0) {
@@ -21,6 +22,9 @@ MidiLearnDialog::MidiLearnDialog(QWidget *parent)
 
 	// switch MIDI controller to learning mode
 	MidiController::getInstance()->startLearning();
+
+	// disable OK button
+	ui.okButton->setEnabled(false);
 }
 
 MidiLearnDialog::~MidiLearnDialog() {
@@ -47,6 +51,7 @@ void MidiLearnDialog::onEventLearned(const MidiEvent* event) {
         _candidate = event;
 
         displayEvent(_candidate);
+        ui.okButton->setEnabled(true);
 
     }
 }
@@ -95,7 +100,19 @@ void MidiLearnDialog::displayEvent(const MidiEvent* event) {
 void MidiLearnDialog::accept() {
 
     MidiController::getInstance()->stopLearning();
-    Document::getInstance()->setTriggerEvent(_candidate);
+
+    Document* pDocument = Document::getInstance();
+
+    /*
+     * We don't overwrite the document's trigger event if we haven't changed it in this dialog
+     *
+     */
+    if (pDocument->getTriggerEvent() != _candidate) {
+
+        delete pDocument->getTriggerEvent();
+        pDocument->setTriggerEvent(_candidate);
+    }
+
     QDialog::accept();
 }
 

@@ -238,7 +238,7 @@ public:
      *
      * @param event : the event to store
      */
-    inline void setTriggerEvent(const MidiEvent* event) { delete _triggerEvent; _triggerEvent = event; }
+    inline void setTriggerEvent(const MidiEvent* event)  { _triggerEvent = event; }
 
     /**
      * Get the trigger Event

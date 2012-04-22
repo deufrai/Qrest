@@ -49,6 +49,11 @@ private slots:
     /** Qt slot that gets called when OK button is ckicked */
     virtual void accept();
 
+    /**
+     * Display dialog to check and / or set the TAP trigger MIDI event
+     */
+    void on_triggerButton_clicked();
+
     ////////////////////////////////////////////////////////////////////////////
     //
     // MEMBERS

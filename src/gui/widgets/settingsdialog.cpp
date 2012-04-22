@@ -23,6 +23,7 @@
 #include "../../settings/settings.h"
 #include "../../helpers/widgetsizehelper.h"
 #include "../../midi/midicontroller.h"
+#include "midilearndialog.h"
 
 SettingsDialog::SettingsDialog(QWidget *parent) :
         QDialog(parent) {
@@ -105,6 +106,12 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
 
 SettingsDialog::~SettingsDialog() {
 
+}
+
+void SettingsDialog::on_triggerButton_clicked() {
+
+    MidiLearnDialog dlg(this);
+    dlg.exec();
 }
 
 void SettingsDialog::accept() {
