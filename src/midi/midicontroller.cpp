@@ -37,7 +37,7 @@ MidiController::MidiController()
   _freeWheelState(new FreeWheelState()),
   _syncState(new SyncState()),
   _learnState(new LearnState()),
-  _triggerState(new TapTriggerState),
+  _triggerState(new TapTriggerState()),
   _currentState(_freeWheelState)
 
 
