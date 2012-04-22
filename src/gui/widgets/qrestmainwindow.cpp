@@ -125,6 +125,9 @@ void QrestMainWindow::updateView(void) {
 	/*
 	 * update steadiness widget and status bar.
 	 *
+	 * FIXME : Document must not contain info regarding rnutime *state*
+	 * FIXME : Find a way to simplify all those tests
+	 *
 	 */
 	// Steadiness widget is displayed full green with empty statusBar only when tempo source is keyboard
 	if (_document->getTempoSource() == Document::TEMPO_SOURCE_KEYBOARD) {
