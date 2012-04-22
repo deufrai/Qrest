@@ -139,25 +139,62 @@ bool MidiController::resetPort() {
     return openPort();
 }
 
-void MidiController::startMidiSync() {
+
+void MidiController::triggerMode() {
 
     #ifndef QT_NO_DEBUG
-            qDebug() << "MidiController::startMidiSync - ";
+            qDebug() << "MidiController::triggerMode - ";
     #endif
 
     _currentState->reset();
+
+    //TODO : manage transitions
+
+    _currentState = _triggerState;
+}
+
+
+void MidiController::learnMode() {
+
+    #ifndef QT_NO_DEBUG
+            qDebug() << "MidiController::learnMode - ";
+    #endif
+
+    _currentState->reset();
+
+    //TODO : manage transitions
+
+    _currentState = _learnState;
+}
+
+
+void MidiController::syncMode() {
+
+    #ifndef QT_NO_DEBUG
+            qDebug() << "MidiController::syncMode - ";
+    #endif
+
+    _currentState->reset();
+
+    //TODO : manage transitions
+
     _currentState = _syncState;
 }
 
-void MidiController::stopMidiSync() {
+
+void MidiController::freeWheel() {
 
     #ifndef QT_NO_DEBUG
-            qDebug() << "MidiController::stopMidiSync - ";
+            qDebug() << "MidiController::freeWheel - ";
     #endif
 
     _currentState->reset();
+
+    //TODO : manage transitions
+
     _currentState = _freeWheelState;
 }
+
 
 void MidiController::processMidiEvent(const MidiEvent* event ) {
 
@@ -169,57 +206,6 @@ void MidiController::onMidiEventRecieved(const MidiEvent* event) {
     _currentState->processEvent(event);
 }
 
-void MidiController::stopLearning() {
-
-    #ifndef QT_NO_DEBUG
-            qDebug() << "MidiController::stopLearning - ";
-    #endif
-
-    _currentState->reset();
-    _currentState = _freeWheelState;
-}
-
-void MidiController::startTriggerMode() {
-
-    #ifndef QT_NO_DEBUG
-            qDebug() << "MidiController::startTriggerMode - ";
-    #endif
-
-    _currentState->reset();
-    _currentState = _triggerState;
-}
-
-void MidiController::stopTriggerMode() {
-
-    #ifndef QT_NO_DEBUG
-            qDebug() << "MidiController::stopTriggerMode - ";
-    #endif
-
-    _currentState->reset();
-    _currentState = _freeWheelState;
-}
-
-void MidiController::startLearning() {
-
-    #ifndef QT_NO_DEBUG
-            qDebug() << "MidiController::startLearning - ";
-    #endif
-
-    _currentState->reset();
-    /*
-     * TODO : emitting a reset here is too much.
-     * this signal is meant for a bigger event, the reset of the whole MIDI engine
-     *
-     * But this is all we can do untill we have real
-     * State Macgine implementation permitting us to
-     * trigger specific events on specific State transitions
-     *
-     * Can be done with a test on _currentState before assigning it
-     * the new state
-     */
-    emit midiReset();
-    _currentState = _learnState;
-}
 
 void MidiController::learnStateCapturedEvent(const MidiEvent* event) {
 

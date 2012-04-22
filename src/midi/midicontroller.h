@@ -88,34 +88,24 @@ public:
     void processMidiEvent(const MidiEvent* event);
 
     /**
-     * Start MIDI Clock sync
-     */
-    void startMidiSync();
-
-    /**
-     * stop MIDI Clock sync
-     */
-    void stopMidiSync();
-
-    /**
-     * Enter learning mode
-     */
-    void startLearning();
-
-    /**
-     * quit learning mode
-     */
-    void stopLearning();
-
-    /**
      * Enter trigger mode
      */
-    void startTriggerMode();
+    void triggerMode();
 
     /**
-     * Stop trigger mode
+     * Enter learn mode
      */
-    void stopTriggerMode();
+    void learnMode();
+
+    /**
+     * Enter sync mode
+     */
+    void syncMode();
+
+    /**
+     * Enter freeWheel mode
+     */
+    void freeWheel();
 
     /**
      * A MIDI event has been learned. we pass it to GUI
@@ -200,7 +190,6 @@ protected:
 
     /** The current state */
     MidiState* _currentState;
-
 
 };
 

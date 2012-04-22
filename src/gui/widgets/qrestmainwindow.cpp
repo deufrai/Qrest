@@ -339,12 +339,12 @@ void QrestMainWindow::on_midiSlaveCheckBox_stateChanged(int state) {
 		ui.tempoEdit->setEnabled(false);
 		ui.triggerCheckBox->setChecked(false);
 		statusPermMessage(tr("MIDI Clock Sync : Waiting..."));
-		MidiController::getInstance()->startMidiSync();
+		MidiController::getInstance()->syncMode();
 		break;
 
 	case Qt::Unchecked:
 
-        MidiController::getInstance()->stopMidiSync();
+        MidiController::getInstance()->freeWheel();
 		ui.tapButton->setEnabled(true);
 		ui.tempoEdit->setEnabled(true);
 		statusClear();
@@ -365,7 +365,7 @@ void QrestMainWindow::on_triggerCheckBox_stateChanged(int state) {
         if ( checkIfTriggerModePossible() ) {
 
             ui.midiSlaveCheckBox->setChecked(false);
-            MidiController::getInstance()->startTriggerMode();
+            MidiController::getInstance()->triggerMode();
 
         } else {
 
@@ -376,7 +376,7 @@ void QrestMainWindow::on_triggerCheckBox_stateChanged(int state) {
 
     case Qt::Unchecked:
 
-        MidiController::getInstance()->stopTriggerMode();
+        MidiController::getInstance()->freeWheel();
         break;
 
     default:

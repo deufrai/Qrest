@@ -20,7 +20,7 @@ MidiLearnDialog::MidiLearnDialog(QWidget *parent)
 	        SLOT(onEventLearned(const MidiEvent*)));
 
 	// switch MIDI controller to learning mode
-	MidiController::getInstance()->startLearning();
+	MidiController::getInstance()->learnMode();
 
 	// disable OK button
 	ui.okButton->setEnabled(false);
@@ -87,7 +87,7 @@ void MidiLearnDialog::displayEvent(const MidiEvent* event) {
 
 void MidiLearnDialog::accept() {
 
-    MidiController::getInstance()->stopLearning();
+    MidiController::getInstance()->freeWheel();
 
     Document* pDocument = Document::getInstance();
 
@@ -106,7 +106,7 @@ void MidiLearnDialog::accept() {
 
 void MidiLearnDialog::reject() {
 
-    MidiController::getInstance()->stopLearning();
+    MidiController::getInstance()->freeWheel();
     delete _candidate;
     QDialog::reject();
 
