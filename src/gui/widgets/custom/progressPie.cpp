@@ -17,9 +17,12 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef QT_NO_DEBUG
+#include <QDebug>
+#endif
+
 #include "progressPie.h"
 #include "../../../constants.h"
-#include <QDebug>
 #include <QMouseEvent>
 #include <QPaintEvent>
 #include <QPainter>
