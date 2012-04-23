@@ -129,17 +129,17 @@
 <context>
     <name>QrestMainWindow</name>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="74"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="77"/>
         <source>I&apos;m ready, sir</source>
         <translation>Às ordens, chefe</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="143"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="148"/>
         <source>You&apos;re steady</source>
         <translation>Está estável</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="147"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="152"/>
         <source>Keep tapping...</source>
         <translation>Continua a clicar...</translation>
     </message>
@@ -149,7 +149,7 @@
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="176"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="181"/>
         <source>Displayed BPM reliability : %n</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -157,67 +157,67 @@
         </translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="158"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="163"/>
         <source>MIDI Clock Sync : Locked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="162"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="167"/>
         <source>MIDI Clock Sync : Acquiring...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="218"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="223"/>
         <source>Recalculation needed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="305"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="310"/>
         <source>Online help file could not be found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="306"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="312"/>
         <source>Please consider reporting this as a bug on Qrest&apos;s website.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="311"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="316"/>
         <source>Warning : No help file found</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="399"/>
-        <source>A MIDI trigger event for TAPTEMPO has not yey been set</source>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="442"/>
+        <source>A MIDI trigger event for TAPTEMPO has not yet been set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="401"/>
-        <source>You will be redirected to the trigger learning interface</source>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="444"/>
+        <source>You will be redirected to the trigger configuration window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="405"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="448"/>
         <source>No configured MIDI trigger</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="186"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="191"/>
         <source>MIDI CLock synchronisation has been lost</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="188"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="193"/>
         <source>External MIDI Clock source stopped emitting without sending the STOP command.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="190"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="195"/>
         <source>MIDI Clock slave mode will be disabled.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="194"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="199"/>
         <source>MIDI Clock timeout</source>
         <translation type="unfinished"></translation>
     </message>

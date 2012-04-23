@@ -16,7 +16,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QtDebug>
+#ifndef QT_NO_DEBUG
+#include <QDebug>
+#endif
+
 #include <QTimer>
 #include <QMessageBox>
 #include <QApplication>
@@ -88,7 +91,7 @@ QrestMainWindow::QrestMainWindow(QWidget *parent) :
 								Settings::WINDOW_POSITON_DEFAULT_Y)).toPoint());
 	}
 
-	// connect MIDI controler reset signal
+	// connect MIDI controler signals to our slots
 	connect(MidiController::getInstance(), SIGNAL(sigFreewheel()),  this, SLOT(onFreewheel()));
 	connect(MidiController::getInstance(), SIGNAL(sigTrigger()),    this, SLOT(onTrigger()));
 	connect(MidiController::getInstance(), SIGNAL(sigLearn()),      this, SLOT(onLearn()));
@@ -303,17 +306,14 @@ void QrestMainWindow::on_actionHelp_triggered() {
 
 		QString warningMessage;
 
-		warningMessage.append("<b>").append(
-				tr("Online help file could not be found.")).append("</b><br />").append(
-				tr(
-						"Please consider reporting this as a bug on Qrest's website.")).append(
-				"<br />").append(
-				"<center><a href=\"http://www.qrest.org\">http://www.qrest.org</a></center>");
+		warningMessage.append("<b>")
+		        .append(tr("Online help file could not be found."))
+		        .append("</b><br />")
+		        .append(tr("Please consider reporting this as a bug on Qrest's website."))
+		        .append("<br />")
+		        .append("<center><a href=\"http://www.qrest.org\">http://www.qrest.org</a></center>");
 
-		QMessageBox mb(QMessageBox::Warning, tr("Warning : No help file found"),
-				warningMessage);
-
-		mb.exec();
+		QMessageBox::warning(this, tr("Warning : No help file found"), warningMessage);
 	}
 
 }
@@ -332,7 +332,6 @@ void QrestMainWindow::raiseHelp() {
  */
 void QrestMainWindow::on_freewheelRadio_clicked() {
 
-
     MidiController::getInstance()->freeWheel();
 }
 
@@ -348,7 +347,6 @@ void QrestMainWindow::on_syncRadio_clicked() {
  * Slot that gets called when 'MIDI TapTempo' radio button is clicked
  */
 void QrestMainWindow::on_triggerRadio_clicked() {
-
 
     if ( checkIfTriggerModePossible() ) {
 
@@ -380,39 +378,6 @@ void QrestMainWindow::onSync() {
     setTempoInputControlsEnable(false);
     ui.syncRadio->setChecked(true);
     statusPermMessage(tr("MIDI Clock Sync : Waiting..."));
-}
-
-////////////////////////////////////////////////////////////////////////////
-//
-// PRIVATE FUNCTIONS
-//
-////////////////////////////////////////////////////////////////////////////
-
-void QrestMainWindow::setTempoInputControlsEnable(bool enabled = true) {
-
-    ui.tempoEdit->setEnabled(enabled);
-    ui.tapButton->setEnabled(enabled);
-}
-
-bool QrestMainWindow::checkIfTriggerModePossible() {
-
-    if ( ! _document->getTriggerEvent() ) {
-
-        QString message = tr("A MIDI trigger event for TAPTEMPO has not yey been set")
-                .append("<br/>")
-                .append(tr("You will be redirected to the trigger learning interface"));
-
-        QMessageBox::warning(this,
-
-                tr("No configured MIDI trigger"),
-                message
-        );
-
-        MidiLearnDialog dlg(this);
-        dlg.exec();
-    }
-
-    return _document->getTriggerEvent() != 0;
 }
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -464,6 +429,34 @@ void QrestMainWindow::closeEvent(QCloseEvent* event) {
 // PRIVATE FUNCTIONS
 //
 ////////////////////////////////////////////////////////////////////////////////
+void QrestMainWindow::setTempoInputControlsEnable(bool enabled = true) {
+
+    ui.tempoEdit->setEnabled(enabled);
+    ui.tapButton->setEnabled(enabled);
+}
+
+bool QrestMainWindow::checkIfTriggerModePossible() {
+
+    if ( ! _document->getTriggerEvent() ) {
+
+        QString message = QString("<p>")
+                .append(tr("A MIDI trigger event for TAPTEMPO has not yet been set"))
+                .append("</p>")
+                .append(tr("You will be redirected to the trigger configuration window"));
+
+        QMessageBox::warning(this,
+
+                tr("No configured MIDI trigger"),
+                message
+        );
+
+        MidiLearnDialog dlg(this);
+        dlg.exec();
+    }
+
+    return _document->getTriggerEvent() != 0;
+}
+
 void QrestMainWindow::setFocusToTempoInput(void) const {
 
 	ui.tempoEdit->setFocus();
@@ -491,7 +484,6 @@ void QrestMainWindow::updateDelayDisplays(void) {
 	ui.thirtySecondPeriodEdit->setText(
 			QString::number(
 					qRound(_document->getThirtySecondDelay()->getPeriod())));
-
 }
 
 void QrestMainWindow::updateLfoDisplays(void) {
@@ -526,7 +518,6 @@ void QrestMainWindow::updateLfoDisplays(void) {
 	ui.thirtySecondLfoEdit->setText(
 			QString::number(_document->getThirtySecondDelay()->getFrequency(),
 					LFO_DISPLAY_FORMAT, LFO_DISPLAY_PRECISION));
-
 }
 
 void QrestMainWindow::processTempoInput(void) const {
