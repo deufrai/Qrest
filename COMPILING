@@ -1,5 +1,7 @@
 Qrest must be compiled using a Qt 4.2 or higher compile chain.
 
+Dependencies on GNU/Linux for MIDI operations : libasound2-dev (On Debian derivatvies)
+
 I) Compile Qrest application
 ===============================
 

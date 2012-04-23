@@ -1,8 +1,8 @@
 QREST
 
-A musician toolkit aimed at helping composers, performers, recordists and mixers finding out :
+A musician toolkit aimed at helping composers, performers, recordists and mixers :
 
-- The tempo of a musical piece
+- Finding out the tempo of a musical piece
 - calculate delay times for common notes, according to tempo
 - calculate LFO frequencies for common notes, according to tempo
 
@@ -13,6 +13,8 @@ Website : http://www.qrest.org
 ---
 
 Code is C++ and relies on the Qt framework
+
+For GNU/Linux, there is an extra build-dependency : libasound2-dev (package name for Debian derivatives)
 
 ---
 
