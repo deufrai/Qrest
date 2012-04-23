@@ -76,9 +76,6 @@ void MidiController::resetEngine() {
 
     closePort();
     _midiEngine->cleanup();
-
-    emit sigMidiReset();
-
     _midiEngine->init();
     openPort();
 }
@@ -134,7 +131,6 @@ bool MidiController::resetPort() {
     #endif
 
     closePort();
-    emit sigMidiReset();
     return openPort();
 }
 

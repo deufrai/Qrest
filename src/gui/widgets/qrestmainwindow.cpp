@@ -89,7 +89,6 @@ QrestMainWindow::QrestMainWindow(QWidget *parent) :
 	}
 
 	// connect MIDI controler reset signal
-	connect(MidiController::getInstance(), SIGNAL(sigMidiReset()),  this, SLOT(onMidiEngineReset()));
 	connect(MidiController::getInstance(), SIGNAL(sigFreewheel()),  this, SLOT(onFreewheel()));
 	connect(MidiController::getInstance(), SIGNAL(sigTrigger()),    this, SLOT(onTrigger()));
 	connect(MidiController::getInstance(), SIGNAL(sigLearn()),      this, SLOT(onLearn()));
@@ -414,13 +413,6 @@ bool QrestMainWindow::checkIfTriggerModePossible() {
     }
 
     return _document->getTriggerEvent() != 0;
-}
-
-void QrestMainWindow::onMidiEngineReset() {
-
-    ui.freewheelRadio->setChecked(true);
-    setTempoInputControlsEnable();
-    statusClear();
 }
 
 ////////////////////////////////////////////////////////////////////////////////

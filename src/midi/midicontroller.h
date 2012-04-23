@@ -160,12 +160,6 @@ signals:
     void sigLearnedEvent(const MidiEvent*);
 
     /**
-     * Emitted when MIDI engine or MIDI port has been reset
-     */
-    void sigMidiReset();
-
-
-    /**
      * Emitted when a MIDI Clock timeout has been detected
      */
     void sigTimeout();
