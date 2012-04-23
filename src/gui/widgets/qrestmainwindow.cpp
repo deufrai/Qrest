@@ -16,9 +16,7 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifndef QT_NO_DEBUG
 #include <QDebug>
-#endif
 
 #include <QTimer>
 #include <QMessageBox>
