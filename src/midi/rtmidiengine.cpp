@@ -179,6 +179,7 @@ void RtMidiEngine::closePort() {
 
         try {
 
+            _midiIn->cancelCallback();
             _midiIn->closePort();
 
         } catch (RtError &error) {
