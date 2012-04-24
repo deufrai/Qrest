@@ -124,8 +124,8 @@ bool RtMidiEngine::openPort( const std::string& deviceName) {
 
             try {
 
-                _midiIn->openVirtualPort(createPortName());
                 _midiIn->setCallback(&mycallback);
+                _midiIn->openVirtualPort(createPortName());
                 return true;
 
             } catch (RtError& error) {
@@ -157,8 +157,8 @@ bool RtMidiEngine::openPort( const std::string& deviceName) {
 
                 try {
 
-                    _midiIn->openPort(i, createPortName());
                     _midiIn->setCallback(&mycallback);
+                    _midiIn->openPort(i, createPortName());
                     return true;
 
                 } catch (RtError &error) {
