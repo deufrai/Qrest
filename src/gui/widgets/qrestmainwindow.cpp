@@ -91,6 +91,18 @@ QrestMainWindow::QrestMainWindow(QWidget *parent) :
 								Settings::WINDOW_POSITON_DEFAULT_Y)).toPoint());
 	}
 
+    // Open MIDI connection and start listening to incomming events
+    if ( ! MidiController::getInstance()->openPort() ) {
+
+        QMessageBox::critical(0,
+                              QObject::tr("MIDI Connection failure"),
+                              QObject::tr("MIDI connection could not be made to device : ")
+                              .append(Settings::getInstance()->getSettings().value(
+
+                                  Settings::MIDI_DEVICE,
+                                  Settings::MIDI_DEVICE_DEFAULT).toString()));
+    }
+
 	// connect MIDI controler signals to our slots
 	connect(MidiController::getInstance(), SIGNAL(sigFreewheel()),  this, SLOT(onFreewheel()));
 	connect(MidiController::getInstance(), SIGNAL(sigTrigger()),    this, SLOT(onTrigger()));
@@ -105,6 +117,7 @@ QrestMainWindow::~QrestMainWindow() {
 	Settings::getInstance()->getSettings().setValue(Settings::WINDOW_POSITION,
 			this->pos());
 
+	// save all prefs
 	Settings::getInstance()->getSettings().sync();
 }
 
@@ -266,11 +279,72 @@ void QrestMainWindow::on_actionAbout_triggered() {
 
 void QrestMainWindow::on_actionPreferences_triggered() {
 
+    /*
+     * Show preferences dialog
+     */
 	SettingsDialog dlg(this);
-
 	dlg.resize(dlg.minimumSizeHint());
 
-	dlg.exec();
+	/*
+	 * If dialog has been accpeted, we take new values into account
+	 */
+	if ( dlg.exec() == QDialog::Accepted ) {
+
+
+	    // save 'remember me'
+	    Settings::getInstance()->getSettings().setValue(
+
+	            Settings::REMEMBER_WINDOW_POSITION,
+	            dlg.getRememberWindowPosition());
+
+	    /*
+	     * if midi input port name has been changed, we reset the midi engine with that new name
+	     */
+	    QString midiInputPortOldName = Settings::getInstance()->getSettings().value(
+
+	            Settings::MIDI_PORT_NAME,
+	            Settings::MIDI_PORT_NAME_DEFAUT).toString();
+
+	    if (QString::compare(dlg.getInputPortName(), midiInputPortOldName)) {
+
+	        // save midi input port name
+	        Settings::getInstance()->getSettings().setValue(
+	                Settings::MIDI_PORT_NAME, dlg.getInputPortName());
+
+	        // reset MIDI engine
+	        // TODO : check return value and centralize error messageBox in a private function
+	        MidiController::getInstance()->resetEngine();
+	    }
+
+#ifdef Q_WS_WIN
+
+	    /*
+	     * if connected device has changed, we reset the connection
+	     */
+        QString oldConnectedDevice = Settings::getInstance()->getSettings().value(
+
+                Settings::MIDI_DEVICE,
+                Settings::MIDI_DEVICE_DEFAULT).toString();
+
+        QString newConnectedDevice = dlg.getDeviceName();
+
+        if ( oldConnectedDevice.compare(newConnectedDevice) ) {
+
+            // save connected device
+            Settings::getInstance()->getSettings().setValue(
+                        Settings::MIDI_DEVICE,
+                        newConnectedDevice);
+
+            // start listening to that device
+            if ( ! MidiController::getInstance()->resetPort() ) {
+
+                QMessageBox::critical(this,
+                                      tr("MIDI Connection failure"),
+                                      tr("MIDI connection could not be made to device : ").append(newConnectedDevice));
+            }
+        }
+#endif
+    }
 }
 
 void QrestMainWindow::on_actionHelp_triggered() {

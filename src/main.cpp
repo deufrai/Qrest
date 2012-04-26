@@ -131,18 +131,6 @@ int main(int argc, char *argv[]) {
     }
 #endif
 
-    // Open MIDI connection and start listening to incomming events
-    if ( ! MidiController::getInstance()->resetPort() ) {
-
-        QMessageBox::critical(0,
-                              QObject::tr("MIDI Connection failure"),
-                              QObject::tr("MIDI connection could not be made to device : ")
-                              .append(Settings::getInstance()->getSettings().value(
-
-                                  Settings::MIDI_DEVICE,
-                                  Settings::MIDI_DEVICE_DEFAULT).toString()));
-    }
-
     // create main window
     QrestMainWindow mainWindow;
     mainWindow.resize(mainWindow.minimumSizeHint());

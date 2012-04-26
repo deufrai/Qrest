@@ -39,6 +39,32 @@ public:
     SettingsDialog(QWidget *parent = 0);
     ~SettingsDialog();
 
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // ACCESS
+    //
+    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * get the 'remember window position' switch value
+     *
+     * @return true or false, duh
+     */
+    inline bool getRememberWindowPosition() const { return _rememberWidnowPosition; }
+
+    /**
+     * get the 'MIDI input port name' field value
+     *
+     * @return the value
+     */
+    inline const QString& getInputPortName() const { return _inputPortName; }
+
+    /**
+     * Get the 'device name' combobox chosen value
+     *
+     * @return the value
+     */
+    inline const QString& getDeviceName() const { return _deviceName; }
+
 
     ////////////////////////////////////////////////////////////////////////////
     //
@@ -68,6 +94,15 @@ private:
 
     /** midi section */
     QListWidgetItem* _midiSection;
+
+    /** remember window position switch value */
+    bool _rememberWidnowPosition;
+
+    /** value of 'input port name' field */
+    QString _inputPortName;
+
+    /** value of deviceName combobox current chosen value */
+    QString _deviceName;
 
 };
 

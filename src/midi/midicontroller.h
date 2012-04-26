@@ -75,8 +75,10 @@ public:
 
     /**
      * Reset the midi engine
+     *
+     * @return true id reset was successfull
      */
-    void resetEngine();
+    bool resetEngine();
 
     /**
      * Process a new MIDI event.
@@ -122,12 +124,6 @@ public:
      */
     void timeOutDetected();
 
-    ////////////////////////////////////////////////////////////////////////////
-    //
-    // PRIVATE FUNCTIONS
-    //
-    ////////////////////////////////////////////////////////////////////////////
-private:
     /**
      * Open a MIDI input port
      *
@@ -135,6 +131,12 @@ private:
      */
     bool openPort();
 
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // PRIVATE FUNCTIONS
+    //
+    ////////////////////////////////////////////////////////////////////////////
+private:
     /**
      * close the MIDI input port
      */

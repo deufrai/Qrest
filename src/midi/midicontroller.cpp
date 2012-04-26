@@ -68,7 +68,7 @@ MidiController* MidiController::getInstance() {
 }
 
 
-void MidiController::resetEngine() {
+bool MidiController::resetEngine() {
 
 #ifndef QT_NO_DEBUG
         qDebug() << "MidiController::resetEngine - ";
@@ -77,7 +77,7 @@ void MidiController::resetEngine() {
     closePort();
     _midiEngine->cleanup();
     _midiEngine->init();
-    openPort();
+    return openPort();
 }
 
 const std::vector<std::string> MidiController::getDeviceNames() {

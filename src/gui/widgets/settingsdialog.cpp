@@ -128,55 +128,19 @@ void SettingsDialog::accept() {
     }
 
     // save 'remember window position' settings
-    Settings::getInstance()->getSettings().setValue(
+    _rememberWidnowPosition = ui.chkRememberWindowPos->isChecked();
 
-            Settings::REMEMBER_WINDOW_POSITION,
-            ui.chkRememberWindowPos->isChecked());
+    // save midi input port name
+    _inputPortName = midiInputPortNewName;
 
-    // if midi input port name has been changed, we reset the midi engine with that new name
-    QString midiInputPortOldName = Settings::getInstance()->getSettings().value(
 
-            Settings::MIDI_PORT_NAME,
-            Settings::MIDI_PORT_NAME_DEFAUT).toString();
-
-    if (QString::compare(midiInputPortNewName, midiInputPortOldName)) {
-
-        // save midi input port name
-        Settings::getInstance()->getSettings().setValue(
-                Settings::MIDI_PORT_NAME, midiInputPortNewName);
-
-        Settings::getInstance()->getSettings().sync();
-
-        // reset MIDI engine
-        MidiController::getInstance()->resetEngine();
-    }
 
 #ifdef Q_WS_WIN
-    // if connected device has changed, we reset the connection
-    QString oldConnectedDevice = Settings::getInstance()->getSettings().value(
 
-            Settings::MIDI_DEVICE,
-            Settings::MIDI_DEVICE_DEFAULT).toString();
+    // save midi device name
+    _deviceName = ui.devicesCombo->currentText();
 
-    QString newConnectedDevice = ui.devicesCombo->currentText();
 
-    if ( oldConnectedDevice.compare(newConnectedDevice) ) {
-
-        // save connected device
-        Settings::getInstance()->getSettings().setValue(
-                    Settings::MIDI_DEVICE,
-                    newConnectedDevice);
-
-        Settings::getInstance()->getSettings().sync();
-
-        // start listening to that device
-        if ( ! MidiController::getInstance()->resetPort() ) {
-
-            QMessageBox::critical(this,
-                                  tr("MIDI Connection failure"),
-                                  tr("MIDI connection could not be made to device : ").append(newConnectedDevice));
-        }
-    }
 #endif
 
     QDialog::accept();
