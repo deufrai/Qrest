@@ -247,6 +247,11 @@ private:
      */
     void setTempoInputControlsEnable(bool enabled);
 
+    /**
+     * Display an error message on midi reset or openport failure
+     */
+    void errorMidiDevice();
+
     ////////////////////////////////////////////////////////////////////////////
     //
     // MEMBERS

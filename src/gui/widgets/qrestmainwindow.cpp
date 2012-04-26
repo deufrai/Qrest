@@ -94,13 +94,7 @@ QrestMainWindow::QrestMainWindow(QWidget *parent) :
     // Open MIDI connection and start listening to incomming events
     if ( ! MidiController::getInstance()->openPort() ) {
 
-        QMessageBox::critical(0,
-                              QObject::tr("MIDI Connection failure"),
-                              QObject::tr("MIDI connection could not be made to device : ")
-                              .append(Settings::getInstance()->getSettings().value(
-
-                                  Settings::MIDI_DEVICE,
-                                  Settings::MIDI_DEVICE_DEFAULT).toString()));
+        errorMidiDevice();
     }
 
 	// connect MIDI controler signals to our slots
@@ -312,8 +306,10 @@ void QrestMainWindow::on_actionPreferences_triggered() {
 	                Settings::MIDI_PORT_NAME, dlg.getInputPortName());
 
 	        // reset MIDI engine
-	        // TODO : check return value and centralize error messageBox in a private function
-	        MidiController::getInstance()->resetEngine();
+	        if ( ! MidiController::getInstance()->resetEngine() ) {
+
+	            errorMidiDevice();
+	        }
 	    }
 
 #ifdef Q_WS_WIN
@@ -338,9 +334,7 @@ void QrestMainWindow::on_actionPreferences_triggered() {
             // start listening to that device
             if ( ! MidiController::getInstance()->resetPort() ) {
 
-                QMessageBox::critical(this,
-                                      tr("MIDI Connection failure"),
-                                      tr("MIDI connection could not be made to device : ").append(newConnectedDevice));
+                errorerrorMidiDevice();
             }
         }
 #endif
@@ -615,4 +609,16 @@ void QrestMainWindow::statusTempMessage(const QString& message) const {
 void QrestMainWindow::statusClear(void) const {
 
 	ui.statusbar->clearMessage();
+}
+
+void QrestMainWindow::errorMidiDevice() {
+
+    QString prefreredMidiDevice = Settings::getInstance()->getSettings().value(
+
+            Settings::MIDI_DEVICE,
+            Settings::MIDI_DEVICE_DEFAULT).toString();
+
+            QMessageBox::critical(this,
+                                  tr("MIDI Connection failure"),
+                                  tr("MIDI connection could not be made to device : ").append(prefreredMidiDevice));
 }
