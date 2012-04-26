@@ -92,7 +92,11 @@ QrestMainWindow::QrestMainWindow(QWidget *parent) :
 	}
 
     // Open MIDI connection and start listening to incomming events
-    if ( ! MidiController::getInstance()->openPort() ) {
+    if ( MidiController::getInstance()->openPort() ) {
+
+        setMidiControlsEnable();
+
+    } else {
 
         errorMidiDevice();
     }
@@ -306,7 +310,11 @@ void QrestMainWindow::on_actionPreferences_triggered() {
 	                Settings::MIDI_PORT_NAME, dlg.getInputPortName());
 
 	        // reset MIDI engine
-	        if ( ! MidiController::getInstance()->resetEngine() ) {
+	        if ( MidiController::getInstance()->resetEngine() ) {
+
+	            setMidiControlsEnable();
+
+	        } else {
 
 	            errorMidiDevice();
 	        }
@@ -332,9 +340,13 @@ void QrestMainWindow::on_actionPreferences_triggered() {
                         newConnectedDevice);
 
             // start listening to that device
-            if ( ! MidiController::getInstance()->resetPort() ) {
+            if ( MidiController::getInstance()->resetPort() ) {
 
-                errorerrorMidiDevice();
+                setMidiControlsEnable();
+
+            } else {
+
+                errorMidiDevice();
             }
         }
 #endif
@@ -618,7 +630,16 @@ void QrestMainWindow::errorMidiDevice() {
             Settings::MIDI_DEVICE,
             Settings::MIDI_DEVICE_DEFAULT).toString();
 
-            QMessageBox::critical(this,
-                                  tr("MIDI Connection failure"),
-                                  tr("MIDI connection could not be made to device : ").append(prefreredMidiDevice));
+    QMessageBox::critical(this,
+            tr("MIDI Connection failure"),
+            tr("MIDI connection could not be made to device : ").append(prefreredMidiDevice));
+
+    setMidiControlsEnable(false);
+
+}
+
+void QrestMainWindow::setMidiControlsEnable(bool enable) {
+
+    ui.syncRadio->setEnabled(enable);
+    ui.triggerRadio->setEnabled(enable);
 }

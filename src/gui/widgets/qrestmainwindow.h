@@ -252,6 +252,13 @@ private:
      */
     void errorMidiDevice();
 
+    /**
+     * En-Dis/able midi GUI controls
+     *
+     * @param enable should controls be enabled (true by default)
+     */
+    void setMidiControlsEnable(bool enable = true);
+
     ////////////////////////////////////////////////////////////////////////////
     //
     // MEMBERS
