@@ -44,9 +44,6 @@ Settings* Settings::getInstance() {
 
 void Settings::destroy() {
 
-    if (0 != _instance) {
-
-        delete _instance;
-        _instance = 0;
-    }
+    delete _instance;
+    _instance = 0;
 }

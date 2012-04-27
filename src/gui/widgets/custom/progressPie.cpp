@@ -48,16 +48,8 @@ ProgressPie::ProgressPie(QWidget* parent) :
 
 ProgressPie::~ProgressPie() {
 
-	// freeing resources
-	if ( _pGreenBrush ) {
-
-		delete _pGreenBrush;
-	}
-
-	if ( _pRedBrush ) {
-
-		delete _pRedBrush;
-	}
+    delete _pGreenBrush;
+    delete _pRedBrush;
 }
 
 ////////////////////////////////////////////////////////////////////////////

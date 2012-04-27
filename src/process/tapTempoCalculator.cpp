@@ -54,11 +54,8 @@ TapTempoCalculator* TapTempoCalculator::getInstance() {
 
 void TapTempoCalculator::destroy() {
 
-    if (_instance) {
-
-        delete _instance;
-        _instance = 0;
-    }
+    delete _instance;
+    _instance = 0;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

@@ -58,11 +58,8 @@ Document* Document::getInstance() {
 
 void Document::destroy() {
 
-    if (_instance) {
-
-        delete _instance;
-        _instance = 0;
-    }
+    delete _instance;
+    _instance = 0;
 }
 
 ////////////////////////////////////////////////////////////////////////////////

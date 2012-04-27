@@ -54,11 +54,8 @@ QrestHelpViewer* QrestHelpViewer::getInstance() {
 
 void QrestHelpViewer::destroy() {
 
-    if (instance) {
-
-        delete instance;
-        instance = NULL;
-    }
+    delete instance;
+    instance = NULL;
 }
 
 
