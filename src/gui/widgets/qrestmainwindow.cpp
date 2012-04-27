@@ -117,7 +117,7 @@ QrestMainWindow::QrestMainWindow(QWidget *parent) :
 #endif
 
     // Open MIDI connection and start listening to incomming events
-    if ( MidiController::getInstance()->openPort() ) {
+    if ( MidiController::getInstance()->resetEngine() ) {
 
         setMidiControlsEnable();
 
