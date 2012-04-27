@@ -105,32 +105,6 @@ int main(int argc, char *argv[]) {
     application.setAttribute(Qt::AA_DontShowIconsInMenus);
 #endif
 
-#ifdef Q_WS_WIN
-    /*
-     * On windows, there are no virtual MIDI ports. So we must make sure
-     * we have a physical device to connect to.
-     *
-     * We check saved settings and look if we have a prefered MIDI device.
-     * If not, we display the settings dialog box
-     */
-    QString prefredMidiDevice = Settings::getInstance()->getSettings().value(
-
-        Settings::MIDI_DEVICE,
-        Settings::MIDI_DEVICE_DEFAULT).toString();
-
-    if ( 0 == prefredMidiDevice.compare(Settings::MIDI_DEVICE_DEFAULT) ) {
-
-        QMessageBox::information(0,
-                                QObject::tr("Welcome to Qrest"),
-                                QObject::tr("It appears this is your first use of qrest's MIDI features")
-                                .append("\n\n")
-                                .append(QObject::tr("You are invited to check qrest's MIDI settings and chose the MDI device you want to connect to")));
-
-        SettingsDialog dlg;
-        dlg.exec();
-    }
-#endif
-
     // create main window
     QrestMainWindow mainWindow;
     mainWindow.resize(mainWindow.minimumSizeHint());
