@@ -6,7 +6,7 @@
     <message>
         <location filename="../../src/gui/forms/qrestaboutdialog.ui" line="16"/>
         <source>About Qrest</source>
-        <translation>A proposito de Qrest</translation>
+        <translation>A propósito de Qrest</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/qrestaboutdialog.ui" line="70"/>
@@ -52,35 +52,35 @@
     <message>
         <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="125"/>
         <source>Keep tapping...</source>
-        <translation>Sigue clicando…</translation>
+        <translation>Sigue clicando...</translation>
     </message>
     <message numerus="yes">
         <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="139"/>
         <source>Displayed BPM reliability : %n</source>
-        <translation type="unfinished">
-            <numerusform></numerusform>
-            <numerusform></numerusform>
+        <translation>
+            <numerusform>Fiabilidad del BPM indicado : %n</numerusform>
+            <numerusform>Fiabilidad del BPM indicado : %n</numerusform>
         </translation>
     </message>
     <message>
         <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="164"/>
         <source>Recalculation needed</source>
-        <translation type="unfinished"></translation>
+        <translation>Recálculo necesario</translation>
     </message>
     <message>
         <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="251"/>
         <source>Online help file could not be found.</source>
-        <translation type="unfinished"></translation>
+        <translation>El fichero de ayuda en línea no ha sido encontrado.</translation>
     </message>
     <message>
         <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="253"/>
         <source>Please consider reporting this as a bug on Qrest&apos;s website.</source>
-        <translation type="unfinished"></translation>
+        <translation>Por favor, divulgalo como un bug en el sitio web de Qrest.</translation>
     </message>
     <message>
         <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="257"/>
         <source>Warning : No help file found</source>
-        <translation type="unfinished"></translation>
+        <translation>Atención : no se encontró el fichero de ayuda</translation>
     </message>
 </context>
 <context>
@@ -103,7 +103,7 @@
     <message>
         <location filename="../../src/gui/forms/qrestmainwindow.ui" line="68"/>
         <source>Enter tempo in BPM and hit &apos;enter&apos; or use mouse wheel</source>
-        <translation>Entre el tiempo en BPM y valide can “Entrar” o utilize la rueda del ratón</translation>
+        <translation>Entre el tiempo en BPM y valide con “Entrar” o utilize la rueda del ratón</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/qrestmainwindow.ui" line="75"/>
@@ -128,7 +128,7 @@
     <message>
         <location filename="../../src/gui/forms/qrestmainwindow.ui" line="106"/>
         <source>&amp;Dotted</source>
-        <translation>&amp;Punteada</translation>
+        <translation>&amp;Puntillo</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/qrestmainwindow.ui" line="113"/>
@@ -138,7 +138,7 @@
     <message>
         <location filename="../../src/gui/forms/qrestmainwindow.ui" line="125"/>
         <source>Delays and LFOs</source>
-        <translation>Plazos y LFOs</translation>
+        <translation>Delays y LFOs</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/qrestmainwindow.ui" line="135"/>
@@ -180,12 +180,12 @@
     <message>
         <location filename="../../src/gui/forms/qrestmainwindow.ui" line="576"/>
         <source>About &amp;Qrest...</source>
-        <translation>A proposito de &amp;Qrest...</translation>
+        <translation>A propósito de &amp;Qrest...</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/qrestmainwindow.ui" line="579"/>
         <source>About Qrest</source>
-        <translation>A proposito de Qrest</translation>
+        <translation>A propósito de Qrest</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/qrestmainwindow.ui" line="588"/>
@@ -200,22 +200,22 @@
     <message>
         <location filename="../../src/gui/forms/qrestmainwindow.ui" line="546"/>
         <source>&amp;Edit</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Editar</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/qrestmainwindow.ui" line="600"/>
         <source>&amp;Preferences</source>
-        <translation type="unfinished"></translation>
+        <translation>&amp;Preferencias</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/qrestmainwindow.ui" line="603"/>
         <source>Open preferences dialog</source>
-        <translation type="unfinished"></translation>
+        <translation>Abrir preferencias</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/qrestmainwindow.ui" line="606"/>
         <source>Ctrl+P</source>
-        <translation type="unfinished"></translation>
+        <translation>Ctrl+P</translation>
     </message>
 </context>
 <context>
@@ -223,32 +223,32 @@
     <message>
         <location filename="../../src/gui/forms/qrestpreferencesdialog.ui" line="14"/>
         <source>Qrest preferences</source>
-        <translation type="unfinished"></translation>
+        <translation>Preferencias Qrest</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/qrestpreferencesdialog.ui" line="32"/>
         <source>User Interface</source>
-        <translation type="unfinished"></translation>
+        <translation>Interfaz de usuario</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/qrestpreferencesdialog.ui" line="44"/>
         <source>Should Qrest&apos;s main window be opened at the screen location it had on last run ?</source>
-        <translation type="unfinished"></translation>
+        <translation>¿Debe la ventana principal de Qrest abrirse en el lugar donde estaba en la última ejecución?</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/qrestpreferencesdialog.ui" line="47"/>
         <source>Remember window &amp;position</source>
-        <translation type="unfinished"></translation>
+        <translation>Recuerde la &amp;posición de la ventana</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/qrestpreferencesdialog.ui" line="78"/>
         <source>OK</source>
-        <translation type="unfinished">OK</translation>
+        <translation>OK</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/qrestpreferencesdialog.ui" line="91"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Cancelar</translation>
     </message>
 </context>
 </TS>
