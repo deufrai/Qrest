@@ -19,7 +19,7 @@
 
 #include "constants.h"
 
-const char* Constants::VERSION_STRING = "0.5-RC1";
+const char* Constants::VERSION_STRING = "0.5";
 
 
 Constants::Constants() {
