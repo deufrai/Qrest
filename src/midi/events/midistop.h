@@ -21,6 +21,9 @@
 
 #include "midievent.h"
 
+/**
+ * Represents a MIDI Clock Stop Event
+ */
 class MidiStop: public MidiEvent {
 public:
     MidiStop();
