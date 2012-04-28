@@ -78,8 +78,7 @@ private:
     // FUNCTIONS
     //
     ////////////////////////////////////////////////////////////////////////////
-    double getDelayPeriodFromTempoAndMutliplier(const double tempo,
-            const double mutliplier);
+    double getDelayPeriodFromTempoAndMutliplier(const double tempo, const double mutliplier);
 };
 
 #endif /* DELAYCALCULATOR_H_ */

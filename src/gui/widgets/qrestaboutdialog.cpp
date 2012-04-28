@@ -32,16 +32,28 @@ QrestAboutDialog::QrestAboutDialog(const char* versionString, QWidget *parent) :
 
     QString aboutString;
 
-    aboutString.append("<center>") .append("<h2>") .append(
-            "Qrest - Really Easy Studio Toolkit") .append("</h2>") .append(
-            "<p>") .append("Version : ") .append(versionString) .append("</p>") .append(
-            "<p>") .append(tr("Author")).append(
-            " : Fr&eacute;d&eacute;ric CORNU <a href=\"mailto:fcornu@wardsback.org?subject=Qrest\">fcornu@wardsback.org</a>") .append(
-            "</p>") .append("<p>") .append(tr("Website")).append(
-            " : <a href=\"http://www.qrest.org/\">http://www.qrest.org</a>") .append(
-            "</p>") .append("<p>") .append(tr("License")).append(
-            " : <a href=\"http://www.gnu.org/licenses/gpl-3.0.txt\">General Public License v3</a>") .append(
-            "</p>") .append("</center>");
+    aboutString.append("<center>")
+            .append("<h2>")
+            .append("Qrest - Really Easy Studio Toolkit")
+            .append("</h2>")
+            .append("<p>")
+            //TODO make 'version' use translations. Too late for v0.5.0
+            .append("Version : ")
+            .append(versionString)
+            .append("</p>")
+            .append("<p>")
+            .append(tr("Author"))
+            .append( " : Fr&eacute;d&eacute;ric CORNU <a href=\"mailto:fcornu@wardsback.org?subject=Qrest\">fcornu@wardsback.org</a>")
+            .append("</p>")
+            .append("<p>")
+            .append(tr("Website"))
+            .append(" : <a href=\"http://www.qrest.org/\">http://www.qrest.org</a>")
+            .append( "</p>")
+            .append("<p>")
+            .append(tr("License"))
+            .append( " : <a href=\"http://www.gnu.org/licenses/gpl-3.0.txt\">General Public License v3</a>")
+            .append( "</p>")
+            .append("</center>");
 
     ui.aboutLabel->setText(aboutString);
 

@@ -52,6 +52,9 @@ private:
     //
     ////////////////////////////////////////////////////////////////////////////
 private slots:
+    /**
+     * this slot is called when the 'OK' button is clicked
+     */
     virtual void accept();
 };
 

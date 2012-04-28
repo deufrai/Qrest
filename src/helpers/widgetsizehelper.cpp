@@ -37,8 +37,7 @@ WidgetSizeHelper::WidgetSizeHelper()
 
 void WidgetSizeHelper::setDefaultFontSize(QWidget* pWidget) {
 
-    // we get children of pWidget
-
+    // we get all of pWidget's children
     QObjectList children = pWidget->children();
 
     // for each child
@@ -56,11 +55,11 @@ void WidgetSizeHelper::setDefaultFontSize(QWidget* pWidget) {
          */
         QWidget* pChild = static_cast<QWidget*> ( children.at(i) );
 
-        if (  qobject_cast<QLabel*>(pChild) != NULL ||
-              qobject_cast<QLineEdit*>(pChild) != NULL ||
-              qobject_cast<QRadioButton*>(pChild) != NULL ||
-              qobject_cast<QGroupBox*>(pChild) != NULL  ||
-              qobject_cast<QCheckBox*>(pChild) != NULL  ||
+        if (  qobject_cast<QLabel*>(pChild) != NULL         ||
+              qobject_cast<QLineEdit*>(pChild) != NULL      ||
+              qobject_cast<QRadioButton*>(pChild) != NULL   ||
+              qobject_cast<QGroupBox*>(pChild) != NULL      ||
+              qobject_cast<QCheckBox*>(pChild) != NULL      ||
               qobject_cast<QStatusBar*>(pChild) != NULL )
         {
             QFont lFont = pChild->font();
@@ -68,8 +67,8 @@ void WidgetSizeHelper::setDefaultFontSize(QWidget* pWidget) {
             pChild->setFont(lFont);
         }
 
-        // and scan it if it has children
-        if ( 0 != pChild->children().length() ) {
+        // and scan it, if it has children
+        if (  ! pChild->children().isEmpty() ) {
 
             setDefaultFontSize( pChild );
         }

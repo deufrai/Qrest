@@ -27,10 +27,10 @@ QrestHelpViewer* QrestHelpViewer::instance = NULL;
 // INIT
 //
 ////////////////////////////////////////////////////////////////////////////
-QrestHelpViewer::QrestHelpViewer(QWidget *parent) :
-    QMainWindow(parent) {
-    ui.setupUi(this);
+QrestHelpViewer::QrestHelpViewer(QWidget *parent)
+: QMainWindow(parent) {
 
+    ui.setupUi(this);
 }
 
 QrestHelpViewer::~QrestHelpViewer() {

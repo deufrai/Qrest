@@ -24,6 +24,8 @@
 #include <QMessageBox>
 #include <QApplication>
 #include <QWheelEvent>
+#include <QFile>
+
 #include "qrestmainwindow.h"
 #include "../../process/tapTempoCalculator.h"
 #include "qrestaboutdialog.h"
@@ -32,10 +34,11 @@
 #include "../../settings/settings.h"
 #include "qrestpreferencesdialog.h"
 #include "../../model/document.h"
+#include "../../model/delay.h"
 #include "custom/progressPie.h"
 #include "../../helpers/localeHelper.h"
 #include "../../helpers/widgetsizehelper.h"
-#include <QFile>
+
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -43,8 +46,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-QrestMainWindow::QrestMainWindow(QWidget *parent) :
-    QMainWindow(parent), _document(Document::getInstance()) {
+QrestMainWindow::QrestMainWindow(QWidget *parent)
+: QMainWindow(parent),
+  _document(Document::getInstance()) {
 
     // register as an observer for app data
     _document->registerObserver(this);
@@ -57,7 +61,7 @@ QrestMainWindow::QrestMainWindow(QWidget *parent) :
     WidgetSizeHelper::setDefaultFontSize( this );
 #endif
 
-    // setup steadiness indocator
+    // setup steadiness indicator
     _pie = new ProgressPie();
     ui.tempoInputHorizontalLayout->addWidget(_pie);
 
@@ -91,8 +95,9 @@ QrestMainWindow::QrestMainWindow(QWidget *parent) :
 QrestMainWindow::~QrestMainWindow() {
 
     // store position into user's prefences.
-    Settings::getInstance()->getSettings().setValue(Settings::WINDOW_POSITION,
-            this->pos());
+    Settings::getInstance()->getSettings()
+                    .setValue(Settings::WINDOW_POSITION,
+                              this->pos());
 
     Settings::getInstance()->getSettings().sync();
 }
@@ -239,7 +244,7 @@ void QrestMainWindow::on_actionHelp_triggered() {
     	pViewer->setSource(helpPath);
     	pViewer->showNormal();
 
-    	// we wait for the window to be visible before activating and rasing it
+    	// we wait 25ms for the window to be visible before activating and rasing it
     	QTimer::singleShot(25, this, SLOT(raiseHelp()));
 
     } else {
@@ -260,7 +265,6 @@ void QrestMainWindow::on_actionHelp_triggered() {
 
     	mb.exec();
     }
-
 }
 
 void QrestMainWindow::raiseHelp() {

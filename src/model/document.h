@@ -20,9 +20,11 @@
 #ifndef DOCUMENT_H_
 #define DOCUMENT_H_
 
-#include "../dp/observable.h"
-#include "delay.h"
 #include <vector>
+
+#include "../dp/observable.h"
+
+class Delay;
 
 /**
  * Stores all application data.

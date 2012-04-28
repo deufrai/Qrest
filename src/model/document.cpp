@@ -18,6 +18,7 @@
  */
 
 #include "document.h"
+#include "delay.h"
 #include "../process/delayCalculator.h"
 
 ////////////////////////////////////////////////////////////////////////////////
@@ -28,9 +29,12 @@
 
 Document* Document::_instance = 0;
 
-Document::Document() :
-    _tempo(Constants::TEMPO_DEFAULT), _steady(true), _steadiness(FULL_STEADINESS),
-            _tempoFromTap(false), _multiplier(MULTIPLIER_PLAIN) {
+Document::Document()
+: _tempo(Constants::TEMPO_DEFAULT),
+  _steady(true),
+  _steadiness(FULL_STEADINESS),
+  _tempoFromTap(false),
+  _multiplier(MULTIPLIER_PLAIN) {
 
     // init vector of Delay objects
     initDelays();

@@ -19,6 +19,7 @@
 
 #include <QtGlobal>
 #include <algorithm>
+
 #include "tapTempoCalculator.h"
 #include "../model/document.h"
 #include "../constants.h"
@@ -126,11 +127,8 @@ void TapTempoCalculator::getSteadiness() const {
      */
     Document* pDocument = Document::getInstance();
 
-    list<int>::const_iterator begin = _deltas.begin();
-    list<int>::const_iterator end = _deltas.end();
-
-    list<int>::const_iterator min = min_element(begin, end);
-    list<int>::const_iterator max = max_element(begin, end);
+    list<int>::const_iterator min = min_element(_deltas.begin(), _deltas.end());
+    list<int>::const_iterator max = max_element(_deltas.begin(), _deltas.end());
 
     double steadiness = (static_cast<double> (*min) / *max);
 

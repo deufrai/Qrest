@@ -8,8 +8,9 @@
 // INIT
 //
 ////////////////////////////////////////////////////////////////////////////////
-QrestPreferencesDialog::QrestPreferencesDialog(QWidget *parent) :
-    QDialog(parent) {
+QrestPreferencesDialog::QrestPreferencesDialog(QWidget *parent)
+: QDialog(parent) {
+
     ui.setupUi(this);
 
 #ifdef Q_WS_MAC
@@ -17,6 +18,7 @@ QrestPreferencesDialog::QrestPreferencesDialog(QWidget *parent) :
     WidgetSizeHelper::setDefaultFontSize( this );
 #endif
 
+    // update the 'remember window position' checkbox state according to saved prefs
     ui.chkRememberWindowPos->setChecked(
             Settings::getInstance()->getSettings() .value(
                     Settings::REMEMBER_WINDOW_POSITION,
@@ -37,9 +39,9 @@ QrestPreferencesDialog::~QrestPreferencesDialog() {
 ////////////////////////////////////////////////////////////////////////////////
 void QrestPreferencesDialog::accept() {
 
-    Settings::getInstance()->getSettings() .setValue(
-            Settings::REMEMBER_WINDOW_POSITION,
-            ui.chkRememberWindowPos->isChecked());
+    Settings::getInstance()->getSettings()
+                    .setValue(Settings::REMEMBER_WINDOW_POSITION,
+                              ui.chkRememberWindowPos->isChecked());
 
     Settings::getInstance()->getSettings().sync();
 
