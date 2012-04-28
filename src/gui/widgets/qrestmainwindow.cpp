@@ -16,7 +16,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#include <QtDebug>
+#ifndef QT_NO_DEBUG
+#include <QDebug>
+#endif
+
 #include <QTimer>
 #include <QMessageBox>
 #include <QApplication>
@@ -224,9 +227,9 @@ void QrestMainWindow::on_actionHelp_triggered() {
 
     if (!QFile::exists(helpPath)) {
 
-    	qWarning()
-    	<< "Online help has not yet been translated for current system locale."
-    	<< "Defaulting to english";
+    	qWarning("%s.%s", 
+    	    "Online help has not yet been translated for current system locale",
+    	    "Defaulting to english");
 
     	helpPath = LocaleHelper::getDefaultHelpFilePath();
     }
@@ -241,7 +244,7 @@ void QrestMainWindow::on_actionHelp_triggered() {
 
     } else {
 
-    	qWarning() << "Default help file couln't be found...";
+    	qWarning("Default help file couln't be found...");
 
     	QString warningMessage;
 

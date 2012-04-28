@@ -112,7 +112,9 @@ void installTranslator (QApplication& app, QString& filePrefix, QString& folderP
 
     } else {
 
-        qWarning() << "Failed to load translation file : " << filePrefix + LocaleHelper::getLocale();
+        qWarning("Failed to load translation file : %s%s",
+                 filePrefix.toStdString().c_str(),
+                 LocaleHelper::getLocale().toStdString().c_str());
     }
 
 }

@@ -8,3 +8,4 @@ ui_qrest*.h
 tmp/
 qrest
 /.settings
+doc/doxygen/html/
