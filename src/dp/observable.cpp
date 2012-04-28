@@ -47,14 +47,12 @@ void Observable::removeObserver(Observer* observer) {
 
     vector<Observer*>::iterator it = _observers.begin();
 
-    bool found = false;
-
-    while (it != _observers.end() && !found) {
+    while (it != _observers.end()) {
 
         if (*it == observer) {
 
             _observers.erase(it);
-            found = true;
+            break;
         }
         it++;
     }
