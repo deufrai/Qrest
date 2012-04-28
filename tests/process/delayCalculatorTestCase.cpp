@@ -20,6 +20,7 @@
 #include "delayCalculatorTestCase.h"
 
 #include "../../src/model/document.h"
+#include "../../src/model/delay.h"
 #include "../../src/process/delayCalculator.h"
 
 void DelayCalculatorTestCase::initTestCase() {
