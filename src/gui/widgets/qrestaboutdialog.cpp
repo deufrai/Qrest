@@ -26,8 +26,9 @@
 // INIT
 //
 ////////////////////////////////////////////////////////////////////////////
-QrestAboutDialog::QrestAboutDialog(const char* versionString, QWidget *parent) :
-    QDialog(parent) {
+QrestAboutDialog::QrestAboutDialog(const char* versionString, QWidget *parent)
+: QDialog(parent) {
+
     ui.setupUi(this);
 
     QString aboutString;
@@ -37,8 +38,8 @@ QrestAboutDialog::QrestAboutDialog(const char* versionString, QWidget *parent) :
             .append("Qrest - Really Easy Studio Toolkit")
             .append("</h2>")
             .append("<p>")
-            //TODO make 'version' use translations. Too late for v0.5.0
-            .append("Version : ")
+            .append(tr("Version"))
+            .append(" : ")
             .append(versionString)
             .append("</p>")
             .append("<p>")

@@ -14,17 +14,22 @@
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestaboutdialog.cpp" line="38"/>
+        <location filename="../../src/gui/widgets/qrestaboutdialog.cpp" line="41"/>
+        <source>Version</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/widgets/qrestaboutdialog.cpp" line="46"/>
         <source>Author</source>
         <translation>Autor</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestaboutdialog.cpp" line="40"/>
+        <location filename="../../src/gui/widgets/qrestaboutdialog.cpp" line="50"/>
         <source>Website</source>
         <translation>Web Site</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestaboutdialog.cpp" line="42"/>
+        <location filename="../../src/gui/widgets/qrestaboutdialog.cpp" line="54"/>
         <source>License</source>
         <translation>Licença</translation>
     </message>
@@ -40,22 +45,22 @@
 <context>
     <name>QrestMainWindow</name>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="65"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="78"/>
         <source>I&apos;m ready, sir</source>
         <translation>Às ordens, chefe</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="121"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="128"/>
         <source>You&apos;re steady</source>
         <translation>Está estável</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="125"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="132"/>
         <source>Keep tapping...</source>
         <translation>Continua a clicar...</translation>
     </message>
     <message numerus="yes">
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="139"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="146"/>
         <source>Displayed BPM reliability : %n</source>
         <translation type="unfinished">
             <numerusform></numerusform>
@@ -63,22 +68,22 @@
         </translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="164"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="171"/>
         <source>Recalculation needed</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="251"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="258"/>
         <source>Online help file could not be found.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="253"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="260"/>
         <source>Please consider reporting this as a bug on Qrest&apos;s website.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="257"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="264"/>
         <source>Warning : No help file found</source>
         <translation type="unfinished"></translation>
     </message>
@@ -178,22 +183,22 @@
         <translation>Ctrl+Q</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="576"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="579"/>
         <source>About &amp;Qrest...</source>
         <translation>À propósito de &amp;Qrest</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="579"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="582"/>
         <source>About Qrest</source>
         <translation>À propósito de Qrest</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="588"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="594"/>
         <source>Online &amp;Help</source>
         <translation>&amp;Ajuda on line </translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="591"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="597"/>
         <source>Help</source>
         <translation>Ajuda</translation>
     </message>
@@ -203,17 +208,17 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="600"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="606"/>
         <source>&amp;Preferences</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="603"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="609"/>
         <source>Open preferences dialog</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="606"/>
+        <location filename="../../src/gui/forms/qrestmainwindow.ui" line="612"/>
         <source>Ctrl+P</source>
         <translation type="unfinished"></translation>
     </message>
