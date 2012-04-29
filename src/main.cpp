@@ -32,17 +32,15 @@
 #include <QDebug>
 #endif
 
+#include <QApplication>
+#include <QTranslator>
+
 #ifdef Q_WS_MAC
 #include <QLibraryInfo>
 #endif
 
-#include <QApplication>
-#include <QTranslator>
-
 #include "gui/widgets/qrestmainwindow.h"
 #include "helpers/localeHelper.h"
-
-
 
 /**
  * Install translator into the application
