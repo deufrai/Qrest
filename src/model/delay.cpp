@@ -1,7 +1,7 @@
 /*
  *  qrest
  *
- *  Copyright (C) 2008-2011 - Frédéric CORNU
+ *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -28,9 +28,6 @@
 Delay::Delay()
 : _period(0.0), _frequency(0.0) {
 }
-
-
-
 
 Delay::~Delay() {
 }

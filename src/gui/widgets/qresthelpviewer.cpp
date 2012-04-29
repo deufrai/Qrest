@@ -1,7 +1,7 @@
 /*
  *  qrest
  *
- *  Copyright (C) 2008-2011 - Frédéric CORNU
+ *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,76 +18,48 @@
  */
 
 #include "qresthelpviewer.h"
-#include "../../constants.h"
-#include <QLocale>
-#include <QDir>
-#include <QDebug>
+#include <QUrl>
 
 QrestHelpViewer* QrestHelpViewer::instance = NULL;
 
+////////////////////////////////////////////////////////////////////////////
+//
+// INIT
+//
+////////////////////////////////////////////////////////////////////////////
 QrestHelpViewer::QrestHelpViewer(QWidget *parent)
-    : QMainWindow(parent)
-{
-	ui.setupUi(this);
+: QMainWindow(parent) {
 
-	/*
-	 *  we try to get online help translated according to user's locale.
-	 *  if it doesn't exist, we fallback to english
-	 */
-    QString locale = QLocale::system().name().section('_', 0, 0);
-	QString helpPath = getHelpPathFromLocale(locale);
-
-	if ( ! QFile::exists(helpPath) ) {
-
-		qDebug() << "Online help has not yet been translated for locale"
-				 << locale
-				 << "- defaulting to english";
-
-		helpPath = getHelpPathFromLocale("en");
-	}
-
-
-
-	ui.helpBrowser->setSource(QUrl(helpPath));
+    ui.setupUi(this);
 }
 
-
-
-
-QrestHelpViewer::~QrestHelpViewer()
-{
+QrestHelpViewer::~QrestHelpViewer() {
 
 }
 
-QString QrestHelpViewer::getHelpPathFromLocale(const QString& locale) const {
-
-	QString helpPath;
-
-	helpPath.append(Constants::ONLINE_HELP_LOCATION)
-	    .append(QDir::separator())
-	    .append(locale)
-	    .append(QDir::separator())
-	    .append("index.html");
-
-	return helpPath;
-
-}
-
+////////////////////////////////////////////////////////////////////////////
+//
+// SINGLETON IMPLEMENTATION
+//
+////////////////////////////////////////////////////////////////////////////
 QrestHelpViewer* QrestHelpViewer::getInstance() {
 
-	if ( NULL == instance ) {
+    if (NULL == instance) {
 
-		instance = new QrestHelpViewer();
-	}
+        instance = new QrestHelpViewer();
+    }
 
-	return instance;
+    return instance;
 }
 
 void QrestHelpViewer::destroy() {
 
-	if ( instance ) {
+    delete instance;
+    instance = NULL;
+}
 
-		delete instance;
-		instance = NULL;
-	}
+
+void QrestHelpViewer::setSource(const QString& source) {
+
+    ui.helpBrowser->setSource(QUrl::fromLocalFile(source));
 }

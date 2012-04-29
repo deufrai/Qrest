@@ -1,7 +1,7 @@
 /*
  *  qrest
  *
- *  Copyright (C) 2008-2011 - Frédéric CORNU
+ *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -27,16 +27,25 @@
  * The "About" Dialog
  */
 
-class QrestAboutDialog : public QDialog
-{
-    Q_OBJECT
+class QrestAboutDialog: public QDialog {
+Q_OBJECT
 
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // INIT
+    //
+    ////////////////////////////////////////////////////////////////////////////
 public:
     QrestAboutDialog(const char* versionString, QWidget *parent = 0);
     ~QrestAboutDialog();
 
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // MEMBERS
+    //
+    ////////////////////////////////////////////////////////////////////////////
 private:
-	/** the GUI from */
+    /** the GUI from */
     Ui::QrestAboutDialog ui;
 };
 

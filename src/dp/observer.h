@@ -1,7 +1,7 @@
 /*
  *  qrest
  *
- *  Copyright (C) 2008-2011 - Frédéric CORNU
+ *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -23,24 +23,29 @@
 /**
  * Observer design pattern interface.
  */
-class Observer
-{
+class Observer {
 
 protected:
 
-	// INIT
-
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // INIT
+    //
+    ////////////////////////////////////////////////////////////////////////////
     Observer();
-	virtual ~Observer();
+    virtual ~Observer();
 
 public:
 
-	// INTERFACE
-
-	/**
-	 * Update view to reflect observee changes
-	 */
-	virtual void updateView() = 0;
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // INTERFACE
+    //
+    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Update view to reflect observee changes
+     */
+    virtual void updateView() = 0;
 };
 
 #endif /*OBSERVER_H_*/

@@ -1,7 +1,7 @@
 /*
  *  qrest
  *
- *  Copyright (C) 2008-2011 - Frédéric CORNU
+ *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -21,7 +21,8 @@
 #define OBSERVABLE_H_
 
 #include <vector>
-#include "observer.h"
+
+class Observer;
 
 using std::vector;
 
@@ -33,21 +34,28 @@ class Observable {
 
 protected:
 
-    //INIT
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // INIT
+    //
+    ////////////////////////////////////////////////////////////////////////////
     Observable();
     virtual ~Observable();
 
 public:
 
+    ////////////////////////////////////////////////////////////////////////////
+    //
     // INTERFACE
-
-	/**
-	 * Register a new observer.
-	 *
-	 * Add observer to observers list
-	 *
-	 * \param observer the observer to add
-	 */
+    //
+    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Register a new observer.
+     *
+     * Add observer to observers list
+     *
+     * \param observer the observer to add
+     */
     void registerObserver(Observer* observer);
 
     /**
@@ -61,19 +69,25 @@ public:
 
 protected:
 
-	// FUNCTIONS
-
-	/**
-	 * Notify all observers to update.
-	 *
-	 * Notify all registered observers to update their view.
-	 */
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // FUNCTIONS
+    //
+    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Notify all observers to update.
+     *
+     * Notify all registered observers to update their view.
+     */
     void notifyObservers() const;
 
 private:
 
-	//MEMBERS
-
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // MEMBERS
+    //
+    ////////////////////////////////////////////////////////////////////////////
     /** collection of all observers */
     vector<Observer*> _observers;
 };

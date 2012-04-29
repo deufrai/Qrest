@@ -1,4 +1,4 @@
-Latest doxygen generated documentation will always be available at this address : 
+Doxygen code documentation is built on evry change on the source tree.
+It is published on our continuous integration server.
 
-http://www.qrest.org/doc/index.html
-
+Simply browse to http://builds.wardsback.org and open the build job for your version

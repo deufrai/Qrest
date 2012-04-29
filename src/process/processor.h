@@ -1,7 +1,7 @@
 /*
  *  qrest
  *
- *  Copyright (C) 2008-2011 - Frédéric CORNU
+ *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -27,19 +27,25 @@ class Processor {
 
 protected:
 
-	// INIT
-
-	Processor();
-	virtual ~Processor();
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // INIT
+    //
+    ////////////////////////////////////////////////////////////////////////////
+    Processor();
+    virtual ~Processor();
 
 public:
 
-	// INTERFACE
-
-	/**
-	 * Perform processing according to concrete type
-	 */
-	virtual void process(void) = 0;
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // INTERFACE
+    //
+    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Perform processing according to concrete type
+     */
+    virtual void process(void) = 0;
 };
 
 #endif /* PROCESSOR_H_ */

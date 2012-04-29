@@ -1,7 +1,7 @@
 /*
  *  qrest
  *
- *  Copyright (C) 2008-2011 - Frédéric CORNU
+ *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -28,46 +28,62 @@
  *
  * Implemented as a singleton.
  */
-class QrestHelpViewer : public QMainWindow
-{
-    Q_OBJECT
+class QrestHelpViewer: public QMainWindow {
+Q_OBJECT
 
-
-	//INIT
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // INIT
+    //
+    ////////////////////////////////////////////////////////////////////////////
 public:
     ~QrestHelpViewer();
 private:
-	QrestHelpViewer(QWidget *parent = 0);
+    QrestHelpViewer(QWidget *parent = 0);
 
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // SINGLETON IMPLEMENTATION
+    //
+    ////////////////////////////////////////////////////////////////////////////
     /** the unique instance */
     static QrestHelpViewer* instance;
 
 public:
-	/**
-	 * Get the unique instance.
-	 *
-	 * \return the unique instance.
-	 */
-	static QrestHelpViewer* getInstance();
+    /**
+     * Get the unique instance.
+     *
+     * \return the unique instance.
+     */
+    static QrestHelpViewer* getInstance();
 
-	/**
-	 * Destroy help window
-	 */
-	static void destroy();
+    /**
+     * Destroy help window
+     */
+    static void destroy();
 
 private:
-	// MEMBERS
+
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // MEMBERS
+    //
+    ////////////////////////////////////////////////////////////////////////////
     Ui::QrestHelpViewerClass ui;
 
-    // FUNCTIONS
-    /**
-     * return online html index file path according to system locale
-     *
-     * \param locale system's current locale
-     *
-     * \return path to index.html file in correct folder
-     */
-    QString getHelpPathFromLocale(const QString& locale) const;
+public:
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // INTERFACE
+    //
+    ////////////////////////////////////////////////////////////////////////////
+	/**
+	 * Set the path to the html file wich will be displayed.
+	 *
+	 * \param source path to displayed file.
+	 */
+    void setSource(const QString& source);
+
 };
 
 #endif // QRESTHELPVIEWER_H

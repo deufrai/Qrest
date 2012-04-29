@@ -1,7 +1,12 @@
+v0.5
+====
+	* remember main window position.
+    * changed layout to hrizontal
+    * steadiness indicator is now progressive
+    
 v0.4.1
 ======
-
-	Fixed a bug (#0006) which caused a segfault upon startup on Qt 4.2.1 installations 
+	Fixed bug #6 : Segfault on Qt4.2.x systems on startup
 
 v0.4
 ====

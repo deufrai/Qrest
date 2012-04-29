@@ -1,7 +1,7 @@
 /*
  *  qrest
  *
- *  Copyright (C) 2008-2011 - Frédéric CORNU
+ *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -20,9 +20,12 @@
 #ifndef TAPTEMPOCALCULATOR_H_
 #define TAPTEMPOCALCULATOR_H_
 
-#include "processor.h"
-#include "../time/timeStamper.h"
 #include <list>
+
+#include "processor.h"
+
+class TimeStamper;
+
 using std::list;
 
 /**
@@ -33,95 +36,93 @@ using std::list;
  */
 class TapTempoCalculator: public Processor {
 
-	////////////////////////////////////////////////////////////////////////////////
-	//
-	// CONSTANTS
-	//
-	////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // CONSTANTS
+    //
+    ////////////////////////////////////////////////////////////////////////////
 private:
-	/** We use 3 collected deltas to guess tempo */
-	static const int DELTAS_COUNT = 3;
+    /** We use 3 collected deltas to guess tempo */
+    static const int DELTAS_COUNT = 3;
 
-	////////////////////////////////////////////////////////////////////////////////
-	//
-	// INIT
-	//
-	////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // INIT
+    //
+    ////////////////////////////////////////////////////////////////////////////
 private:
-	TapTempoCalculator();
-	virtual ~TapTempoCalculator();
+    TapTempoCalculator();
+    virtual ~TapTempoCalculator();
 
-
-	////////////////////////////////////////////////////////////////////////////////
-	//
-	// SINGLETON
-	//
-	////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // SINGLETON
+    //
+    ////////////////////////////////////////////////////////////////////////////
 private:
-	/** The single instance */
-	static TapTempoCalculator* _instance;
-
+    /** The single instance */
+    static TapTempoCalculator* _instance;
 
 public:
-	/**
-	 * ceate and get the only instance.
-	 *
-	 * \return the instance.
-	 */
-	static TapTempoCalculator* getInstance();
+    /**
+     * ceate and get the only instance.
+     *
+     * \return the instance.
+     */
+    static TapTempoCalculator* getInstance();
 
-	/**
-	 * Destroy the only instance.
-	 */
-	static void destroy();
+    /**
+     * Destroy the only instance.
+     */
+    static void destroy();
 
-	////////////////////////////////////////////////////////////////////////////////
-	//
-	// INTERFACE
-	//
-	////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // INTERFACE
+    //
+    ////////////////////////////////////////////////////////////////////////////
 public:
-	/**
-	 * Collects timestamp and calculates tempo from previsouly gathered ones
-	 */
-	virtual void process();
+    /**
+     * Collects timestamp and calculates tempo from previsouly gathered ones
+     */
+    virtual void process();
 
-	////////////////////////////////////////////////////////////////////////////////
-	//
-	// PRIVATE FUNCTIONS
-	//
-	////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // PRIVATE FUNCTIONS
+    //
+    ////////////////////////////////////////////////////////////////////////////
 private:
-	/**
-	 * init the list of deltas
-	 */
-	void initDeltas();
+    /**
+     * init the list of deltas
+     */
+    void initDeltas();
 
-	/**
-	 * get the average delta from all deltas in list
-	 *
-	 * \return the average of all deltas in list
-	 */
-	double getAverageDelta() const;
+    /**
+     * get the average delta from all deltas in list
+     *
+     * \return the average of all deltas in list
+     */
+    double getAverageDelta() const;
 
-	/**
-	 * are deltas within a narrow range ?
-	 *
-	 * \return a boolean describing steadiness
-	 */
-	bool getSteadiness() const;
+    /**
+     * are deltas within a narrow range ?
+     *
+     * \return a boolean describing steadiness
+     */
+    void getSteadiness() const;
 
-	////////////////////////////////////////////////////////////////////////////////
-	//
-	// MEMBERS
-	//
-	////////////////////////////////////////////////////////////////////////////////
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // MEMBERS
+    //
+    ////////////////////////////////////////////////////////////////////////////
 private:
-	/** provides timestamps on demand */
-	TimeStamper _timeStamper;
+    /** provides timestamps on demand */
+    TimeStamper* _pTimeStamper;
 
-	/** stores deltas between collected timestamps */
-	list<int> _deltas;
+    /** stores deltas between collected timestamps */
+    list<int> _deltas;
 };
 
 #endif /* TAPTEMPOCALCULATOR_H_ */

@@ -1,7 +1,7 @@
 /*
  *  qrest
  *
- *  Copyright (C) 2008-2011 - Frédéric CORNU
+ *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -21,40 +21,48 @@
 #include <QLabel>
 #include "../../constants.h"
 
+////////////////////////////////////////////////////////////////////////////
+//
+// INIT
+//
+////////////////////////////////////////////////////////////////////////////
 QrestAboutDialog::QrestAboutDialog(const char* versionString, QWidget *parent)
-    : QDialog(parent)
-{
-	ui.setupUi(this);
+: QDialog(parent) {
 
-	QString aboutString;
+    ui.setupUi(this);
 
-	aboutString.append("<center>")
-		.append("<h2>")
-			.append("Qrest - Really Easy Studio Toolkit")
-		.append("</h2>")
-		.append("<p>")
-			.append("Version : ")
-			.append(versionString)
-		.append("</p>")
-		.append("<p>")
-			.append(tr("Author")).append(" : Fr&eacute;d&eacute;ric CORNU &lt;<a href=\"mailto:fcornu@qrest.org?subject=Qrest\">fcornu@qrest.org</a>&gt;")
-		.append("</p>")
-		.append("<p>")
-			.append(tr("Website")).append(" : <a href=\"http://www.qrest.org/\">http://www.qrest.org</a>")
-		.append("</p>")
-		.append("<p>")
-			.append(tr("License")).append(" : <a href=\"http://www.gnu.org/licenses/gpl-3.0.txt\">General Public License v3</a>")
-		.append("</p>")
-		.append("</center>");
+    QString aboutString;
 
-	ui.aboutLabel->setText(aboutString);
+    aboutString.append("<center>")
+            .append("<h2>")
+            .append("Qrest - Really Easy Studio Toolkit")
+            .append("</h2>")
+            .append("<p>")
+            .append(tr("Version"))
+            .append(" : ")
+            .append(versionString)
+            .append("</p>")
+            .append("<p>")
+            .append(tr("Author"))
+            .append( " : Fr&eacute;d&eacute;ric CORNU <a href=\"mailto:fcornu@wardsback.org?subject=Qrest\">fcornu@wardsback.org</a>")
+            .append("</p>")
+            .append("<p>")
+            .append(tr("Website"))
+            .append(" : <a href=\"http://www.qrest.org/\">http://www.qrest.org</a>")
+            .append( "</p>")
+            .append("<p>")
+            .append(tr("License"))
+            .append( " : <a href=\"http://www.gnu.org/licenses/gpl-3.0.txt\">General Public License v3</a>")
+            .append( "</p>")
+            .append("</center>");
 
-	// we don't want the "what's this" button on this dialog
-	this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+    ui.aboutLabel->setText(aboutString);
+
+    // we don't want the "what's this" button on this dialog
+    this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
 
 }
 
-QrestAboutDialog::~QrestAboutDialog()
-{
+QrestAboutDialog::~QrestAboutDialog() {
 
 }

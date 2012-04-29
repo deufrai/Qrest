@@ -1,8 +1,8 @@
 QREST
 
-A musician toolkit aimed at helping composers, performers, recordists and mixers finding out :
+A musician toolkit aimed at helping composers, performers, recordists and mixers :
 
-- The tempo of a musical piece
+- finding out the tempo of a musical piece
 - calculate delay times for common notes, according to tempo
 - calculate LFO frequencies for common notes, according to tempo
 

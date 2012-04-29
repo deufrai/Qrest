@@ -1,0 +1,7 @@
+<RCC>
+    <qresource prefix="/">
+        <file>i18n/qrest_es.qm</file>
+        <file>i18n/qrest_fr.qm</file>
+        <file>i18n/qrest_pt.qm</file>
+    </qresource>
+</RCC>

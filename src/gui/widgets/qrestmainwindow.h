@@ -1,7 +1,7 @@
 /*
  *  qrest
  *
- *  Copyright (C) 2008-2011 - Frédéric CORNU
+ *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -23,25 +23,31 @@
 #include <QtGui/QMainWindow>
 #include "../forms/ui_qrestmainwindow.h"
 #include "../../dp/observer.h"
-#include "../../model/document.h"
 
+class Document;
+class ProgressPie;
 
 /**
  * Qrest Really Easy Studio Toolkit main window
  */
-class QrestMainWindow : public QMainWindow, Observer
-{
-    Q_OBJECT
+class QrestMainWindow: public QMainWindow, Observer {
+Q_OBJECT
 
 public:
 
-	// INIT
-
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // INIT
+    //
+    ////////////////////////////////////////////////////////////////////////////
     QrestMainWindow(QWidget *parent = 0);
     ~QrestMainWindow();
 
+    ////////////////////////////////////////////////////////////////////////////
+    //
     // INTERFACE
-
+    //
+    ////////////////////////////////////////////////////////////////////////////
     /**
      * update view to reflect App data changes
      */
@@ -49,13 +55,23 @@ public:
 
 private slots:
 
-	// SLOTS
-
-	/**
-	 * Slot that gets called when 'return' is presses with tempo edit field
-	 * focused.
-	 */
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // SLOTS
+    //
+    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Slot that gets called when 'return' is presses with tempo edit field
+     * focused.
+     */
     void on_tempoEdit_returnPressed();
+
+    /**
+     * Slot that gets called whenever tempo input field's content has changed
+     *
+     * \param text the new text
+     */
+    void on_tempoEdit_textEdited(const QString& text);
 
     /**
      * Slot that gets called when 'tap' button is pressed
@@ -77,53 +93,65 @@ private slots:
      */
     void on_tripletRadio_clicked();
 
-	/**
-	 * Slot that gets called upon "Quit" action triggering
-	 */
-	void on_actionQuit_triggered();
+    /**
+     * Slot that gets called upon "Quit" action triggering
+     */
+    void on_actionQuit_triggered();
 
-	/**
-	 * Slot that gets called upon "About" action triggering
-	 */
-	void on_actionAbout_triggered();
+    /**
+     * Slot that gets called upon "Preferences" action triggering
+     */
+    void on_actionPreferences_triggered();
 
-	/**
-	 * Slot that gets called upon "Help" action triggering.
-	 *
-	 * Shows help viewer
-	 */
-	void on_actionHelp_triggered();
+    /**
+     * Slot that gets called upon "About" action triggering
+     */
+    void on_actionAbout_triggered();
 
-	/**
-	 * Makes sure help viewer is on front.
-	 */
-	void raiseHelp();
+    /**
+     * Slot that gets called upon "Help" action triggering.
+     *
+     * Shows help viewer
+     */
+    void on_actionHelp_triggered();
+
+    /**
+     * Makes sure help viewer is on front.
+     */
+    void raiseHelp();
 
 private:
-	// EVENT HANDLERS
 
-	/**
-	 * Custom event handler used for tempo edit field and mousewheel events
-	 *
-	 * \param target the object tagetted by the event
-	 * \param event the event to be handled
-	 *
-	 * \return true if event should not be handled by other handlers.
-	 */
-	virtual bool eventFilter(QObject *target, QEvent *event);
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // EVENT HANDLERS
+    //
+    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Custom event handler used for tempo edit field and mousewheel events
+     *
+     * \param target the object tagetted by the event
+     * \param event the event to be handled
+     *
+     * \return true if event should not be handled by other handlers.
+     */
+    virtual bool eventFilter(QObject *target, QEvent *event);
 
-	/**
-	 * Handles close event on this window.
-	 *
-	 * Destroys help window.
-	 */
-	virtual void closeEvent(QCloseEvent* event);
+    /**
+     * Handles close event on this window.
+     *
+     * Destroys help window.
+     */
+    virtual void closeEvent(QCloseEvent* event);
 
-	// FUNCTIONS
-
-	/**
-	 * Give the focus to tempo input field.
-	 */
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // FUNCTIONS
+    //
+    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Give the focus to tempo input field.
+     */
     void setFocusToTempoInput(void) const;
 
     /**
@@ -145,13 +173,33 @@ private:
      */
     void statusTempMessage(const QString& message) const;
 
-	// MEMBERS
+    /**
+     * Clear status bar message zone
+     */
+    void statusClear(void) const;
 
-	/** The GUI subclass */
+    /**
+     * Refresh delay times display fields.
+     */
+    void updateDelayDisplays(void);
+
+    /**
+     * Refresh LFO display fields.
+     */
+    void updateLfoDisplays(void);
+
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // MEMBERS
+    //
+    ////////////////////////////////////////////////////////////////////////////
+    /** The GUI subclass */
     Ui::QrestMainWindowClass ui;
 
     /** Application data store */
     Document* _document;
+
+    ProgressPie* _pie;
 
 };
 

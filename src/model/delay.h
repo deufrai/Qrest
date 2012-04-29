@@ -1,7 +1,7 @@
 /*
  *  qrest
  *
- *  Copyright (C) 2008-2011 - Frédéric CORNU
+ *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -29,15 +29,22 @@
  * <li> The frequency of an LFO beating at that period </li>
  * </ul>
  */
-class Delay
-{
+class Delay {
 public:
 
+    ////////////////////////////////////////////////////////////////////////////
+    //
     // INIT
-	Delay();
-	virtual ~Delay();
+    //
+    ////////////////////////////////////////////////////////////////////////////
+    Delay();
+    virtual ~Delay();
 
-	// ACCESS
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // ACCESS
+    //
+    ////////////////////////////////////////////////////////////////////////////
     /**
      * Set the period.
      * Frequency gets set as well to 1 / period * 1000
@@ -46,26 +53,33 @@ public:
      */
     inline void setPeriod(const double period) {
 
-    	_period = period;
-    	_frequency = 1 / _period * Constants::MILLISEC_PER_SECOND;
+        _period = period;
+        _frequency = 1 / _period * Constants::MILLISEC_PER_SECOND;
     }
 
     /**
      * Get the period.
      * \return the period
      */
-    inline double getPeriod() const { return _period; }
+    inline double getPeriod() const {
+        return _period;
+    }
 
     /**
      * Get the frenquency.
      * \return the frenquency
      */
-    inline double getFrenquency() const { return _frequency; }
+    inline double getFrequency() const {
+        return _frequency;
+    }
 
 private:
 
+    ////////////////////////////////////////////////////////////////////////////
+    //
     // MEMBERS
-
+    //
+    ////////////////////////////////////////////////////////////////////////////
     /** the period of this delay */
     double _period;
 

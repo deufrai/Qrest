@@ -1,7 +1,7 @@
 /*
  *  qest
  *
- *  Copyright (C) 2008-2011 - Frédéric CORNU
+ *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -28,54 +28,96 @@
  *	Have fun
  */
 
-#include "model/document.h"
-#include <QtGui>
-#include <QApplication>
-#include "gui/widgets/qrestmainwindow.h"
-#include "constants.h"
+#ifndef QT_NO_DEBUG
+#include <QDebug>
+#endif
 
+#include <QApplication>
+#include <QTranslator>
+
+#ifdef Q_WS_MAC
+#include <QLibraryInfo>
+#endif
+
+#include "gui/widgets/qrestmainwindow.h"
+#include "helpers/localeHelper.h"
+
+/**
+ * Install translator into the application
+ *
+ * \param app : the target application
+ * \param filePrefix : prefix used to ID this tranlsation
+ * \param folderPath : path to the folder where translation is located
+ */
+void installTranslator (QApplication& app, QString& filePrefix, QString& folderPath);
+
+
+
+//////////////////////////////////////////////////
+//
+// Life starts here
+//
+//////////////////////////////////////////////////
 int main(int argc, char *argv[]) {
 
     QApplication application(argc, argv);
 
-    // get the current locale description from system
-    QString locale = QLocale::system().name().section('_', 0, 0);
-
-    // create and install a translator according to found locale
-    QTranslator translator;
-    QString filePath;
-
-    filePath.append(Constants::I18N_FOLDER_LOCATION)
-        .append(QDir::separator())
-        .append("qrest_").append(locale);
-
-    qDebug() << "Translation file path :" << filePath;
-
-    bool bTransLoaded = translator.load(filePath);
-
-    if ( bTransLoaded  ) {
-
-        qDebug() << "Translation file loaded successfully";
-        application.installTranslator(&translator);
-
-    } else {
-
-        qDebug() << "Failed to load translation file";
-    }
+    // create and install translators for the application according to system locale
+    QString appTransfilePrefix= "qrest_";
+    QString appTransFolderPath = ":/i18n";
+    installTranslator(application, appTransfilePrefix, appTransFolderPath);
 
 
-    // create app data
-    Document::getInstance();
+#ifdef Q_WS_MAC
+
+    /*
+     * on Mac :
+     *
+     * - some menu entries are merged into the "application menu" and their translations are
+     *   provided by a Qt specific translation file
+     *
+     * - no icons are shown next to menu items
+     */
+
+    // install translator for Qt itself
+    QString qtTransfilePrefix= "qt_";
+    QString qtTransFolderPath = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
+    installTranslator(application, qtTransfilePrefix, qtTransFolderPath);
+
+    // Don't show icons for menu items on Mac
+    application.setAttribute(Qt::AA_DontShowIconsInMenus);
+#endif
 
     // create and show main window
     QrestMainWindow mainWindow;
     mainWindow.resize(mainWindow.minimumSizeHint());
     mainWindow.show();
 
-    int nResult = application.exec();
+    return application.exec();
+}
 
-    // release APP data
-    Document::destroy();
 
-    return nResult;
+
+void installTranslator (QApplication& app, QString& filePrefix, QString& folderPath) {
+
+
+    QTranslator* pTranslator = new QTranslator();
+
+    bool isTransLoaded = pTranslator->load(filePrefix + LocaleHelper::getLocale(), folderPath);
+
+    if (isTransLoaded) {
+
+#ifndef QT_NO_DEBUG
+        qDebug() << "Translation file loaded successfully : " << filePrefix + LocaleHelper::getLocale();
+#endif
+
+        app.installTranslator(pTranslator);
+
+    } else {
+
+        qWarning("Failed to load translation file : %s%s",
+                 filePrefix.toStdString().c_str(),
+                 LocaleHelper::getLocale().toStdString().c_str());
+    }
+
 }

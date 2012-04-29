@@ -1,7 +1,7 @@
 /*
  *  qrest
  *
- *  Copyright (C) 2008-2011 - Frédéric CORNU
+ *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,6 +18,7 @@
  */
 
 #include "observable.h"
+#include "observer.h"
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -28,14 +29,8 @@
 Observable::Observable() {
 }
 
-
-
-
 Observable::~Observable() {
 }
-
-
-
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -48,35 +43,26 @@ void Observable::registerObserver(Observer* observer) {
     _observers.push_back(observer);
 }
 
-
-
-
 void Observable::removeObserver(Observer* observer) {
 
     vector<Observer*>::iterator it = _observers.begin();
 
-    bool found = false;
+    while (it != _observers.end()) {
 
-    while ( it != _observers.end() && ! found ) {
-
-        if ( *it == observer ) {
+        if (*it == observer) {
 
             _observers.erase(it);
-            found = true;
+            break;
         }
         it++;
     }
 }
 
-
-
-
 void Observable::notifyObservers() const {
-
 
     vector<Observer*>::const_iterator it = _observers.begin();
 
-    while ( it != _observers.end() ) {
+    while (it != _observers.end()) {
 
         (*it)->updateView();
         it++;

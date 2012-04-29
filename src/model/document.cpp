@@ -1,7 +1,7 @@
 /*
  *  qrest
  *
- *  Copyright (C) 2008-2011 - Frédéric CORNU
+ *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -18,8 +18,8 @@
  */
 
 #include "document.h"
+#include "delay.h"
 #include "../process/delayCalculator.h"
-
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -30,34 +30,29 @@
 Document* Document::_instance = 0;
 
 Document::Document()
-: _tempo(TEMPO_DEFAULT),
+: _tempo(Constants::TEMPO_DEFAULT),
   _steady(true),
+  _steadiness(FULL_STEADINESS),
   _tempoFromTap(false),
-  _multiplier(MULTIPLIER_PLAIN){
+  _multiplier(MULTIPLIER_PLAIN) {
 
-	// init vector of Delay objects
-	initDelays();
+    // init vector of Delay objects
+    initDelays();
 
 }
-
-
-
 
 Document::~Document() {
 
-	// destroy delays
-	destroyDelays();
+    // destroy delays
+    destroyDelays();
 
-	// destroy DelayCalculator
-	DelayCalculator::destroy();
+    // destroy DelayCalculator
+    DelayCalculator::destroy();
 }
-
-
-
 
 Document* Document::getInstance() {
 
-    if ( 0 == _instance ) {
+    if (0 == _instance) {
 
         _instance = new Document();
     }
@@ -65,20 +60,11 @@ Document* Document::getInstance() {
     return _instance;
 }
 
-
-
-
 void Document::destroy() {
 
-    if ( _instance ) {
-
-        delete _instance;
-        _instance = 0;
-    }
+    delete _instance;
+    _instance = 0;
 }
-
-
-
 
 ////////////////////////////////////////////////////////////////////////////////
 //
@@ -88,7 +74,7 @@ void Document::destroy() {
 
 void Document::setTempo(const double tempo) {
 
-    if ( (TEMPO_MIN <= tempo && tempo <= TEMPO_MAX ) ) {
+    if ((Constants::TEMPO_MIN <= tempo && tempo <= Constants::TEMPO_MAX)) {
 
         _tempo = tempo;
         updateDelays();
@@ -97,9 +83,6 @@ void Document::setTempo(const double tempo) {
     notifyObservers();
 }
 
-
-
-
 ////////////////////////////////////////////////////////////////////////////////
 //
 // PRIVATE FUNCTIONS
@@ -107,26 +90,25 @@ void Document::setTempo(const double tempo) {
 ////////////////////////////////////////////////////////////////////////////////
 void Document::initDelays(void) {
 
-	for (int i = 0; i < DELAYS_COUNT; i++) {
+    for (int i = 0; i < DELAYS_COUNT; i++) {
 
-		_delays.push_back(new Delay());
-	}
+        _delays.push_back(new Delay());
+    }
 }
 
 void Document::destroyDelays(void) {
 
-	for ( int i = 0; i < DELAYS_COUNT; i++ ) {
+    for (int i = 0; i < DELAYS_COUNT; i++) {
 
-		delete _delays[i];
-		_delays[i] = 0;
-	}
+        delete _delays[i];
+        _delays[i] = 0;
+    }
 
-	_delays.clear();
+    _delays.clear();
 
 }
 
-
 void Document::updateDelays(void) {
 
-	DelayCalculator::getInstance()->process();
+    DelayCalculator::getInstance()->process();
 }

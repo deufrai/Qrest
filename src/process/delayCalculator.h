@@ -1,7 +1,7 @@
 /*
  *  qrest
  *
- *  Copyright (C) 2008-2011 - Frédéric CORNU
+ *  Copyright (C) 2008-2012 - Frédéric CORNU
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
@@ -28,50 +28,57 @@
  */
 class DelayCalculator: public Processor {
 
-
 private:
 
-	// INIT
-	DelayCalculator();
-	virtual ~DelayCalculator();
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // INIT
+    //
+    ////////////////////////////////////////////////////////////////////////////
+    DelayCalculator();
+    virtual ~DelayCalculator();
 
-	// SINGLETON
-
-	/**
-	 * The only instance.
-	 */
-	static DelayCalculator* _instance;
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // SINGLETON IMPLEMENTATION
+    //
+    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * The only instance.
+     */
+    static DelayCalculator* _instance;
 
 public:
+    /**
+     * init and get the only instance.
+     *
+     * \return the instance
+     */
+    static DelayCalculator* getInstance();
 
-	// SINGLETON
+    /**
+     * destroy the only instance.
+     */
+    static void destroy(void);
 
-	/**
-	 * init and get the only instance.
-	 *
-	 * \return the instance
-	 */
-	static DelayCalculator* getInstance();
-
-	/**
-	 * destroy the only instance.
-	 */
-	static void destroy(void);
-
-	// PROCESSOR INTERFACE
-
-	/**
-	 * Get tempo from app data store and calculate delays
-	 */
-	virtual void process(void);
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // PROCESSOR INTERFACE
+    //
+    ////////////////////////////////////////////////////////////////////////////
+    /**
+     * Get tempo from app data store and calculate delays
+     */
+    virtual void process(void);
 
 private:
 
-	// FUNCTIONS
-
-	double getDelayPeriodFromTempoAndMutliplier(
-			const double tempo,
-			const double mutliplier);
+    ////////////////////////////////////////////////////////////////////////////
+    //
+    // FUNCTIONS
+    //
+    ////////////////////////////////////////////////////////////////////////////
+    double getDelayPeriodFromTempoAndMutliplier(const double tempo, const double mutliplier);
 };
 
 #endif /* DELAYCALCULATOR_H_ */
