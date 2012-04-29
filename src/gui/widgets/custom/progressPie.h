@@ -23,7 +23,6 @@
 #include <QWidget>
 
 class QPaintEvent;
-class QMouseEvent;
 
 /**
  * Custom widget : a pie representing a double value between 0 and 1, wich gets

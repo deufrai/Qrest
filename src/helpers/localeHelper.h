@@ -21,7 +21,6 @@
 #define LOCALEHELPER_H_
 
 #include <QString>
-#include <QLocale>
 
 /**
  * A set of static helper functions to deal with locales.

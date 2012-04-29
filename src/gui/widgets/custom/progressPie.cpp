@@ -23,7 +23,6 @@
 
 #include "progressPie.h"
 #include "../../../constants.h"
-#include <QMouseEvent>
 #include <QPaintEvent>
 #include <QPainter>
 #include <QLineEdit>

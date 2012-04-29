@@ -38,7 +38,7 @@ public:
      * \param pWidget : the widget to scan
      *
      */
-    static void setDefaultFontSize(QWidget*);
+    static void setDefaultFontSize(QWidget* pWidget);
 };
 
 #endif // WIDGETSIZEHELPER_H

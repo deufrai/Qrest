@@ -20,8 +20,9 @@
 #ifndef TAPTEMPOCALCULATOR_H_
 #define TAPTEMPOCALCULATOR_H_
 
-#include "processor.h"
 #include <list>
+
+#include "processor.h"
 
 class TimeStamper;
 

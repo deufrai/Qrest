@@ -20,6 +20,7 @@
 #include "settings.h"
 
 Settings* Settings::_instance = 0;
+
 const char* Settings::WINDOW_POSITION = "windowPosition";
 const char* Settings::REMEMBER_WINDOW_POSITION = "rememberWindowPosition";
 
@@ -31,8 +32,8 @@ const char* Settings::MIDI_DEVICE_DEFAULT = "neverused";
 
 const char* Settings::MIDI_TRIGGER_EVENT = "triggerEvent";
 
-Settings::Settings() :
-    _settings("wardsback", "qrest") {
+Settings::Settings() 
+: _settings("wardsback", "qrest") {
 
 }
 

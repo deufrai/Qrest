@@ -103,17 +103,22 @@
         <translation>OK</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestaboutdialog.cpp" line="38"/>
+        <location filename="../../src/gui/widgets/qrestaboutdialog.cpp" line="41"/>
+        <source>Version</source>
+        <translation>Version</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/widgets/qrestaboutdialog.cpp" line="46"/>
         <source>Author</source>
         <translation>Auteur</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestaboutdialog.cpp" line="40"/>
+        <location filename="../../src/gui/widgets/qrestaboutdialog.cpp" line="50"/>
         <source>Website</source>
         <translation>Site Web</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestaboutdialog.cpp" line="42"/>
+        <location filename="../../src/gui/widgets/qrestaboutdialog.cpp" line="54"/>
         <source>License</source>
         <translation>License</translation>
     </message>

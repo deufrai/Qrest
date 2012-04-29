@@ -18,18 +18,25 @@
  */
 
 #include "document.h"
+#include "delay.h"
 #include "../process/delayCalculator.h"
+
+////////////////////////////////////////////////////////////////////////////////
+//
+// INIT
+//
+////////////////////////////////////////////////////////////////////////////////
 
 Document* Document::_instance = 0;
 
-Document::Document() :
-    _tempo(Constants::TEMPO_DEFAULT),
-    _steady(true),
-    _steadiness(FULL_STEADINESS),
-    _tempoSource(TEMPO_SOURCE_KEYBOARD),
-    _multiplier(MULTIPLIER_PLAIN),
-    _midiClockRunning(false),
-    _triggerEvent(0) {
+Document::Document() 
+: _tempo(Constants::TEMPO_DEFAULT),
+  _steady(true),
+  _steadiness(FULL_STEADINESS),
+  _tempoSource(TEMPO_SOURCE_KEYBOARD),
+  _multiplier(MULTIPLIER_PLAIN),
+  _midiClockRunning(false),
+  _triggerEvent(0) {
 
     // init vector of Delay objects
     initDelays();
@@ -61,6 +68,11 @@ void Document::destroy() {
     _instance = 0;
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// MEMBER FUNCTIONS
+//
+////////////////////////////////////////////////////////////////////////////////
 
 void Document::setTempo(const double tempo) {
 
@@ -73,6 +85,11 @@ void Document::setTempo(const double tempo) {
     notifyObservers();
 }
 
+////////////////////////////////////////////////////////////////////////////////
+//
+// PRIVATE FUNCTIONS
+//
+////////////////////////////////////////////////////////////////////////////////
 void Document::initDelays(void) {
 
     for (int i = 0; i < DELAYS_COUNT; i++) {

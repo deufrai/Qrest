@@ -33,6 +33,7 @@
 #include "qresthelpviewer.h"
 #include "../../settings/settings.h"
 #include "../../model/document.h"
+#include "../../model/delay.h"
 #include "custom/progressPie.h"
 #include "../../helpers/localeHelper.h"
 #include "../../helpers/widgetsizehelper.h"
@@ -46,8 +47,9 @@
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-QrestMainWindow::QrestMainWindow(QWidget *parent) :
-		QMainWindow(parent), _document(Document::getInstance()) {
+QrestMainWindow::QrestMainWindow(QWidget *parent)
+: QMainWindow(parent),
+  _document(Document::getInstance()) {
 
 	// register as an observer for app data
 	_document->registerObserver(this);
@@ -60,9 +62,9 @@ QrestMainWindow::QrestMainWindow(QWidget *parent) :
 	WidgetSizeHelper::setDefaultFontSize( this );
 #endif
 
-	// setup steadiness indocator
-	_pie = new ProgressPie();
-	ui.tempoInputHorizontalLayout->addWidget(_pie);
+    // setup steadiness indicator
+    _pie = new ProgressPie();
+    ui.tempoInputHorizontalLayout->addWidget(_pie);
 
 	// update view
 	updateView();
@@ -136,9 +138,10 @@ QrestMainWindow::QrestMainWindow(QWidget *parent) :
 
 QrestMainWindow::~QrestMainWindow() {
 
-	// store position into user's prefences.
-	Settings::getInstance()->getSettings().setValue(Settings::WINDOW_POSITION,
-			this->pos());
+    // store position into user's prefences.
+    Settings::getInstance()->getSettings()
+                    .setValue(Settings::WINDOW_POSITION,
+                              this->pos());
 
 	// save all prefs
 	Settings::getInstance()->getSettings().sync();

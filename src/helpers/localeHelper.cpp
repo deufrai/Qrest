@@ -17,10 +17,11 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#include <QLocale>
+
 #include "localeHelper.h"
 #include "../constants.h"
-#include <QLocale>
-#include <QDir>
+
 
 QString LocaleHelper::locale = QLocale::system().name().section('_', 0, 0);
 

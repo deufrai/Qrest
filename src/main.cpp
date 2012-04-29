@@ -28,13 +28,18 @@
  *	Have fun
  */
 
-#include <QtGui>
-#include <QLibraryInfo>
+#ifndef QT_NO_DEBUG
+#include <QDebug>
+#endif
+
 #include <QApplication>
-#include <QMessageBox>
+#include <QTranslator>
 #include <QStringList>
 
-#include "model/document.h"
+#ifdef Q_WS_MAC
+#include <QLibraryInfo>
+#endif
+
 #include "gui/widgets/qrestmainwindow.h"
 #include "constants.h"
 #include "helpers/localeHelper.h"
@@ -44,7 +49,7 @@
 #include "settings/settings.h"
 #include "midi/events/midieventfactory.h"
 #include "midi/midihelper.h"
-
+#include "model/document.h"
 
 /**
  * Install translator into the application
