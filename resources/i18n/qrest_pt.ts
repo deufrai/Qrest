@@ -54,39 +54,29 @@
     <message>
         <location filename="../../src/gui/forms/midilearndialog.ui" line="136"/>
         <source>Cancel</source>
-        <translation type="unfinished"></translation>
+        <translation>Cancelar</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/midilearndialog.ui" line="146"/>
         <source>OK</source>
-        <translation type="unfinished">OK</translation>
+        <translation>OK</translation>
     </message>
 </context>
 <context>
     <name>QObject</name>
     <message>
-        <location filename="../../src/main.cpp" line="124"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="112"/>
         <source>Welcome to Qrest</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="125"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="113"/>
         <source>It appears this is your first use of qrest&apos;s MIDI features</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/main.cpp" line="127"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="115"/>
         <source>You are invited to check qrest&apos;s MIDI settings and chose the MDI device you want to connect to</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/main.cpp" line="138"/>
-        <source>MIDI Connection failure</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/main.cpp" line="139"/>
-        <source>MIDI connection could not be made to device : </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -134,27 +124,27 @@
 <context>
     <name>QrestMainWindow</name>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="77"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="79"/>
         <source>I&apos;m ready, sir</source>
         <translation>Estou pronto, chefe</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="148"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="187"/>
         <source>You&apos;re steady</source>
         <translation>Está estável</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="152"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="191"/>
         <source>Keep tapping...</source>
         <translation>Continue a clicar...</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="380"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="487"/>
         <source>MIDI Clock Sync : Waiting...</source>
         <translation type="unfinished"></translation>
     </message>
     <message numerus="yes">
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="181"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="220"/>
         <source>Displayed BPM reliability : %n</source>
         <translation>
             <numerusform>Fiabilidade dos BPM : %n</numerusform>
@@ -162,67 +152,77 @@
         </translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="163"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="202"/>
         <source>MIDI Clock Sync : Locked</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="167"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="206"/>
         <source>MIDI Clock Sync : Acquiring...</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="223"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="262"/>
         <source>Recalculation needed</source>
         <translation>É necessário recalcular</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="310"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="417"/>
         <source>Online help file could not be found.</source>
         <translation>Ficheiro de ajuda online não encontrado.</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="312"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="419"/>
         <source>Please consider reporting this as a bug on Qrest&apos;s website.</source>
         <translation>Por favor considere reportar este problema no website do Qrest.</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="316"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="423"/>
         <source>Warning : No help file found</source>
         <translation>Aviso : Ficheiro de ajuda não encontrado</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="442"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="550"/>
         <source>A MIDI trigger event for TAPTEMPO has not yet been set</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="444"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="552"/>
         <source>You will be redirected to the trigger configuration window</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="448"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="556"/>
         <source>No configured MIDI trigger</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="191"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="662"/>
+        <source>MIDI Connection failure</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="663"/>
+        <source>MIDI connection could not be made to device : </source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="230"/>
         <source>MIDI CLock synchronisation has been lost</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="193"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="232"/>
         <source>External MIDI Clock source stopped emitting without sending the STOP command.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="195"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="234"/>
         <source>MIDI Clock slave mode will be disabled.</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="199"/>
+        <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="238"/>
         <source>MIDI Clock timeout</source>
         <translation type="unfinished"></translation>
     </message>
@@ -282,7 +282,7 @@
     <message>
         <location filename="../../src/gui/forms/qrestmainwindow.ui" line="143"/>
         <source>MIDI</source>
-        <translation type="unfinished"></translation>
+        <translation>MIDI</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/qrestmainwindow.ui" line="149"/>
@@ -392,7 +392,7 @@
     <message>
         <location filename="../../src/gui/widgets/settingsdialog.cpp" line="47"/>
         <source>MIDI</source>
-        <translation type="unfinished"></translation>
+        <translation>MIDI</translation>
     </message>
     <message>
         <location filename="../../src/gui/widgets/settingsdialog.cpp" line="125"/>
@@ -402,16 +402,6 @@
     <message>
         <location filename="../../src/gui/widgets/settingsdialog.cpp" line="126"/>
         <source>MIDI input port name cannot be empty</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="176"/>
-        <source>MIDI Connection failure</source>
-        <translation type="unfinished"></translation>
-    </message>
-    <message>
-        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="177"/>
-        <source>MIDI connection could not be made to device : </source>
         <translation type="unfinished"></translation>
     </message>
 </context>
@@ -428,12 +418,6 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/qrestpreferencesdialog.ui" line="32"/>
-        <source>User Interface</source>
-        <translation>Interface do utilizador</translation>
-
-    </message>
-    <message>
         <location filename="../../src/gui/forms/settingsdialog.ui" line="72"/>
         <source>Should Qrest&apos;s main window be opened at the screen location it had on last run ?</source>
         <translation>Deseja reabrir a janela principal do Qrest na sua última localização?</translation>
@@ -446,7 +430,7 @@
     <message>
         <location filename="../../src/gui/forms/settingsdialog.ui" line="102"/>
         <source>MIDI</source>
-        <translation type="unfinished"></translation>
+        <translation>MIDI</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/settingsdialog.ui" line="112"/>
@@ -491,7 +475,7 @@
     <message>
         <location filename="../../src/gui/forms/settingsdialog.ui" line="241"/>
         <source>OK</source>
-        <translation type="unfinished">OK</translation>
+        <translation>OK</translation>
     </message>
 </context>
 </TS>
