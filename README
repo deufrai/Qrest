@@ -25,7 +25,7 @@ Mirrored by    : git://wardsback.org/qrest
 ================
 
 - master : latest stable, production release
-- releases-### : feature-frozen version under tests for next release + maintenance code, once release ### has gone live
+- releases/### : feature-frozen version under tests for next ### release + maintenance code, once release ### has gone live
 - dev : unscheduled / experimental code for future features & releases
 - topic/* : topic branches mainly named after associated bugtracker's feature reference
 
