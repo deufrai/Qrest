@@ -19,7 +19,7 @@
 
 #include "constants.h"
 
-const char* Constants::VERSION_STRING = "0.6-dev";
+const char* Constants::VERSION_STRING = "0.6-beta";
 const char* Constants::MIDI_ENGINE_NAME = "qrest";
 
 const QString Constants::MIDI_TYPE_NOTE = "N";
