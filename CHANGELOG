@@ -2,7 +2,8 @@ v0.6
 ====
     * added MIDI CLock Synchro to recieve BPM from your favourite sequencer
     * TAPTEMPO can now be triggered by MIDI events (Note ON & Program Change)
-    * Builds, run & looks fine on OSX
+    * Builds, runs & looks fine on OSX
+
 v0.5
 ====
     * remember main window position.
