@@ -93,7 +93,7 @@ void SyncState::processEvent(const MidiEvent* event) {
          * ========
          *
          * Midi Clock events are sent 24 times every 4th note.
-         * So we count them intill we have 24 and then trigger a tempo calculation
+         * So we count them untill we have 24 and then trigger a tempo calculation
          *
          */      
         if ( ++_midiClockCounter == Constants::MIDI_CLOCK_EVENTS_PER_QUARTER ) {

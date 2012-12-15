@@ -31,7 +31,7 @@ void LearnState::processEvent(const MidiEvent* event) {
      * We are learning the event that will trigger the TAP function.
      * Once captured, we send it to the GUI via the MidiController
      *
-     * We handle 3 different types of events :
+     * We handle 2 different types of events :
      *
      *  - Note ON
      *  - Program Change
