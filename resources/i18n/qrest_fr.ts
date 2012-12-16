@@ -154,7 +154,7 @@
     <message>
         <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="202"/>
         <source>MIDI Clock Sync : Locked</source>
-        <translation>Synchro MIDI Clock : Vérrouillée</translation>
+        <translation>Synchro MIDI Clock : Verrouillée</translation>
     </message>
     <message>
         <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="206"/>
