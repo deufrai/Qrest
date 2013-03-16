@@ -4,22 +4,22 @@
 <context>
     <name>MidiLearnDialog</name>
     <message>
-        <location filename="../../src/gui/widgets/midilearndialog.cpp" line="71"/>
+        <location filename="../../src/gui/widgets/midilearndialog.cpp" line="90"/>
         <source>Note ON</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/midilearndialog.cpp" line="72"/>
+        <location filename="../../src/gui/widgets/midilearndialog.cpp" line="91"/>
         <source>Note : </source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/midilearndialog.cpp" line="81"/>
+        <location filename="../../src/gui/widgets/midilearndialog.cpp" line="100"/>
         <source>Program Change</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/midilearndialog.cpp" line="82"/>
+        <location filename="../../src/gui/widgets/midilearndialog.cpp" line="101"/>
         <source>Program : </source>
         <translation type="unfinished"></translation>
     </message>
@@ -109,6 +109,11 @@
     </message>
     <message>
         <location filename="../../src/gui/widgets/qrestaboutdialog.cpp" line="54"/>
+        <source>Twitter Feed</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/widgets/qrestaboutdialog.cpp" line="58"/>
         <source>License</source>
         <translation>Licencia</translation>
     </message>
