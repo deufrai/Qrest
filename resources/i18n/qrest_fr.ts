@@ -79,6 +79,26 @@
         <source>You are invited to check qrest&apos;s MIDI settings and chose the MDI device you want to connect to</source>
         <translation>Nous vous invitons à vérifier la configuration MIDI de qrest et à choisir le péripérique MIDI auquel vous voulez vous connecter</translation>
     </message>
+    <message>
+        <location filename="../../src/constants.cpp" line="41"/>
+        <source>English</source>
+        <translation>Anglais</translation>
+    </message>
+    <message>
+        <location filename="../../src/constants.cpp" line="42"/>
+        <source>French</source>
+        <translation>Français</translation>
+    </message>
+    <message>
+        <location filename="../../src/constants.cpp" line="43"/>
+        <source>Spanish</source>
+        <translation>Espagnol</translation>
+    </message>
+    <message>
+        <location filename="../../src/constants.cpp" line="44"/>
+        <source>Portuguese</source>
+        <translation>Portugais</translation>
+    </message>
 </context>
 <context>
     <name>QrestAboutDialog</name>
@@ -390,22 +410,22 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="46"/>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="50"/>
         <source>Main</source>
         <translation>Général</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="47"/>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="51"/>
         <source>MIDI</source>
         <translation>MIDI</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="125"/>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="144"/>
         <source>Invalid data</source>
         <translation>Donnée invalide</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="126"/>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="144"/>
         <source>MIDI input port name cannot be empty</source>
         <translation>Le nom du port d&apos;entrée MIDI ne peut pas être vide</translation>
     </message>
@@ -433,52 +453,57 @@
         <translation>Enregistrer la &amp;position de la fenêtre</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="102"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="82"/>
+        <source>&amp;Language</source>
+        <translation>&amp;Langue</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="115"/>
         <source>MIDI</source>
         <translation>MIDI</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="112"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="125"/>
         <source>This name will be used by your system to identify qrest&apos;s MIDI input port</source>
         <translation>Nom utilisé par votre système pour identifier le port d&apos;entrée MIDI de qrest</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="115"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="128"/>
         <source>Midi input &amp;port name :</source>
         <translation>Nom du &amp;port d&apos;entrée MIDI :</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="128"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="141"/>
         <source>The MIDI device to connect to</source>
         <translation>Le périphérique MIDI auquel se connecter</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="131"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="144"/>
         <source>Connect  to &amp;device :</source>
         <translation>&amp;Connection au périphérique :</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="144"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="157"/>
         <source>Review or set a new MIDI trigger for the TAPTEMPO</source>
         <translation>Revoir ou définir le trigger MIDI pour le TAPTEMPO</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="147"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="160"/>
         <source>TAPTEMPO MIDI &amp;Trigger :</source>
         <translation>&amp;Trigger MIDI TAPTEMPO :</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="183"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="196"/>
         <source>Display / Set</source>
         <translation>Voir / Définir</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="231"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="244"/>
         <source>Cancel</source>
         <translation>Annuler</translation>
     </message>
     <message>
-        <location filename="../../src/gui/forms/settingsdialog.ui" line="241"/>
+        <location filename="../../src/gui/forms/settingsdialog.ui" line="254"/>
         <source>OK</source>
         <translation>OK</translation>
     </message>

@@ -32,7 +32,7 @@ const char* Settings::MIDI_DEVICE_DEFAULT = "neverused";
 
 const char* Settings::MIDI_TRIGGER_EVENT = "triggerEvent";
 
-const char* Settings::UI_PREFERRED_LCOALE = "ui_locale";
+const char* Settings::UI_PREFERRED_LOCALE = "ui_locale";
 
 Settings::Settings() 
 : _settings("wardsback", "qrest") {

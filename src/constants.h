@@ -20,6 +20,7 @@
 #ifndef CONSTANTS_H_
 #define CONSTANTS_H_
 #include <QString>
+#include <QMap>
 
 /**
  * Stores application-wide constants.
@@ -31,6 +32,21 @@ private:
     virtual ~Constants();
 
 public:
+
+    /////////////////////////////////////////////////////////////////////
+    //
+    // Helper Functions
+    //
+    ////////////////////////////////////////////////////////////////////*
+    static void initLocaleNames();
+
+    /////////////////////////////////////////////////////////////////////
+    //
+    // Data
+    //
+    ////////////////////////////////////////////////////////////////////*
+
+
     /**
      * how many seconds in a minute ?
      */
@@ -101,6 +117,8 @@ public:
     /** flag used to represent a MidiProgramChange when serialized to QStringList */
     static const QString MIDI_TYPE_PC;
 
+    /** Map that holds localized local full names */
+    static QMap<QString, QString> localNames;
 };
 
 #endif /* CONSTANTS_H_ */

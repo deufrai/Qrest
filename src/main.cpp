@@ -81,6 +81,9 @@ int main( int argc, char *argv[] ) {
     QString appTransfilePrefix = "qrest_";
     QString appTransFolderPath = ":/i18n";
 
+    // init local names map
+    Constants::initLocaleNames();
+
     // load settings
     loadSettings();
 
@@ -93,9 +96,9 @@ int main( int argc, char *argv[] ) {
 
     QString locale;
 
-    if( Settings::getInstance()->getSettings().contains( Settings::UI_PREFERRED_LCOALE ) ) {
+    if( Settings::getInstance()->getSettings().contains( Settings::UI_PREFERRED_LOCALE ) ) {
 
-        locale = Settings::getInstance()->getSettings().value( Settings::UI_PREFERRED_LCOALE ).toString();
+        locale = Settings::getInstance()->getSettings().value( Settings::UI_PREFERRED_LOCALE ).toString();
 
     } else if( 2 == argc ) {
 

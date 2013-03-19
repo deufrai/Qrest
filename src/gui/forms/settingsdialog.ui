@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>548</width>
-    <height>208</height>
+    <height>213</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -75,6 +75,19 @@
                  <string>Remember window &amp;position</string>
                 </property>
                </widget>
+              </item>
+              <item>
+               <widget class="QLabel" name="lblPreferredLocale">
+                <property name="text">
+                 <string>&amp;Language</string>
+                </property>
+                <property name="buddy">
+                 <cstring>cmbLocales</cstring>
+                </property>
+               </widget>
+              </item>
+              <item>
+               <widget class="QComboBox" name="cmbLocales"/>
               </item>
               <item>
                <spacer name="verticalSpacer_2">

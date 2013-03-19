@@ -17,6 +17,10 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
+#ifndef QT_NO_DEBUG
+#include <QDebug>
+#endif
+
 #include <QMessageBox>
 
 #include "settingsdialog.h"
@@ -25,9 +29,9 @@
 #include "../../midi/midicontroller.h"
 #include "midilearndialog.h"
 
-SettingsDialog::SettingsDialog(QWidget *parent) :
-        QDialog(parent) {
-    ui.setupUi(this);
+SettingsDialog::SettingsDialog( QWidget *parent )
+        : QDialog( parent ) {
+    ui.setupUi( this );
 
 #ifdef Q_WS_MAC
     // set default font sizes
@@ -35,34 +39,32 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
 #endif
 
 #ifndef Q_WS_WIN
-    ui.devicesCombo->setHidden(true);
-    ui.connectDeviceLabel->setHidden(true);
+    ui.devicesCombo->setHidden( true );
+    ui.connectDeviceLabel->setHidden( true );
 #endif
 
     // we don't want the "what's this" button on this dialog
-    this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+    this->setWindowFlags( windowFlags() & ~Qt::WindowContextHelpButtonHint );
 
-    // poulpate left-side sections list
-    _mainSection = new QListWidgetItem(tr("Main"), ui.sectionsList);
-    _midiSection = new QListWidgetItem(tr("MIDI"), ui.sectionsList);
-    ui.sectionsList->addItem(_mainSection);
-    ui.sectionsList->addItem(_midiSection);
+    // populpate left-side sections list
+    _mainSection = new QListWidgetItem( tr( "Main" ), ui.sectionsList );
+    _midiSection = new QListWidgetItem( tr( "MIDI" ), ui.sectionsList );
+    ui.sectionsList->addItem( _mainSection );
+    ui.sectionsList->addItem( _midiSection );
 
     // check 'remember window position' according to saved prefs
     ui.chkRememberWindowPos->setChecked(
 
-            Settings::getInstance()->getSettings().value(
+    Settings::getInstance()->getSettings().value(
 
-                    Settings::REMEMBER_WINDOW_POSITION,
-                    Settings::REMEMBER_WINDOW_POSITION_DEFAULT).toBool());
+    Settings::REMEMBER_WINDOW_POSITION, Settings::REMEMBER_WINDOW_POSITION_DEFAULT ).toBool() );
 
     // prefill 'midi input port name' according to saved prefs
     ui.midiPortNameLineEdit->setText(
 
-            Settings::getInstance()->getSettings().value(
+    Settings::getInstance()->getSettings().value(
 
-                    Settings::MIDI_PORT_NAME,
-                    Settings::MIDI_PORT_NAME_DEFAUT).toString());
+    Settings::MIDI_PORT_NAME, Settings::MIDI_PORT_NAME_DEFAUT ).toString() );
 
 #ifdef Q_WS_WIN
     /*
@@ -73,11 +75,10 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     std::vector<std::string> devices = MidiController::getInstance()->getDeviceNames();
     QString currentlyUsedDevice = Settings::getInstance()->getSettings().value(
 
-        Settings::MIDI_DEVICE,
-        Settings::MIDI_DEVICE_DEFAULT).toString();
+            Settings::MIDI_DEVICE,
+            Settings::MIDI_DEVICE_DEFAULT).toString();
 
     int currentlyUsedDeviceIndex = 0;
-
 
     for (unsigned int i=0; i<devices.size(); i++) {
 
@@ -92,16 +93,35 @@ SettingsDialog::SettingsDialog(QWidget *parent) :
     ui.devicesCombo->setCurrentIndex(currentlyUsedDeviceIndex);
 #endif
 
+    /*
+     * populate locales comboBox
+     * and make comboBox show the currently used locale
+     */
+    ui.cmbLocales->setSizeAdjustPolicy( QComboBox::AdjustToContents );
+
+    QList<QString> localeKeys = Constants::localNames.keys();
+    QList<QString> localeValues = Constants::localNames.values();
+
+    for( int i = 0; i < localeKeys.size(); i++ ) {
+
+        ui.cmbLocales->addItem( localeValues.at( i ), localeKeys.at( i ) );
+    }
+
+#ifndef QT_NO_DEBUG
+    for( int i = 0; i < localeKeys.size(); i++ ) {
+        qDebug() << ui.cmbLocales->itemData(i);
+    }
+#endif
+
     // wet set main section active by default
-    ui.sectionsList->setItemSelected(_mainSection, true);
+    ui.sectionsList->setItemSelected( _mainSection, true );
 
     // setup a RegExp validator for midi input name. Only 7bit ASCII
-    QRegExp* midiPortNameRegExp = new QRegExp("[A-Za-z0-9 ]+");
+    QRegExp* midiPortNameRegExp = new QRegExp( "[A-Za-z0-9 ]+" );
 
-    QRegExpValidator* midiInputPortNameValidator = new QRegExpValidator(
-            *midiPortNameRegExp, this);
+    QRegExpValidator* midiInputPortNameValidator = new QRegExpValidator( *midiPortNameRegExp, this );
 
-    ui.midiPortNameLineEdit->setValidator(midiInputPortNameValidator);
+    ui.midiPortNameLineEdit->setValidator( midiInputPortNameValidator );
 }
 
 SettingsDialog::~SettingsDialog() {
@@ -110,20 +130,18 @@ SettingsDialog::~SettingsDialog() {
 
 void SettingsDialog::on_triggerButton_clicked() {
 
-    MidiLearnDialog dlg(this);
+    MidiLearnDialog dlg( this );
     dlg.exec();
 }
 
 void SettingsDialog::accept() {
 
     // MIDI Input port name cannot be empty
-    QString midiInputPortNewName =
-            ui.midiPortNameLineEdit->text().trimmed().simplified();
+    QString midiInputPortNewName = ui.midiPortNameLineEdit->text().trimmed().simplified();
 
-    if (midiInputPortNewName.isEmpty()) {
+    if( midiInputPortNewName.isEmpty() ) {
 
-        QMessageBox::critical(this, tr("Invalid data"),
-                              tr("MIDI input port name cannot be empty"));
+        QMessageBox::critical( this, tr( "Invalid data" ), tr( "MIDI input port name cannot be empty" ) );
         return;
     }
 
@@ -133,13 +151,10 @@ void SettingsDialog::accept() {
     // save midi input port name
     _inputPortName = midiInputPortNewName;
 
-
-
 #ifdef Q_WS_WIN
 
     // save midi device name
     _deviceName = ui.devicesCombo->currentText();
-
 
 #endif
 

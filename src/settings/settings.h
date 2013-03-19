@@ -92,7 +92,7 @@ public:
     static const char* MIDI_TRIGGER_EVENT;
 
     /** key used to store user preferred locale */
-    static const char* UI_PREFERRED_LCOALE;
+    static const char* UI_PREFERRED_LOCALE;
 
     ////////////////////////////////////////////////////////////////////////////
     //

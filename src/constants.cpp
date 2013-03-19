@@ -18,12 +18,15 @@
  */
 
 #include "constants.h"
+#include <QObject>
 
 const char* Constants::VERSION_STRING = "0.6-beta-1";
 const char* Constants::MIDI_ENGINE_NAME = "qrest";
 
 const QString Constants::MIDI_TYPE_NOTE = "N";
-const QString Constants::MIDI_TYPE_PC   = "PC";
+const QString Constants::MIDI_TYPE_PC = "PC";
+
+QMap<QString, QString> Constants::localNames;
 
 Constants::Constants() {
 
@@ -31,4 +34,12 @@ Constants::Constants() {
 
 Constants::~Constants() {
 
+}
+
+void Constants::initLocaleNames() {
+
+    localNames.insert( "en", QObject::tr( "English" ) );
+    localNames.insert( "fr", QObject::tr( "French" ) );
+    localNames.insert( "es", QObject::tr( "Spanish" ) );
+    localNames.insert( "pt", QObject::tr( "Portuguese" ) );
 }
