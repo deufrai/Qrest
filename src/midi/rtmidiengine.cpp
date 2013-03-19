@@ -223,8 +223,8 @@ void RtMidiEngine::mycallback( double deltatime, std::vector< unsigned char > *m
      * We don't like warnings, even when we are not responsible.
      * this simply does nothing but we don't want to get used to see warnings
      */
-    userData = 0;
-    deltatime = 0;
+    (void)(userData);
+    (void)(deltatime);
 
     MidiController::getInstance()->processMidiEvent( MidiEventFactory::createEvent(message) );
 }
