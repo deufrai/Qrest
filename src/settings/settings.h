@@ -91,6 +91,9 @@ public:
     /** key used to store the TAP MIDI trigger event */
     static const char* MIDI_TRIGGER_EVENT;
 
+    /** key used to store user preferred locale */
+    static const char* UI_PREFERRED_LCOALE;
+
     ////////////////////////////////////////////////////////////////////////////
     //
     // INTERFACE

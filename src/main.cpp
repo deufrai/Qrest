@@ -56,7 +56,7 @@
  * \param folderPath : path to the folder where translation is located
  * \param locale : locale to use for UI translation
  */
-void installTranslator(QApplication& app, QString& filePrefix, QString& folderPath, QString& locale);
+void installTranslator( QApplication& app, QString& filePrefix, QString& folderPath, QString& locale );
 
 /**
  * Load objects serialized as QStrings in our Settings
@@ -73,21 +73,40 @@ void saveSettings();
 // Life starts here
 //
 //////////////////////////////////////////////////
-int main(int argc, char *argv[]) {
+int main( int argc, char *argv[] ) {
 
-    QApplication application(argc, argv);
+    QApplication application( argc, argv );
 
     // create and install translators for the application according to system locale
     QString appTransfilePrefix = "qrest_";
     QString appTransFolderPath = ":/i18n";
 
-    // inspect command line for locale and choose system default if undefined
-    QString locale(2 == argc ? argv[1] : LocaleHelper::getLocale());
-
-    installTranslator(application, appTransfilePrefix, appTransFolderPath, locale);
-
     // load settings
     loadSettings();
+
+    /* set UI locale according to (in order of priority)
+     *
+     *  - saved prefrences
+     *  - commandLine argument
+     *  - system default
+     */
+
+    QString locale;
+
+    if( Settings::getInstance()->getSettings().contains( Settings::UI_PREFERRED_LCOALE ) ) {
+
+        locale = Settings::getInstance()->getSettings().value( Settings::UI_PREFERRED_LCOALE ).toString();
+
+    } else if( 2 == argc ) {
+
+        locale = QString( argv[1] );
+
+    } else {
+
+        locale = LocaleHelper::getLocale();
+    }
+
+    installTranslator( application, appTransfilePrefix, appTransFolderPath, locale );
 
 #ifdef Q_WS_MAC
 
@@ -111,7 +130,7 @@ int main(int argc, char *argv[]) {
 
     // create main window
     QrestMainWindow mainWindow;
-    mainWindow.resize(mainWindow.minimumSizeHint());
+    mainWindow.resize( mainWindow.minimumSizeHint() );
     mainWindow.show();
 
     int exec = application.exec();
@@ -128,33 +147,33 @@ int main(int argc, char *argv[]) {
 //
 ////////////////////////////////////////////////////////////////////////////
 
-void installTranslator(QApplication& app, QString& filePrefix, QString& folderPath, QString& locale) {
+void installTranslator( QApplication& app, QString& filePrefix, QString& folderPath, QString& locale ) {
 
     QTranslator* pTranslator = new QTranslator();
-    bool isTransLoaded = pTranslator->load(filePrefix + locale, folderPath);
+    bool isTransLoaded = pTranslator->load( filePrefix + locale, folderPath );
 
-    if (isTransLoaded) {
+    if( isTransLoaded ) {
 
 #ifndef QT_NO_DEBUG
-        qDebug() << "Translation file loaded successfully : " << filePrefix.append(locale);
+        qDebug() << "Translation file loaded successfully : " << filePrefix.append( locale );
 #endif
 
-        app.installTranslator(pTranslator);
+        app.installTranslator( pTranslator );
 
     } else {
 
-        qWarning("Failed to load translation file : %s%s", filePrefix.toStdString().c_str(), locale.toStdString().c_str());
+        qWarning( "Failed to load translation file : %s%s", filePrefix.toStdString().c_str(), locale.toStdString().c_str() );
     }
 
 }
 
 void loadSettings() {
 
-    if (Settings::getInstance()->getSettings().contains(Settings::MIDI_TRIGGER_EVENT)) {
+    if( Settings::getInstance()->getSettings().contains( Settings::MIDI_TRIGGER_EVENT ) ) {
 
-        QStringList list = Settings::getInstance()->getSettings().value(Settings::MIDI_TRIGGER_EVENT, 0).toStringList();
+        QStringList list = Settings::getInstance()->getSettings().value( Settings::MIDI_TRIGGER_EVENT, 0 ).toStringList();
 
-        Document::getInstance()->setTriggerEvent(MidiEventFactory::createEvent(list));
+        Document::getInstance()->setTriggerEvent( MidiEventFactory::createEvent( list ) );
     }
 }
 
@@ -162,20 +181,20 @@ void saveSettings() {
 
     const MidiEvent* event = Document::getInstance()->getTriggerEvent();
 
-    if (event) {
+    if( event ) {
 
         QStringList list;
 
-        if (const MidiNoteOn* note = dynamic_cast<const MidiNoteOn*>(event)) {
+        if( const MidiNoteOn* note = dynamic_cast<const MidiNoteOn*>( event ) ) {
 
-            list = MidiHelper::noteToStringList(note);
+            list = MidiHelper::noteToStringList( note );
 
-        } else if (const MidiProgramChange* program = dynamic_cast<const MidiProgramChange*>(event)) {
+        } else if( const MidiProgramChange* program = dynamic_cast<const MidiProgramChange*>( event ) ) {
 
-            list = MidiHelper::programToStringList(program);
+            list = MidiHelper::programToStringList( program );
         }
 
-        Settings::getInstance()->getSettings().setValue(Settings::MIDI_TRIGGER_EVENT, list);
+        Settings::getInstance()->getSettings().setValue( Settings::MIDI_TRIGGER_EVENT, list );
         Settings::getInstance()->getSettings().sync();
     }
 }
