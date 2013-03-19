@@ -25,6 +25,11 @@ const char* Constants::MIDI_ENGINE_NAME = "qrest";
 const QString Constants::MIDI_TYPE_NOTE = "N";
 const QString Constants::MIDI_TYPE_PC = "PC";
 
+const QString Constants::LOCALE_SYSDEFAULT = "sys";
+const QString Constants::LOCALE_EN = "en";
+const QString Constants::LOCALE_FR = "fr";
+const QString Constants::LOCALE_ES = "es";
+const QString Constants::LOCALE_PT = "pt";
 
 Constants::Constants() {
 

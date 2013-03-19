@@ -91,19 +91,23 @@ int main( int argc, char *argv[] ) {
      *  - system default
      */
 
-    QString locale;
+    QString     locale;
+    Document*   pDoc = Document::getInstance();
 
     if( Settings::getInstance()->getSettings().contains( Settings::UI_PREFERRED_LOCALE ) ) {
 
         locale = Settings::getInstance()->getSettings().value( Settings::UI_PREFERRED_LOCALE ).toString();
+        pDoc->setLocale(locale);
 
     } else if( 2 == argc ) {
 
         locale = QString( argv[1] );
+        pDoc->setLocale(locale);
 
     } else {
 
         locale = LocaleHelper::getLocale();
+        pDoc->setLocale(Constants::LOCALE_SYSDEFAULT);
     }
 
     installTranslator( application, appTransfilePrefix, appTransFolderPath, locale );

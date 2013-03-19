@@ -21,8 +21,9 @@
 #define DOCUMENT_H_
 
 #include <vector>
-#include "../midi/events/midievent.h"
+#include <QString>
 
+#include "../midi/events/midievent.h"
 #include "../dp/observable.h"
 
 class Delay;
@@ -80,30 +81,34 @@ public:
      *
      * \param tempo the tempo to be set
      */
-    void setTempo(const double tempo);
-
+    void setTempo( const double tempo );
 
     /**
      * Get the tempo.
      *
      * \return the tempo
      */
-    inline double getTempo(void) const { return _tempo; }
+    inline double getTempo( void ) const {
 
+        return _tempo;
+    }
 
     /**
      * Get multiplier
      *
      * \return the multiplier
      */
-    inline double getMultiplier(void) const { return _multiplier; }
+    inline double getMultiplier( void ) const {
+
+        return _multiplier;
+    }
 
     /**
      * Set the multiplier
      *
      * \param multi the multiplier
      */
-    inline void setMultiplier(const double multi) {
+    inline void setMultiplier( const double multi ) {
 
         _multiplier = multi;
         updateDelays();
@@ -115,77 +120,110 @@ public:
      *
      * \return steadiness flag
      */
-    inline bool isSteady(void) const { return _steady; }
+    inline bool isSteady( void ) const {
+
+        return _steady;
+    }
 
     /**
      * Set steadiness flag
      *
      * \param steady steadiness flag value
      */
-    inline void setSteady(const bool steady) { _steady = steady; }
+    inline void setSteady( const bool steady ) {
+
+        _steady = steady;
+    }
 
     /**
      * Get the delay object for a whole note
      *
      * \return the 'whole' delay
      */
-    inline Delay* getWholeDelay() const { return _delays[WHOLE]; }
+    inline Delay* getWholeDelay() const {
+
+        return _delays[WHOLE];
+    }
 
     /**
      * Get the delay object for a half note
      *
      * \return the 'half' delay
      */
-    inline Delay* getHalfDelay() const { return _delays[HALF]; }
+    inline Delay* getHalfDelay() const {
+
+        return _delays[HALF];
+    }
 
     /**
      * Get the delay object for a quarter note
      *
      * \return the 'quarter' delay
      */
-    inline Delay* getQuarterDelay() const { return _delays[QUARTER]; }
+    inline Delay* getQuarterDelay() const {
+
+        return _delays[QUARTER];
+    }
 
     /**
      * Get the delay object for a eighth note
      *
      * \return the 'eighth' delay
      */
-    inline Delay* getEighthDelay() const { return _delays[EIGHTH]; }
+    inline Delay* getEighthDelay() const {
+
+        return _delays[EIGHTH];
+    }
 
     /**
      * Get the delay object for a sixteenth note
      *
      * \return the 'sixteenth' delay
      */
-    inline Delay* getSixTeenthDelay() const { return _delays[SIXTEENTH]; }
+    inline Delay* getSixTeenthDelay() const {
+
+        return _delays[SIXTEENTH];
+    }
 
     /**
      * Get the delay object for a thirtysecond note
      *
      * \return the 'thirtysecond' delay
      */
-    inline Delay* getThirtySecondDelay() const { return _delays[THIRTYSECOND]; }
+    inline Delay* getThirtySecondDelay() const {
+
+        return _delays[THIRTYSECOND];
+    }
 
     /**
      * Get steadiness value.
      *
      * \return the steadiness value
      */
-    inline double getSteadiness() const { return _steadiness; }
+    inline double getSteadiness() const {
+
+        return _steadiness;
+    }
 
     /**
      * Set steadiness value.
      *
      * \param steadiness the steadiness value.
      */
-    inline void setSteadiness(const double steadiness) { _steadiness = steadiness; }
+    inline void setSteadiness( const double steadiness ) {
+
+        _steadiness = steadiness;
+    }
 
     /**
      * Get MIDI operations availability
      *
      * \return true if MIDI operations are available
      */
-    inline bool isMidiClockRunning () const { return _midiClockRunning; }
+    inline bool isMidiClockRunning() const {
+
+        return _midiClockRunning;
+    }
 
     /**
      * The the value of the _midiClockRunning flag
@@ -194,8 +232,8 @@ public:
      */
     inline void setMidiClockRunning( const bool midiClockRunning ) {
 
-    	_midiClockRunning = midiClockRunning;
-    	notifyObservers();
+        _midiClockRunning = midiClockRunning;
+        notifyObservers();
     }
 
     /**
@@ -203,41 +241,70 @@ public:
      *
      * \param source from tempoSource enum
      **/
-    inline void setTempoSource (const int source) { _tempoSource = source; }
+    inline void setTempoSource( const int source ) {
+
+        _tempoSource = source;
+    }
 
     /**
      * Get tempo source
      *
      * \ the tempo source, values are from tempoSource enum
      */
-    inline int getTempoSource () const { return _tempoSource; }
+    inline int getTempoSource() const {
+
+        return _tempoSource;
+    }
 
     /**
      * Set the trigger event
      *
      * @param event : the event to store
      */
-    inline void setTriggerEvent(const MidiEvent* event)  { _triggerEvent = event; }
+    inline void setTriggerEvent( const MidiEvent* event ) {
+
+        _triggerEvent = event;
+    }
 
     /**
      * Get the trigger Event
      *
      * @return the trigger event
      */
-    inline const MidiEvent* getTriggerEvent() const { return _triggerEvent; }
+    inline const MidiEvent* getTriggerEvent() const {
 
+        return _triggerEvent;
+    }
+
+    /**
+     * Get the locale name
+     *
+     * @return the locale name
+     */
+    inline const QString& getLocale() const {
+
+        return _locale;
+    }
+
+    /**
+     * Set the locale name
+     *
+     * @param locale : The locale name
+     */
+    inline void setLocale( const QString& locale ) {
+
+        _locale = locale;
+    }
 
     ////////////////////////////////////////////////////////////////////////////
-	//
-	// TEMPO source enum
-	//
-	////////////////////////////////////////////////////////////////////////////
+    //
+    // TEMPO source enum
+    //
+    ////////////////////////////////////////////////////////////////////////////
 
     enum tempoSource {
 
-    	TEMPO_SOURCE_KEYBOARD,
-    	TEMPO_SOURCE_TAP,
-    	TEMPO_SOURCE_MIDI_CLOCK
+        TEMPO_SOURCE_KEYBOARD, TEMPO_SOURCE_TAP, TEMPO_SOURCE_MIDI_CLOCK
     };
 
 private:
@@ -302,6 +369,8 @@ private:
     /** the MIDI event that will trigger the TAP function */
     const MidiEvent* _triggerEvent;
 
+    /** the name of the locale to use for UI translation */
+    QString _locale;
 
     ////////////////////////////////////////////////////////////////////////////
     //
@@ -311,16 +380,16 @@ private:
     /**
      * Init vector of Delays
      */
-    void initDelays(void);
+    void initDelays( void );
 
     /**
      * destroy vector of delays
      */
-    void destroyDelays(void);
+    void destroyDelays( void );
 
     /**
      * Ask for the delay calculation
      */
-    void updateDelays(void);
+    void updateDelays( void );
 };
 #endif /*DOCUMENT_H_*/
