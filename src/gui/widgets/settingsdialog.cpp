@@ -29,9 +29,12 @@
 #include "../../helpers/widgetsizehelper.h"
 #include "../../midi/midicontroller.h"
 #include "midilearndialog.h"
+#include "../../model/document.h"
 
 SettingsDialog::SettingsDialog( QWidget *parent )
-        : QDialog( parent ) {
+        : QDialog( parent ),
+          _restartWarningLabel(0) {
+
     ui.setupUi( this );
 
 #ifdef Q_WS_MAC
@@ -102,24 +105,37 @@ SettingsDialog::SettingsDialog( QWidget *parent )
 
     QMap<QString, QString> localeNames;
 
-    localeNames.insert( "en", tr( "English" ) );
-    localeNames.insert( "fr", tr( "French" ) );
-    localeNames.insert( "es", tr( "Spanish" ) );
-    localeNames.insert( "pt", tr( "Portuguese" ) );
+    localeNames.insert( Constants::LOCALE_SYSDEFAULT, tr( "System default" ) );
+
+    localeNames.insert( Constants::LOCALE_EN, tr( "English" ) );
+    localeNames.insert( Constants::LOCALE_FR, tr( "French" ) );
+    localeNames.insert( Constants::LOCALE_ES, tr( "Spanish" ) );
+    localeNames.insert( Constants::LOCALE_PT, tr( "Portuguese" ) );
 
     QList<QString> localeKeys = localeNames.keys();
     QList<QString> localeValues = localeNames.values();
 
+    int cmbLocalesCurrentIndex;
+
     for( int i = 0; i < localeKeys.size(); i++ ) {
 
         ui.cmbLocales->addItem( localeValues.at( i ), localeKeys.at( i ) );
+
+        if( Document::getInstance()->getLocale() == ( localeKeys.at( i ) ) ) {
+
+            cmbLocalesCurrentIndex = i;
+        }
     }
 
-#ifndef QT_NO_DEBUG
-    for( int i = 0; i < localeKeys.size(); i++ ) {
-        qDebug() << ui.cmbLocales->itemData(i);
-    }
-#endif
+    ui.cmbLocales->setCurrentIndex( cmbLocalesCurrentIndex );
+    connect( ui.cmbLocales, SIGNAL(currentIndexChanged ( int )), this, SLOT(onLocalesChanged(int)) );
+
+    // Setup restart warning label
+    _restartWarningLabel = new QLabel( tr( "Qrest must be restarted" ) );
+    _restartWarningLabel->setStyleSheet("color: red; font-size: 11px;");
+    _restartWarningLabel->hide();
+    ui.mainPrefsVerticalLayout->insertWidget( ui.mainPrefsVerticalLayout->count(), _restartWarningLabel );
+
 
     // wet set main section active by default
     ui.sectionsList->setItemSelected( _mainSection, true );
@@ -140,6 +156,23 @@ void SettingsDialog::on_triggerButton_clicked() {
 
     MidiLearnDialog dlg( this );
     dlg.exec();
+}
+
+void SettingsDialog::onLocalesChanged( int index ) {
+
+    /*
+     * if selected language is different from the currently active one
+     *  we warn user that a restart is needed
+     * else we remove any existant warning
+     */
+    if( Document::getInstance()->getLocale() != ui.cmbLocales->itemData( index ) ) {
+
+        _restartWarningLabel->show();
+
+    } else {
+
+        _restartWarningLabel->hide();
+    }
 }
 
 void SettingsDialog::accept() {

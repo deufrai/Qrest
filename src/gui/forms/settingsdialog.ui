@@ -61,43 +61,68 @@
          <widget class="QWidget" name="main">
           <layout class="QVBoxLayout" name="verticalLayout_3">
            <item>
-            <widget class="QGroupBox" name="groupBox_2">
+            <widget class="QGroupBox" name="maingroupBox">
              <property name="title">
               <string>MAIN</string>
              </property>
-             <layout class="QVBoxLayout" name="verticalLayout_4">
-              <item>
-               <widget class="QCheckBox" name="chkRememberWindowPos">
-                <property name="toolTip">
-                 <string>Should Qrest's main window be opened at the screen location it had on last run ?</string>
-                </property>
-                <property name="text">
-                 <string>Remember window &amp;position</string>
-                </property>
-               </widget>
+             <layout class="QGridLayout" name="gridLayout_4">
+              <item row="0" column="0">
+               <layout class="QVBoxLayout" name="mainPrefsVerticalLayout">
+                <item>
+                 <widget class="QCheckBox" name="chkRememberWindowPos">
+                  <property name="toolTip">
+                   <string>Should Qrest's main window be opened at the screen location it had on last run ?</string>
+                  </property>
+                  <property name="text">
+                   <string>Remember window &amp;position</string>
+                  </property>
+                 </widget>
+                </item>
+                <item>
+                 <layout class="QHBoxLayout" name="horizontalLayout_5">
+                  <item>
+                   <layout class="QHBoxLayout" name="horizontalLayout_4">
+                    <item>
+                     <widget class="QLabel" name="lblPreferredLocale">
+                      <property name="text">
+                       <string>&amp;Language : </string>
+                      </property>
+                      <property name="buddy">
+                       <cstring>cmbLocales</cstring>
+                      </property>
+                     </widget>
+                    </item>
+                    <item>
+                     <widget class="QComboBox" name="cmbLocales"/>
+                    </item>
+                   </layout>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_2">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
+                </item>
+               </layout>
               </item>
-              <item>
-               <widget class="QLabel" name="lblPreferredLocale">
-                <property name="text">
-                 <string>&amp;Language</string>
-                </property>
-                <property name="buddy">
-                 <cstring>cmbLocales</cstring>
-                </property>
-               </widget>
-              </item>
-              <item>
-               <widget class="QComboBox" name="cmbLocales"/>
-              </item>
-              <item>
+              <item row="1" column="0">
                <spacer name="verticalSpacer_2">
                 <property name="orientation">
                  <enum>Qt::Vertical</enum>
                 </property>
                 <property name="sizeHint" stdset="0">
                  <size>
-                  <width>20</width>
-                  <height>40</height>
+                  <width>17</width>
+                  <height>33</height>
                  </size>
                 </property>
                </spacer>

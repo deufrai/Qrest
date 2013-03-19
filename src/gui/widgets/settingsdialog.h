@@ -26,9 +26,8 @@
 /**
  * Support class for the Settings dialog box
  */
-class SettingsDialog : public QDialog
-{
-    Q_OBJECT
+class SettingsDialog: public QDialog {
+Q_OBJECT
 
     ////////////////////////////////////////////////////////////////////////////
     //
@@ -36,7 +35,7 @@ class SettingsDialog : public QDialog
     //
     ////////////////////////////////////////////////////////////////////////////
 public:
-    SettingsDialog(QWidget *parent = 0);
+    SettingsDialog( QWidget *parent = 0 );
     ~SettingsDialog();
 
     ////////////////////////////////////////////////////////////////////////////
@@ -49,22 +48,32 @@ public:
      *
      * @return true or false, duh
      */
-    inline bool getRememberWindowPosition() const { return _rememberWidnowPosition; }
+    inline bool getRememberWindowPosition() const {
+        return _rememberWidnowPosition;
+    }
 
     /**
      * get the 'MIDI input port name' field value
      *
      * @return the value
      */
-    inline const QString& getInputPortName() const { return _inputPortName; }
+    inline const QString& getInputPortName() const {
+        return _inputPortName;
+    }
 
     /**
      * Get the 'device name' combobox chosen value
      *
      * @return the value
      */
-    inline const QString& getDeviceName() const { return _deviceName; }
+    inline const QString& getDeviceName() const {
+        return _deviceName;
+    }
 
+    inline const QString getChosenLanguage() const {
+
+        return ui.cmbLocales->itemData(ui.cmbLocales->currentIndex()).toString();
+    }
 
     ////////////////////////////////////////////////////////////////////////////
     //
@@ -75,6 +84,14 @@ private slots:
     /** Qt slot that gets called when OK button is ckicked */
     virtual void accept();
 
+    /**
+     * Language comboBox selection has changed
+     *
+     * @param index : the 0-numbererd index of the currently
+     *                selected comboBox item
+     *
+     **/
+    void onLocalesChanged( int index );
     /**
      * Display dialog to check and / or set the TAP trigger MIDI event
      */
@@ -103,6 +120,9 @@ private:
 
     /** value of deviceName combobox current chosen value */
     QString _deviceName;
+
+    /** A label used to warn user that an app restart is needed */
+    QLabel* _restartWarningLabel;
 
 };
 

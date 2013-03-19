@@ -115,6 +115,21 @@ public:
 
     /** flag used to represent a MidiProgramChange when serialized to QStringList */
     static const QString MIDI_TYPE_PC;
+
+    /** Key used to identify system default locale */
+    static const QString LOCALE_SYSDEFAULT;
+
+    /** Key used to identify english locale */
+    static const QString LOCALE_EN;
+
+    /** Key used to identify french locale */
+    static const QString LOCALE_FR;
+
+    /** Key used to identify spanish locale */
+    static const QString LOCALE_ES;
+
+    /** Key used to identify portuguese locale */
+    static const QString LOCALE_PT;
 };
 
 #endif /* CONSTANTS_H_ */
