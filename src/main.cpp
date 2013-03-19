@@ -81,9 +81,6 @@ int main( int argc, char *argv[] ) {
     QString appTransfilePrefix = "qrest_";
     QString appTransFolderPath = ":/i18n";
 
-    // init local names map
-    Constants::initLocaleNames();
-
     // load settings
     loadSettings();
 

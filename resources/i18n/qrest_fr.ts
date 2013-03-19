@@ -79,26 +79,6 @@
         <source>You are invited to check qrest&apos;s MIDI settings and chose the MDI device you want to connect to</source>
         <translation>Nous vous invitons à vérifier la configuration MIDI de qrest et à choisir le péripérique MIDI auquel vous voulez vous connecter</translation>
     </message>
-    <message>
-        <location filename="../../src/constants.cpp" line="41"/>
-        <source>English</source>
-        <translation>Anglais</translation>
-    </message>
-    <message>
-        <location filename="../../src/constants.cpp" line="42"/>
-        <source>French</source>
-        <translation>Français</translation>
-    </message>
-    <message>
-        <location filename="../../src/constants.cpp" line="43"/>
-        <source>Spanish</source>
-        <translation>Espagnol</translation>
-    </message>
-    <message>
-        <location filename="../../src/constants.cpp" line="44"/>
-        <source>Portuguese</source>
-        <translation>Portugais</translation>
-    </message>
 </context>
 <context>
     <name>QrestAboutDialog</name>
@@ -410,22 +390,42 @@
 <context>
     <name>SettingsDialog</name>
     <message>
-        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="50"/>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="51"/>
         <source>Main</source>
         <translation>Général</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="51"/>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="52"/>
         <source>MIDI</source>
         <translation>MIDI</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="144"/>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="105"/>
+        <source>English</source>
+        <translation>Anglais</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="106"/>
+        <source>French</source>
+        <translation>Français</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="107"/>
+        <source>Spanish</source>
+        <translation>Espagnol</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="108"/>
+        <source>Portuguese</source>
+        <translation>Portugais</translation>
+    </message>
+    <message>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="152"/>
         <source>Invalid data</source>
         <translation>Donnée invalide</translation>
     </message>
     <message>
-        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="144"/>
+        <location filename="../../src/gui/widgets/settingsdialog.cpp" line="152"/>
         <source>MIDI input port name cannot be empty</source>
         <translation>Le nom du port d&apos;entrée MIDI ne peut pas être vide</translation>
     </message>

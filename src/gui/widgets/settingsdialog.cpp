@@ -22,6 +22,7 @@
 #endif
 
 #include <QMessageBox>
+#include <QMap>
 
 #include "settingsdialog.h"
 #include "../../settings/settings.h"
@@ -99,8 +100,15 @@ SettingsDialog::SettingsDialog( QWidget *parent )
      */
     ui.cmbLocales->setSizeAdjustPolicy( QComboBox::AdjustToContents );
 
-    QList<QString> localeKeys = Constants::localNames.keys();
-    QList<QString> localeValues = Constants::localNames.values();
+    QMap<QString, QString> localeNames;
+
+    localeNames.insert( "en", tr( "English" ) );
+    localeNames.insert( "fr", tr( "French" ) );
+    localeNames.insert( "es", tr( "Spanish" ) );
+    localeNames.insert( "pt", tr( "Portuguese" ) );
+
+    QList<QString> localeKeys = localeNames.keys();
+    QList<QString> localeValues = localeNames.values();
 
     for( int i = 0; i < localeKeys.size(); i++ ) {
 
