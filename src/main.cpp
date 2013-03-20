@@ -77,10 +77,6 @@ int main( int argc, char *argv[] ) {
 
     QApplication application( argc, argv );
 
-    // create and install translators for the application according to system locale
-    QString appTransfilePrefix = "qrest_";
-    QString appTransFolderPath = ":/i18n";
-
     // load settings
     loadSettings();
 
@@ -90,7 +86,6 @@ int main( int argc, char *argv[] ) {
      *  - commandLine argument
      *  - system default
      */
-
     QString locale;
     Document* pDoc = Document::getInstance();
 
@@ -110,6 +105,8 @@ int main( int argc, char *argv[] ) {
         pDoc->setLocale( Constants::LOCALE_SYSDEFAULT );
     }
 
+    QString appTransfilePrefix = "qrest_";
+    QString appTransFolderPath = ":/i18n";
     installTranslator( application, appTransfilePrefix, appTransFolderPath, locale );
 
 #ifdef Q_WS_MAC
