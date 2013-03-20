@@ -22,26 +22,25 @@
 #include "localeHelper.h"
 #include "../constants.h"
 
+QString LocaleHelper::locale = QLocale::system().name().section( '_', 0, 0 );
 
-QString LocaleHelper::locale = QLocale::system().name().section('_', 0, 0);
+LocaleHelper::LocaleHelper() {
+}
 
-LocaleHelper::LocaleHelper() {}
-
-LocaleHelper::~LocaleHelper() {}
+LocaleHelper::~LocaleHelper() {
+}
 
 QString LocaleHelper::getLocale() {
 
     return locale;
 }
 
-
 QString LocaleHelper::getHelpFilePath() {
 
-    return QString(":/html/")
-            .append(locale)
-            .append("/index.html");
+    return QString( ":/html/" )
+            .append( locale )
+            .append( "/index.html" );
 }
-
 
 QString LocaleHelper::getDefaultHelpFilePath() {
 

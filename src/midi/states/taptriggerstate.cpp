@@ -21,15 +21,17 @@
 #include "../midihelper.h"
 #include "../../process/tapTempoCalculator.h"
 
-TapTriggerState::TapTriggerState() { }
+TapTriggerState::TapTriggerState() {
+}
 
-TapTriggerState::~TapTriggerState() { }
+TapTriggerState::~TapTriggerState() {
+}
 
-void TapTriggerState::processEvent(const MidiEvent* event) {
+void TapTriggerState::processEvent( const MidiEvent* event ) {
 
-    if (MidiHelper::midiEventMatchesReference(event, Document::getInstance()->getTriggerEvent())) {
+    if( MidiHelper::midiEventMatchesReference( event, Document::getInstance()->getTriggerEvent() ) ) {
 
-        Document::getInstance()->setTempoSource(Document::TEMPO_SOURCE_TAP);
+        Document::getInstance()->setTempoSource( Document::TEMPO_SOURCE_TAP );
         TapTempoCalculator::getInstance()->process();
     }
 

@@ -21,7 +21,6 @@
 
 MidiEvent::MidiEvent() {
 
-
 }
 
 MidiEvent::~MidiEvent() {

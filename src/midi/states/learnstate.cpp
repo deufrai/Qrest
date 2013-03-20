@@ -21,11 +21,13 @@
 #include "../events/midiprogramchange.h"
 #include "../midicontroller.h"
 
-LearnState::LearnState() {}
+LearnState::LearnState() {
+}
 
-LearnState::~LearnState() {}
+LearnState::~LearnState() {
+}
 
-void LearnState::processEvent(const MidiEvent* event) {
+void LearnState::processEvent( const MidiEvent* event ) {
 
     /*
      * We are learning the event that will trigger the TAP function.
@@ -39,14 +41,14 @@ void LearnState::processEvent(const MidiEvent* event) {
      * If we recieve any other type of event, we will send a NULL
      */
 
-    if ( dynamic_cast<const MidiNoteOn*>        (event) != 0 ||
-         dynamic_cast<const MidiProgramChange*> (event) != 0 ) {
+    if( dynamic_cast<const MidiNoteOn*>( event ) != 0 ||
+            dynamic_cast<const MidiProgramChange*>( event ) != 0 ) {
 
-        MidiController::getInstance()->learnStateCapturedEvent(event);
+        MidiController::getInstance()->learnStateCapturedEvent( event );
 
     } else {
 
         delete event;
-        MidiController::getInstance()->learnStateCapturedEvent(0);
+        MidiController::getInstance()->learnStateCapturedEvent( 0 );
     }
 }

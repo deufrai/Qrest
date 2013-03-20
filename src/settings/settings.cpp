@@ -34,8 +34,8 @@ const char* Settings::MIDI_TRIGGER_EVENT = "triggerEvent";
 
 const char* Settings::UI_PREFERRED_LOCALE = "ui_locale";
 
-Settings::Settings() 
-: _settings("wardsback", "qrest") {
+Settings::Settings()
+        : _settings( "wardsback", "qrest" ) {
 
 }
 
@@ -45,7 +45,7 @@ Settings::~Settings() {
 
 Settings* Settings::getInstance() {
 
-    if (0 == _instance) {
+    if( 0 == _instance ) {
 
         _instance = new Settings();
     }

@@ -18,7 +18,9 @@
 
 #include "midistop.h"
 
-MidiStop::MidiStop() { }
+MidiStop::MidiStop() {
+}
 
-MidiStop::~MidiStop() { }
+MidiStop::~MidiStop() {
+}
 

@@ -33,7 +33,7 @@
 
 SettingsDialog::SettingsDialog( QWidget *parent )
         : QDialog( parent ),
-          _restartWarningLabel(0) {
+                _restartWarningLabel( 0 ) {
 
     ui.setupUi( this );
 
@@ -132,10 +132,9 @@ SettingsDialog::SettingsDialog( QWidget *parent )
 
     // Setup restart warning label
     _restartWarningLabel = new QLabel( tr( "Qrest must be restarted" ) );
-    _restartWarningLabel->setStyleSheet("color: red; font-size: 11px;");
+    _restartWarningLabel->setStyleSheet( "color: red; font-size: 11px;" );
     _restartWarningLabel->hide();
     ui.mainPrefsVerticalLayout->insertWidget( ui.mainPrefsVerticalLayout->count(), _restartWarningLabel );
-
 
     // wet set main section active by default
     ui.sectionsList->setItemSelected( _mainSection, true );

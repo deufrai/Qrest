@@ -335,7 +335,7 @@ void QrestMainWindow::on_actionPreferences_triggered() {
 
         } else {
 
-            Settings::getInstance()->getSettings().remove(Settings::UI_PREFERRED_LOCALE);
+            Settings::getInstance()->getSettings().remove( Settings::UI_PREFERRED_LOCALE );
         }
 
         /*

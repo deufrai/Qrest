@@ -36,8 +36,9 @@ TapTempoCalculator::~TapTempoCalculator() {
 
 }
 
-TapTempoCalculator::TapTempoCalculator() :
-    _pTimeStamper(new TimeStamper()) {
+TapTempoCalculator::TapTempoCalculator()
+        :
+                _pTimeStamper( new TimeStamper() ) {
 
     /** init deltas collection with default data */
     initDeltas();
@@ -45,7 +46,7 @@ TapTempoCalculator::TapTempoCalculator() :
 
 TapTempoCalculator* TapTempoCalculator::getInstance() {
 
-    if (0 == _instance) {
+    if( 0 == _instance ) {
 
         _instance = new TapTempoCalculator();
     }
@@ -70,7 +71,7 @@ void TapTempoCalculator::process() {
     int currentStamp = _pTimeStamper->getStamp();
 
     // store delta between current timestamp and last one
-    _deltas.push_back(currentStamp - lastStamp);
+    _deltas.push_back( currentStamp - lastStamp );
     _deltas.pop_front();
 
     // are deltas steady ?
@@ -78,8 +79,8 @@ void TapTempoCalculator::process() {
 
     // set tempo according to average
     double averageDelta = getAverageDelta();
-    pDocument->setTempo(qRound(Constants::SECONDS_PER_MINUTE
-            * Constants::MILLISEC_PER_SECOND / averageDelta));
+    pDocument->setTempo( qRound( Constants::SECONDS_PER_MINUTE
+            * Constants::MILLISEC_PER_SECOND / averageDelta ) );
 
     // store current stamp for next call
     lastStamp = currentStamp;
@@ -92,9 +93,9 @@ void TapTempoCalculator::process() {
 ////////////////////////////////////////////////////////////////////////////////
 void TapTempoCalculator::initDeltas() {
 
-    for (int i = 0; i < DELTAS_COUNT; i++) {
+    for( int i = 0; i < DELTAS_COUNT; i++ ) {
 
-        _deltas.push_back(0);
+        _deltas.push_back( 0 );
     }
 }
 
@@ -103,13 +104,13 @@ double TapTempoCalculator::getAverageDelta() const {
     list<int>::const_iterator it = _deltas.begin();
     long sum = 0;
 
-    while (it != _deltas.end()) {
+    while( it != _deltas.end() ) {
 
         sum += *it;
         it++;
     }
 
-    return static_cast<double> (sum) / DELTAS_COUNT;
+    return static_cast<double>( sum ) / DELTAS_COUNT;
 }
 
 void TapTempoCalculator::getSteadiness() const {
@@ -120,11 +121,11 @@ void TapTempoCalculator::getSteadiness() const {
      */
     Document* pDocument = Document::getInstance();
 
-    list<int>::const_iterator min = min_element(_deltas.begin(), _deltas.end());
-    list<int>::const_iterator max = max_element(_deltas.begin(), _deltas.end());
+    list<int>::const_iterator min = min_element( _deltas.begin(), _deltas.end() );
+    list<int>::const_iterator max = max_element( _deltas.begin(), _deltas.end() );
 
-    double steadiness = (static_cast<double> (*min) / *max);
+    double steadiness = ( static_cast<double>( *min ) / *max );
 
-    pDocument->setSteadiness(steadiness);
-    pDocument->setSteady(steadiness > Constants::STEADINESS_TARGET_RATIO);
+    pDocument->setSteadiness( steadiness );
+    pDocument->setSteady( steadiness > Constants::STEADINESS_TARGET_RATIO );
 }

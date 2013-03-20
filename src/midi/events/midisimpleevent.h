@@ -35,7 +35,7 @@ protected:
      * @param channel   affected MIDI channel
      * @param value1    value of byte #1
      */
-    MidiSimpleEvent(const unsigned char channel, const unsigned char value1);
+    MidiSimpleEvent( const unsigned char channel, const unsigned char value1 );
 
 public:
     virtual ~MidiSimpleEvent();
@@ -47,7 +47,7 @@ public:
      *
      * @return MIDI channel
      */
-    inline unsigned char getChannel () const {
+    inline unsigned char getChannel() const {
 
         return _channel;
     }
@@ -57,7 +57,7 @@ public:
      *
      * @return value of byte #1
      */
-    inline unsigned char getValue1 () const {
+    inline unsigned char getValue1() const {
 
         return _value1;
     }

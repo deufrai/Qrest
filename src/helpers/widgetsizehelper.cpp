@@ -17,7 +17,6 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 #include <QWidget>
 #include <QObjectList>
 #include <QLabel>
@@ -35,13 +34,13 @@ WidgetSizeHelper::WidgetSizeHelper()
 
 }
 
-void WidgetSizeHelper::setDefaultFontSize(QWidget* pWidget) {
+void WidgetSizeHelper::setDefaultFontSize( QWidget* pWidget ) {
 
     // we get all of pWidget's children
     QObjectList children = pWidget->children();
 
     // for each child
-    for ( int i = 0; i < children.length(); i++ ) {
+    for( int i = 0; i < children.length(); i++ ) {
 
         /*
          * we change its font size if it is of one of those types
@@ -53,22 +52,22 @@ void WidgetSizeHelper::setDefaultFontSize(QWidget* pWidget) {
          *  - QCheckBox
          *  - QStatusBar
          */
-        QWidget* pChild = static_cast<QWidget*> ( children.at(i) );
+        QWidget* pChild = static_cast<QWidget*>( children.at( i ) );
 
-        if (  qobject_cast<QLabel*>(pChild) != NULL         ||
-              qobject_cast<QLineEdit*>(pChild) != NULL      ||
-              qobject_cast<QRadioButton*>(pChild) != NULL   ||
-              qobject_cast<QGroupBox*>(pChild) != NULL      ||
-              qobject_cast<QCheckBox*>(pChild) != NULL      ||
-              qobject_cast<QStatusBar*>(pChild) != NULL )
-        {
+        if( qobject_cast<QLabel*>( pChild ) != NULL ||
+                qobject_cast<QLineEdit*>( pChild ) != NULL ||
+                qobject_cast<QRadioButton*>( pChild ) != NULL ||
+                qobject_cast<QGroupBox*>( pChild ) != NULL ||
+                qobject_cast<QCheckBox*>( pChild ) != NULL ||
+                qobject_cast<QStatusBar*>( pChild ) != NULL )
+                        {
             QFont lFont = pChild->font();
-            lFont.setPointSize(Constants::MAC_FONT_SIZE);
-            pChild->setFont(lFont);
+            lFont.setPointSize( Constants::MAC_FONT_SIZE );
+            pChild->setFont( lFont );
         }
 
         // and scan it, if it has children
-        if (  ! pChild->children().isEmpty() ) {
+        if( !pChild->children().isEmpty() ) {
 
             setDefaultFontSize( pChild );
         }

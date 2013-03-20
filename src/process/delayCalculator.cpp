@@ -36,9 +36,9 @@ DelayCalculator::DelayCalculator() {
 DelayCalculator::~DelayCalculator() {
 }
 
-DelayCalculator* DelayCalculator::getInstance(void) {
+DelayCalculator* DelayCalculator::getInstance( void ) {
 
-    if (0 == _instance) {
+    if( 0 == _instance ) {
 
         _instance = new DelayCalculator();
     }
@@ -46,7 +46,7 @@ DelayCalculator* DelayCalculator::getInstance(void) {
     return _instance;
 }
 
-void DelayCalculator::destroy(void) {
+void DelayCalculator::destroy( void ) {
 
     delete _instance;
     _instance = 0;
@@ -57,7 +57,7 @@ void DelayCalculator::destroy(void) {
 // PROCESSOR INTERFACE
 //
 ////////////////////////////////////////////////////////////////////////////////
-void DelayCalculator::process(void) {
+void DelayCalculator::process( void ) {
 
     /*
      * all constants are declared as double, in order not to worry about
@@ -94,33 +94,33 @@ void DelayCalculator::process(void) {
     // do the math
     pDocument->getWholeDelay()->setPeriod(
 
-            getDelayPeriodFromTempoAndMutliplier(tempo, QUARTER_TO_WHOLE_MUTLT
-                                                 * alterationMultiplier));
+    getDelayPeriodFromTempoAndMutliplier( tempo, QUARTER_TO_WHOLE_MUTLT
+            * alterationMultiplier ) );
 
     pDocument->getHalfDelay()->setPeriod(
 
-            getDelayPeriodFromTempoAndMutliplier(tempo, QUARTER_TO_HALF_MUTLT
-                                                 * alterationMultiplier));
+    getDelayPeriodFromTempoAndMutliplier( tempo, QUARTER_TO_HALF_MUTLT
+            * alterationMultiplier ) );
 
     pDocument->getQuarterDelay()->setPeriod(
 
-            getDelayPeriodFromTempoAndMutliplier(tempo, QUARTER_TO_QUARTER_MUTLT
-                                                 * alterationMultiplier));
+    getDelayPeriodFromTempoAndMutliplier( tempo, QUARTER_TO_QUARTER_MUTLT
+            * alterationMultiplier ) );
 
     pDocument->getEighthDelay()->setPeriod(
 
-            getDelayPeriodFromTempoAndMutliplier(tempo, QUARTER_TO_EIGHTH_MUTLT
-                                                 * alterationMultiplier));
+    getDelayPeriodFromTempoAndMutliplier( tempo, QUARTER_TO_EIGHTH_MUTLT
+            * alterationMultiplier ) );
 
     pDocument->getSixTeenthDelay()->setPeriod(
 
-            getDelayPeriodFromTempoAndMutliplier(tempo, QUARTER_TO_SIXTEENTH_MUTLT
-                                                 * alterationMultiplier));
+    getDelayPeriodFromTempoAndMutliplier( tempo, QUARTER_TO_SIXTEENTH_MUTLT
+            * alterationMultiplier ) );
 
     pDocument->getThirtySecondDelay()->setPeriod(
 
-            getDelayPeriodFromTempoAndMutliplier(tempo, QUARTER_TO_THIRTYSECOND_MUTLT
-                                                 * alterationMultiplier));
+    getDelayPeriodFromTempoAndMutliplier( tempo, QUARTER_TO_THIRTYSECOND_MUTLT
+            * alterationMultiplier ) );
 
 }
 
@@ -129,7 +129,7 @@ void DelayCalculator::process(void) {
 // PRIVATE FUNCTIONS
 //
 ////////////////////////////////////////////////////////////////////////////////
-double DelayCalculator::getDelayPeriodFromTempoAndMutliplier(const double tempo, const double multiplier) {
+double DelayCalculator::getDelayPeriodFromTempoAndMutliplier( const double tempo, const double multiplier ) {
 
     return Constants::SECONDS_PER_MINUTE / tempo * Constants::MILLISEC_PER_SECOND * multiplier;
 }

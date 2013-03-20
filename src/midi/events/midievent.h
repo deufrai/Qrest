@@ -27,7 +27,7 @@ class MidiEvent {
 
 protected:
     MidiEvent();
-public:
+    public:
     virtual ~MidiEvent();
 
 };

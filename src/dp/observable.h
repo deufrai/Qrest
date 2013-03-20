@@ -56,7 +56,7 @@ public:
      *
      * \param observer the observer to add
      */
-    void registerObserver(Observer* observer);
+    void registerObserver( Observer* observer );
 
     /**
      * Remove a registered observer.
@@ -65,7 +65,7 @@ public:
      *
      * \param observer the observer to remove
      */
-    void removeObserver(Observer* observer);
+    void removeObserver( Observer* observer );
 
 protected:
 

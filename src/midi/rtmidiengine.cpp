@@ -31,7 +31,7 @@ RtMidiEngine* RtMidiEngine::_instance = 0;
 
 RtMidiEngine* RtMidiEngine::getInstance() {
 
-    if ( _instance == 0 ) {
+    if( _instance == 0 ) {
 
         _instance = new RtMidiEngine();
     }
@@ -40,7 +40,7 @@ RtMidiEngine* RtMidiEngine::getInstance() {
 }
 
 RtMidiEngine::RtMidiEngine()
-: _midiIn(0) {
+        : _midiIn( 0 ) {
 
 }
 
@@ -51,17 +51,17 @@ RtMidiEngine::~RtMidiEngine() {
 void RtMidiEngine::init() {
 
     // Create the engine
-    _midiIn = new RtMidiIn(Constants::MIDI_ENGINE_NAME);
+    _midiIn = new RtMidiIn( Constants::MIDI_ENGINE_NAME );
 
     // We don't want to ignore timing-related MIDI events
-    _midiIn->ignoreTypes(true, false, true);
+    _midiIn->ignoreTypes( true, false, true );
 }
 
 std::string RtMidiEngine::createPortName() {
 
     std::string portName = Settings::getInstance()->getSettings().value(
-                Settings::MIDI_PORT_NAME,
-                Settings::MIDI_PORT_NAME_DEFAUT).toString().toStdString();
+            Settings::MIDI_PORT_NAME,
+            Settings::MIDI_PORT_NAME_DEFAUT ).toString().toStdString();
 
     /*
      * QREST-27 : Automatic MIDI port rename when several Qrest instance are running
@@ -82,30 +82,30 @@ std::string RtMidiEngine::createPortName() {
      *   we count the number of already running Qrest instances by checking prefered port name
      */
 
-    RtMidiOut midiOut(Constants::MIDI_ENGINE_NAME);
+    RtMidiOut midiOut( Constants::MIDI_ENGINE_NAME );
 
-    unsigned int    portCount       = midiOut.getPortCount();
-    unsigned int    instanceCount   = 0;
+    unsigned int portCount = midiOut.getPortCount();
+    unsigned int instanceCount = 0;
 
-    for (unsigned int i = 0; i < portCount ; i++) {
+    for( unsigned int i = 0; i < portCount; i++ ) {
 
-        std::string currentName = midiOut.getPortName(i);
+        std::string currentName = midiOut.getPortName( i );
 
 #ifndef Q_WS_MAC
-        if ( currentName.find(Constants::MIDI_ENGINE_NAME) < currentName.npos ) {
+        if( currentName.find( Constants::MIDI_ENGINE_NAME ) < currentName.npos ) {
 #else
-        if ( currentName.find(portName) < currentName.npos ) {
+            if ( currentName.find(portName) < currentName.npos ) {
 #endif
 
             instanceCount++;
         }
     }
 
-    if ( instanceCount > 0 ) {
+    if( instanceCount > 0 ) {
 
         std::stringstream stream;
 
-        stream << portName << instanceCount +1;
+        stream << portName << instanceCount + 1;
 
         portName = stream.str();
     }
@@ -113,22 +113,22 @@ std::string RtMidiEngine::createPortName() {
     return portName;
 }
 
-bool RtMidiEngine::openPort( const std::string& deviceName) {
+bool RtMidiEngine::openPort( const std::string& deviceName ) {
 
-    if ( _midiIn ) {
+    if( _midiIn ) {
 
         /*
          * if deviceName is empty, we are opening a virtual port (Linux & Mac)
          */
-        if ( deviceName.empty() ) {
+        if( deviceName.empty() ) {
 
             try {
 
-                _midiIn->setCallback(&mycallback);
-                _midiIn->openVirtualPort(createPortName());
+                _midiIn->setCallback( &mycallback );
+                _midiIn->openVirtualPort( createPortName() );
                 return true;
 
-            } catch (RtError& error) {
+            } catch( RtError& error ) {
 
                 error.printMessage();
                 return false;
@@ -151,17 +151,17 @@ bool RtMidiEngine::openPort( const std::string& deviceName) {
          */
         std::vector<std::string> devices = getDeviceNames();
 
-        for (unsigned int i=0; i<devices.size(); i++) {
+        for( unsigned int i = 0; i < devices.size(); i++ ) {
 
-            if ( 0 == devices.at(i).compare(deviceName) ) {
+            if( 0 == devices.at( i ).compare( deviceName ) ) {
 
                 try {
 
-                    _midiIn->setCallback(&mycallback);
-                    _midiIn->openPort(i, createPortName());
+                    _midiIn->setCallback( &mycallback );
+                    _midiIn->openPort( i, createPortName() );
                     return true;
 
-                } catch (RtError &error) {
+                } catch( RtError &error ) {
 
                     error.printMessage();
                 }
@@ -175,19 +175,18 @@ bool RtMidiEngine::openPort( const std::string& deviceName) {
 
 void RtMidiEngine::closePort() {
 
-        if ( _midiIn ) {
+    if( _midiIn ) {
 
         try {
 
             _midiIn->closePort();
 
-        } catch (RtError &error) {
+        } catch( RtError &error ) {
 
             error.printMessage();
         }
     }
 }
-
 
 const std::vector<std::string> RtMidiEngine::getDeviceNames() {
 
@@ -195,13 +194,13 @@ const std::vector<std::string> RtMidiEngine::getDeviceNames() {
 
     std::vector<std::string> devices;
 
-    for (unsigned int i = 0; i < nPorts; i++) {
+    for( unsigned int i = 0; i < nPorts; i++ ) {
 
         try {
 
-            devices.push_back(_midiIn->getPortName(i));
+            devices.push_back( _midiIn->getPortName( i ) );
 
-        } catch (RtError &error) {
+        } catch( RtError &error ) {
 
             error.printMessage();
         }
@@ -209,7 +208,7 @@ const std::vector<std::string> RtMidiEngine::getDeviceNames() {
 
     std::vector<std::string>::const_iterator it = devices.begin();
 
-    while ( it != devices.end() ) {
+    while( it != devices.end() ) {
 
         std::cerr << *it++ << std::endl;
     }
@@ -217,18 +216,17 @@ const std::vector<std::string> RtMidiEngine::getDeviceNames() {
     return devices;
 }
 
-void RtMidiEngine::mycallback( double deltatime, std::vector< unsigned char > *message, void *userData ) {
+void RtMidiEngine::mycallback( double deltatime, std::vector<unsigned char> *message, void *userData ) {
 
     /*
      * We don't like warnings, even when we are not responsible.
      * this simply does nothing but we don't want to get used to see warnings
      */
-    (void)(userData);
-    (void)(deltatime);
+    (void) ( userData );
+    (void) ( deltatime );
 
-    MidiController::getInstance()->processMidiEvent( MidiEventFactory::createEvent(message) );
+    MidiController::getInstance()->processMidiEvent( MidiEventFactory::createEvent( message ) );
 }
-
 
 void RtMidiEngine::cleanup() {
 

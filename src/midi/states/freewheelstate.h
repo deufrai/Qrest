@@ -30,12 +30,13 @@ public:
     FreeWheelState();
     virtual ~FreeWheelState();
 
-    virtual void processEvent(const MidiEvent* event);
+    virtual void processEvent( const MidiEvent* event );
 
     /*
      * We have nothing to reset
      */
-    virtual void reset() {}
+    virtual void reset() {
+    }
 };
 
 #endif /* FREEWHEEL_H_ */

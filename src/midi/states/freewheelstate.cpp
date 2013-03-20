@@ -26,7 +26,7 @@ FreeWheelState::~FreeWheelState() {
 
 }
 
-void FreeWheelState::processEvent(const MidiEvent* event) {
+void FreeWheelState::processEvent( const MidiEvent* event ) {
 
     // we simply ignore the event
     delete event;

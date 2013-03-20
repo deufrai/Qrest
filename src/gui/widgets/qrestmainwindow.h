@@ -41,7 +41,7 @@ public:
     // INIT
     //
     ////////////////////////////////////////////////////////////////////////////
-    QrestMainWindow(QWidget *parent = 0);
+    QrestMainWindow( QWidget *parent = 0 );
     ~QrestMainWindow();
 
     ////////////////////////////////////////////////////////////////////////////
@@ -72,7 +72,7 @@ private slots:
      *
      * \param text the new text
      */
-    void on_tempoEdit_textEdited(const QString& text);
+    void on_tempoEdit_textEdited( const QString& text );
 
     /**
      * Slot that gets called when 'tap' button is pressed
@@ -176,14 +176,14 @@ private:
      *
      * \return true if event should not be handled by other handlers.
      */
-    virtual bool eventFilter(QObject *target, QEvent *event);
+    virtual bool eventFilter( QObject *target, QEvent *event );
 
     /**
      * Handles close event on this window.
      *
      * Destroys help window.
      */
-    virtual void closeEvent(QCloseEvent* event);
+    virtual void closeEvent( QCloseEvent* event );
 
     ////////////////////////////////////////////////////////////////////////////
     //
@@ -193,41 +193,41 @@ private:
     /**
      * Give the focus to tempo input field.
      */
-    void setFocusToTempoInput(void) const;
+    void setFocusToTempoInput( void ) const;
 
     /**
      * pass tempo input field content value to app data
      */
-    void processTempoInput(void) const;
+    void processTempoInput( void ) const;
 
     /**
      * Display a permanent message in status bar
      *
      * \param message the message to display
      */
-    void statusPermMessage(const QString& message) const;
+    void statusPermMessage( const QString& message ) const;
 
     /**
      * Display a temporary message in status bar
      *
      * \param message the message to display
      */
-    void statusTempMessage(const QString& message) const;
+    void statusTempMessage( const QString& message ) const;
 
     /**
      * Clear status bar message zone
      */
-    void statusClear(void) const;
+    void statusClear( void ) const;
 
     /**
      * Refresh delay times display fields.
      */
-    void updateDelayDisplays(void);
+    void updateDelayDisplays( void );
 
     /**
      * Refresh LFO display fields.
      */
-    void updateLfoDisplays(void);
+    void updateLfoDisplays( void );
 
     /**
      * We check if we have a configured MIDI trigger.
@@ -245,7 +245,7 @@ private:
      *
      * @param enabled : well .... you know ...
      */
-    void setTempoInputControlsEnable(bool enabled);
+    void setTempoInputControlsEnable( bool enabled );
 
     /**
      * Display an error message on midi reset or openport failure
@@ -257,7 +257,7 @@ private:
      *
      * @param enable should controls be enabled (true by default)
      */
-    void setMidiControlsEnable(bool enable = true);
+    void setMidiControlsEnable( bool enable = true );
 
     ////////////////////////////////////////////////////////////////////////////
     //

@@ -19,9 +19,8 @@
 
 #include "midiprogramchange.h"
 
-MidiProgramChange::MidiProgramChange(const unsigned char channel, const unsigned char program)
-: MidiSimpleEvent(channel, program) {
-
+MidiProgramChange::MidiProgramChange( const unsigned char channel, const unsigned char program )
+        : MidiSimpleEvent( channel, program ) {
 
 }
 

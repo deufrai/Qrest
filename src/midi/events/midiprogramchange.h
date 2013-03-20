@@ -34,7 +34,7 @@ public:
      * @param channel   affected MIDI channel
      * @param program   Program number
      */
-    MidiProgramChange(const unsigned char channel, const unsigned char program);
+    MidiProgramChange( const unsigned char channel, const unsigned char program );
     virtual ~MidiProgramChange();
 };
 

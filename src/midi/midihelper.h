@@ -69,7 +69,7 @@ public:
      *
      * @return a string representation of that note
      */
-    static const QStringList noteToStringList(const MidiNoteOn* note);
+    static const QStringList noteToStringList( const MidiNoteOn* note );
 
     /**
      * return a string representation of a MidiProgramChange
@@ -80,7 +80,7 @@ public:
      *
      * @return a string representation of that MidiProgramChange
      */
-    static const QStringList programToStringList(const MidiProgramChange* program);
+    static const QStringList programToStringList( const MidiProgramChange* program );
 
     /**
      * Check if a MIDI event matches with a refence event
@@ -95,7 +95,7 @@ public:
      * @param ref       : the reference event
      * @return          : true if match
      */
-    static bool midiEventMatchesReference(const MidiEvent* event, const MidiEvent* ref);
+    static bool midiEventMatchesReference( const MidiEvent* event, const MidiEvent* ref );
 
 };
 

@@ -73,7 +73,7 @@ public:
      * @param message : pointer to the recieved data
      * @param userData : pointer to user bundled user data (not used in Qrest)
      */
-    static void mycallback( double deltatime, std::vector< unsigned char > *message, void *userData );
+    static void mycallback( double deltatime, std::vector<unsigned char> *message, void *userData );
 
 private:
 

@@ -33,7 +33,7 @@ public:
      * @param value1    note number
      * @param value2    note velocity
      */
-    MidiNoteOn(const unsigned char channel, const unsigned char value1, const unsigned char value2);
+    MidiNoteOn( const unsigned char channel, const unsigned char value1, const unsigned char value2 );
     virtual ~MidiNoteOn();
 };
 

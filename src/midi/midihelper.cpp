@@ -24,90 +24,90 @@
 
 std::vector<std::string> MidiHelper::names;
 
-MidiHelper::MidiHelper() { }
+MidiHelper::MidiHelper() {
+}
 
-MidiHelper::~MidiHelper() { }
+MidiHelper::~MidiHelper() {
+}
 
 void MidiHelper::initNames() {
 
-    names.push_back("C");
-    names.push_back("C#");
-    names.push_back("D");
-    names.push_back("D#");
-    names.push_back("E");
-    names.push_back("F");
-    names.push_back("F#");
-    names.push_back("G");
-    names.push_back("G#");
-    names.push_back("A");
-    names.push_back("A#");
-    names.push_back("B");
+    names.push_back( "C" );
+    names.push_back( "C#" );
+    names.push_back( "D" );
+    names.push_back( "D#" );
+    names.push_back( "E" );
+    names.push_back( "F" );
+    names.push_back( "F#" );
+    names.push_back( "G" );
+    names.push_back( "G#" );
+    names.push_back( "A" );
+    names.push_back( "A#" );
+    names.push_back( "B" );
 }
-
 
 std::string MidiHelper::getNoteNameFromNoteNumber( const unsigned char noteNumber ) {
 
     // initialize support vector on first call
-    if ( names.size() != NOTES_IN_OCTAVE )
+    if( names.size() != NOTES_IN_OCTAVE )
         initNames();
 
-    if ( 127 < noteNumber )
+    if( 127 < noteNumber )
         return "NaN";
 
     std::stringstream stream;
 
     stream << names.at( noteNumber % NOTES_IN_OCTAVE )
-            << (int) (noteNumber / NOTES_IN_OCTAVE) -1; // octave numbering begin at -1
+            << (int) ( noteNumber / NOTES_IN_OCTAVE ) - 1; // octave numbering begin at -1
 
     return stream.str();
 }
 
-const QStringList MidiHelper::noteToStringList(const MidiNoteOn* note) {
+const QStringList MidiHelper::noteToStringList( const MidiNoteOn* note ) {
 
     QStringList list;
 
-    list << Constants::MIDI_TYPE_NOTE << QString::number(note->getChannel())
-         << QString::number(note->getValue1())
-         << QString::number(note->getValue2());
+    list << Constants::MIDI_TYPE_NOTE << QString::number( note->getChannel() )
+            << QString::number( note->getValue1() )
+            << QString::number( note->getValue2() );
 
     return list;
 }
 
-const QStringList MidiHelper::programToStringList(const MidiProgramChange* program) {
+const QStringList MidiHelper::programToStringList( const MidiProgramChange* program ) {
 
     QStringList list;
 
-    list << Constants::MIDI_TYPE_PC << QString::number(program->getChannel())
-                << QString::number(program->getValue1());
+    list << Constants::MIDI_TYPE_PC << QString::number( program->getChannel() )
+            << QString::number( program->getValue1() );
 
     return list;
 }
 
+bool MidiHelper::midiEventMatchesReference( const MidiEvent* event, const MidiEvent* ref ) {
 
-bool MidiHelper::midiEventMatchesReference(const MidiEvent* event, const MidiEvent* ref) {
-
-    if ( event == 0 || ref == 0 )
+    if( event == 0 || ref == 0 )
         return false;
 
-    if ( typeid(*event) != (typeid(*ref)) )
+    if( typeid( *event) != ( typeid( *ref) ) )
         return false;
 
     // we now know that both event are of the same type, let's check the guts
 
-    if ( const MidiNoteOn* noteEvent = dynamic_cast<const MidiNoteOn*> (event) ) {
+    if( const MidiNoteOn* noteEvent = dynamic_cast<const MidiNoteOn*>( event ) ) {
 
-        const MidiNoteOn* noteRef = dynamic_cast<const MidiNoteOn*> (ref);
+        const MidiNoteOn* noteRef = dynamic_cast<const MidiNoteOn*>( ref );
 
         return noteEvent->getChannel() == noteRef->getChannel() &&
-               noteEvent->getValue1()  == noteRef->getValue1();
+                noteEvent->getValue1() == noteRef->getValue1();
 
     } else {
 
-        const MidiProgramChange* pcEvent = dynamic_cast<const MidiProgramChange*> (event);
-        const MidiProgramChange* pcRef = dynamic_cast<const MidiProgramChange*> (ref);
+        const MidiProgramChange* pcEvent = dynamic_cast<const MidiProgramChange*>( event );
+        const MidiProgramChange* pcRef = dynamic_cast<const MidiProgramChange*>( ref );
 
         return pcEvent->getChannel() == pcRef->getChannel() &&
-               pcEvent->getValue1()  == pcRef->getValue1();
+                pcEvent->getValue1() == pcRef->getValue1();
 
     }
 }

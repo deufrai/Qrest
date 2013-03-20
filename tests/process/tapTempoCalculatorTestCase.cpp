@@ -31,16 +31,16 @@ void TapTempoCalculatorTestCase::initTestCase() {
 
     TapTempoTestThread* pThread = new TapTempoTestThread();
 
-    pThread->start(QThread::TimeCriticalPriority);
+    pThread->start( QThread::TimeCriticalPriority );
     pThread->wait();
 }
 
 void TapTempoCalculatorTestCase::testTapTempoAt60BPM() {
 
-    QCOMPARE(Document::getInstance()->getTempo(), 60.0);
+    QCOMPARE( Document::getInstance()->getTempo(), 60.0 );
 }
 
 void TapTempoCalculatorTestCase::testSteadiness() {
 
-    QVERIFY(Document::getInstance()->isSteady());
+    QVERIFY( Document::getInstance()->isSteady() );
 }

@@ -28,9 +28,9 @@
  * dialog displayed to capture a MIDI event and store
  * is as a trigger for the TAP feature.
  */
-class MidiLearnDialog : public QDialog
+class MidiLearnDialog: public QDialog
 {
-    Q_OBJECT
+Q_OBJECT
 
     ////////////////////////////////////////////////////////////////////////////
     //
@@ -38,7 +38,7 @@ class MidiLearnDialog : public QDialog
     //
     ////////////////////////////////////////////////////////////////////////////
 public:
-    MidiLearnDialog(QWidget *parent = 0);
+    MidiLearnDialog( QWidget *parent = 0 );
     ~MidiLearnDialog();
 
     ////////////////////////////////////////////////////////////////////////////
@@ -53,7 +53,7 @@ public slots:
      *
      * @param event : the event
      */
-    void onEventLearned(const MidiEvent* event);
+    void onEventLearned( const MidiEvent* event );
 
     /**
      * Captured event has been accepted as a trigger
@@ -77,7 +77,7 @@ private:
      *
      * @param event : the event to display
      */
-    void displayEvent(const MidiEvent* event);
+    void displayEvent( const MidiEvent* event );
     ////////////////////////////////////////////////////////////////////////////
     //
     // MEMBERS

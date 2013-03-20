@@ -28,13 +28,13 @@
 class LocaleHelper {
 
 private:
-	LocaleHelper();
-	virtual ~LocaleHelper();
+    LocaleHelper();
+    virtual ~LocaleHelper();
 
-	/**
-	 * System locale description.
-	 */
-	static QString locale;
+    /**
+     * System locale description.
+     */
+    static QString locale;
 
 public:
 
@@ -43,7 +43,7 @@ public:
      *
      * \return the path
      */
-    static QString getHelpFilePath(void);
+    static QString getHelpFilePath( void );
 
     /**
      * Get path to default (en) help file.

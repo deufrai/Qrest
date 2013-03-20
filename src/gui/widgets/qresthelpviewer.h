@@ -38,8 +38,9 @@ Q_OBJECT
     ////////////////////////////////////////////////////////////////////////////
 public:
     ~QrestHelpViewer();
+
 private:
-    QrestHelpViewer(QWidget *parent = 0);
+    QrestHelpViewer( QWidget *parent = 0 );
 
     ////////////////////////////////////////////////////////////////////////////
     //
@@ -77,12 +78,12 @@ public:
     // INTERFACE
     //
     ////////////////////////////////////////////////////////////////////////////
-	/**
-	 * Set the path to the html file wich will be displayed.
-	 *
-	 * \param source path to displayed file.
-	 */
-    void setSource(const QString& source);
+    /**
+     * Set the path to the html file wich will be displayed.
+     *
+     * \param source path to displayed file.
+     */
+    void setSource( const QString& source );
 
 };
 

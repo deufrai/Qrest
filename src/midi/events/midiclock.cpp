@@ -21,7 +21,6 @@
 
 MidiClock::MidiClock() {
 
-
 }
 
 MidiClock::~MidiClock() {

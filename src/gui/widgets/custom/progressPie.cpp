@@ -32,11 +32,12 @@
 // INIT
 //
 ////////////////////////////////////////////////////////////////////////////
-ProgressPie::ProgressPie(QWidget* parent) :
-    QWidget(parent),
-    _value(Constants::PROGRESSPIE_DEFAULT_VALUE),
-    _pRedBrush(new QBrush(Qt::red)),
-    _pGreenBrush(new QBrush(Qt::darkGreen)) {
+ProgressPie::ProgressPie( QWidget* parent )
+        :
+                QWidget( parent ),
+                _value( Constants::PROGRESSPIE_DEFAULT_VALUE ),
+                _pRedBrush( new QBrush( Qt::red ) ),
+                _pGreenBrush( new QBrush( Qt::darkGreen ) ) {
 
     /*
      * we want this widget to be enclosed within a square that has the same
@@ -44,8 +45,8 @@ ProgressPie::ProgressPie(QWidget* parent) :
      */
     QLineEdit usedForSizeHintHeight;
     int size = usedForSizeHintHeight.sizeHint().height();
-    setFixedSize(size, size);
-    setSizePolicy(QSizePolicy::Fixed, QSizePolicy::Fixed);
+    setFixedSize( size, size );
+    setSizePolicy( QSizePolicy::Fixed, QSizePolicy::Fixed );
 }
 
 ProgressPie::~ProgressPie() {
@@ -60,12 +61,12 @@ ProgressPie::~ProgressPie() {
 // OVERRIDES
 //
 ////////////////////////////////////////////////////////////////////////////
-void ProgressPie::paintEvent(QPaintEvent* event) {
+void ProgressPie::paintEvent( QPaintEvent* event ) {
 
-    QPainter painter(this);
-    painter.setPen(Qt::NoPen);
+    QPainter painter( this );
+    painter.setPen( Qt::NoPen );
 
-    painter.setRenderHint(QPainter::Antialiasing, true);
+    painter.setRenderHint( QPainter::Antialiasing, true );
 
     /*
      * Qt draws angles with 1/16 degree precision.
@@ -75,7 +76,7 @@ void ProgressPie::paintEvent(QPaintEvent* event) {
     /*
      * pie is drawn starting from top, so we set startAngle at -270°
      */
-    static const int TOP = -270* STEPS ;
+    static const int TOP = -270 * STEPS;
 
     /*
      * how many degrees in a full circle ?
@@ -85,15 +86,15 @@ void ProgressPie::paintEvent(QPaintEvent* event) {
     /*
      * draw red circle
      */
-    painter.setBrush(*_pRedBrush);
-    painter.drawEllipse(this->visibleRegion().boundingRect());
+    painter.setBrush( *_pRedBrush );
+    painter.drawEllipse( this->visibleRegion().boundingRect() );
 
     /*
      * draw green pie
      */
-    painter.setBrush(*_pGreenBrush);
-    painter.drawPie(this->visibleRegion().boundingRect(), TOP,
-            static_cast<int> (-FULL_CIRCLE * _value * STEPS));
+    painter.setBrush( *_pGreenBrush );
+    painter.drawPie( this->visibleRegion().boundingRect(), TOP,
+            static_cast<int>( -FULL_CIRCLE * _value * STEPS ) );
 
     event->accept();
 
@@ -104,7 +105,7 @@ void ProgressPie::paintEvent(QPaintEvent* event) {
 // SLOTS
 //
 ////////////////////////////////////////////////////////////////////////////
-void ProgressPie::setValue(const double value) {
+void ProgressPie::setValue( const double value ) {
 
     _value = value;
     repaint();

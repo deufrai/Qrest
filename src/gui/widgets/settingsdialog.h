@@ -72,7 +72,7 @@ public:
 
     inline const QString getChosenLanguage() const {
 
-        return ui.cmbLocales->itemData(ui.cmbLocales->currentIndex()).toString();
+        return ui.cmbLocales->itemData( ui.cmbLocales->currentIndex() ).toString();
     }
 
     ////////////////////////////////////////////////////////////////////////////

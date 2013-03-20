@@ -51,7 +51,7 @@ public:
      *
      * @return a pointer to MidiEvent
      */
-    static MidiEvent* createEvent(const std::vector<unsigned char>* data);
+    static MidiEvent* createEvent( const std::vector<unsigned char>* data );
 
     /**
      * Create a MidiEvent from a string representation that was sed to store app settings.
@@ -65,7 +65,7 @@ public:
      *
      * @return a pointer to MidiEvent
      */
-    static const MidiEvent* createEvent(const QStringList& list);
+    static const MidiEvent* createEvent( const QStringList& list );
 
 };
 

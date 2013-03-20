@@ -32,10 +32,10 @@ void TapTempoTestThread::run() {
 
     static int count = 4;
 
-    while (count--) {
+    while( count-- ) {
 
         TapTempoCalculator::getInstance()->process();
 
-        msleep(1000);
+        msleep( 1000 );
     }
 }

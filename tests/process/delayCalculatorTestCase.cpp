@@ -26,7 +26,7 @@
 void DelayCalculatorTestCase::initTestCase() {
 
     // Set initial tempo value du 60 BPM.
-    Document::getInstance()->setTempo(60);
+    Document::getInstance()->setTempo( 60 );
 }
 
 void DelayCalculatorTestCase::testPlainValues() {
@@ -48,23 +48,23 @@ void DelayCalculatorTestCase::testPlainValues() {
 
     Document* pDocument = Document::getInstance();
 
-    pDocument->setMultiplier(Document::MULTIPLIER_PLAIN);
+    pDocument->setMultiplier( Document::MULTIPLIER_PLAIN );
 
     DelayCalculator::getInstance()->process();
 
-    QCOMPARE(pDocument->getWholeDelay()->getPeriod(), EXPECTED_WHOLE_PERIOD);
-    QCOMPARE(pDocument->getHalfDelay()->getPeriod(), EXPECTED_HALF_PERIOD);
-    QCOMPARE(pDocument->getQuarterDelay()->getPeriod(), EXPECTED_QUARTER_PERIOD);
-    QCOMPARE(pDocument->getEighthDelay()->getPeriod(), EXPECTED_EIGHTH_PERIOD);
-    QCOMPARE(pDocument->getSixTeenthDelay()->getPeriod(), EXPECTED_SIXTEENTH_PERIOD);
-    QCOMPARE(pDocument->getThirtySecondDelay()->getPeriod(), EXPECTED_THIRTYSECOND_PERIOD);
+    QCOMPARE( pDocument->getWholeDelay()->getPeriod(), EXPECTED_WHOLE_PERIOD );
+    QCOMPARE( pDocument->getHalfDelay()->getPeriod(), EXPECTED_HALF_PERIOD );
+    QCOMPARE( pDocument->getQuarterDelay()->getPeriod(), EXPECTED_QUARTER_PERIOD );
+    QCOMPARE( pDocument->getEighthDelay()->getPeriod(), EXPECTED_EIGHTH_PERIOD );
+    QCOMPARE( pDocument->getSixTeenthDelay()->getPeriod(), EXPECTED_SIXTEENTH_PERIOD );
+    QCOMPARE( pDocument->getThirtySecondDelay()->getPeriod(), EXPECTED_THIRTYSECOND_PERIOD );
 
-    QCOMPARE(pDocument->getWholeDelay()->getFrequency(), EXPECTED_WHOLE_FREQUENCY);
-    QCOMPARE(pDocument->getHalfDelay()->getFrequency(), EXPECTED_HALF_FREQUENCY);
-    QCOMPARE(pDocument->getQuarterDelay()->getFrequency(), EXPECTED_QUARTER_FREQUENCY);
-    QCOMPARE(pDocument->getEighthDelay()->getFrequency(), EXPECTED_EIGHTH_FREQUENCY);
-    QCOMPARE(pDocument->getSixTeenthDelay()->getFrequency(), EXPECTED_SIXTEENTH_FREQUENCY);
-    QCOMPARE(pDocument->getThirtySecondDelay()->getFrequency(), EXPECTED_THIRTYSECOND_FREQUENCY);
+    QCOMPARE( pDocument->getWholeDelay()->getFrequency(), EXPECTED_WHOLE_FREQUENCY );
+    QCOMPARE( pDocument->getHalfDelay()->getFrequency(), EXPECTED_HALF_FREQUENCY );
+    QCOMPARE( pDocument->getQuarterDelay()->getFrequency(), EXPECTED_QUARTER_FREQUENCY );
+    QCOMPARE( pDocument->getEighthDelay()->getFrequency(), EXPECTED_EIGHTH_FREQUENCY );
+    QCOMPARE( pDocument->getSixTeenthDelay()->getFrequency(), EXPECTED_SIXTEENTH_FREQUENCY );
+    QCOMPARE( pDocument->getThirtySecondDelay()->getFrequency(), EXPECTED_THIRTYSECOND_FREQUENCY );
 }
 
 void DelayCalculatorTestCase::testDottedValues() {
@@ -86,23 +86,23 @@ void DelayCalculatorTestCase::testDottedValues() {
 
     Document* pDocument = Document::getInstance();
 
-    pDocument->setMultiplier(Document::MULTIPLIER_DOTTED);
+    pDocument->setMultiplier( Document::MULTIPLIER_DOTTED );
 
     DelayCalculator::getInstance()->process();
 
-    QCOMPARE(pDocument->getWholeDelay()->getPeriod(), EXPECTED_WHOLE_PERIOD);
-    QCOMPARE(pDocument->getHalfDelay()->getPeriod(), EXPECTED_HALF_PERIOD);
-    QCOMPARE(pDocument->getQuarterDelay()->getPeriod(), EXPECTED_QUARTER_PERIOD);
-    QCOMPARE(pDocument->getEighthDelay()->getPeriod(), EXPECTED_EIGHTH_PERIOD);
-    QCOMPARE(pDocument->getSixTeenthDelay()->getPeriod(), EXPECTED_SIXTEENTH_PERIOD);
-    QCOMPARE(pDocument->getThirtySecondDelay()->getPeriod(), EXPECTED_THIRTYSECOND_PERIOD);
+    QCOMPARE( pDocument->getWholeDelay()->getPeriod(), EXPECTED_WHOLE_PERIOD );
+    QCOMPARE( pDocument->getHalfDelay()->getPeriod(), EXPECTED_HALF_PERIOD );
+    QCOMPARE( pDocument->getQuarterDelay()->getPeriod(), EXPECTED_QUARTER_PERIOD );
+    QCOMPARE( pDocument->getEighthDelay()->getPeriod(), EXPECTED_EIGHTH_PERIOD );
+    QCOMPARE( pDocument->getSixTeenthDelay()->getPeriod(), EXPECTED_SIXTEENTH_PERIOD );
+    QCOMPARE( pDocument->getThirtySecondDelay()->getPeriod(), EXPECTED_THIRTYSECOND_PERIOD );
 
-    QCOMPARE(pDocument->getWholeDelay()->getFrequency(), EXPECTED_WHOLE_FREQUENCY);
-    QCOMPARE(pDocument->getHalfDelay()->getFrequency(), EXPECTED_HALF_FREQUENCY);
-    QCOMPARE(pDocument->getQuarterDelay()->getFrequency(), EXPECTED_QUARTER_FREQUENCY);
-    QCOMPARE(pDocument->getEighthDelay()->getFrequency(), EXPECTED_EIGHTH_FREQUENCY);
-    QCOMPARE(pDocument->getSixTeenthDelay()->getFrequency(), EXPECTED_SIXTEENTH_FREQUENCY);
-    QCOMPARE(pDocument->getThirtySecondDelay()->getFrequency(), EXPECTED_THIRTYSECOND_FREQUENCY);
+    QCOMPARE( pDocument->getWholeDelay()->getFrequency(), EXPECTED_WHOLE_FREQUENCY );
+    QCOMPARE( pDocument->getHalfDelay()->getFrequency(), EXPECTED_HALF_FREQUENCY );
+    QCOMPARE( pDocument->getQuarterDelay()->getFrequency(), EXPECTED_QUARTER_FREQUENCY );
+    QCOMPARE( pDocument->getEighthDelay()->getFrequency(), EXPECTED_EIGHTH_FREQUENCY );
+    QCOMPARE( pDocument->getSixTeenthDelay()->getFrequency(), EXPECTED_SIXTEENTH_FREQUENCY );
+    QCOMPARE( pDocument->getThirtySecondDelay()->getFrequency(), EXPECTED_THIRTYSECOND_FREQUENCY );
 }
 
 void DelayCalculatorTestCase::testTripletValues() {
@@ -124,22 +124,22 @@ void DelayCalculatorTestCase::testTripletValues() {
 
     Document* pDocument = Document::getInstance();
 
-    pDocument->setMultiplier(Document::MULTIPLIER_TRIPLET);
+    pDocument->setMultiplier( Document::MULTIPLIER_TRIPLET );
 
     DelayCalculator::getInstance()->process();
 
-    QCOMPARE(pDocument->getWholeDelay()->getPeriod(), EXPECTED_WHOLE_PERIOD);
-    QCOMPARE(pDocument->getHalfDelay()->getPeriod(), EXPECTED_HALF_PERIOD);
-    QCOMPARE(pDocument->getQuarterDelay()->getPeriod(), EXPECTED_QUARTER_PERIOD);
-    QCOMPARE(pDocument->getEighthDelay()->getPeriod(), EXPECTED_EIGHTH_PERIOD);
-    QCOMPARE(pDocument->getSixTeenthDelay()->getPeriod(), EXPECTED_SIXTEENTH_PERIOD);
-    QCOMPARE(pDocument->getThirtySecondDelay()->getPeriod(), EXPECTED_THIRTYSECOND_PERIOD);
+    QCOMPARE( pDocument->getWholeDelay()->getPeriod(), EXPECTED_WHOLE_PERIOD );
+    QCOMPARE( pDocument->getHalfDelay()->getPeriod(), EXPECTED_HALF_PERIOD );
+    QCOMPARE( pDocument->getQuarterDelay()->getPeriod(), EXPECTED_QUARTER_PERIOD );
+    QCOMPARE( pDocument->getEighthDelay()->getPeriod(), EXPECTED_EIGHTH_PERIOD );
+    QCOMPARE( pDocument->getSixTeenthDelay()->getPeriod(), EXPECTED_SIXTEENTH_PERIOD );
+    QCOMPARE( pDocument->getThirtySecondDelay()->getPeriod(), EXPECTED_THIRTYSECOND_PERIOD );
 
-    QCOMPARE(pDocument->getWholeDelay()->getFrequency(), EXPECTED_WHOLE_FREQUENCY);
-    QCOMPARE(pDocument->getHalfDelay()->getFrequency(), EXPECTED_HALF_FREQUENCY);
-    QCOMPARE(pDocument->getQuarterDelay()->getFrequency(), EXPECTED_QUARTER_FREQUENCY);
-    QCOMPARE(pDocument->getEighthDelay()->getFrequency(), EXPECTED_EIGHTH_FREQUENCY);
-    QCOMPARE(pDocument->getSixTeenthDelay()->getFrequency(), EXPECTED_SIXTEENTH_FREQUENCY);
-    QCOMPARE(pDocument->getThirtySecondDelay()->getFrequency(), EXPECTED_THIRTYSECOND_FREQUENCY);
+    QCOMPARE( pDocument->getWholeDelay()->getFrequency(), EXPECTED_WHOLE_FREQUENCY );
+    QCOMPARE( pDocument->getHalfDelay()->getFrequency(), EXPECTED_HALF_FREQUENCY );
+    QCOMPARE( pDocument->getQuarterDelay()->getFrequency(), EXPECTED_QUARTER_FREQUENCY );
+    QCOMPARE( pDocument->getEighthDelay()->getFrequency(), EXPECTED_EIGHTH_FREQUENCY );
+    QCOMPARE( pDocument->getSixTeenthDelay()->getFrequency(), EXPECTED_SIXTEENTH_FREQUENCY );
+    QCOMPARE( pDocument->getThirtySecondDelay()->getFrequency(), EXPECTED_THIRTYSECOND_FREQUENCY );
 
 }

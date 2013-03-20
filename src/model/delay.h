@@ -51,7 +51,7 @@ public:
      *
      * \param period the period to be set
      */
-    inline void setPeriod(const double period) {
+    inline void setPeriod( const double period ) {
 
         _period = period;
         _frequency = 1 / _period * Constants::MILLISEC_PER_SECOND;

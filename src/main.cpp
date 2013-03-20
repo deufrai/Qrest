@@ -91,23 +91,23 @@ int main( int argc, char *argv[] ) {
      *  - system default
      */
 
-    QString     locale;
-    Document*   pDoc = Document::getInstance();
+    QString locale;
+    Document* pDoc = Document::getInstance();
 
     if( Settings::getInstance()->getSettings().contains( Settings::UI_PREFERRED_LOCALE ) ) {
 
         locale = Settings::getInstance()->getSettings().value( Settings::UI_PREFERRED_LOCALE ).toString();
-        pDoc->setLocale(locale);
+        pDoc->setLocale( locale );
 
     } else if( 2 == argc ) {
 
         locale = QString( argv[1] );
-        pDoc->setLocale(locale);
+        pDoc->setLocale( locale );
 
     } else {
 
         locale = LocaleHelper::getLocale();
-        pDoc->setLocale(Constants::LOCALE_SYSDEFAULT);
+        pDoc->setLocale( Constants::LOCALE_SYSDEFAULT );
     }
 
     installTranslator( application, appTransfilePrefix, appTransFolderPath, locale );
@@ -166,7 +166,8 @@ void installTranslator( QApplication& app, QString& filePrefix, QString& folderP
 
     } else {
 
-        qWarning( "Failed to load translation file : %s%s", filePrefix.toStdString().c_str(), locale.toStdString().c_str() );
+        qWarning( "Failed to load translation file : %s%s", filePrefix.toStdString().c_str(),
+                locale.toStdString().c_str() );
     }
 
 }
@@ -175,7 +176,8 @@ void loadSettings() {
 
     if( Settings::getInstance()->getSettings().contains( Settings::MIDI_TRIGGER_EVENT ) ) {
 
-        QStringList list = Settings::getInstance()->getSettings().value( Settings::MIDI_TRIGGER_EVENT, 0 ).toStringList();
+        QStringList list =
+                Settings::getInstance()->getSettings().value( Settings::MIDI_TRIGGER_EVENT, 0 ).toStringList();
 
         Document::getInstance()->setTriggerEvent( MidiEventFactory::createEvent( list ) );
     }

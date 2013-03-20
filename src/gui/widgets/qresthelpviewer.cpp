@@ -27,10 +27,10 @@ QrestHelpViewer* QrestHelpViewer::instance = 0;
 // INIT
 //
 ////////////////////////////////////////////////////////////////////////////
-QrestHelpViewer::QrestHelpViewer(QWidget *parent)
-: QMainWindow(parent) {
+QrestHelpViewer::QrestHelpViewer( QWidget *parent )
+        : QMainWindow( parent ) {
 
-    ui.setupUi(this);
+    ui.setupUi( this );
 }
 
 QrestHelpViewer::~QrestHelpViewer() {
@@ -44,7 +44,7 @@ QrestHelpViewer::~QrestHelpViewer() {
 ////////////////////////////////////////////////////////////////////////////
 QrestHelpViewer* QrestHelpViewer::getInstance() {
 
-    if (0 == instance) {
+    if( 0 == instance ) {
 
         instance = new QrestHelpViewer();
     }
@@ -58,8 +58,7 @@ void QrestHelpViewer::destroy() {
     instance = 0;
 }
 
+void QrestHelpViewer::setSource( const QString& source ) {
 
-void QrestHelpViewer::setSource(const QString& source) {
-
-    ui.helpBrowser->setSource(QUrl::fromLocalFile(source));
+    ui.helpBrowser->setSource( QUrl::fromLocalFile( source ) );
 }

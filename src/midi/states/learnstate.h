@@ -32,9 +32,10 @@ public:
     LearnState();
     virtual ~LearnState();
 
-    virtual void reset() {} // don't think we would need to do anything in here
+    virtual void reset() {
+    } // don't think we would need to do anything in here
 
-    virtual void processEvent(const MidiEvent* event);
+    virtual void processEvent( const MidiEvent* event );
 };
 
 #endif /* LEARNSTATE_H_ */

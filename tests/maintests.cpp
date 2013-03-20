@@ -25,9 +25,9 @@
 /*
  * Launching every testcase
  */
-int main(int argc, char** argv) {
+int main( int argc, char** argv ) {
 
-    QCoreApplication app(argc, argv);
+    QCoreApplication app( argc, argv );
 
     /*
      * List of all tests to be ran.
@@ -45,17 +45,16 @@ int main(int argc, char** argv) {
 
     /*
      * Run all tests and remember if at leasst one of them failed.
-     */
-    foreach (QObject* test, tests)
-        {
+     */foreach (QObject* test, tests)
+    {
 
-            status = QTest::qExec(test, argc, argv);
+        status = QTest::qExec( test, argc, argv );
 
-            if (!someTestsFailed && 0 != status) {
+        if( !someTestsFailed && 0 != status ) {
 
-                someTestsFailed = true;
-            }
+            someTestsFailed = true;
         }
+    }
 
     /*
      * We return 0 if no failure occured, otherwise : 1.

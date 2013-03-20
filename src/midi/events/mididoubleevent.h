@@ -36,7 +36,7 @@ protected:
      * @param value1    value of byte #1
      * @param value2    value of byte #2
      */
-    MidiDoubleEvent(const unsigned char channel, const unsigned char value1, const unsigned char value2);
+    MidiDoubleEvent( const unsigned char channel, const unsigned char value1, const unsigned char value2 );
 
 public:
     virtual ~MidiDoubleEvent();

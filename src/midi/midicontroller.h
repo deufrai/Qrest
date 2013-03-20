@@ -35,7 +35,7 @@
  *
  * De-coupling is done with Qt Signals & Slots
  **/
-class MidiController : public QObject {
+class MidiController: public QObject {
 
 Q_OBJECT
 
@@ -87,7 +87,7 @@ public:
      *
      * @param event the MIDI event to process
      */
-    void processMidiEvent(const MidiEvent* event);
+    void processMidiEvent( const MidiEvent* event );
 
     /**
      * Enter trigger mode
@@ -115,7 +115,7 @@ public:
      *
      * @param event the event
      */
-    void learnStateCapturedEvent(const MidiEvent* event);
+    void learnStateCapturedEvent( const MidiEvent* event );
 
     /**
      * A MIDI Clock timeout has been detected by the syncState
@@ -152,14 +152,14 @@ signals:
      * Emitted when a new MIDI event has been recieved from the MIDI engine callback
      *
      */
-    void sigMidiEventRecieved(const MidiEvent*);
+    void sigMidiEventRecieved( const MidiEvent* );
 
     /**
      * Emitted when a MIDI event has been learned.
      * Will be caught by the MIDI learning GUI
      *
      */
-    void sigLearnedEvent(const MidiEvent*);
+    void sigLearnedEvent( const MidiEvent* );
 
     /**
      * Emitted when a MIDI Clock timeout has been detected
@@ -186,13 +186,11 @@ signals:
      */
     void sigSync();
 
-
 private slots:
     /**
      * Pass the event to our current state
      */
-    void onMidiEventRecieved(const MidiEvent* event);
-
+    void onMidiEventRecieved( const MidiEvent* event );
 
     ////////////////////////////////////////////////////////////////////////////
     //

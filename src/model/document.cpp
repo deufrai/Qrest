@@ -29,14 +29,14 @@
 
 Document* Document::_instance = 0;
 
-Document::Document() 
-: _tempo(Constants::TEMPO_DEFAULT),
-  _steady(true),
-  _steadiness(FULL_STEADINESS),
-  _tempoSource(TEMPO_SOURCE_KEYBOARD),
-  _multiplier(MULTIPLIER_PLAIN),
-  _midiClockRunning(false),
-  _triggerEvent(0) {
+Document::Document()
+        : _tempo( Constants::TEMPO_DEFAULT ),
+                _steady( true ),
+                _steadiness( FULL_STEADINESS ),
+                _tempoSource( TEMPO_SOURCE_KEYBOARD ),
+                _multiplier( MULTIPLIER_PLAIN ),
+                _midiClockRunning( false ),
+                _triggerEvent( 0 ) {
 
     // init vector of Delay objects
     initDelays();
@@ -54,7 +54,7 @@ Document::~Document() {
 
 Document* Document::getInstance() {
 
-    if (0 == _instance) {
+    if( 0 == _instance ) {
 
         _instance = new Document();
     }
@@ -74,9 +74,9 @@ void Document::destroy() {
 //
 ////////////////////////////////////////////////////////////////////////////////
 
-void Document::setTempo(const double tempo) {
+void Document::setTempo( const double tempo ) {
 
-    if ((Constants::TEMPO_MIN <= tempo && tempo <= Constants::TEMPO_MAX)) {
+    if( ( Constants::TEMPO_MIN <= tempo && tempo <= Constants::TEMPO_MAX ) ) {
 
         _tempo = tempo;
         updateDelays();
@@ -90,17 +90,17 @@ void Document::setTempo(const double tempo) {
 // PRIVATE FUNCTIONS
 //
 ////////////////////////////////////////////////////////////////////////////////
-void Document::initDelays(void) {
+void Document::initDelays( void ) {
 
-    for (int i = 0; i < DELAYS_COUNT; i++) {
+    for( int i = 0; i < DELAYS_COUNT; i++ ) {
 
-        _delays.push_back(new Delay());
+        _delays.push_back( new Delay() );
     }
 }
 
-void Document::destroyDelays(void) {
+void Document::destroyDelays( void ) {
 
-    for (int i = 0; i < DELAYS_COUNT; i++) {
+    for( int i = 0; i < DELAYS_COUNT; i++ ) {
 
         delete _delays[i];
         _delays[i] = 0;
@@ -110,7 +110,7 @@ void Document::destroyDelays(void) {
 
 }
 
-void Document::updateDelays(void) {
+void Document::updateDelays( void ) {
 
     DelayCalculator::getInstance()->process();
 }

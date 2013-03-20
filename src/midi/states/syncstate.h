@@ -46,7 +46,7 @@ public:
     SyncState();
     virtual ~SyncState();
 
-    virtual void processEvent(const MidiEvent* event);
+    virtual void processEvent( const MidiEvent* event );
 
     virtual void reset();
 

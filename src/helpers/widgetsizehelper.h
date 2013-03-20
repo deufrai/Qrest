@@ -17,15 +17,14 @@
  *  along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-
 #ifndef WIDGETSIZEHELPER_H
 #define WIDGETSIZEHELPER_H
 
 class QWidget;
 
 /**
-  * Helper class (ifdefed on Mac) to set bigger font sizes
-  */
+ * Helper class (ifdefed on Mac) to set bigger font sizes
+ */
 class WidgetSizeHelper
 {
 public:
@@ -38,8 +37,7 @@ public:
      * \param pWidget : the widget to scan
      *
      */
-    static void setDefaultFontSize(QWidget* pWidget);
+    static void setDefaultFontSize( QWidget* pWidget );
 };
 
 #endif // WIDGETSIZEHELPER_H
-

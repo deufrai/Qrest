@@ -27,8 +27,8 @@
 #include "../../midi/midicontroller.h"
 
 SyncState::SyncState()
-: _midiClockCounter(0),
-  _midiClockTimeoutDetector(new QTimer()) {
+        : _midiClockCounter( 0 ),
+                _midiClockTimeoutDetector( new QTimer() ) {
 
     /*
      * Initialise time out detector timer :
@@ -36,17 +36,18 @@ SyncState::SyncState()
      *  - single shot
      *  - connected to our own slot
      */
-    _midiClockTimeoutDetector->setSingleShot(true);
-    _midiClockTimeoutDetector->setInterval(Constants::MIDI_SYNC_TIMEOUT_MS);
-    connect(_midiClockTimeoutDetector, SIGNAL(timeout()), this, SLOT(onMidiClockTimeoutDetectorTimeout()));
+    _midiClockTimeoutDetector->setSingleShot( true );
+    _midiClockTimeoutDetector->setInterval( Constants::MIDI_SYNC_TIMEOUT_MS );
+    connect( _midiClockTimeoutDetector, SIGNAL(timeout()), this, SLOT(onMidiClockTimeoutDetectorTimeout()) );
 }
 
-SyncState::~SyncState() { }
+SyncState::~SyncState() {
+}
 
 void SyncState::reset() {
 
     _midiClockTimeoutDetector->stop();
-    Document::getInstance()->setMidiClockRunning(false);
+    Document::getInstance()->setMidiClockRunning( false );
 }
 
 void SyncState::onMidiClockTimeoutDetectorTimeout() {
@@ -54,10 +55,10 @@ void SyncState::onMidiClockTimeoutDetectorTimeout() {
     MidiController::getInstance()->timeOutDetected();
 }
 
-void SyncState::processEvent(const MidiEvent* event) {
+void SyncState::processEvent( const MidiEvent* event ) {
 
-    if ( dynamic_cast<const MidiContinue*> (event) != 0 ||
-         dynamic_cast<const MidiStart*> (event) != 0 ) {
+    if( dynamic_cast<const MidiContinue*>( event ) != 0 ||
+            dynamic_cast<const MidiStart*>( event ) != 0 ) {
 
         /*
          * MidiStart & MidiContinue
@@ -68,12 +69,10 @@ void SyncState::processEvent(const MidiEvent* event) {
          */
 
         // We tell everyone that we are now following external sync
-        
         _midiClockCounter = 0;
-        Document::getInstance()->setMidiClockRunning(true);
+        Document::getInstance()->setMidiClockRunning( true );
 
-
-    } else if ( dynamic_cast<const MidiStop*> (event) != 0 ) {
+    } else if( dynamic_cast<const MidiStop*>( event ) != 0 ) {
 
         /*
          * MidiStop
@@ -82,11 +81,10 @@ void SyncState::processEvent(const MidiEvent* event) {
          * We tell everyone that we are no longer following external sync
          * and disable timeout detector
          */
-        Document::getInstance()->setMidiClockRunning(false);
+        Document::getInstance()->setMidiClockRunning( false );
         _midiClockTimeoutDetector->stop();
 
-
-    } else if ( dynamic_cast<const MidiClock*> (event) != 0 ) {
+    } else if( dynamic_cast<const MidiClock*>( event ) != 0 ) {
 
         /*
          * MidiClock
@@ -95,17 +93,17 @@ void SyncState::processEvent(const MidiEvent* event) {
          * Midi Clock events are sent 24 times every 4th note.
          * So we count them untill we have 24 and then trigger a tempo calculation
          *
-         */      
-        if ( ++_midiClockCounter == Constants::MIDI_CLOCK_EVENTS_PER_QUARTER ) {
-            
+         */
+        if( ++_midiClockCounter == Constants::MIDI_CLOCK_EVENTS_PER_QUARTER ) {
+
             /*
              * we want the GUI to update correctly, even if we enter slave mode
              * AFTER the Midi Start event has been sent
              */
-            Document::getInstance()->setMidiClockRunning(true);
-            
-            _midiClockCounter = 0;            
-            Document::getInstance()->setTempoSource(Document::TEMPO_SOURCE_MIDI_CLOCK);
+            Document::getInstance()->setMidiClockRunning( true );
+
+            _midiClockCounter = 0;
+            Document::getInstance()->setTempoSource( Document::TEMPO_SOURCE_MIDI_CLOCK );
             TapTempoCalculator::getInstance()->process();
         }
 

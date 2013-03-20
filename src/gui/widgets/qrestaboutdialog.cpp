@@ -26,44 +26,45 @@
 // INIT
 //
 ////////////////////////////////////////////////////////////////////////////
-QrestAboutDialog::QrestAboutDialog(const char* versionString, QWidget *parent)
-: QDialog(parent) {
+QrestAboutDialog::QrestAboutDialog( const char* versionString, QWidget *parent )
+        : QDialog( parent ) {
 
-    ui.setupUi(this);
+    ui.setupUi( this );
 
     QString aboutString;
 
-    aboutString.append("<center>")
-            .append("<h2>")
-            .append("Qrest - Really Easy Studio Toolkit")
-            .append("</h2>")
-            .append("<p>")
-            .append(tr("Version"))
-            .append(" : ")
-            .append(versionString)
-            .append("</p>")
-            .append("<p>")
-            .append(tr("Author"))
-            .append( " : Fr&eacute;d&eacute;ric CORNU <a href=\"mailto:fcornu@wardsback.org?subject=Qrest\">fcornu@wardsback.org</a>")
-            .append("</p>")
-            .append("<p>")
-            .append(tr("Website"))
-            .append(" : <a href=\"http://www.qrest.org/\">http://www.qrest.org</a>")
-            .append( "</p>")
-            .append("<p>")
-            .append(tr("Twitter Feed"))
-            .append(" : <a href=\"https://twitter.com/QrestSupport\">@QrestSupport</a>")
-            .append( "</p>")
-            .append("<p>")
-            .append(tr("License"))
-            .append( " : <a href=\"http://www.gnu.org/licenses/gpl-3.0.txt\">General Public License v3</a>")
-            .append( "</p>")
-            .append("</center>");
+    aboutString.append( "<center>" )
+            .append( "<h2>" )
+            .append( "Qrest - Really Easy Studio Toolkit" )
+            .append( "</h2>" )
+            .append( "<p>" )
+            .append( tr( "Version" ) )
+            .append( " : " )
+            .append( versionString )
+            .append( "</p>" )
+            .append( "<p>" )
+            .append( tr( "Author" ) )
+            .append(
+            " : Fr&eacute;d&eacute;ric CORNU <a href=\"mailto:fcornu@wardsback.org?subject=Qrest\">fcornu@wardsback.org</a>" )
+            .append( "</p>" )
+            .append( "<p>" )
+            .append( tr( "Website" ) )
+            .append( " : <a href=\"http://www.qrest.org/\">http://www.qrest.org</a>" )
+            .append( "</p>" )
+            .append( "<p>" )
+            .append( tr( "Twitter Feed" ) )
+            .append( " : <a href=\"https://twitter.com/QrestSupport\">@QrestSupport</a>" )
+            .append( "</p>" )
+            .append( "<p>" )
+            .append( tr( "License" ) )
+            .append( " : <a href=\"http://www.gnu.org/licenses/gpl-3.0.txt\">General Public License v3</a>" )
+            .append( "</p>" )
+            .append( "</center>" );
 
-    ui.aboutLabel->setText(aboutString);
+    ui.aboutLabel->setText( aboutString );
 
     // we don't want the "what's this" button on this dialog
-    this->setWindowFlags(windowFlags() & ~Qt::WindowContextHelpButtonHint);
+    this->setWindowFlags( windowFlags() & ~Qt::WindowContextHelpButtonHint );
 
 }
 

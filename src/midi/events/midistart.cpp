@@ -21,7 +21,6 @@
 
 MidiStart::MidiStart() {
 
-
 }
 
 MidiStart::~MidiStart() {

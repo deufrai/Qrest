@@ -45,7 +45,7 @@ public:
      *
      * @param event the MIDI event to process
      */
-    virtual void processEvent(const MidiEvent* event) = 0;
+    virtual void processEvent( const MidiEvent* event ) = 0;
 
     /**
      * reset any state-specific status

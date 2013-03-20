@@ -32,9 +32,10 @@ public:
     TapTriggerState();
     virtual ~TapTriggerState();
 
-    virtual void reset() {} // Don't think we'll do much in here
+    virtual void reset() {
+    } // Don't think we'll do much in here
 
-    virtual void processEvent(const MidiEvent* event);
+    virtual void processEvent( const MidiEvent* event );
 };
 
 #endif /* TAPTRIGGERSTATE_H_ */

@@ -23,6 +23,5 @@ MidiState::~MidiState() {
 }
 MidiState::MidiState() {
 
-
 }
 

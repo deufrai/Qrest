@@ -18,9 +18,10 @@
 
 #include "midinoteon.h"
 
-MidiNoteOn::MidiNoteOn(const unsigned char channel, const unsigned char value1, const unsigned char value2)
-: MidiDoubleEvent(channel, value1, value2) { }
+MidiNoteOn::MidiNoteOn( const unsigned char channel, const unsigned char value1, const unsigned char value2 )
+        : MidiDoubleEvent( channel, value1, value2 ) {
+}
 
-
-MidiNoteOn::~MidiNoteOn() { }
+MidiNoteOn::~MidiNoteOn() {
+}
 

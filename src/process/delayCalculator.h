@@ -59,7 +59,7 @@ public:
     /**
      * destroy the only instance.
      */
-    static void destroy(void);
+    static void destroy( void );
 
     ////////////////////////////////////////////////////////////////////////////
     //
@@ -69,7 +69,7 @@ public:
     /**
      * Get tempo from app data store and calculate delays
      */
-    virtual void process(void);
+    virtual void process( void );
 
 private:
 
@@ -78,7 +78,7 @@ private:
     // FUNCTIONS
     //
     ////////////////////////////////////////////////////////////////////////////
-    double getDelayPeriodFromTempoAndMutliplier(const double tempo, const double mutliplier);
+    double getDelayPeriodFromTempoAndMutliplier( const double tempo, const double mutliplier );
 };
 
 #endif /* DELAYCALCULATOR_H_ */

@@ -35,7 +35,7 @@ MidiEventFactory::~MidiEventFactory() {
 }
 
 MidiEvent* MidiEventFactory::createEvent(
-        const std::vector<unsigned char>* data) {
+        const std::vector<unsigned char>* data ) {
 
     /*
      * Note and program change share the same fist byte structure :
@@ -63,11 +63,11 @@ MidiEvent* MidiEventFactory::createEvent(
      *
      * type, channel, value1 & value2 will be used for all voice messages
      */
-    unsigned char status = data->at(0);
+    unsigned char status = data->at( 0 );
 
     MidiEvent* event = 0;
 
-    if (status < 0xF0) {
+    if( status < 0xF0 ) {
 
         unsigned char type = 0;
         unsigned char channel = 0;
@@ -78,50 +78,50 @@ MidiEvent* MidiEventFactory::createEvent(
         type = status & 0xF0;
 
         // we get the 4 lsb into channel, with numbering starting at 0
-        channel = (status & 0xF) + 1;
+        channel = ( status & 0xF ) + 1;
 
-        if (data->size() > 1)
-            value1 = data->at(1);
+        if( data->size() > 1 )
+            value1 = data->at( 1 );
 
-        if (data->size() > 2)
-            value2 = data->at(2);
+        if( data->size() > 2 )
+            value2 = data->at( 2 );
 
-        switch (type) {
+        switch( type ) {
 
-            case TYPE_NOTE_ON:
-                event = new MidiNoteOn(channel, value1, value2);
-                break;
+        case TYPE_NOTE_ON:
+            event = new MidiNoteOn( channel, value1, value2 );
+            break;
 
-            case TYPE_PROGRAM_CHANGE:
-                event = new MidiProgramChange(channel, value1);
-                break;
+        case TYPE_PROGRAM_CHANGE:
+            event = new MidiProgramChange( channel, value1 );
+            break;
 
-            default:
-                break;
+        default:
+            break;
         }
 
     } else {
 
-        switch (status) {
+        switch( status ) {
 
-            case TYPE_CLOCK_START:
-                event = new MidiStart();
-                break;
+        case TYPE_CLOCK_START:
+            event = new MidiStart();
+            break;
 
-            case TYPE_CLOCK_CONTINUE:
-                event = new MidiContinue();
-                break;
+        case TYPE_CLOCK_CONTINUE:
+            event = new MidiContinue();
+            break;
 
-            case TYPE_CLOCK_STOP:
-                event = new MidiStop();
-                break;
+        case TYPE_CLOCK_STOP:
+            event = new MidiStop();
+            break;
 
-            case TYPE_CLOCK_CLOCK:
-                event = new MidiClock();
-                break;
+        case TYPE_CLOCK_CLOCK:
+            event = new MidiClock();
+            break;
 
-            default:
-                break;
+        default:
+            break;
         }
     }
 
@@ -129,8 +129,7 @@ MidiEvent* MidiEventFactory::createEvent(
 
 }
 
-const MidiEvent* MidiEventFactory::createEvent(const QStringList& list) {
-
+const MidiEvent* MidiEventFactory::createEvent( const QStringList& list ) {
 
     /*
      * Implemented only for MdiNoteOn, MidiControlChange & MidiProgramChange
@@ -142,38 +141,38 @@ const MidiEvent* MidiEventFactory::createEvent(const QStringList& list) {
      * If we have 4 values, we're dealing wit notes
      * If we have 3 values, we're dealing with program change
      */
-    QString type = list.at(0);
+    QString type = list.at( 0 );
 
-    switch (list.size()) {
+    switch( list.size() ) {
 
-        case 4:
+    case 4:
 
-            if ( type == Constants::MIDI_TYPE_NOTE ) {
+        if( type == Constants::MIDI_TYPE_NOTE ) {
 
-                event = new MidiNoteOn(
+            event = new MidiNoteOn(
 
-                        list.at(1).toUInt(),
-                        list.at(2).toUInt(),
-                        list.at(3).toUInt());
+            list.at( 1 ).toUInt(),
+                    list.at( 2 ).toUInt(),
+                    list.at( 3 ).toUInt() );
 
-            }
+        }
 
-            break;
+        break;
 
-        case 3:
+    case 3:
 
-            if ( type == Constants::MIDI_TYPE_PC ) {
+        if( type == Constants::MIDI_TYPE_PC ) {
 
-                event = new MidiProgramChange(
+            event = new MidiProgramChange(
 
-                        list.at(1).toUInt(),
-                        list.at(2).toUInt());
-            }
+            list.at( 1 ).toUInt(),
+                    list.at( 2 ).toUInt() );
+        }
 
-            break;
+        break;
 
-        default:
-            break;
+    default:
+        break;
     }
 
     return event;

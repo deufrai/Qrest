@@ -18,7 +18,9 @@
 
 #include "midicontinue.h"
 
-MidiContinue::MidiContinue() { }
+MidiContinue::MidiContinue() {
+}
 
-MidiContinue::~MidiContinue() { }
+MidiContinue::~MidiContinue() {
+}
 

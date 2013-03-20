@@ -45,7 +45,7 @@ public:
     /**
      * Perform processing according to concrete type
      */
-    virtual void process(void) = 0;
+    virtual void process( void ) = 0;
 };
 
 #endif /* PROCESSOR_H_ */
