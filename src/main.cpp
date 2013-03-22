@@ -123,7 +123,7 @@ int main( int argc, char *argv[] ) {
     // install translator for Qt itself
     QString qtTransfilePrefix= "qt_";
     QString qtTransFolderPath = QLibraryInfo::location(QLibraryInfo::TranslationsPath);
-    installTranslator(application, qtTransfilePrefix, qtTransFolderPath);
+    installTranslator(application, qtTransfilePrefix, qtTransFolderPath, locale);
 
     // Don't show icons for menu items on Mac
     application.setAttribute(Qt::AA_DontShowIconsInMenus);
