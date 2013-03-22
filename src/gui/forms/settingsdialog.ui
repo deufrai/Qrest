@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>548</width>
-    <height>213</height>
+    <height>189</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -69,14 +69,34 @@
               <item row="0" column="0">
                <layout class="QVBoxLayout" name="mainPrefsVerticalLayout">
                 <item>
-                 <widget class="QCheckBox" name="chkRememberWindowPos">
-                  <property name="toolTip">
-                   <string>Should Qrest's main window be opened at the screen location it had on last run ?</string>
-                  </property>
-                  <property name="text">
-                   <string>Remember window &amp;position</string>
-                  </property>
-                 </widget>
+                 <layout class="QHBoxLayout" name="horizontalLayout_6">
+                  <item>
+                   <widget class="QCheckBox" name="chkRememberWindowPos">
+                    <property name="toolTip">
+                     <string>Should Qrest's main window be opened at the screen location it had on last run ?</string>
+                    </property>
+                    <property name="layoutDirection">
+                     <enum>Qt::RightToLeft</enum>
+                    </property>
+                    <property name="text">
+                     <string>Remember window &amp;position : </string>
+                    </property>
+                   </widget>
+                  </item>
+                  <item>
+                   <spacer name="horizontalSpacer_3">
+                    <property name="orientation">
+                     <enum>Qt::Horizontal</enum>
+                    </property>
+                    <property name="sizeHint" stdset="0">
+                     <size>
+                      <width>40</width>
+                      <height>20</height>
+                     </size>
+                    </property>
+                   </spacer>
+                  </item>
+                 </layout>
                 </item>
                 <item>
                  <layout class="QHBoxLayout" name="horizontalLayout_5">
