@@ -31,9 +31,8 @@
 #include "midilearndialog.h"
 #include "../../model/document.h"
 
-SettingsDialog::SettingsDialog( QWidget *parent )
-        : QDialog( parent ),
-                _restartWarningLabel( 0 ) {
+SettingsDialog::SettingsDialog( QWidget *parent ) :
+    QDialog( parent ), _restartWarningLabel( 0 ) {
 
     ui.setupUi( this );
 
@@ -115,7 +114,7 @@ SettingsDialog::SettingsDialog( QWidget *parent )
     QList<QString> localeKeys = localeNames.keys();
     QList<QString> localeValues = localeNames.values();
 
-    int cmbLocalesCurrentIndex;
+    int cmbLocalesCurrentIndex = -1;
 
     for( int i = 0; i < localeKeys.size(); i++ ) {
 
