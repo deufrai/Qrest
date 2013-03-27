@@ -156,7 +156,7 @@ void installTranslator( QApplication& app, QString& filePrefix, QString& folderP
     if( isTransLoaded ) {
 
 #ifndef QT_NO_DEBUG
-        qDebug() << "Translation file loaded successfully : " << filePrefix.append( locale );
+        qDebug() << "Translation file loaded successfully :" << filePrefix + locale;
 #endif
 
         app.installTranslator( pTranslator );
