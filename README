@@ -19,7 +19,7 @@ For GNU/Linux, there is an extra build-dependency : libasound2-dev (package name
 ---
 
 Git repository : https://github.com/deufrai/qrest
-Mirrored by    : git://wardsback.org/qrest
+Mirrored by    : https://secure.wardsback.org/gitblit/git/qrest.git
 
  branch layout :
 ================
