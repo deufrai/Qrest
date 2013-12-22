@@ -480,7 +480,7 @@
     <message>
         <location filename="../../src/gui/forms/settingsdialog.ui" line="173"/>
         <source>MIDI input &amp;port name :</source>
-        <translation type="unfinished">Nom du &amp;port d&apos;entrée MIDI :</translation>
+        <translation>Nom du &amp;port d&apos;entrée MIDI :</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/settingsdialog.ui" line="186"/>
