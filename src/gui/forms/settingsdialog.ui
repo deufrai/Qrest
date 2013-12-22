@@ -10,7 +10,7 @@
     <x>0</x>
     <y>0</y>
     <width>548</width>
-    <height>189</height>
+    <height>208</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -56,7 +56,7 @@
           </size>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>1</number>
          </property>
          <widget class="QWidget" name="main">
           <layout class="QVBoxLayout" name="verticalLayout_3">
@@ -170,7 +170,7 @@
                      <string>This name will be used by your system to identify qrest's MIDI input port</string>
                     </property>
                     <property name="text">
-                     <string>Midi input &amp;port name :</string>
+                     <string>MIDI input &amp;port name :</string>
                     </property>
                     <property name="alignment">
                      <set>Qt::AlignRight|Qt::AlignTrailing|Qt::AlignVCenter</set>

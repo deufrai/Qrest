@@ -479,7 +479,7 @@
     </message>
     <message>
         <location filename="../../src/gui/forms/settingsdialog.ui" line="173"/>
-        <source>Midi input &amp;port name :</source>
+        <source>MIDI input &amp;port name :</source>
         <translation type="unfinished"></translation>
     </message>
     <message>
