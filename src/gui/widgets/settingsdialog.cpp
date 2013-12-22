@@ -131,7 +131,9 @@ SettingsDialog::SettingsDialog( QWidget *parent ) :
 
     // Setup restart warning label
     _restartWarningLabel = new QLabel( tr( "Qrest must be restarted" ) );
-    _restartWarningLabel->setStyleSheet( "color: red; font-size: 11px;" );
+    _restartWarningLabel->setStyleSheet(
+    		"color: orange; font-size: 11px; font-weight: bold; " );
+
     _restartWarningLabel->hide();
     ui.mainPrefsVerticalLayout->insertWidget( ui.mainPrefsVerticalLayout->count(), _restartWarningLabel );
 
