@@ -9,8 +9,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>548</width>
-    <height>208</height>
+    <width>558</width>
+    <height>237</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -56,7 +56,7 @@
           </size>
          </property>
          <property name="currentIndex">
-          <number>1</number>
+          <number>0</number>
          </property>
          <widget class="QWidget" name="main">
           <layout class="QVBoxLayout" name="verticalLayout_3">
