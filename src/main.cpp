@@ -132,6 +132,9 @@ int main( int argc, char *argv[] ) {
     // create main window
     QrestMainWindow mainWindow;
     mainWindow.resize( mainWindow.minimumSizeHint() );
+    mainWindow.setWindowFlags(mainWindow.windowFlags() | Qt::CustomizeWindowHint);
+    mainWindow.setWindowFlags(mainWindow.windowFlags() & ~(Qt::WindowMaximizeButtonHint));
+    mainWindow.setFixedSize(mainWindow.minimumSizeHint());
     mainWindow.show();
 
     int exec = application.exec();
@@ -201,3 +204,4 @@ void saveSettings() {
         Settings::getInstance()->getSettings().sync();
     }
 }
+
