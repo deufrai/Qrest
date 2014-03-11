@@ -59,9 +59,10 @@ QrestMainWindow::QrestMainWindow( QWidget *parent )
 
     // hiding resize grip and making size fixed
     ui.statusbar->setSizeGripEnabled(false);
+    setFixedSize(QSize(0,0));
     setWindowFlags(windowFlags() | Qt::CustomizeWindowHint);
     setWindowFlags(windowFlags() & ~(Qt::WindowMaximizeButtonHint));
-    setFixedSize(minimumSizeHint());
+
 
 #ifdef Q_WS_MAC
     // set default font sizes
