@@ -32,6 +32,9 @@ MidiHelper::~MidiHelper() {
 
 void MidiHelper::initNames() {
 
+	// names collection is supposed to be empty here, so we enforce it :)
+	names.empty();
+
     names.push_back( "C" );
     names.push_back( "C#" );
     names.push_back( "D" );
