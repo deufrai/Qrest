@@ -9,3 +9,4 @@ tmp/
 qrest
 /.settings
 doc/doxygen/html/
+/qrest_unit_tests
