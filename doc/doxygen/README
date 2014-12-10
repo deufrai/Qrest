@@ -1,4 +1,4 @@
 Doxygen code documentation is built on evry change on the source tree.
 It is published on our continuous integration server.
 
-Simply browse to http://builds.wardsback.org and open the build job for your version
+Simply browse to https://secure.wardsback.org/jenkins/ and open the build job for your version
