@@ -1,7 +1,7 @@
 /*
  *  qest
  *
- *  Copyright (C) 2008-2013 - Frédéric CORNU
+ *  Copyright (C) 2008-2016 - Frédéric CORNU
  *
  *  This program is free software: you can redistribute it and/or modify
  *  it under the terms of the GNU General Public License as published by
