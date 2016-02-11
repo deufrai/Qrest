@@ -80,9 +80,6 @@ public slots:
     //
     ////////////////////////////////////////////////////////////////////////////
 private:
-    /** the threshold. */
-    double _threshold;
-
     /** the value. */
     double _value;
 
