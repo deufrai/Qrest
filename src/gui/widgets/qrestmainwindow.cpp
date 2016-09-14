@@ -517,7 +517,9 @@ void QrestMainWindow::onSync() {
 bool QrestMainWindow::eventFilter( QObject* target, QEvent* event ) {
 
     // handling of mousewheel events onto temo input field
-    if( target == ui.tempoEdit && event->type() == QEvent::Wheel ) {
+    if( target == ui.tempoEdit &&
+    	event->type() == QEvent::Wheel &&
+		! MidiController::getInstance()->isSyncState() ) {
 
         QWheelEvent* wheelEvent = static_cast<QWheelEvent*>( event );
 

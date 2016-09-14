@@ -131,6 +131,13 @@ public:
      */
     bool openPort();
 
+    /**
+     * Check is midi controller is in Sync state
+     *
+     * \return true if controller's state is Sync
+     */
+    inline bool isSyncState() { return _currentState == _syncState; }
+
     ////////////////////////////////////////////////////////////////////////////
     //
     // PRIVATE FUNCTIONS
