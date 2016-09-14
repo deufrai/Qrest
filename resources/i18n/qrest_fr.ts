@@ -85,7 +85,7 @@
     <message>
         <location filename="../../src/gui/forms/qrestaboutdialog.ui" line="16"/>
         <source>About Qrest</source>
-        <translation>A propos de Qrest</translation>
+        <translation>À propos de Qrest</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/qrestaboutdialog.ui" line="70"/>
@@ -115,7 +115,7 @@
     <message>
         <location filename="../../src/gui/widgets/qrestaboutdialog.cpp" line="59"/>
         <source>License</source>
-        <translation>License</translation>
+        <translation>Licence</translation>
     </message>
 </context>
 <context>
@@ -131,7 +131,7 @@
     <message>
         <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="79"/>
         <source>I&apos;m ready, sir</source>
-        <translation>A vos ordres, chef</translation>
+        <translation>À vos ordres, chef</translation>
     </message>
     <message>
         <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="187"/>
@@ -152,8 +152,8 @@
         <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="220"/>
         <source>Displayed BPM reliability : %n</source>
         <translation>
-            <numerusform>Faibilité du BPM affiché : %n</numerusform>
-            <numerusform>Faibilité du BPM affiché : %n</numerusform>
+            <numerusform>Fiabilité du BPM affiché : %n</numerusform>
+            <numerusform>Fiabilité du BPM affiché : %n</numerusform>
         </translation>
     </message>
     <message>
@@ -179,12 +179,12 @@
     <message>
         <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="434"/>
         <source>Please consider reporting this as a bug on Qrest&apos;s website.</source>
-        <translation>Envisagez s&apos;il vous plaît de consigner ce bug sur le site web de Qrest.</translation>
+        <translation>Envisagez s&apos;il vous plaît de consigner ce bogue sur le site web de Qrest.</translation>
     </message>
     <message>
         <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="438"/>
         <source>Warning : No help file found</source>
-        <translation>Attetion : Fichier d&apos;aide non trouvé</translation>
+        <translation>Attention : fichier d&apos;aide non trouvé</translation>
     </message>
     <message>
         <location filename="../../src/gui/widgets/qrestmainwindow.cpp" line="565"/>
@@ -307,7 +307,7 @@
     <message>
         <location filename="../../src/gui/forms/qrestmainwindow.ui" line="178"/>
         <source>Delays and LFOs</source>
-        <translation>Delais et LFOs</translation>
+        <translation>Délais et LFO</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/qrestmainwindow.ui" line="188"/>
@@ -349,12 +349,12 @@
     <message>
         <location filename="../../src/gui/forms/qrestmainwindow.ui" line="632"/>
         <source>About &amp;Qrest...</source>
-        <translation>A propos de &amp;Qrest...</translation>
+        <translation>À propos de &amp;Qrest...</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/qrestmainwindow.ui" line="635"/>
         <source>About Qrest</source>
-        <translation>A propos de Qrest</translation>
+        <translation>À propos de Qrest</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/qrestmainwindow.ui" line="647"/>
@@ -369,7 +369,7 @@
     <message>
         <location filename="../../src/gui/forms/qrestmainwindow.ui" line="599"/>
         <source>&amp;Edit</source>
-        <translation>&amp;Edition</translation>
+        <translation>É&amp;dition</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/qrestmainwindow.ui" line="659"/>
@@ -455,7 +455,7 @@
     <message>
         <location filename="../../src/gui/forms/settingsdialog.ui" line="76"/>
         <source>Should Qrest&apos;s main window be opened at the screen location it had on last run ?</source>
-        <translation>La fenêtre principale de Qrest doit-elle être ouverte à l&apos;endroit où elle était lors de l&apos;exécution précédente ?</translation>
+        <translation>La fenêtre principale de Qrest doit-elle se ré-ouvrir à l&apos;endroit où elle était lors de l&apos;exécution précédente ?</translation>
     </message>
     <message>
         <location filename="../../src/gui/forms/settingsdialog.ui" line="82"/>
