@@ -5,9 +5,11 @@ linux-* {
     BINDEST = /usr/bin/
     SHARE = /usr/share/$$TARGET
     MANDEST = /usr/share/man/man1/
+    MANDEST_FR = /usr/share/man/fr/man1/
     ICONDEST = $$SHARE/icons
     BINSRC = ./qrest
     MANSRC = doc/manpages/man1/qrest.1.gz
+    MANSRC_FR =  doc/manpages/fr/man1/qrest.1.gz
     ICONSRC = resources/pix/qresticon.png
 }
 
@@ -75,7 +77,10 @@ linux-* {
     INSTALLS += target
     manpages.path = $$MANDEST
     manpages.files = $$MANSRC
+    manpages_fr.path = $$MANDEST_FR
+    manpages_fr.files = $$MANSRC_FR
     INSTALLS += manpages
+    INSTALLS += manpages_fr
     icons.path = $$ICONDEST
     icons.files = $$ICONSRC
     INSTALLS += icons
