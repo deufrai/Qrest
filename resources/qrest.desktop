@@ -2,7 +2,7 @@
 Version=1.0
 Name=Qrest
 Name[fr]=Qrest
-Comment=Really Easy Studio Toolkit
+Comment=Qrest Really Easy Studio Toolkit
 Comment[fr]=Boîte à outils vraiment facile pour le studio
 Exec=qrest
 Terminal=false
