@@ -326,18 +326,18 @@ private:
     static const int DELAYS_COUNT = 6;
 
     /** complete steadiness is expressed as 1 as a double */
-    static const double FULL_STEADINESS = 1.0;
+    static const double FULL_STEADINESS;
 
     // Constants used for the multiplier
 public:
     /** Mutlilpier for plain notes */
-    static const double MULTIPLIER_PLAIN = 1.0;
+    static const double MULTIPLIER_PLAIN;
 
     /** Multiplier for dotted notes */
-    static const double MULTIPLIER_DOTTED = 1.5;
+    static const double MULTIPLIER_DOTTED;
 
     /** Mutliplier for triplet notes */
-    static const double MULTIPLIER_TRIPLET = 2.0 / 3.0;
+    static const double MULTIPLIER_TRIPLET;
 
 private:
     ////////////////////////////////////////////////////////////////////////////

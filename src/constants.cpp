@@ -31,6 +31,15 @@ const QString Constants::LOCALE_FR = "fr";
 const QString Constants::LOCALE_ES = "es";
 const QString Constants::LOCALE_PT = "pt";
 
+const double Constants::SECONDS_PER_MINUTE = 60.0;
+const double Constants::MILLISEC_PER_SECOND = 1000.0;
+const double Constants::STEADINESS_TARGET_RATIO = 0.90;
+const double Constants::PROGRESSPIE_DEFAULT_VALUE = 0.0;
+const double Constants::PROGRESSPIE_FULL = 1.0;
+const double Constants::TEMPO_DEFAULT = 60.0;
+const double Constants::TEMPO_MIN = 1.0;
+const double Constants::TEMPO_MAX = 999.0;
+
 Constants::Constants() {
 
 }

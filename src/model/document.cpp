@@ -29,6 +29,11 @@
 
 Document* Document::_instance = 0;
 
+const double Document::FULL_STEADINESS = 1.0;
+const double Document::MULTIPLIER_PLAIN = 1.0;
+const double Document::MULTIPLIER_DOTTED = 1.5;
+const double Document::MULTIPLIER_TRIPLET = 2.0 / 3.0;
+
 Document::Document()
         : _tempo( Constants::TEMPO_DEFAULT ),
                 _steady( true ),
