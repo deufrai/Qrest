@@ -24,4 +24,5 @@ SOURCES += tests/process/tapTempoCalculatorTestCase.cpp \
     src/model/delay.cpp \
     src/dp/observable.cpp \
     src/process/tapTempoCalculator.cpp \
-    src/time/timeStamper.cpp
+    src/time/timeStamper.cpp \
+    src/constants.cpp
