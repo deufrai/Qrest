@@ -20,7 +20,7 @@
 #ifndef QRESTABOUTDIALOG_H
 #define QRESTABOUTDIALOG_H
 
-#include <QtGui/QDialog>
+#include <QDialog>
 #include "ui_qrestaboutdialog.h"
 
 /**

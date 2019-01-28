@@ -20,7 +20,7 @@
 #ifndef QRESTPREFERENCESDIALOG_H
 #define QRESTPREFERENCESDIALOG_H
 
-#include <QtGui/QDialog>
+#include <QDialog>
 #include "ui_qrestpreferencesdialog.h"
 
 /**

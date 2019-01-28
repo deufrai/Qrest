@@ -15,6 +15,9 @@ linux-* {
 
 QT += core \
     gui
+greaterThan(QT_MAJOR_VERSION, 4) {
+    QT += widgets
+}
 
 HEADERS += src/helpers/localeHelper.h \
     src/gui/widgets/custom/progressPie.h \
