@@ -33,12 +33,12 @@ public:
     /**
      * how many seconds in a minute ?
      */
-    static const double SECONDS_PER_MINUTE = 60.0;
+    static constexpr double SECONDS_PER_MINUTE = 60.0;
 
     /**
      * how many milliseconds in a second ?
      */
-    static const double MILLISEC_PER_SECOND = 1000.0;
+    static constexpr double MILLISEC_PER_SECOND = 1000.0;
 
     /**
      * String describing version
@@ -61,17 +61,17 @@ public:
     /**
      * targetted steadiness ration for taps to be considered steady
      */
-    static const double STEADINESS_TARGET_RATIO = 0.90;
+    static constexpr double STEADINESS_TARGET_RATIO = 0.90;
 
     /**
      * progressPie widget default value
      */
-    static const double PROGRESSPIE_DEFAULT_VALUE = 0.0;
+    static constexpr double PROGRESSPIE_DEFAULT_VALUE = 0.0;
 
     /**
      * value for a full progresspie
      */
-    static const double PROGRESSPIE_FULL = 1.0;
+    static constexpr double PROGRESSPIE_FULL = 1.0;
 
     /**
      * temp messages are shown for 1.5 seconds
@@ -79,13 +79,13 @@ public:
     static const int STATUSBAR_TEMP_TIMEOUT = 1500;
 
     /** Default tempo for app startup */
-    static const double TEMPO_DEFAULT = 60.0;
+    static constexpr double TEMPO_DEFAULT = 60.0;
 
     /** Minimum allowed tempo as input. */
-    static const double TEMPO_MIN = 1.0;
+    static constexpr double TEMPO_MIN = 1.0;
 
     /** Maximum allowed tempo as input. */
-    static const double TEMPO_MAX = 999.0;
+    static constexpr double TEMPO_MAX = 999.0;
 
     /** Size (in points) of widget fonts for mac */
     static const int MAC_FONT_SIZE = 13;
