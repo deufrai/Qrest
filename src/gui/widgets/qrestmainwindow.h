@@ -20,7 +20,7 @@
 #ifndef QRESTMAINWINDOW_H
 #define QRESTMAINWINDOW_H
 
-#include <QtGui/QMainWindow>
+#include <QMainWindow>
 #include "../forms/ui_qrestmainwindow.h"
 #include "../../dp/observer.h"
 #include "../../midi/midicontroller.h"

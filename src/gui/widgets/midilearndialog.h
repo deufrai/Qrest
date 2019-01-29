@@ -20,7 +20,7 @@
 #ifndef MIDILEARNDIALOG_H
 #define MIDILEARNDIALOG_H
 
-#include <QtGui/QDialog>
+#include <QDialog>
 #include "ui_midilearndialog.h"
 #include "../../midi/events/midievent.h"
 

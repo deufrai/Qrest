@@ -20,7 +20,7 @@
 #ifndef QRESTHELPVIEWER_H
 #define QRESTHELPVIEWER_H
 
-#include <QtGui/QMainWindow>
+#include <QMainWindow>
 #include "ui_qresthelpviewer.h"
 
 /**

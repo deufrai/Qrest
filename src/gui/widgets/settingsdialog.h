@@ -20,7 +20,7 @@
 #ifndef SETTINGSDIALOG_H
 #define SETTINGSDIALOG_H
 
-#include <QtGui/QDialog>
+#include <QDialog>
 #include "ui_settingsdialog.h"
 
 /**
